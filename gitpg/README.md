@@ -30,8 +30,8 @@ Add changes to README
 
 ## Practice 2
 1. Create a branch \<your name\>/userinfo and switch to created branch
-2. Under this folder (git-playground), create a folder using your first name, all lowercase
-3. Under git-playground/\<your name\> folder, add a file "userinfo"
+2. Under this folder (gitpg), create a folder using your first name, all lowercase
+3. Under gitpg/\<your name\> folder, add a file "userinfo"
 4. Edit userinfo file and add your full name
 5. Commit changes (apply Commit Best Practices)
 6. Edit userinfo file and add you birth date in a new line

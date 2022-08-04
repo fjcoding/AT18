@@ -46,7 +46,7 @@ Add changes to README
 1. Make sure to have a local branch tracking remote dev/info branch
 2. Switch to dev/info branch
 3. Create a branch \<your name\>/techinfo and switch to created branch
-4. Under git-playground/\<your name\> folder, add a file "techinfo"
+4. Under gitgp/\<your name\> folder, add a file "techinfo"
 5. Edit techinfo file and list your favorite programming languages separated by commas in one single line
 6. Commit changes (apply Commit Best Practices)
 7. Edit techinfo file and list your favorite code editors or IDEs separated by commas in a new line
@@ -58,7 +58,7 @@ Add changes to README
 ## Practice 4
 1. Switch to dev/info branch
 2. Create a branch \<your name\>/hobbyinfo and switch to created branch
-3. Under git-playground/\<your name\> folder, add a file "hobbyinfo"
+3. Under gitgp/\<your name\> folder, add a file "hobbyinfo"
 4. Edit hobbyinfo file and list your favorite sports separated by commas in one single line
 5. Commit changes (apply Commit Best Practices)
 6. Edit hobbyinfo file and list your music genres separated by commas in a new line
@@ -70,7 +70,7 @@ Add changes to README
 ## Practice 5
 1. Switch to dev/info branch
 2. Create a branch \<your name\>/machineinfo and switch to created branch
-3. Under git-playground/\<your name\> folder, add a file "machineinfo"
+3. Under gitgp/\<your name\> folder, add a file "machineinfo"
 4. Edit machineinfo file and add your CPU brand/model in one single line
 5. Commit changes (apply Commit Best Practices)
 6. Edit machineinfo file and add your RAM capacity in a new line

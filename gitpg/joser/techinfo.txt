@@ -2,3 +2,5 @@ C++, Java, Php
 Visual Studio, Sublime, Eclipse, Android Studio
 Microsoft Windows 10
 editors/IDEs count: 4
+terminal: CMD
+C++-VSCode

@@ -1,4 +1,5 @@
 Natacion, Basquet, Arqueria
 Rock, Pop, Cumbia
 Insidious, Como la Pimera Vez, El dia despues de Mañana
+Music_Genre_Count = 3
 Movies count:3

@@ -12,3 +12,7 @@ task runHighestlowestAlvaro (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.alvaro.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+task runMultiplesAlvaro (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.alvaro.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

@@ -1,5 +1,7 @@
 Natacion, Basquet, Arqueria
 Rock, Pop, Cumbia
 Insidious, Como la Pimera Vez, El dia despues de Mañana
+sports count: 3
 Music_Genre_Count = 3
 Movies count:3
+music/movie code: Rock- El dia despues de Manana

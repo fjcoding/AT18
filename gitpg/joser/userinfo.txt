@@ -3,7 +3,11 @@ Jose Antonio Romay Ayarachi
 Ingenieria Informatica
 Potosi - Bolivia
 <<<<<<< HEAD
+Potosi - Bolivia-Ingenieria Informatica
+=======
+<<<<<<< HEAD
 user code: josea-1707
 =======
 Jose-06
+>>>>>>> dev/info
 >>>>>>> dev/info

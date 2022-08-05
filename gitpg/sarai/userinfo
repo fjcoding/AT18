@@ -3,7 +3,11 @@ Nombre: Sarai Leslie Alvarez Rosas
 career: Systems engineer
 city: Cochabamba
 <<<<<<< HEAD
+city: Cochabamba-career: Systems engineer
+=======
+<<<<<<< HEAD
 user code: sarai-1107
 =======
 Sarai-07
+>>>>>>> dev/info
 >>>>>>> dev/info

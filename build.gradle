@@ -9,7 +9,7 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task runCreatephoneDeniso (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.multiples.deniso.createphone'
+task runSummultiplesDeniso (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.deniso.summultiples'
     classpath = sourceSets.main.runtimeClasspath
 }

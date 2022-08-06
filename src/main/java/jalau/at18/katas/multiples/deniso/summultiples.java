@@ -1,5 +1,5 @@
 package jalau.at18.katas.multiples.deniso;
-public class createphone {
+public class summultiples {
     public static void main(String[] args) {
         int nro = 10;
         int sum = 0;

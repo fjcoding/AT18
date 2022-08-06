@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        int number_list[] = { -1, 34, 23, -7, 5 };
+        int number_list[] = { -1, 34, 23, -7, 78 };
         ArrayList<Integer> lowest_and_biggest_numbers = new ArrayList<Integer>();
         int biggest = 0, lowest = 0;
         for (int i = 0; i < number_list.length; i++) {

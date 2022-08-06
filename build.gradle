@@ -13,3 +13,8 @@ task runSummultiplesDeniso (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.deniso.summultiples'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runCreatephoneDeniso (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.deniso.createphone'
+    classpath = sourceSets.main.runtimeClasspath
+}

@@ -1,4 +1,4 @@
 Intel Core I5
 Ram: 16 Gb
-Storage: 2tb
-Intel - 16GB - 2TB
+Storage: 2tb 
+Intel

@@ -18,3 +18,18 @@ task runHighestLowestMauricioG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.mauricio.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task LikesMauricioG (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.mauricio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task MultiplesMauricioG (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.mauricio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task PhoneNumberMauricioG (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.mauricio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

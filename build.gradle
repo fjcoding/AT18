@@ -8,28 +8,3 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
-
-task runHelloWorldMauricioG (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.helloworld.mauricio.Main'
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-task runHighestLowestMauricioG (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.highestlowest.mauricio.Main'
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-task LikesMauricioG (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.likes.mauricio.Main'
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-task MultiplesMauricioG (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.multiples.mauricio.Main'
-    classpath = sourceSets.main.runtimeClasspath
-}
-
-task PhoneNumberMauricioG (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.phonenumber.mauricio.Main'
-    classpath = sourceSets.main.runtimeClasspath
-}

@@ -8,3 +8,8 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runCreatephoneDeniso (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.deniso.createphone'
+    classpath = sourceSets.main.runtimeClasspath
+}

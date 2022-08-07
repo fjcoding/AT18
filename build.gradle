@@ -13,3 +13,13 @@ task runKata1 (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.maria.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runKata2 (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.maria.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runKata3 (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.maria.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

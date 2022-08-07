@@ -23,3 +23,9 @@ task runKata3 (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.maria.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runKata4 (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.maria.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+

@@ -1,15 +1,18 @@
 package jalau.at18.katas.multiples.deniso;
-public class summultiples {
+public class SumMultiples {
+
+    private static final int NUMBER_SIZE = 10;
+    private static final int NUMBER_ONE = 3;
+    private static final int NUMBER_TWO = 5;
     public static void main(String[] args) {
-        int nro = 10;
         int sum = 0;
-        if(nro>0){
-        for(int i=0;i<nro;i++){
-            if(i%3 ==0 || i%5==0 ){
-                sum=sum+i;
+        if (NUMBER_SIZE > 0) {
+            for (int index = 0; index < NUMBER_SIZE; index++) {
+                if (index % NUMBER_ONE == 0 || index % NUMBER_TWO == 0) {
+                    sum = sum + index;
+                }
             }
         }
-        }
-            System.out.println("La suma de multiplos es:"+sum);
-        }
+        System.out.println("La suma de multiplos es:" + sum);
+    }
 }

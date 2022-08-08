@@ -33,11 +33,11 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
 }
 
 task runSummultiplesDeniso (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.multiples.deniso.summultiples'
+    main = 'jalau.at18.katas.multiples.deniso.SumMultiples'
     classpath = sourceSets.main.runtimeClasspath
 }
 
 task runCreatephoneDeniso (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.phonenumber.deniso.createphone'
+    main = 'jalau.at18.katas.phonenumber.deniso.CreatePhone'
     classpath = sourceSets.main.runtimeClasspath
 }

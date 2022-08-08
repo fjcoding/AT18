@@ -15,11 +15,11 @@ public class phonenumber {
                 telephone3 += String.valueOf(numbers[buscar]);
             }
         }
-        System.out.println("(" + telephone1 + ")" + telephone2 + "-" + telephone3);
+        System.out.println("("+telephone1 +")"+telephone2+"-"+telephone3);
     }
 
     public static void main(String[] args) {
-        int telephone[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
+        int telephone[] = {1,2,3,4,5,6,7,8,9,0};
         PhoneNumberFuntion(telephone);
     }
 

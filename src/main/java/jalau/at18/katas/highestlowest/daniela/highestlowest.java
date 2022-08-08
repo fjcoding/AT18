@@ -16,11 +16,9 @@ public class highestlowest {
         int minimo = lista[0];
         for (int encontrar = 0; encontrar < separar.length; encontrar++) {
             if (maximo < lista[encontrar]) {
-                maximo = lista[encontrar];
-            }
+                maximo = lista[encontrar];}
             if (minimo > lista[encontrar]) {
-                minimo = lista[encontrar];
-            }
+                minimo = lista[encontrar];}
         }
         System.out.println("out:" + maximo + " " + minimo);
     }

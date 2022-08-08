@@ -15,7 +15,7 @@ public class Main {
         }
         if (names.length == NUMBER_OF_NAMES) {
             System.out.println(names[0] + "," + names[1] + " and " + names[2] + " like this");
-        } else if (names.length >= NUMBER_OF_NAMES){
+        } else if (names.length >= NUMBER_OF_NAMES) {
             System.out.println(names[0] + "," + names[1] + " and " + (names.length - 2) + " others like this");
         }
     }

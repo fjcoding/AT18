@@ -1,6 +1,6 @@
 package jalau.at18.katas.phonenumber.deniso;
 
-public class createphone {
+public class CreatePhone {
     private static final int TEST_ONE = 1;
     private static final int TEST_TWO = 2;
     private static final int TEST_THREE = 3;

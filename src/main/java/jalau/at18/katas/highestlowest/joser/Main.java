@@ -2,21 +2,17 @@ package jalau.at18.katas.highestlowest.joser;
 public class Main {
 
     public static void main(String[] args) {
-
-        System.out.println(new Main().Hilo("-4 -5 7 -9 9 3 6 10 -5"));
-           
+        System.out.println(new Main().hilo("-5 -4 3 -1 9 15 6 4 -5"));
     }
 
-    public String Hilo(String str) {
-
-        String [] valores = str.split(" ");
-        int max = 0, min = 0;
-        
-        for (int i = 0; i < valores.length; i++) {
-            max = Math.max(max, Integer.parseInt(valores[i]));
-            min = Math.min(min, Integer.parseInt(valores[i]));
+    public String hilo(String str) {
+        String[] valores = str.split(" ");
+        int max = 0;
+        int min = 0;
+        for (int index = 0; index < valores.length; index++) {
+            max = Math.max(max, Integer.parseInt(valores[index]));
+            min = Math.min(min, Integer.parseInt(valores[index]));
         }
-
-        return max+" "+min;
+        return max + " " + min;
     }
 }

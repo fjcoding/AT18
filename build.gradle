@@ -8,3 +8,21 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runferHighlow (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.fernanda.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runferLikes (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.fernanda.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runfermultiples (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.fernanda.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runferphone (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.fernanda.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

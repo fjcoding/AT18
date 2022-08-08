@@ -1,18 +1,25 @@
 package jalau.at18.katas.multiples.Adriana;
 
+import java.util.Scanner;
+
 public class Main {
+    static final Integer DIVISORS_OF_1 = 3;
+    static final Integer DIVISORS_OF_2 = 5;
     public static void main(String[] args) {
-        Integer number = -20;
-        System.out.println("Number: "+number);
-        Integer sumMultiples = getSumMult (number);
-        System.out.println("Sum: "+sumMultiples);
+        System.out.print("Enter a number: ");
+        Scanner scan = new Scanner(System.in);
+        Integer number = scan.nextInt();
+        System.out.println(" ");
+        System.out.println("Number: " + number);
+        Integer sumMultiples = getSumMult(number);
+        System.out.println("Sum: " + sumMultiples);
     }
-    private static Integer getSumMult (Integer n){
-        Integer sum=0;
-        if (n>=0){
-            for (int i=1;i<n;i++){
-                if ((i%3==0)||(i%5==0)){
-                    sum=sum+i;
+    private static Integer getSumMult(Integer number) {
+        Integer sum = 0;
+        if (number >= 0) {
+            for (int count = 1; count < number; count++) {
+                if ((count % DIVISORS_OF_1 == 0) || (count % DIVISORS_OF_2 == 0)) {
+                    sum = sum + count;
                 }
             }
         }

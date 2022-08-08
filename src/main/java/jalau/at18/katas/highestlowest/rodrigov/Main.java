@@ -1,18 +1,20 @@
 package jalau.at18.katas.highestlowest.rodrigov;
-
 public class Main {
     public static void main(String[] args) {
-        int numbers[]= {1,2,-3,4,5};
-        int lowestNumber=numbers[0];
-        int highestNumber=numbers[0];
-        for(int i=0;i<numbers.length;i++){
-            if(numbers[i]<=lowestNumber){
-                lowestNumber=numbers[i];
+        final int thirdNumber = -3;
+        final int fourthNumber = 4;
+        final int fifthNumber = 5;
+        int[] numbers = {1, 2, thirdNumber, fourthNumber, fifthNumber};
+        int lowestNumber = numbers[0];
+        int highestNumber = numbers[0];
+        for (int iterator = 0; iterator < numbers.length; iterator++) {
+            if (numbers[iterator] <= lowestNumber) {
+                lowestNumber = numbers[iterator];
             }
-            if(numbers[i]>=highestNumber){
-                highestNumber=numbers[i];
-            }   
+            if (numbers[iterator] >= highestNumber) {
+                highestNumber = numbers[iterator];
+            }
         }
-        System.out.println(highestNumber + " " + lowestNumber );  
+        System.out.println(highestNumber + " " + lowestNumber);
     }
 }

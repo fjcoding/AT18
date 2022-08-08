@@ -1,8 +1,20 @@
 apply plugin: 'java'
+apply plugin: 'checkstyle'
 
 repositories {
     mavenCentral()
 }
+
+checkstyle {
+    checkstyleMain.source = "src/main/"
+    checkstyleMain.excludes = ["**/src/test/**"]
+}
+
+checkstyleMain {
+    source = 'src/main/java'
+}
+
+test.finalizedBy("checkstyleMain")
 
 task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'

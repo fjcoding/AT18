@@ -2,7 +2,7 @@ package jalau.at18.katas.phonenumber.daniela;
 
 public class phonenumber {
 
-    static void phonenumberfuntion(int numbers[]) {
+    static void PhoneNumberFuntion(int numbers[]) {
         String telephone1 = "";
         String telephone2 = "";
         String telephone3 = "";
@@ -23,7 +23,7 @@ public class phonenumber {
 
     public static void main(String[] args) {
         int telephone[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
-        phonenumberfuntion(telephone);
+        PhoneNumberFuntion(telephone);
     }
 
 }

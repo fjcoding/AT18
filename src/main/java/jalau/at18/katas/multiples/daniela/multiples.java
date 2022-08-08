@@ -1,7 +1,7 @@
 package jalau.at18.katas.multiples.daniela;
 
 public class multiples {
-    static void multiplesfuntion(int number) {
+    static void MultiplesFuntion(int number) {
         if (number < 0) {
             System.out.println("The number is not valid");
         }
@@ -19,7 +19,7 @@ public class multiples {
     }
 
     public static void main(String[] args) {
-        multiplesfuntion(100);
+        MultiplesFuntion(100);
     }
 
 }

@@ -21,7 +21,6 @@ public class highestlowest {
             if (minimo > lista[encontrar]) {
                 minimo = lista[encontrar];
             }
-
         }
         System.out.println("out:" + maximo + " " + minimo);
     }

@@ -1,5 +1,5 @@
 package jalau.at18.katas.multiples.deniso;
-public class summultiples {
+public class SumMultiples {
 
     private static final int NUMBER_SIZE = 10;
     private static final int NUMBER_ONE = 3;

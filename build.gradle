@@ -31,3 +31,8 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runhighlow (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.joser'
+    classpath = sourceSets.main.runtimeClasspath
+}

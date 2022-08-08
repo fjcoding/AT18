@@ -10,18 +10,18 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 task runhighestlowestDaniela (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.highestlowest.daniela.highestlowest'
+    main = 'jalau.at18.katas.HighestLowest.daniela.HighestLowest'
     classpath = sourceSets.main.runtimeClasspath
 }
 task runlikesDaniela (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.likes.daniela.likes'
+    main = 'jalau.at18.katas.Likes.daniela.Likes'
     classpath = sourceSets.main.runtimeClasspath
 }
 task runmultiplesDaniela (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.multiples.daniela.multiples'
+    main = 'jalau.at18.katas.Multiples.daniela.Multiples'
     classpath = sourceSets.main.runtimeClasspath
 }
 task runphonenumberDaniela (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.phonenumber.daniela.phonenumber'
+    main = 'jalau.at18.katas.PhoneNumber.daniela.PhoneNumber'
     classpath = sourceSets.main.runtimeClasspath
 }

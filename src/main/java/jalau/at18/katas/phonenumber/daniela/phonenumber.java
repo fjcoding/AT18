@@ -1,6 +1,6 @@
 package jalau.at18.katas.phonenumber.daniela;
 
-public class PhoneNumber {
+public class phonenumber {
 
     static void PhoneNumberFuntion(int numbers[]) {
         String telephone1 = "";
@@ -17,6 +17,7 @@ public class PhoneNumber {
         }
         System.out.println("(" + telephone1 + ")" + telephone2 + "-" + telephone3);
     }
+
     public static void main(String[] args) {
         int telephone[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
         PhoneNumberFuntion(telephone);

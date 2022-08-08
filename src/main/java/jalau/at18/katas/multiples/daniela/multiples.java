@@ -1,6 +1,6 @@
 package jalau.at18.katas.multiples.daniela;
 
-public class Multiples {
+public class multiples {
     static void MultiplesFuntion(int number) {
         if (number < 0) {
             System.out.println("The number is not valid");

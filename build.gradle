@@ -5,6 +5,17 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+    }
+}
+
 checkstyle {
     checkstyleMain.source = "src/main/"
     checkstyleMain.excludes = ["**/src/test/**"]

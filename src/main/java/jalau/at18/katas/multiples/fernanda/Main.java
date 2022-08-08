@@ -3,31 +3,27 @@ package jalau.at18.katas.multiples.fernanda;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args)  throws InterruptedException 
-    { 
+    private static final int MULTIPLE3 = 3;
+    private static final int MULTIPLE5 = 5;
+    public static void main(String[] args)  throws InterruptedException {
         int sumMultiples3 = 0;
         int sumMultiples5 = 0;
-        int sumMultiplesBoth = 0;
-        int multipleOf3 = 3;
-        int multipleOf5 = 5;
-
-
+        int sumMutliplesBoth = 0;
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter a number");
         int number = scan.nextInt();
         if (number < 0) {
             System.out.println("0");
         } else {
-
-            for (int i = 3; i < number; i++) {
-                if (i % multipleOf3 == 0 && i % multipleOf5 == 0){
-                    sumMultiplesBoth = sumMultiplesBoth + i; 
+            for (int currentNum = 0; currentNum < number; currentNum++) {
+                if (currentNum % MULTIPLE3 == 0 && currentNum % MULTIPLE5 == 0) {
+                    sumMutliplesBoth = sumMutliplesBoth + currentNum;
                 } else {
-                    if (i % multipleOf3 == 0) {
-                        sumMultiples3 = sumMultiples3 + i;
+                    if (currentNum % MULTIPLE3 == 0) {
+                        sumMultiples3 = sumMultiples3 + currentNum;
                     } else {
-                        if (i % multipleOf5 == 0) {
-                            sumMultiples5 = sumMultiples5 + i;
+                        if (currentNum % MULTIPLE5 == 0) {
+                            sumMultiples5 = sumMultiples5 + currentNum;
                         }
                     }
                 }
@@ -35,12 +31,10 @@ public class Main {
             }
         }
 
-        int sumOfAll = sumMultiples3 + sumMultiples5 + sumMultiplesBoth;
+        int sumOfAll = sumMultiples3 + sumMultiples5 + sumMutliplesBoth;
         System.out.println(sumOfAll);
-        
-        scan.close();
 
+        scan.close();
     }
 
 }
-

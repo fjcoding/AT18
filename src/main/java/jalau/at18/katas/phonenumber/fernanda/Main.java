@@ -3,18 +3,24 @@ package jalau.at18.katas.phonenumber.fernanda;
 import java.util.*;
 
 public class Main {
+    private static final int PHONENUM_LENGTH = 10;
+    private static final int NEXTTHREE = 6;
+    private static final int FIRSTDIGITS = 3;
     public static void main(String[] args) throws InterruptedException {
-        int phoneNumleng = 10;
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter 10 digits separated by commas");
         String tenDigit = scan.nextLine();
 
         String[] phoneNum = tenDigit.split(",");
-        if(phoneNum.length == phoneNumleng){
-
+        if (phoneNum.length == PHONENUM_LENGTH) {
             System.out.print("(" + phoneNum[0] + phoneNum[1] + phoneNum[2] + ") ");
-            System.out.print(phoneNum[3] + phoneNum[4] + phoneNum[5] + "-" + phoneNum[6] + phoneNum[7] + phoneNum[8] + phoneNum[9]);
-
+            for (int place = FIRSTDIGITS; place < NEXTTHREE; place++) {
+                System.out.print(phoneNum[place]);
+            }
+            System.out.print("-");
+            for (int place = NEXTTHREE; place < PHONENUM_LENGTH; place++) {
+                System.out.print(phoneNum[place]);
+            }
         } else {
             System.out.println("Debe ingresar 10 numeros");
         }

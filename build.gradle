@@ -4,7 +4,7 @@ repositories {
     mavenCentral()
 }
 
-run.standardInput = System.in;
+
 
 
 task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {

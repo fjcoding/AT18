@@ -3,16 +3,23 @@ package jalau.at18.katas.highestlowest.mauricio;
 import java.util.ArrayList;
 
 public class Main {
+    private static final int FIRST_NUMBER = -1;
+    private static final int SECOND_NUMBER = 34;
+    private static final int THIRD_NUMBER = 23;
+    private static final int FOURTH_NUMBER = -7;
+    private static final int FIFTH_NUMBER = 78;
+
     public static void main(String[] args) {
-        int number_list[] = { -1, 34, 23, -7, 78 };
+        int[] number_list = {FIRST_NUMBER, SECOND_NUMBER, THIRD_NUMBER, FOURTH_NUMBER, FIFTH_NUMBER};
         ArrayList<Integer> lowest_and_biggest_numbers = new ArrayList<Integer>();
-        int biggest = 0, lowest = 0;
-        for (int i = 0; i < number_list.length; i++) {
-            if (number_list[i] > biggest) {
-                biggest = number_list[i];
+        int biggest = 0;
+        int lowest = 0;
+        for (int index = 0; index < number_list.length; index++) {
+            if (number_list[index] > biggest) {
+                biggest = number_list[index];
             }
-            if (number_list[i] < lowest) {
-                lowest = number_list[i];
+            if (number_list[index] < lowest) {
+                lowest = number_list[index];
             }
         }
         lowest_and_biggest_numbers.add(lowest);

@@ -1,6 +1,6 @@
 package jalau.at18.katas.likes.daniela;
 
-public class likes {
+public class Likes {
 
     static void LikesFuntion() {
         String[] nombres = { "Daniela", "Alejandra", "javier", "mayra" };

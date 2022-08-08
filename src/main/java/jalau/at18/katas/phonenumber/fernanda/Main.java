@@ -13,19 +13,15 @@ public class Main {
         if(phoneNum.length == phoneNumleng){
 
             System.out.print("(" + phoneNum[0] + phoneNum[1] + phoneNum[2] + ") ");
-            System.out.print(phoneNum[3] + phoneNum[4]+ phoneNum[5] + "-" + phoneNum[6]+phoneNum[7]+phoneNum[8]+phoneNum[9]);
+            System.out.print(phoneNum[3] + phoneNum[4] + phoneNum[5] + "-" + phoneNum[6] + phoneNum[7] + phoneNum[8] + phoneNum[9]);
 
-        } else{
+        } else {
             System.out.println("Debe ingresar 10 numeros");
         }
 
         scan.close();
 
-        
-
-        
-
-    } 
+    }
 }
 
 

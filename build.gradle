@@ -5,22 +5,23 @@ repositories {
     mavenCentral()
 }
 
-<<<<<<< HEAD
+
 task runHighestLowestRodrigo (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.highestlowest.rodrigob.highestlowest'
+    main = 'jalau.at18.katas.highestlowest.rodrigob.Highestlowest'
     classpath = sourceSets.main.runtimeClasspath
 }
 task runLikesRodrigo (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.likes.rodrigob.likes'
+    main = 'jalau.at18.katas.likes.rodrigob.Likes'
     classpath = sourceSets.main.runtimeClasspath
 }
 task runMultiplesRodrigo (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.multiples.rodrigob.multiples'
+    main = 'jalau.at18.katas.multiples.rodrigob.Multiples'
     classpath = sourceSets.main.runtimeClasspath
 }
 task runPhoneRodrigo (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.phonenumber.rodrigob.phone'
-=======
+    main = 'jalau.at18.katas.phonenumber.rodrigob.Phone'
+    classpath = sourceSets.main.runtimeClasspath
+}
 dependencies {
     testImplementation 'junit:junit:4.12'
 }
@@ -45,6 +46,6 @@ test.finalizedBy("checkstyleMain")
 
 task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
->>>>>>> dev/katas
     classpath = sourceSets.main.runtimeClasspath
+
 }

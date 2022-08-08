@@ -8,13 +8,13 @@ public class phonenumber {
         String telephone3 = "";
 
         // int numbers=number.length();
-        for (int i = 0; i < numbers.length; i++) {
-            if (i < 3) {
-                telephone1 += String.valueOf(numbers[i]);
-            } else if (i >= 3 && i < 6) {
-                telephone2 += String.valueOf(numbers[i]);
-            } else if (i >= 6) {
-                telephone3 += String.valueOf(numbers[i]);
+        for (int buscar = 0; buscar < numbers.length; buscar++) {
+            if (buscar < 3) {
+                telephone1 += String.valueOf(numbers[buscar]);
+            } else if (buscar >= 3 && buscar < 6) {
+                telephone2 += String.valueOf(numbers[buscar]);
+            } else if (buscar >= 6) {
+                telephone3 += String.valueOf(numbers[buscar]);
             }
         }
         System.out.println("(" + telephone1 + ")" + telephone2 + "-" + telephone3);

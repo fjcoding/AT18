@@ -2,7 +2,7 @@ package jalau.at18.katas.likes.daniela;
 
 public class likes {
 
-    static void likesfuntion() {
+    static void LikesFuntion() {
         String[] nombres = { "Daniela", "Alejandra", "javier", "mayra" };
         int personas = nombres.length;
         if (personas > 0) {
@@ -10,7 +10,6 @@ public class likes {
             int cantidad_de_personas = nombres.length;
             if (cantidad_de_personas == 1) {
                 System.out.println(nombres + "like this");
-
             }
             if (cantidad_de_personas == 2) {
                 System.out.println(
@@ -35,9 +34,8 @@ public class likes {
     }
 
     public static void main(String[] args) {
-        likesfuntion();
+        LikesFuntion();
 
     }
 
 }
-

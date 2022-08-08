@@ -7,26 +7,22 @@ public class highestlowest {
         String numeros = "1 2 3 4 8 6";
         String[] separar = numeros.split(" ");
         int[] entero = new int[separar.length];
-        for (int i = 0; i < separar.length; i++) {
-            entero[i] = Integer.parseInt(separar[i]);
-
+        for (int encontrar = 0; encontrar < separar.length; encontrar++) {
+            entero[encontrar] = Integer.parseInt(separar[encontrar]);
         }
         Arrays.sort(entero);
-
         int[] lista = entero;
         int maximo = lista[0];
         int minimo = lista[0];
-        for (int i = 0; i < separar.length; i++) {
-            if (maximo < lista[i])
-                maximo = lista[i];
-            if (minimo > lista[i])
-                minimo = lista[i];
+        for (int encontrar = 0; encontrar < separar.length; encontrar++) {
+            if (maximo < lista[encontrar]) {
+                maximo = lista[encontrar];
+            }
+            if (minimo > lista[encontrar]) {
+                minimo = lista[encontrar];
+            }
 
         }
-        // String colocarcomas = numeros.replaceAll("\\s", ",");
         System.out.println("out:" + maximo + " " + minimo);
-        // System.out.println(minimo);
-        // int [] num = new int [colocarcomas.length()];
-
     }
 }

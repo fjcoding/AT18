@@ -43,3 +43,7 @@ task runMultiplesRodrigo (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.rodrigob.Multiples'
     classpath = sourceSets.main.runtimeClasspath
 }
+task runPhoneRodrigo (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.rodrigob.Phone'
+    classpath = sourceSets.main.runtimeClasspath
+}

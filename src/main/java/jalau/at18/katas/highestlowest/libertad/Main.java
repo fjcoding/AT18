@@ -5,23 +5,28 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Introdusca los numeros:");
-        String datos = scan.nextLine();
-        String[] numeros = datos.split(" ");
+        System.out.println("Enter the numbers:");
+        String data = scan.nextLine();
+        System.out.println(highLowNumbers(data));
+        scan.close();
+    }
+
+    public static String highLowNumbers(String input){
+        String[] numbers = input.split(" ");
         int iterator = 0;
-        int mayor = Integer.parseInt(numeros[iterator]);
-        int menor = Integer.parseInt(numeros[iterator]);
-        while (iterator < numeros.length) {
-            int numero = Integer.parseInt(numeros[iterator]);
-            if (numero > mayor) {
-                mayor = numero;
+        int higthest = Integer.parseInt(numbers[iterator]);
+        int lowest = Integer.parseInt(numbers[iterator]);
+        while (iterator < numbers.length) {
+            int number = Integer.parseInt(numbers[iterator]);
+            if (number > higthest) {
+                higthest = number;
             }
-            if (numero < menor) {
-                menor = numero;
+            if (number < lowest) {
+                lowest = number;
             }
             iterator++;
         }
-        System.out.println(mayor + " " + menor);
-        scan.close();
+        String answer = higthest + " " + lowest;
+        return answer;
     }
 }

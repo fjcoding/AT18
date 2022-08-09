@@ -1,7 +1,12 @@
 package jalau.at18.katas.likes.rodrigov;
+import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) {
-        String[] names = {"Alex", "Jacob", "Mark", "Max", "Nathan"};
+        String namesList = JOptionPane.showInputDialog("Enter names:");
+        System.out.println(new Main().likes(namesList));
+    }
+    public String likes(String namesList) {
+        String[] names = namesList.split(" ");
         String nameDisplay = "";
         final int threePeople = 3;
         final int fourPeople = 4;
@@ -24,6 +29,6 @@ public class Main {
                 }
             }
         }
-        System.out.println(nameDisplay);
+        return nameDisplay;
     }
 }

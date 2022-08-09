@@ -5,6 +5,28 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+    }
+}
+
+checkstyle {
+    checkstyleMain.source = "src/main/"
+    checkstyleMain.excludes = ["**/src/test/**"]
+}
+
+checkstyleMain {
+    source = 'src/main/java'
+}
+
+test.finalizedBy("checkstyleMain")
+
 task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath

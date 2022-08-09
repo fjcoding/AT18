@@ -35,3 +35,7 @@ task runHighestLowestRodrigo (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigob.Highestlowest'
     classpath = sourceSets.main.runtimeClasspath
 }
+task runLikesRodrigo (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.rodrigob.Likes'
+    classpath = sourceSets.main.runtimeClasspath
+}

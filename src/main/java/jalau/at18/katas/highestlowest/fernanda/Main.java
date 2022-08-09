@@ -7,7 +7,12 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter string of numbers separated by spaces");
         String number = scan.nextLine();
-        String[] num = number.split(" ");
+        Main main = new Main();
+        System.out.print(main.highandlow(number));
+        scan.close();
+    }
+    public String highandlow(String baseNumbers) {
+        String[] num = baseNumbers.split(" ");
         int[] numb = new int[num.length];
 
         for (int place = 0; place < num.length; place++) {
@@ -15,8 +20,6 @@ public class Main {
         }
         int lastNum = (num.length) - 1;
         Arrays.sort(numb);
-        System.out.println(numb[0] + "   " + numb[lastNum]);
-        scan.close();
+        return numb[0] + " " + numb[lastNum];
     }
-
 }

@@ -3,7 +3,6 @@ package jalau.at18.katas.likes.daniela;
 public class likes {
 
     static void myLikes() {
-        
         String[] names = { "Daniela", "Alejandra", "javier", "mayra" };
         int people = names.length;
         final int quantity1 = 1;

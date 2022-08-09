@@ -2,20 +2,20 @@ package jalau.at18.katas.multiples.daniela;
 
 public class multiples {
     static void myMultiplo(int number) {
-        final int valor = 0;
-        final int multiplo3 = 3;
-        final int multiplo5 = 5;
-        if (number < valor) {
+        final int value = 0;
+        final int multiple3 = 3;
+        final int multiple5 = 5;
+        if (number < value) {
             System.out.println("The number is not valid");
         }
-        int sumatotal = valor;
-        for (int encontrar = valor; encontrar < number; encontrar++) {
-            if (encontrar % multiplo3 == valor || encontrar % multiplo5 == valor) {
-                sumatotal += encontrar;
+        int total = value;
+        for (int find = value; find < number; find++) {
+            if (find % multiple3 == value || find % multiple5 == value) {
+                total += find;
             }
         }
 
-        System.out.println("La suma total es:" + sumatotal);
+        System.out.println("La suma total es:" + total);
     }
 
     public static void main(String[] args) {

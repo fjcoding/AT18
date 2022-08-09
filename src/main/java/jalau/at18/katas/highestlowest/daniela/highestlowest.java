@@ -4,24 +4,24 @@ import java.util.Arrays;
 
 public class HighestLowest {
     public static void main(String[] args) {
-        String numeros = "1 2 3 4 8 6";
-        String[] separar = numeros.split(" ");
-        int[] entero = new int[separar.length];
-        for (int encontrar = 0; encontrar < separar.length; encontrar++) {
-            entero[encontrar] = Integer.parseInt(separar[encontrar]);
+        String numbers = "1 2 3 4 8 6";
+        String[] split1 = numbers.split(" ");
+        int[] enter = new int[split1.length];
+        for (int find = 0; find < split1.length; find++) {
+            enter[find] = Integer.parseInt(split1[find]);
         }
-        Arrays.sort(entero);
-        int[] lista = entero;
-        int maximo = lista[0];
-        int minimo = lista[0];
-        for (int encontrar = 0; encontrar < separar.length; encontrar++) {
-            if (maximo < lista[encontrar]) {
-                maximo = lista[encontrar];
+        Arrays.sort(enter);
+        int[] list = enter;
+        int max = list[0];
+        int min = list[0];
+        for (int find = 0; find < split1.length; find++) {
+            if (max < list[find]) {
+                max = list[find];
             }
-            if (minimo > lista[encontrar]) {
-                minimo = lista[encontrar];
+            if (min > list[find]) {
+                min = list[find];
             }
         }
-        System.out.println("out:" + maximo + " " + minimo);
+        System.out.println("out:" + max + " " + min);
     }
 }

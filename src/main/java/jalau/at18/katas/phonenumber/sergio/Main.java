@@ -1,24 +1,28 @@
 package main.java.jalau.at18.katas.phonenumber.sergio;
 
-import java.util.Arrays;
-
 public class Main {
+
     public static void main(String[] args) {
-        int[] input = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
-        String result = ReturnPhoneNumber(input);
+        int number = 1;
+        int[] input = new int[] {number, number, number, number, number, number, number, number, number, number};
+        String result = returnPhoneNumber(input);
         System.out.println(result);
     }
 
-    public static String ReturnPhoneNumber(int[] input) {
+    public static final int COUNTRYCODESIZE = 3;
+    public static final int AREACODESIZE = 6;
+
+    public static String returnPhoneNumber(int[] input) {
         String countryCode = "";
         String areaCode = "";
         String phone = "";
         String fullPhone = "";
         int counter = 0;
         for (int number : input) {
-            if (counter < 3) {
+            if (counter < COUNTRYCODESIZE) {
                 countryCode = countryCode + String.valueOf(number);
-            } else if (counter >= 3 & counter < 6) {
+
+            } else if (counter >= COUNTRYCODESIZE & counter < AREACODESIZE) {
                 areaCode = areaCode + String.valueOf(number);
             } else {
                 phone = phone + String.valueOf(number);

@@ -1,7 +1,6 @@
 package jalau.at18.katas.likes.daniela;
 
-public class likes {
-
+public class Like {
     static void myLikes() {
         String[] names = { "Daniela", "Alejandra", "javier", "mayra" };
         int people = names.length;
@@ -38,8 +37,8 @@ public class likes {
             }
         }
     }
+
     public static void main(String[] args) {
         myLikes();
     }
-
 }

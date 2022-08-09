@@ -1,6 +1,6 @@
 package jalau.at18.katas.phonenumber.daniela;
 
-public class phonenumber {
+public class Phone {
     static void myPhone(int[] numbers) {
         String telephone1 = "";
         String telephone2 = "";
@@ -10,7 +10,7 @@ public class phonenumber {
         for (int find = 0; find < numbers.length; find++) {
             if (find < limit1) {
                 telephone1 += String.valueOf(numbers[find]);
-            } else if (find >= limit1 && find  < limit2) {
+            } else if (find >= limit1 && find < limit2) {
                 telephone2 += String.valueOf(numbers[find]);
             } else if (find >= limit2) {
                 telephone3 += String.valueOf(numbers[find]);

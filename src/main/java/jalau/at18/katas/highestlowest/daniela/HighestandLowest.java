@@ -2,7 +2,7 @@ package jalau.at18.katas.highestlowest.daniela;
 
 import java.util.Arrays;
 
-public class highestlowest {
+public class HighestandLowest {
     public static void main(String[] args) {
         String numbers = "1 2 3 4 8 6";
         String[] split1 = numbers.split(" ");

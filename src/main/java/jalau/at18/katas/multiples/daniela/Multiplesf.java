@@ -1,6 +1,6 @@
 package jalau.at18.katas.multiples.daniela;
 
-public class multiples {
+public class Multiplesf {
     static void myMultiplo(int number) {
         final int value = 0;
         final int multiple3 = 3;
@@ -22,5 +22,4 @@ public class multiples {
         final int encontrar = 100;
         myMultiplo(encontrar);
     }
-
 }

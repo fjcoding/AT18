@@ -7,7 +7,7 @@ public class Main {
         printArray(array);
         System.out.println(likesText(array));
     }
-    private static void printArray(String[] array) {
+    public static void printArray(String[] array) {
         Integer length = array.length;
         System.out.print("[");
         for (int count = 0; count < length; count++) {
@@ -18,7 +18,7 @@ public class Main {
             }
         }
     }
-    private static String likesText(String[] str) {
+    public static String likesText(String[] str) {
         Integer length = str.length;
         String text = "";
         if (length == 0) {

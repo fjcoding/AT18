@@ -15,7 +15,6 @@ public class Main {
     static final Integer LENGHT = 10;
     static final Integer MAX_POS = 9;
     static final Integer MAX_POS_CODE = 5;
-    
     public static void main(String[] args) {
         Integer[] array = {T_NUMBER_1, T_NUMBER_2, T_NUMBER_3, T_NUMBER_4, T_NUMBER_5, T_NUMBER_6, T_NUMBER_7, T_NUMBER_8, T_NUMBER_9, T_NUMBER_10};
         printArray(array);

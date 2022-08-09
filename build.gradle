@@ -45,10 +45,14 @@ task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
 task runMultiplesAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.Adriana.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 
 task runPhoneNumberAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.adriana.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 task runHighestLowestRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigov.Main' // Example: 'jalau.at18.katas.highestlowest.Main'
     classpath = sourceSets.main.runtimeClasspath

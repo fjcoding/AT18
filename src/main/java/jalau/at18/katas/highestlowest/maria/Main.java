@@ -10,8 +10,8 @@ public class Main {
     }
 
     public static String highestlowest(String numbers) {
-        int highestNumber = -999;
-        int lowestNumber = 999;
+        int highestNumber = Integer.MIN_VALUE;
+        int lowestNumber = Integer.MAX_VALUE;
         String[] numbersList = numbers.split("\\s+");
         if (numbersList.length > 0) {
             for (String number : numbersList) {

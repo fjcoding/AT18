@@ -1,8 +1,13 @@
 package jalau.at18.katas.multiples.maria;
 
 public class Main {
+
+    public static final int TEST_VALUE = 20;
+    public static final int MULTIPLE_3 = 3;
+    public static final int MULTIPLE_5 = 5;
+
     public static void main(String[] args) {
-        System.out.println("Value:   " + multiplesTreeFive(20));
+        System.out.println("Value:   " + multiplesTreeFive(TEST_VALUE));
     }
 
     public static int multiplesTreeFive(int number) {
@@ -10,9 +15,9 @@ public class Main {
         if (number < 0) {
             return 0;
         }
-        for (int i = 1; i < number; i++) {
-            if (i % 3 == 0 || i % 5 == 0) {
-                sumMultiples += i;
+        for (int index = 1; index < number; index++) {
+            if (index % MULTIPLE_3 == 0 || index % MULTIPLE_5 == 0) {
+                sumMultiples += index;
             }
         }
         return sumMultiples;

@@ -5,34 +5,43 @@ public class Main {
     public static void main(String[] args) {
         String inputNumbers = "1 2 3 4 -5 200 -500";
         int[] num;
+        Main main = new Main();
+        num = main.split(inputNumbers);
+        main.compareGetHighestNumber(num);
+        main.compareGetLowestNumber(num);
+
+
+    }
+    public int[] split(String inputNumbers) {
+        int[] num;
         String[] split = inputNumbers.split(" ");
         num = new int[split.length];
         for (int ind = 0; ind < split.length; ind++) {
             num[ind] = Integer.parseInt(split[ind]);
         }
-        compareGetHighestNumber(num);
-        compareGetLowestNumber(num);
+        return num;
 
     }
-    public static int compareGetHighestNumber(int[]split) {
+    public int compareGetHighestNumber(int[]split) {
         int max = 0;
-        for (int valor: split) {
-            if (valor > max) {
-                max = valor;
+        for (int ind = 0; ind < split.length; ind++) {
+            if (split[ind] > max) {
+                max = split[ind];
+
             }
         }
-        System.out.println("el maximo numero es: " + max);
+        System.out.println("The highest number: " + max);
         return max;
 
     }
-    public static int compareGetLowestNumber(int[]split) {
-        int min = 0;
-        for (int valor : split) {
-            if (valor < min) {
-                min = valor;
+    public int compareGetLowestNumber(int[]split) {
+        int min = split[0];
+        for (int ind = 0; ind < split.length; ind++) {
+            if (split[ind] < min) {
+                min = split[ind];
             }
         }
-        System.out.println("el menor numero es: " + min);
+        System.out.println("The lowest number: " + min);
         return min;
     }
 }

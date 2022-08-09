@@ -35,5 +35,5 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
 task runHighlowLibertad (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.libertad.Main'
     classpath = sourceSets.main.runtimeClasspath
-    standarInput = System.in
+    standardInput = System.in
 }

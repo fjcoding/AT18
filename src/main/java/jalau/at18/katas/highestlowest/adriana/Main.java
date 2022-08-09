@@ -3,13 +3,9 @@ package jalau.at18.katas.highestlowest.adriana;
 public class Main {
     public static void main(String[] args) {
         String str = "-4 -5 7 -9 9 3 6 10 -5";
-        String[] array = str.split(" ");
-        Integer high = getHighest(array);
-        Integer low = getLowest(array);
-        System.out.println("highAndLow(" + str + ")");
-        System.out.println(high + " " + low);
+        System.out.println(getResults(str));
     }
-    private static Integer getHighest(String[] array) {
+    public static Integer getHighest(String[] array) {
         Integer high = 0;
         Integer length = array.length;
         for (int count = 0; count < length; count++) {
@@ -23,7 +19,7 @@ public class Main {
         }
         return high;
     }
-    private static Integer getLowest(String[] array) {
+    public static Integer getLowest(String[] array) {
         Integer low = 0;
         Integer length = array.length;
         for (int counter = 0; counter < length; counter++) {
@@ -36,5 +32,11 @@ public class Main {
             }
         }
         return low;
+    }
+    public static String getResults(String str) {
+        String[] array = str.split(" ");
+        Integer high = getHighest(array);
+        Integer low = getLowest(array);
+        return high + " " + low;
     }
 }

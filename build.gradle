@@ -1,8 +1,31 @@
 apply plugin: 'java'
+apply plugin: 'checkstyle'
 
 repositories {
     mavenCentral()
 }
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+    }
+}
+
+checkstyle {
+    checkstyleMain.source = "src/main/"
+    checkstyleMain.excludes = ["**/src/test/**"]
+}
+
+checkstyleMain {
+    source = 'src/main/java'
+}
+
+test.finalizedBy("checkstyleMain")
 
 task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
@@ -26,5 +49,20 @@ task runMultiplesAdriana (dependsOn: 'classes', type: JavaExec) {
 
 task runPhoneNumberAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.adriana.Main'
+task runHighestLowestRodrigov (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.rodrigov.Main' // Example: 'jalau.at18.katas.highestlowest.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runMultiplesRodrigov(dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.rodrigov.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runPhonenumberRodrigov (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.rodrigov.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runLikesRodrigov (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.rodrigov.Main'
     classpath = sourceSets.main.runtimeClasspath
 }

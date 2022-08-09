@@ -3,8 +3,13 @@ package jalau.at18.katas.highestlowest.daniela;
 import java.util.Arrays;
 
 public class HighestandLowest {
+
     public static void main(String[] args) {
-        String numbers = "1 2 3 4 8 6";
+
+        System.out.println(new main().myHl());
+    }
+    public String myHl(String numbers){
+        //String numbers = "1 2 3 4 8 6";
         String[] split1 = numbers.split(" ");
         int[] enter = new int[split1.length];
         for (int find = 0; find < split1.length; find++) {
@@ -22,7 +27,7 @@ public class HighestandLowest {
                 min = list[find];
             }
         }
-        System.out.println("out:" + max + " " + min);
+        return max + " " + min;
     }
 }
 

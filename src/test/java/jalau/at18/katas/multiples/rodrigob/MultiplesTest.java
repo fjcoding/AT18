@@ -8,18 +8,24 @@ public class MultiplesTest {
     @Test
     public void test10() {
         Multiples multiples = new Multiples();
-        assertEquals(23, multiples.sum(10));
+        final int expected = 23;
+        final int input = 10;
+        assertEquals(expected, multiples.sum(input));
     }
 
     @Test
-    public void testNegativeNumber(){
+    public void testNegativeNumber() {
         Multiples multiples = new Multiples();
-        assertEquals(0, multiples.sum(-30));
+        final int expected = 0;
+        final int input = -30;
+        assertEquals(expected, multiples.sum(input));
     }
 
     @Test
-    public void test100(){
+    public void test100() {
         Multiples multiples = new Multiples();
-        assertEquals(2318, multiples.sum(100));
+        final int expected = 2318;
+        final int input = 100;
+        assertEquals(expected, multiples.sum(input));
     }
 }

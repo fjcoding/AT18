@@ -3,23 +3,26 @@ package jalau.at18.katas.phonenumber.rodrigob;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class PhoneTest{
+public class PhoneTest {
 
     @Test
-    public void testOne(){
+    public void testOne() {
         Phone phone = new Phone();
-        assertEquals("(123) 456-7890", phone.phoneNumber(new int [] {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}));
+        final int number = 1;
+        assertEquals("(111) 111-1111", phone.phoneNumber(new int[] {number, number, number, number, number, number, number, number, number, number}));
     }
 
     @Test
-    public void testTwo(){
+    public void testTwo() {
         Phone phone = new Phone();
-        assertEquals("(154) 298-7821", phone.phoneNumber(new int [] {1, 5, 4, 2, 9, 8, 7, 8, 2, 1}));
+        final int number = 5;
+        assertEquals("(555) 555-5555", phone.phoneNumber(new int[] {number, number, number, number, number, number, number, number, number, number}));
     }
 
     @Test
-    public void testThree(){
+    public void testThree() {
         Phone phone = new Phone();
-        assertEquals("(244) 485-5493", phone.phoneNumber(new int [] {2, 4, 4, 4, 8, 5, 5, 4, 9, 3}));
+        final int number = 9;
+        assertEquals("(999) 999-9999", phone.phoneNumber(new int[] {number, number, number, number, number, number, number, number, number, number}));
     }
 }

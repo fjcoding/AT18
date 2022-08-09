@@ -18,8 +18,8 @@ public class LikesTest {
     }
 
     @Test
-    public void testNoOne(){
+    public void testNoOne() {
         Likes likes = new Likes();
-        assertEquals("no one likes this", likes.whoLikes(new String [] {}));
+        assertEquals("no one likes this", likes.whoLikes(new String[] {}));
     }
 }

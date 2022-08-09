@@ -25,3 +25,4 @@ public class HighestandLowest {
         System.out.println("out:" + max + " " + min);
     }
 }
+

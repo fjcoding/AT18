@@ -2,8 +2,7 @@ apply plugin: 'java'
 apply plugin: 'checkstyle'
 
 repositories {
-    mavenCentral()
-    
+    mavenCentral()  
 }
 
 dependencies {
@@ -30,7 +29,6 @@ test.finalizedBy("checkstyleMain")
 
 task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
-    standardInput=System.in
     classpath = sourceSets.main.runtimeClasspath
 }
 
@@ -38,14 +36,11 @@ task runferHighlow (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.fernanda.Main'
     standardInput=System.in
     classpath = sourceSets.main.runtimeClasspath
-
-    
 }
 task runferLikes (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.fernanda.Main'
     standardInput=System.in 
     classpath = sourceSets.main.runtimeClasspath
-    
 }
 
 task runfermultiples (dependsOn: 'classes', type: JavaExec) {

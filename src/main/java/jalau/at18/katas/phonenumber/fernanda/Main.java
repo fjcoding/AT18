@@ -22,7 +22,7 @@ public class Main {
                 System.out.print(phoneNum[place]);
             }
         } else {
-            System.out.println("Debe ingresar 10 numeros");
+            System.out.println("You must enter 10 digit numbers");
         }
 
         scan.close();

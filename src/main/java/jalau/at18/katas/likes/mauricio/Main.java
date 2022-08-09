@@ -8,38 +8,43 @@ public class Main {
     private static final int FIFTH_CASE = 4;
 
     public static void main(String[] args) {
-        String[] name_list = {"Carlos", "Alberto", "Karina", "Liz"};
+        String[] nameList = {"Carlos", "Alberto", "Karina", "Liz"};
+        String likes = getLikesFromPost(nameList);
+        System.out.println(likes);
+    }
+
+    static String getLikesFromPost(String[] nameList) {
         String first_name = "None";
         String second_name = "None";
         String third_name = "None";
-        switch (name_list.length) {
+        switch (nameList.length) {
             case FIRST_CASE:
-                System.out.println("No one likes this");
-                break;
+                String first_message = "No one likes this";
+                return first_message;
             case SECOND_CASE:
-                first_name = name_list[0];
-                System.out.println(first_name + " likes this");
-                break;
+                first_name = nameList[0];
+                String second_message = first_name + " likes this";
+                return second_message;
             case THIRD_CASE:
-                first_name = name_list[0];
-                second_name = name_list[1];
-                System.out.println(first_name + " and " + second_name + " like this");
-                break;
+                first_name = nameList[0];
+                second_name = nameList[1];
+                String third_message = first_name + " and " + second_name + " like this";
+                return third_message;
             case FOURTH_CASE:
-                first_name = name_list[0];
-                second_name = name_list[1];
-                third_name = name_list[2];
-                System.out.println(first_name + ", " + second_name + " and " + third_name + " like this");
-                break;
+                first_name = nameList[0];
+                second_name = nameList[1];
+                third_name = nameList[2];
+                String fourth_message = first_name + ", " + second_name + " and " + third_name + " like this";
+                return fourth_message;
             case FIFTH_CASE:
-                first_name = name_list[0];
-                second_name = name_list[1];
-                int rest_of_names = name_list.length - 2;
-                System.out.println(first_name + ", " + second_name + " and " + rest_of_names + " others like this");
-                break;
+                first_name = nameList[0];
+                second_name = nameList[1];
+                int rest_of_names = nameList.length - 2;
+                String fifth_message = first_name + ", " + second_name + " and " + rest_of_names + " others like this";
+                return fifth_message;
             default:
-                System.out.println("There is no a likes indicator");
-                break;
+                String no_indicator = "There is no a likes indicator";
+                return no_indicator;
         }
     }
 }

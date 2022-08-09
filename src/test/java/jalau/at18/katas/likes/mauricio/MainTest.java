@@ -1,14 +1,13 @@
-package jalau.at18.katas.helloworld.joseg;
+package jalau.at18.katas.likes.mauricio;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class MainTest {
-
     @Test
     public void mainShouldSayHello() {
+        String[] input = {"Carla", "Jaime"};
         Main main = new Main();
-        assertEquals("Hello wooooooorld!!!", main.sayHello());
-        // Se puede tener mas de un assert
+        assertEquals("Carla and Jaime like this", main.getLikesFromPost(input));
     }
 }

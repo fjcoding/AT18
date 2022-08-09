@@ -11,20 +11,25 @@ public class Main {
 
     public static void main(String[] args) {
         int[] number_list = {FIRST_NUMBER, SECOND_NUMBER, THIRD_NUMBER, FOURTH_NUMBER, FIFTH_NUMBER};
-        ArrayList<Integer> lowest_and_biggest_numbers = new ArrayList<Integer>();
+        ArrayList<Integer> lowestAndBiggestNumbers = phoneNumber(number_list);
+        System.out.println("Lowest number and Biggest number" + lowestAndBiggestNumbers);
+
+    }
+
+    static ArrayList<Integer> phoneNumber(int[] numberList) {
+        ArrayList<Integer> lowestAndBiggestNumbers = new ArrayList<>();
         int biggest = 0;
         int lowest = 0;
-        for (int index = 0; index < number_list.length; index++) {
-            if (number_list[index] > biggest) {
-                biggest = number_list[index];
+        for (int index = 0; index < numberList.length; index++) {
+            if (numberList[index] > biggest) {
+                biggest = numberList[index];
             }
-            if (number_list[index] < lowest) {
-                lowest = number_list[index];
+            if (numberList[index] < lowest) {
+                lowest = numberList[index];
             }
         }
-        lowest_and_biggest_numbers.add(lowest);
-        lowest_and_biggest_numbers.add(biggest);
-        System.out.println("Lowest number and Biggest number" + lowest_and_biggest_numbers);
-
+        lowestAndBiggestNumbers.add(lowest);
+        lowestAndBiggestNumbers.add(biggest);
+        return lowestAndBiggestNumbers;
     }
 }

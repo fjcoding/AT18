@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        String[] input = new String[] { "1", "2", "3" };
-        int[] highestandLowest = HighestLowest(input);
+        String[] input = new String[] {"1", "2", "3"};
+        int[] highestandLowest = highestLowest(input);
         System.out.println(highestandLowest[0] + " " + highestandLowest[1]);
     }
 
-    public static int[] HighestLowest(String[] input) {
+    public static int[] highestLowest(String[] input) {
         int[] values = Arrays.stream(input)
                 .mapToInt(Integer::parseInt)
                 .toArray();
@@ -24,7 +24,7 @@ public class Main {
             }
         }
 
-        int[] result = new int[] { max, min };
+        int[] result = new int[] {max, min};
         return result;
     }
 

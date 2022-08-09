@@ -15,11 +15,11 @@ public class App {
     public static void main(String[] args) {
         // System.out.println(new App().getGreeting());
         int[] digit = new int[10];
-        System.out.println("Introducir a continuacion un numero telefonico de 10 digitos");
-        Scanner num = new Scanner(System.in);
-
+        System.out.println("Introducir a continuacion un numero telefonico, 10 digitos");
+        Scanner numin = new Scanner(System.in);
+        String numcatch = numin.nextLine();
         for (int i = 0; i < 10; i++) {
-            digit[i] = num.nextInt();
+            digit[i] = Character.getNumericValue(numcatch.charAt(i));
         }
 
         System.out.println(Arrays.toString(digit));

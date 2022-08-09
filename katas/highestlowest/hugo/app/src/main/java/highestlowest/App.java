@@ -12,11 +12,12 @@ public class App {
         return "Hello World!";
 
     }
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
 
-        //String inputNum = "1 2 3 4 5";
-         String inputNum = "1 2 -3 4 5";
+    public static void main(String[] args) {
+        // System.out.println(new App().getGreeting());
+
+        // String inputNum = "1 2 3 4 5";
+        String inputNum = "1 2 -3 4 5";
         // String inputNum = "1 9 3 4 -5";
 
         int max = 0;
@@ -35,7 +36,7 @@ public class App {
         max = vector[0];
         min = vector[0];
 
-        //System.out.println(Arrays.toString(vector));
+        // System.out.println(Arrays.toString(vector));
 
         for (int j = 0; j < concat.length; j++) {
 

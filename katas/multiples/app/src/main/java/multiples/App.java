@@ -16,22 +16,22 @@ public class App {
         System.out.println("Ingresar un numero entero para hallar los multiplos de 3 y 5");
         int numint = numero.nextInt();
 
-        int tres = 0;
-        int cinco = 0;
+        int three = 0;
+        int five = 0;
         if (numint >= 0) {
             for (int i = 0; i < numint; i++) {
                 if (i % 3 == 0 && i != 0) {
-                    //System.out.println(i + " multiplo de 3");
-                    tres = tres + i;
+                    // System.out.println(i + " multiplo de 3");
+                    three = three + i;
                 } else {
                     if (i % 5 == 0 && i != 0) {
-                        //System.out.println(i + " multiplo de 5");
-                        cinco = cinco + i;
+                        // System.out.println(i + " multiplo de 5");
+                        five = five + i;
                     }
                 }
             }
-            System.out.print("La suma de los multiplos de 3 y 5 menores al numero introducido es : ");
-            System.out.println(tres + cinco);
+            System.out.print("La suma de los multiplos de 3 y 5 menores al numero ingresado es: ");
+            System.out.println(three + five);
         }
     }
 }

@@ -1,6 +1,6 @@
 package jalau.at18.katas.phonenumber.daniela;
 
-public class PhoneNumber {
+public class phonenumber{
     static void myPhone(int[] numbers) {
         String telephone1 = "";
         String telephone2 = "";

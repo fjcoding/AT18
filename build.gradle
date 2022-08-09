@@ -37,3 +37,8 @@ task runHighlowLibertad (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
 }
+
+task runLikesLibertad (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.libertad.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

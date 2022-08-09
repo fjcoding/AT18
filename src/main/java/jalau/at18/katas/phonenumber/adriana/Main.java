@@ -35,7 +35,7 @@ public class Main {
             }
         }
     }
-    private static Boolean checkNumber(Integer[] number) {
+    public static Boolean checkNumber(Integer[] number) {
         Integer length = number.length;
         if (length != LENGHT) {
             return false;
@@ -47,7 +47,7 @@ public class Main {
         }
         return true;
     }
-    private static String createPhoneNumber(Integer[] num) {
+    public static String createPhoneNumber(Integer[] num) {
         Integer length = num.length;
         String str = "(";
         for (int count = 0; count < length; count++) {
@@ -61,7 +61,7 @@ public class Main {
                         str = str + num[count];
                     } else {
                         if (count == MAX_POS_CODE) {
-                            str = str + num[count] + " - ";
+                            str = str + num[count] + "-";
                         } else {
                             str = str + num[count];
                         }

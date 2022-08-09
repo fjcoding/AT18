@@ -31,3 +31,28 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runHighestlowestRene (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.rene.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runLikesdRene (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.rene.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runHelloWorldRene (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.helloworld.rene.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runMultiplesRene (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.rene.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runPhoneNumber (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.rene.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

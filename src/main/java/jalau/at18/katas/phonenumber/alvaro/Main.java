@@ -7,17 +7,23 @@ public class Main {
     public static void main(String[] args) {
         int[] number = new int[]{TEST_NUMBER, TEST_NUMBER, TEST_NUMBER, TEST_NUMBER, TEST_NUMBER,
             TEST_NUMBER, TEST_NUMBER, TEST_NUMBER, TEST_NUMBER, 0};
-        String caracter;
+        Main main = new Main();
+        main.covertNumber(number);
+
+
+    }
+    public String covertNumber(int[]number) {
         String finalNumber = "";
+        String character;
         for (int ind = 0; ind < number.length; ind++) {
 
-            caracter = String.valueOf(number[ind]);
+            character = String.valueOf(number[ind]);
 
             if (ind < COUNTRY_CODE) {
                 if (ind == 0) {
                     finalNumber = finalNumber.concat("(");
                 }
-                finalNumber = finalNumber.concat(caracter);
+                finalNumber = finalNumber.concat(character);
                 if (ind == 2) {
                     finalNumber = finalNumber.concat(")");
                 }
@@ -26,15 +32,17 @@ public class Main {
                 if (ind == COUNTRY_CODE) {
                     finalNumber = finalNumber.concat(" ");
                 }
-                finalNumber = finalNumber.concat(caracter);
+                finalNumber = finalNumber.concat(character);
                 if (ind == NUMBER_START - 1) {
                     finalNumber = finalNumber.concat("-");
                 }
             }
             if (NUMBER_START <= ind && ind < number.length) {
-                finalNumber = finalNumber.concat(caracter);
+                finalNumber = finalNumber.concat(character);
             }
         }
-        System.out.println("Numero convertido: " + finalNumber);
+        System.out.println("Final number:  " + finalNumber);
+        return finalNumber;
+
     }
 }

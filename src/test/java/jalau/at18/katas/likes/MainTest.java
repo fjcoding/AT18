@@ -5,7 +5,7 @@ import org.junit.Test;
 import jalau.at18.katas.likes.rodrigov.Main;
 public class MainTest {
     @Test
-    public void shouldReturnNamesGaveLike(){
+    public void shouldReturnNamesGaveLike() {
         String input = "Alex John Nathan Justin Tyron";
         String expectedResult = "Alex, John and 3 others like this";
 

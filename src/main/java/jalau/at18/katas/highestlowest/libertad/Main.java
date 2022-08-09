@@ -11,7 +11,7 @@ public class Main {
         scan.close();
     }
 
-    public static String highLowNumbers(String input){
+    public static String highLowNumbers(String input) {
         String[] numbers = input.split(" ");
         int iterator = 0;
         int higthest = Integer.parseInt(numbers[iterator]);

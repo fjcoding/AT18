@@ -1,6 +1,6 @@
 package jalau.at18.katas.multiples.maria;
 
-public class Main {
+public class MultiplesThreeFive {
 
     public static final int TEST_VALUE = 20;
     public static final int MULTIPLE_3 = 3;

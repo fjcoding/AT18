@@ -1,6 +1,6 @@
 package jalau.at18.katas.likes.maria;
 
-public class Main {
+public class Likes {
 
     public static final int THREE_PEOPLE = 3;
 

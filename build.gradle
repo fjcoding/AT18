@@ -27,28 +27,28 @@ checkstyleMain {
 
 test.finalizedBy("checkstyleMain")
 
-task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.helloworld.joseg.Main'
+task runHelloWorldMariaH (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.helloworld.joseg.HelloWorld'
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task runKata1 (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.highestlowest.maria.Main'
+task runHighestLowestMariaH (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.maria.HighestLowest'
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task runKata2 (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.likes.maria.Main'
+task runLikesMariaH (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.maria.Likes'
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task runKata3 (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.multiples.maria.Main'
+task runMultiplesMariaH (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.maria.MultiplesThreeFive'
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task runKata4 (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.phonenumber.maria.Main'
+task runPhoneNumberMariaH (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.maria.CreatePhoneNumber'
     classpath = sourceSets.main.runtimeClasspath
 }
 

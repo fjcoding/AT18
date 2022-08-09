@@ -3,7 +3,7 @@ package jalau.at18.katas.helloworld.joseg;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class MainTest {
+public class HighestLowestTest {
 
     @Test
     public void mainShouldSayHello() {

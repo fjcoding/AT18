@@ -1,6 +1,6 @@
 package jalau.at18.katas.phonenumber.maria;
 
-public class Main {
+public class CreatePhoneNumber {
 
     public static final int THREE = 3;
     public static final int FOUR = 4;

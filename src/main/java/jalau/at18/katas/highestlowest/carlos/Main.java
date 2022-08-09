@@ -2,23 +2,23 @@ package jalau.at18.katas.highestlowest.carlos;
 import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) {
-        String texto = JOptionPane.showInputDialog("Numeros:");
-        String[] numEnTex = texto.split(" ");
-        int datos = numEnTex.length;
-        int[] numero = new int[datos];
-        for (int index = 0; index < datos; index++) {
-            numero[index] = Integer.parseInt(numEnTex[index]);
+        String text = JOptionPane.showInputDialog("Numbers:");
+        String[] numToTex = text.split(" ");
+        int dates = numToTex.length;
+        int[] number = new int[dates];
+        for (int index = 0; index < dates; index++) {
+            number[index] = Integer.parseInt(numToTex[index]);
         }
-        int mayor = numero[0];
-        int menor = numero[0];
-        for (int index = 0; index < datos; index++) {
-            if (numero[index] > mayor) {
-                mayor = numero[index];
+        int highest = number[0];
+        int lowest = number[0];
+        for (int index = 0; index < dates; index++) {
+            if (number[index] > highest) {
+                highest = number[index];
             }
-            if (numero[index] < menor) {
-                menor = numero[index];
+            if (number[index] < lowest) {
+                lowest = number[index];
             }
         }
-        System.out.println(mayor + " " + menor);
+        System.out.println(highest + " " + lowest);
     }
 }

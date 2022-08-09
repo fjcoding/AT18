@@ -2,32 +2,45 @@ package jalau.at18.katas.likes.daniela;
 
 public class likes {
 
-    static void LikesFuntion() {
-        String[] nombres = { "Daniela", "Alejandra", "javier", "mayra" };
-        int personas = nombres.length;
-        if (personas > 0) {
-            int cantidad_de_personas = nombres.length;
-            if (cantidad_de_personas == 1) {
-                System.out.println(nombres + "like this");}
-            if (cantidad_de_personas == 2) {
+    static void myLikes() {
+        
+        String[] names = { "Daniela", "Alejandra", "javier", "mayra" };
+        int people = names.length;
+        final int quantity1 = 1;
+        final int quantity2 = 2;
+        final int quantity3 = 3;
+        final int quantity = 0;
+        final int quantity4 = 4;
+        if (people > quantity) {
+            int total_people = names.length;
+            if (total_people == quantity1) {
+                System.out.println(names + "like this");
+            }
+            if (total_people == quantity2) {
                 System.out.println(
-                        nombres[cantidad_de_personas - 1] + " " + "and" + " " + nombres[cantidad_de_personas - 2] + " "+"like this");}
-            if (cantidad_de_personas == 3) {
-                System.out.println(nombres[cantidad_de_personas - 3] + " " + "," + " "
-                        + nombres[cantidad_de_personas - 2] + "and" + nombres[cantidad_de_personas - 1] + "like this");}
-            if (cantidad_de_personas >= 4) {
-                int extras = cantidad_de_personas - 2;
+                        names[total_people - quantity1] + " " + "and" + " "
+                                + names[total_people - quantity2] + " "
+                                + "like this");
+            }
+            if (total_people == quantity3) {
+                System.out.println(names[total_people - quantity3] + " " + "," + " "
+                        + names[total_people - quantity2] + "and" + names[total_people - quantity1]
+                        + "like this");
+            }
+            if (total_people >= quantity4) {
+                int extra = total_people - 2;
                 System.out.println(
-                        nombres[cantidad_de_personas - 3] + ", " + nombres[cantidad_de_personas - 2] + " " + "and" + " "
-                                + extras + " " + "others likes this");}
-            if (cantidad_de_personas == 0) {
-                System.out.println("No body likes this");}
+                        names[total_people - quantity3] + ", " + names[total_people - quantity2]
+                                + " " + "and" + " "
+                                + extra + " " + "others likes this");
+            }
+            if (total_people == quantity) {
+                System.out.println("No body likes this");
+            }
         }
     }
-
     public static void main(String[] args) {
-        LikesFuntion();
-
+        myLikes();
     }
 
 }

@@ -2,7 +2,7 @@ package jalau.at18.katas.highestlowest.daniela;
 
 import java.util.Arrays;
 
-public class highestlowest {
+public class HighestLowest {
     public static void main(String[] args) {
         String numeros = "1 2 3 4 8 6";
         String[] separar = numeros.split(" ");
@@ -16,9 +16,11 @@ public class highestlowest {
         int minimo = lista[0];
         for (int encontrar = 0; encontrar < separar.length; encontrar++) {
             if (maximo < lista[encontrar]) {
-                maximo = lista[encontrar];}
+                maximo = lista[encontrar];
+            }
             if (minimo > lista[encontrar]) {
-                minimo = lista[encontrar];}
+                minimo = lista[encontrar];
+            }
         }
         System.out.println("out:" + maximo + " " + minimo);
     }

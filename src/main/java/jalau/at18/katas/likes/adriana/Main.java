@@ -1,60 +1,54 @@
 package jalau.at18.katas.likes.adriana;
 
 public class Main {
+    static final Integer MAX_NUM_NAMES = 3;
     public static void main(String[] args) {
-        String [] array = {"Jose","Maria","Pedro", "Susana"};
+        String[] array = {"Jose", "Maria", "Pedro", "Susana"};
         printArray(array);
         System.out.println(likesText(array));
     }
-    private static void printArray (String []array){
+    private static void printArray(String[] array) {
         Integer length = array.length;
         System.out.print("[");
-        for (int i=0;i<length;i++){
-            if(i<length-1){
-                System.out.print(array[i]+", ");
-            }
-            else{
-                System.out.println(array[i]+"]");
+        for (int count = 0; count < length; count++) {
+            if (count < length - 1) {
+                System.out.print(array[count] + ", ");
+            } else {
+                System.out.println(array[count] + "]");
             }
         }
     }
-    private static String likesText (String [] str){
-        Integer length=str.length;
-        String text="";
-        if (length==0){
-            text="no one";
-        }
-        else{
-            for (int i=0;i<length;i++){
-                if(i==0){
-                    text=str[i];
-                }
-                else{
-                    if (length<=3){
-                        if(i<length-1){
-                            text=text+", "+str[i];
+    private static String likesText(String[] str) {
+        Integer length = str.length;
+        String text = "";
+        if (length == 0) {
+            text = "no one";
+        } else {
+            for (int count = 0; count < length; count++) {
+                if (count == 0) {
+                    text = str[count];
+                } else {
+                    if (length <= MAX_NUM_NAMES) {
+                        if (count < length - 1) {
+                            text = text + ", " + str[count];
+                        } else {
+                            text  = text + " and " + str[count];
                         }
-                        else{
-                            text=text+" and "+str[i];
-                        }
-                    }
-                    else{
-                        if(i==1){
-                            text=text+", "+str[i];
-                        }
-                        else{
-                            text=text+" and "+(length-2)+" others";
-                            i=length-1;
+                    } else {
+                        if (count == 1) {
+                            text = text + ", " + str[count];
+                        } else {
+                            text = text + " and " + (length - 2) + " others";
+                            count = length - 1;
                         }
                     }
                 }
             }
         }
-        if (length<=1){
-            text=text+" likes this";
-        }
-        else{
-            text=text+" like this";
+        if (length <= 1) {
+            text = text + " likes this";
+        } else {
+            text = text + " like this";
         }
         return text;
     }

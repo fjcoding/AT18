@@ -4,10 +4,11 @@ public class Main {
     private static final int THREE_LIKES = 3;
     public static void main(String[] args) {
         String[] names = {"Jose", "Lucas"};
-        System.out.println(whoLikes(names));
+        Main main = new Main();
+        System.out.println(main.whoLikes(names));
     }
 
-    public static String whoLikes(String[] names) {
+    public String whoLikes(String[] names) {
         String messageAditional = " likes this";
         String messageName = "no one";
         int one = 1;
@@ -25,7 +26,7 @@ public class Main {
         }
         if (names.length > THREE_LIKES) {
             messageAditional = " like this";
-            messageName = names[0] + ", " + names[1] + " and " + (names.length - 2) + "others";
+            messageName = names[0] + ", " + names[1] + " and " + (names.length - 2) + " others";
         }
         return messageName + messageAditional;
     }

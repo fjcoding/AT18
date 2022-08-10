@@ -7,11 +7,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int number = scan.nextInt();
-        System.out.println(sumOfNumbers(number));
+        Main main = new Main();
+        System.out.println(main.sumOfNumbers(number));
         scan.close();
     }
 
-    public static int sumOfNumbers(int number) {
+    public int sumOfNumbers(int number) {
         int zero = 0;
         int result = zero;
         if (number > zero) {

@@ -5,10 +5,11 @@ public class Main {
     private static final int LIMIT_AREA_CODE = 6;
     public static void main(String[] args) {
         int[] numbers = {1, 2, 2, 2, 2, 1, 2, 2, 2, 2};
-        System.out.println(createPhoneNumber(numbers));
+        Main main = new Main();
+        System.out.println(main.createPhoneNumber(numbers));
     }
 
-    public static String createPhoneNumber(int[] numbers) {
+    public String createPhoneNumber(int[] numbers) {
         String response = "";
         int zero = 0;
         int iterator = zero;

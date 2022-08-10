@@ -1,4 +1,4 @@
-package jalau.at18.katas.2048.team2;
+package jalau.at18.katas.game2048.team2;
 
 //2 clases una de jugador y de tablero
 //Array de 2 dimensiones
@@ -18,9 +18,31 @@ public class Board {
         this.sizeBoard = sizeBoard;
         this.score = score;
         score = 0;
+        board = new int[4][4];
+
     }
 
-    public void showTable(int[][] table) {
+    public void showTable() {
+        for (int indexRows = 0; indexRows < 4; indexRows++) {
+
+            for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
+
+                System.out.print(board[indexRows][indexColumns] + " ");
+
+            }
+
+            System.out.println();
+
+        }
+    }
+
+    public void createTable() {
+        for (int indexRows = 0; indexRows < 4; indexRows++) {
+            for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
+                board[indexRows][indexColumns] = 0;
+
+            }
+        }
 
     }
 

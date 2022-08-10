@@ -21,4 +21,12 @@ public class Main {
     public static void upMove(int[][] matrix) {
 
     }
+    public int[][] showMatrix(int[][] matrix){
+        for(int i =0;i<=4;i++){
+            for(int j=0; j<= 4; i++){
+                System.out.print(matrix[i][j]);
+            }
+            System.out.println();
+        }
+    }
 }

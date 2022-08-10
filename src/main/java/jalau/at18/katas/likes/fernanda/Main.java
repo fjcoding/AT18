@@ -18,17 +18,23 @@ public class Main {
     }
     public String whoLikesIt(String likes) {
         String[] nameArray = likes.split(",");
-        String amountLikes;
+        String amountLikes = " ";
         if (nameArray.length >= FOUR_OR_MORELIKES) {
-            amountLikes = (nameArray[0] + " , " +  nameArray[1] + " and " + (nameArray.length - 2) + " others Like this");
+            amountLikes = (nameArray[0] + ", " +  nameArray[1] + " and " + (nameArray.length - 2) + " others like this");
         } else {
             if (nameArray.length == ONLY_THREELIKES) {
-                amountLikes = (nameArray[0] + " , " + nameArray[1] + " and " + nameArray[2] + " Like this");
+                amountLikes = (nameArray[0] + ", " + nameArray[1] + " and " + nameArray[2] + " Like this");
             } else {
                 if (nameArray.length == ONLY_TWOLIKES) {
                     amountLikes = (nameArray[0] + " and " + nameArray[1] + " like this");
                 } else {
-                    amountLikes = ("No one likes this");
+                    if (nameArray.length == 1) {
+                        if (nameArray[0] != " ") {
+                            amountLikes = (nameArray[0] + " likes this");
+                        } else {
+                            amountLikes = ("No one likes this");
+                        }
+                    }
                 }
             }
         }

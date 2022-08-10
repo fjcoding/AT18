@@ -1,7 +1,7 @@
 package jalau.at18.katas.multiples.daniela;
 
-public class Multiplesf {
-    public static Integer myMultiplo(int number) {
+public class Main {
+    public static Integer myMultiple(int number) {
         final int value = 0;
         final int multiple3 = 3;
         final int multiple5 = 5;
@@ -14,12 +14,11 @@ public class Multiplesf {
                 total += find;
             }
         }
-
         return total;
     }
 
     public static void main(String[] args) {
         final int encontrar = 100;
-        myMultiplo(encontrar);
+        myMultiple(encontrar);
     }
 }

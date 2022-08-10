@@ -44,7 +44,7 @@ task runmultiplesDaniela (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 task runphonenumberDaniela (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.PhoneNumber.daniela.PhoneNumber'
+    main = 'jalau.at18.katas.phoneNumber.daniela.phoneNumber'
     classpath = sourceSets.main.runtimeClasspath
 }
 

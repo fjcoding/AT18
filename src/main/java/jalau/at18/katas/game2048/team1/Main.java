@@ -15,6 +15,7 @@ public class Main {
         /*
         int[] initialValues = randomValuesGrid();
         Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 System.out.print(matrix[i][j] + " ");
@@ -22,8 +23,19 @@ public class Main {
             System.out.println("");
         }
         */
+        int[] initialValues = randomValuesGrid();
+        Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
+        printMatrix(matrix);
         direcctions();
 
+    }
+    public static void printMatrix(Integer [][] matrix){
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println("");
+        }
     }
 
     public static int[] randomValuesGrid() {
@@ -82,6 +94,22 @@ public class Main {
         if(directionValue.equals("s")){
             System.out.println("metodo para mover abajo");
         }
+    }
+
+    public static Integer [][] moveTop(String direction){
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix.length; column++) {
+                if(matrix[row][column] != 0 && matrix[row-1][column] == 0) {
+                    int aux;
+                    aux= matrix[row][column];
+                    matrix[row][column]=matrix[row-1][column];
+                    matrix[row-1][column] = aux;
+
+                }
+            }
+            System.out.println("");
+        }
+
     }
 
 }

@@ -13,13 +13,13 @@ public class Main {
         int three = 0;
         int five = 0;
         if (numint >= 0) {
-            for (int i = 0; i < numint; i++) {
-                if (i % 3 == 0 && i != 0) {
-                    three = three + i;
+            for (int index = 0; index < numint; index++) {
+                if (index % 3 == 0 && index != 0) {
+                    three = three + index;
                 } else {
-                    if (i % 5 == 0 && i != 0) {
+                    if (index % 5 == 0 && index != 0) {
 
-                        five = five + i;
+                        five = five + index;
                     }
                 }
             }

@@ -16,8 +16,8 @@ public class Main {
         String inputNum = input.nextLine();
         boolean noletter = true;
 
-        for (int a = 0; a < inputNum.length(); a++) {
-            char myletter = inputNum.charAt(a);
+        for (int aux = 0; aux < inputNum.length(); aux++) {
+            char myletter = inputNum.charAt(aux);
 
             if (myletter == '1' || myletter == '2' || myletter == '3' || myletter == '4' || myletter == '5'
                     || myletter == '6'
@@ -26,7 +26,7 @@ public class Main {
                 noletter = true;
             } else {
                 noletter = false;
-                a = inputNum.length();
+                aux = inputNum.length();
                 System.out.println("Letters are not allowed");
             }
         }
@@ -40,22 +40,22 @@ public class Main {
 
             int[] vector = new int[10];
 
-            for (int i = 0; i < concat.length; i++) {
+            for (int index = 0; index < concat.length; index++) {
 
-                vector[i] = Integer.parseInt(concat[i]);
+                vector[index] = Integer.parseInt(concat[index]);
 
             }
 
             max = vector[0];
             min = vector[0];
-            for (int j = 0; j < concat.length; j++) {
+            for (int jindex = 0; jindex < concat.length; jindex++) {
 
-                if (vector[j] > max) {
-                    max = vector[j];
+                if (vector[jindex] > max) {
+                    max = vector[jindex];
                 }
 
-                if (vector[j] < min) {
-                    min = vector[j];
+                if (vector[jindex] < min) {
+                    min = vector[jindex];
                 }
             }
 

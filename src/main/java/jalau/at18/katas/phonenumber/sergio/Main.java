@@ -1,4 +1,4 @@
-package main.java.jalau.at18.katas.phonenumber.sergio;
+package jalau.at18.katas.phonenumber.sergio;
 
 public class Main {
 

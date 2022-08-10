@@ -1,6 +1,8 @@
 package jalau.at18.katas.game2048.team1;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     //final int RANDOM_INITIAL_VALUES = 2;
@@ -10,6 +12,7 @@ public class Main {
             System.out.println(Arrays.toString(randomValuesGrid()));
         }
         */
+        /*
         int[] initialValues = randomValuesGrid();
         Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
         for (int i = 0; i < matrix.length; i++) {
@@ -18,6 +21,9 @@ public class Main {
             }
             System.out.println("");
         }
+        */
+        direcctions();
+
     }
 
     public static int[] randomValuesGrid() {
@@ -54,5 +60,29 @@ public class Main {
 
         return matrix;
     }
+
+    // w = arriba, a = izquierda, d = derecha, s = abajo
+    public static void direcctions(){
+        System.out.println("Instrucciones del juego");
+        System.out.println("Top: w");
+        System.out.println("Left: a");
+        System.out.println("Right: d");
+        System.out.println("Down: s");
+        Scanner scan = new Scanner(System.in);
+        String directionValue = scan.nextLine();
+        if(directionValue.equals("w")){
+            System.out.println("metodo para mover arriba");
+        }
+        if(directionValue.equals("a")){
+            System.out.println("metodo para mover izquierda");
+        }
+        if(directionValue.equals("d")){
+            System.out.println("metodo para mover derecha");
+        }
+        if(directionValue.equals("s")){
+            System.out.println("metodo para mover abajo");
+        }
+    }
+
 }
 

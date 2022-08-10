@@ -1,5 +1,8 @@
 
 public class Main  {
+    private final int ROW_SIZE = 4;
+    private final int COLUM_SIZE = 4;
+
     public static void main(String[] args){
 
 
@@ -23,8 +26,14 @@ public class Main  {
       matrix[posRandom2[0]] [posRandom2[1]] = 2;
       return matrix;
     }
-    public static void printMatrix(Integer)
-
+    public static void printMatrix(Integer [][] matrix) {
+        for (int index=0; index < ROW_SIZE; index++) {
+            for (int index2=0; index2<COLUMN_SIZE;index2++) {
+                System.out.print(matrix[index][index2]);
+            }
+            System.out.println("");
+        }
+    }
 
 }
 

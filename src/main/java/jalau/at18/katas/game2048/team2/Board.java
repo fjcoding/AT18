@@ -24,8 +24,8 @@ public class Board {
         this.score = score;
         score = 0;
         board = new int[4][4];
-        int position1 = 0;
-        int position2 = 0;
+        // int position1 = 0;
+        // int position2 = 0;
 
     }
 
@@ -55,26 +55,17 @@ public class Board {
 
     public void generateTokens() {
         int[][] matriz = new int[4][4];
-        int cont = 0;
-        int cont2 = 0;
+
         Random r = new Random();
         int i1 = r.nextInt(matriz.length);
         int i2 = r.nextInt(matriz.length);
         System.out.print("Fila:" + i1 + ", ");
         System.out.print("Columna:" + i2 + ": ");
-        // 2 pocicion
+        // 2 posicion
         int i11 = r.nextInt(matriz.length);
         int i22 = r.nextInt(matriz.length);
         System.out.print("Fila:" + i11 + ", ");
         System.out.print("Columna:" + i22 + ": ");
-
-        System.out.println("--------------------------");
-        // int posicion1 = matriz[i1][i2];
-        // int posicion2 = matriz[i11][i22];
-        System.out.println(" posicion 1: " + matriz[i1][i11]);
-        System.out.println(" posicion 2: " + matriz[i2][i22]);
-        System.out.println("--------------------------");
-
         int[][] matrizprincipal = new int[4][4];
         for (int index = 0; index < matrizprincipal[0].length; index++) {
             for (int indej = 0; indej < matrizprincipal[1].length; indej++) {

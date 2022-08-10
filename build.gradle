@@ -27,11 +27,10 @@ checkstyleMain {
 
 test.finalizedBy("checkstyleMain")
 
-task runHelloWorldMariaH (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.helloworld.joseg.HelloWorld'
+task runHelloWorldJoseG  (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
-
 
 task runHighestLowestMariaH (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.maria.HighestLowest'

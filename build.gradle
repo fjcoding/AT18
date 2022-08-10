@@ -82,3 +82,12 @@ task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.adriana.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.adriana.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task run2048 (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.2048.team3.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

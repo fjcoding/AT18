@@ -48,3 +48,8 @@ task runMultiplesLibertad (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
 }
+
+task runCreatePhoneNumberLibertad (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.libertad.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

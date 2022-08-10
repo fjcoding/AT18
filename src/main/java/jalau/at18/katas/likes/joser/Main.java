@@ -5,33 +5,26 @@ public class Main {
     public static final int THREE = 3;
     public static void main(String[] args) {
         String inpu = JOptionPane.showInputDialog("Enter the names:");
-        String[] names = inpu.split(" ");
-        System.out.println(new Main().likes(names));
+        System.out.println(new Main().likes(inpu));
     }
-    public String likes(String[] str) {
-        if (str.length == 0) {
+    public String likes(String str) {
+        String[] names = str.split(" ");
+        System.out.println(names[0]);
+        if (str.equals("")) {
             return "no one likes this";
         }
-        if (str.length == 1) {
-            return str[0] + "no one likes this";
+        if (names.length == 1) {
+            return names[0] + " likes this";
         }
-        if (str.length == 2) {
-            return str[0] + " and " + str[1] + " like this";
+        if (names.length == 2) {
+            return names[0] + " and " + names[1] + " like this";
         }
-        if (str.length == THREE) {
-            return str[0] + "," + str[1] + " and " + str[2] + " like this";
+        if (names.length == THREE) {
+            return names[0] + ", " + names[1] + " and " + names[2] + " like this";
         }
-        if (str.length > THREE) {
-            return str[0] + "," + str[1] + " and " + (str[2].length() - 2) + " others like this";
+        if (names.length > THREE) {
+            return names[0] + ", " + names[1] + " and " + (names[2].length() - 2) + " others like this";
         }
         return "void";
     }
 }
-
-// ```
-// []                                -->  "no one likes this"
-// ["Peter"]                         -->  "Peter likes this"
-// ["
-// Jacob Alex                 -->  "Jacob and Alex like this"
-// ["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
-// ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"

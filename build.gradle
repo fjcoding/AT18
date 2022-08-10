@@ -49,7 +49,7 @@ task runlikes (dependsOn: 'classes', type: JavaExec) {
         standardInput = System.in
 }
 
-task runhighlow (dependsOn: 'classes', type: JavaExec) {
+task runmultiples(dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.joser.Main'
     classpath = sourceSets.main.runtimeClasspath
      standardInput = System.in

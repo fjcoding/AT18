@@ -53,7 +53,7 @@ public class Board {
 
     }
 
-    public int generateTokens(int[][] matriz) {
+    public void generateTokens() {
         int[][] matriz = new int[4][4];
 
         Random r = new Random();

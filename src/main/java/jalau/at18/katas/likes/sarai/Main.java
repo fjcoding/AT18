@@ -1,39 +1,39 @@
 package jalau.at18.katas.likes.sarai;
 import java.util.Scanner;
 public class Main {
-    static final int MAS_DE_CUATRO_NOMBRES = 4;
-    static final int TRES_PERSONAS = 3;
+    static final int MORETHANFOURNAMES = 4;
+    static final int THREEPEOPLE = 3;
     public static void main(String[] args) {
-        String nombres;
-        Scanner palabra_scanner = new Scanner(System.in);
+        String names;
+        Scanner scankeyboard = new Scanner(System.in);
         System.out.println("enter the size of the array");
-        int tam = palabra_scanner.nextInt();
-        if (tam >= 1) {
-            String[] personas = new String[tam];
+        int arraySize = scankeyboard.nextInt();
+        if (arraySize >= 1) {
+            String[] people = new String[arraySize];
             System.out.println("Enter names");
-            for (int index = 0; index < tam; index++) {
-                nombres = palabra_scanner.next();
-                personas[index] = nombres;
-                if (tam == 1) {
-                    System.out.println(personas[index] + " likes this");
+            for (int index = 0; index < arraySize; index++) {
+                names = scankeyboard.next();
+                people[index] = names;
+                if (arraySize == 1) {
+                    System.out.println(people[index] + " likes this");
                 }
             }
-            if (tam > 1 && tam < MAS_DE_CUATRO_NOMBRES) {
-                for (int index = 0; index < personas.length; index++) {
-                    System.out.print(personas[index] + ",");
+            if (arraySize > 1 && arraySize < MORETHANFOURNAMES) {
+                for (int index = 0; index < people.length; index++) {
+                    System.out.print(people[index] + ",");
                 }
                 System.out.print(" like this");
             }
-            if (tam >= MAS_DE_CUATRO_NOMBRES) {
+            if (arraySize >= MORETHANFOURNAMES) {
                 for (int index = 0; index < 2; index++) {
-                    System.out.print(personas[index] + ",");
+                    System.out.print(people[index] + ",");
                 }
-                System.out.print(personas[2]);
-                int ress = tam - TRES_PERSONAS;
-                System.out.print(" and " + ress + " others like this");
+                System.out.print(people[2]);
+                int subtract = arraySize - THREEPEOPLE;
+                System.out.print(" and " + subtract + " others like this");
             }
         } else {
-            if (tam == 0 || tam < 1) {
+            if (arraySize == 0 || arraySize < 1) {
                 System.out.println("no one likes this");
             }
         }

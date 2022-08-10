@@ -42,3 +42,9 @@ task runLikesLibertad (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.libertad.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runMultiplesLibertad (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.libertad.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+}

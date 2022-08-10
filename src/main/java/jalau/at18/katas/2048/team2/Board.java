@@ -8,14 +8,13 @@ package jalau.at18.katas.2048.team2;
 //Crear sumatoria de variables iguales
 //Solo la posición es random y el numero aparece es siempre el 2
 
-public class Board()
-{
+public class Board {
 
     public int[][] board;
     public int score;
     public int sizeBoard;
 
-    public Board (int sizeBoard, int score) {
+    public Board(int sizeBoard, int score) {
         this.sizeBoard = sizeBoard;
         this.score = score;
         score = 0;

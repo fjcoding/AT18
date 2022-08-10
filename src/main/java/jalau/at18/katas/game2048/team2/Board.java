@@ -53,7 +53,7 @@ public class Board {
 
     }
 
-    public void generateTokens() {
+    public int generateTokens(int[][] matriz) {
         int[][] matriz = new int[4][4];
 
         Random r = new Random();
@@ -65,7 +65,7 @@ public class Board {
         int i11 = r.nextInt(matriz.length);
         int i22 = r.nextInt(matriz.length);
         System.out.print("Fila:" + i11 + ", ");
-        System.out.print("Columna:" + i22 + ": ");
+        System.out.println("Columna:" + i22 + ": ");
         int[][] matrizprincipal = new int[4][4];
         for (int index = 0; index < matrizprincipal[0].length; index++) {
             for (int indej = 0; indej < matrizprincipal[1].length; indej++) {
@@ -80,7 +80,6 @@ public class Board {
             }
             System.out.println("");
         }
-
     }
 
     public void replacePositions(int position1, int Position2) {

@@ -55,7 +55,6 @@ public class Board {
 
     public void generateTokens() {
         int[][] matriz = new int[4][4];
-
         Random r = new Random();
         int i1 = r.nextInt(matriz.length);
         int i2 = r.nextInt(matriz.length);
@@ -72,7 +71,6 @@ public class Board {
                 if (index == i1 && indej == i2) {
                     matrizprincipal[index][indej] = 2;
                 }
-
                 if (index == i11 && indej == i22) {
                     matrizprincipal[index][indej] = 2;
                 }

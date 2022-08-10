@@ -12,6 +12,23 @@ public class Main {
     //Solo la posición es random y el numero aparece es siempre el 2
 }
 
-public class board (){
+public class board() {
+
+    public int[][] board;
+    public int score;
+    public int sizeBoard;
+
+    public board (int sizeBoard, int score) {
+        this.sizeBoard = sizeBoard;
+        this.score = score;
+        score = 0;
+    }
+
+    public void showTable(int[][] table) {
+
+
+    }
+
+
 
 }

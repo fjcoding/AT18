@@ -78,10 +78,7 @@ task runPhonenumberAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.adriana.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
-task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.likes.adriana.Main'
-    classpath = sourceSets.main.runtimeClasspath
-}
+
 task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.adriana.Main'
     classpath = sourceSets.main.runtimeClasspath

@@ -1,25 +1,26 @@
 package jalau.at18.katas.multiples.rene;
 
 public class Main {
-    public static void main(String[] args){
-
-        System.out.println(multiples(20));
-
-
+    public static void main(String[] args) {
+        final int inputNumber = 20;
+        System.out.println(multiples(inputNumber));
     }
 
-    static int multiples (int number){
+    static int multiples(int number) {
         int sum = 0;
+        final int multiple3 = 3;
+        final int multiple5 = 5;
         number--;
-        while (number != 0){
-            if (number < 0)
-                return 1000;
-
-        if(number % 3 == 0 || number % 5 == 0)
-            sum = sum + number;
-            number --;
-         }
+        while (number != 0) {
+            if (number < 0) {
+                int defaultNumber = 0;
+                return defaultNumber;
+            }
+            if (number % multiple3 == 0 || number % multiple5 == 0) {
+                sum = sum + number;
+            }
+            number--;
+        }
         return sum;
     }
-    
 }

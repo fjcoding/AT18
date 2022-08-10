@@ -11,7 +11,7 @@ public class Main {
         int randomNum2 = ThreadLocalRandom.current().nextInt(min, max + 1);
         //System.out.println(randomNum);
 
-    static Integer GeneratingAMatrix(int randomNum1, int randomNum2) {
+    static int[][] GeneratingAMatrix(int randomNum1, int randomNum2) {
         int matriz[][] = new int[4][4];
         matriz[0][0] = 0;
         matriz[0][1] = 0;
@@ -33,10 +33,11 @@ public class Main {
         matriz [randomNum1][randomNum2]= 2;
         matriz [randomNum1][randomNum2]= 4;
 
+        return matriz;
+
     }
 
 
-    Scanner input 
 
 
 }

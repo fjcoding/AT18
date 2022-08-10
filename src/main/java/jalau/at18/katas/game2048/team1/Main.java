@@ -96,21 +96,29 @@ public class Main {
         }
     }
 
-    public static Integer [][] moveTop(String direction){
+    public static Integer [][] moveTop(Integer[][] matrix){
+
+        Integer[][]  positionsTiles = new Integer[16][2];
+        Integer count = 0;
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
-                if(matrix[row][column] != 0 && matrix[row-1][column] == 0) {
-                    int aux;
+                if(matrix[row][column] != 0 /*&& matrix[row-1][column] == 0*/) {
+                    /*int aux;
                     aux= matrix[row][column];
                     matrix[row][column]=matrix[row-1][column];
-                    matrix[row-1][column] = aux;
-
+                    matrix[row-1][column] = aux;*/
+                    positionsTiles[count][0]= column; 
+                    positionsTiles[count][1]= row; 
+                    count = count + 1;
                 }
             }
-            System.out.println("");
         }
+        
 
     }
 
 }
-
+0 1
+3 1
+3 2
+6 1

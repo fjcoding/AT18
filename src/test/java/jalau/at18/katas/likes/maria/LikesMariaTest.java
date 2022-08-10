@@ -8,7 +8,6 @@ public class LikesMariaTest {
     private String[] people2 = {"Jacob", "Alex"}; //-->  "Jacob and Alex like this"
     private String[] people3 = {"Max", "John", "Mark"}; //"Max, John and Mark like this"
     private String[] people4 = {"Alex", "Jacob", "Mark", "Max"}; //-->  "Alex, Jacob and 2 others like this"
-    private String[] people5 = {"Karina", "Elsa", "Marcela", "Silvia", "Oscar", "Vladimir", "Romina"};
 
     @Test
     public void nonePerson() {

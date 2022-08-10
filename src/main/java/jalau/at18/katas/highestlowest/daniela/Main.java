@@ -2,13 +2,12 @@ package jalau.at18.katas.highestlowest.daniela;
 
 import java.util.Arrays;
 
-public class HighestandLowest {
+public class Main {
 
     public static void main(String[] args) {
-
-        System.out.println(new main().myHl());
+        System.out.println(myHl("1 2 3 4 5"));
     }
-    public String myHl(String numbers){
+    public static String myHl(String numbers) {
         //String numbers = "1 2 3 4 8 6";
         String[] split1 = numbers.split(" ");
         int[] enter = new int[split1.length];
@@ -30,4 +29,3 @@ public class HighestandLowest {
         return max + " " + min;
     }
 }
-

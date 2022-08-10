@@ -1,7 +1,7 @@
 package jalau.at18.katas.phonenumber.daniela;
 
 public class Phone {
-    static void myPhone(int[] numbers) {
+    public static String myPhone(Integer[] numbers) {
         String telephone1 = "";
         String telephone2 = "";
         String telephone3 = "";
@@ -16,11 +16,12 @@ public class Phone {
                 telephone3 += String.valueOf(numbers[find]);
             }
         }
-        System.out.println("(" + telephone1 + ")" + telephone2 + "-" + telephone3);
+        //System.out.println("(" + telephone1 + ")" + telephone2 + "-" + telephone3);
+        return "(" + telephone1 + ")" + telephone2 + "-" + telephone3;
     }
 
     public static void main(String[] args) {
-        final int[] telephone = {1, 2, 3, 4 };
-        myPhone(telephone);
+        final Integer[] array = {1, 2, 3, 4};
+        myPhone(array);
     }
 }

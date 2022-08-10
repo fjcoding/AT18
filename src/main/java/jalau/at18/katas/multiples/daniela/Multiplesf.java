@@ -1,7 +1,7 @@
 package jalau.at18.katas.multiples.daniela;
 
 public class Multiplesf {
-    static void myMultiplo(int number) {
+    public static Integer myMultiplo(int number) {
         final int value = 0;
         final int multiple3 = 3;
         final int multiple5 = 5;
@@ -15,7 +15,7 @@ public class Multiplesf {
             }
         }
 
-        System.out.println("La suma total es:" + total);
+        return total;
     }
 
     public static void main(String[] args) {

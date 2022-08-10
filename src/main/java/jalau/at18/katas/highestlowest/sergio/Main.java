@@ -1,15 +1,18 @@
-package main.java.jalau.at18.katas.highestlowest.sergio;
+package jalau.at18.katas.highestlowest.sergio;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        String[] input = new String[] {"1", "2", "3"};
-        int[] highestandLowest = highestLowest(input);
-        System.out.println(highestandLowest[0] + " " + highestandLowest[1]);
+        String[] input = new String[] {"1", "2", "3", "10"};
+        // String[] main = new String[] {};
+        // main = args;
+        Main main = new Main();
+        String highestandLowest = main.highestLowest(input);
+        System.out.println(highestandLowest);
     }
 
-    public static int[] highestLowest(String[] input) {
+    public String highestLowest(String[] input) {
         int[] values = Arrays.stream(input)
                 .mapToInt(Integer::parseInt)
                 .toArray();
@@ -23,9 +26,6 @@ public class Main {
                 min = number;
             }
         }
-
-        int[] result = new int[] {max, min};
-        return result;
+        return max + " " + min;
     }
-
 }

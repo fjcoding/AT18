@@ -5,5 +5,6 @@ public class Main {
         Board board = new Board(4, 0);
         board.createTable();
         board.showTable();
+        board.generateTokens();
     }
 }

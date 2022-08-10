@@ -1,4 +1,4 @@
-package jalau.at18.katas.2048.team4;
+package jalau.at18.katas.game2048.team4;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;

@@ -27,7 +27,7 @@ checkstyleMain {
 
 test.finalizedBy("checkstyleMain")
 
-task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.helloworld.joseg.Main'
+task runHelloWorldHugo (dependsOn: 'classes', type: JavaExec) {
+    main = 'main.java.jalau.at18.katas.helloworld.hugo.Main'
     classpath = sourceSets.main.runtimeClasspath
 }

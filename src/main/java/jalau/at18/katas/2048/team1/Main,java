@@ -4,14 +4,19 @@ public class Main  {
 
 
     }
+    public static Integer[] randomPos () {
+      Random rand = new Random(); //instance of random class
+      int upperbound = 4; //generate random values from 0-24
+      int colum = rand.nextInt(upperbound)
+      int row = rand.nextInt(upperbound)
+      return [row, colum];
+    }
+    public static Integer[][] inicialMatrix () {
 
-    Random rand = new Random(); //instance of random class
-
-    int upperbound = 25;
-
-      //generate random values from 0-24
-
-    int int_random = rand.nextInt(upperbound)
+      Integer[][] matrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+      Integer[] posRandom = 
+    }
+    
 
 }
 

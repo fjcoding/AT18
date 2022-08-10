@@ -7,11 +7,12 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the numbers:");
         String data = scan.nextLine();
-        System.out.println(highLowNumbers(data));
+        Main main = new Main();
+        System.out.println(main.highLowNumbers(data));
         scan.close();
     }
 
-    public static String highLowNumbers(String input) {
+    public String highLowNumbers(String input) {
         String[] numbers = input.split(" ");
         int iterator = 0;
         int higthest = Integer.parseInt(numbers[iterator]);

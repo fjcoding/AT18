@@ -1,6 +1,5 @@
 package main.java.jalau.at18.katas.highestlowest.hugo;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -17,8 +16,8 @@ public class Main {
         String inputNum = input.nextLine();
         boolean noletter = true;
 
-        for (int k = 0; k < inputNum.length(); k++) {
-            char myletter = inputNum.charAt(k);
+        for (int a = 0; a < inputNum.length(); a++) {
+            char myletter = inputNum.charAt(a);
 
             if (myletter == '1' || myletter == '2' || myletter == '3' || myletter == '4' || myletter == '5'
                     || myletter == '6'
@@ -27,12 +26,12 @@ public class Main {
                 noletter = true;
             } else {
                 noletter = false;
-                k = inputNum.length();
+                a = inputNum.length();
                 System.out.println("Letters are not allowed");
             }
         }
 
-        if (noletter == true) {
+        if (noletter) {
 
             int max = 0;
             int min = 0;
@@ -64,6 +63,5 @@ public class Main {
             System.out.println("Min = " + min);
 
         }
-
     }
 }

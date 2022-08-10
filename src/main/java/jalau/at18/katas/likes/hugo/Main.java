@@ -24,9 +24,7 @@ public class Main {
         String[] likes = names.split(" ");
 
         System.out.println(likes.length + " likes");
-        
         int elementnum = likes.length;
-    
         switch (elementnum) {
             case 0:
                 System.out.println("No one likes this");

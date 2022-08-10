@@ -1,12 +1,14 @@
 package jalau.at18.katas.2048.team3;
 
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Main {
     public static void main (String[] args) {
         Scanner scan = new Scanner(System.in);
         int[][] matrix = {{0,0,0,2},{0,0,2,2},{0,0,0,0},{0,0,0,0}};
-
+        double randomNumber = Math.random()*1;
+        double [] randomNumbers = {2, 4};
     }
 
     public static void rightMove(int[][] matrix) {

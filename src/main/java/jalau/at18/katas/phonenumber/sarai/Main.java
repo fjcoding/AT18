@@ -2,30 +2,30 @@ package jalau.at18.katas.phonenumber.sarai;
 import java.util.Scanner;
 
 public class Main {
-    static final int POSICION_CERO = 0;
-    static final int POSICION_TRES = 3;
-    static final int POSICION_SEIS = 6;
+    static final int ZERO_POSITION = 0;
+    static final int THREE_POSITION = 3;
+    static final int SIX_POSITION = 6;
     static final int CONTT = 10;
     public static void main(String[] args) {
-        Scanner numero_scanner = new Scanner(System.in);
-        int num;
         System.out.println("Enter 10 numbers");
-        int[] almac = new int[CONTT];
+        Scanner scankeyboard = new Scanner(System.in);
+        int number;
+        int[] save = new int[CONTT];
         for (int index = 0; index < CONTT; index++) {
-            num = numero_scanner.nextInt();
-            almac[index] = num;
+            number = scankeyboard.nextInt();
+            save[index] = number;
         }
         for (int index = 0; index < CONTT; index++) {
-            if (index == POSICION_CERO) {
+            if (index == ZERO_POSITION) {
                 System.out.print("(");
             }
-            if (index == POSICION_TRES) {
+            if (index == THREE_POSITION) {
                 System.out.print(")");
             }
-            if (index == POSICION_SEIS) {
+            if (index == SIX_POSITION) {
                 System.out.print("-");
             }
-            System.out.print(almac[index]);
+            System.out.print(save[index]);
         }
     }
 }

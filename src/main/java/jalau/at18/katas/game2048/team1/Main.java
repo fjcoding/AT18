@@ -1,7 +1,10 @@
+package jalau.at18.katas.game2048.team1;
+
+import java.util.Random;
 
 public class Main  {
-    private final int ROW_SIZE = 4;
-    private final int COLUM_SIZE = 4;
+    private static final int ROW_SIZE = 4;
+    private static final int COLUMN_SIZE = 4;
 
     public static void main(String[] args){
 
@@ -20,12 +23,13 @@ public class Main  {
       Integer[] posRandom1 = randomPos();
       Integer[] posRandom2 = randomPos();
       matrix[posRandom1[0]] [posRandom1[1]] = 2;
-      while(posRandom1 == posRandom2){
+          while(posRandom1 == posRandom2){
         posRandom2 = randomPos();
       }
       matrix[posRandom2[0]] [posRandom2[1]] = 2;
       return matrix;
     }
+
     public static void printMatrix(Integer [][] matrix) {
         for (int index=0; index < ROW_SIZE; index++) {
             for (int index2=0; index2<COLUMN_SIZE;index2++) {

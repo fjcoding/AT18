@@ -1,4 +1,4 @@
-package main.java.jalau.at18.katas.highestlowest.sergio;
+package jalau.at18.katas.highestlowest.sergio;
 
 import java.util.Arrays;
 

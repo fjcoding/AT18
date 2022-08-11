@@ -1,4 +1,9 @@
 package jalau.at18.katas.game2048.team3;
+import java.util.Scanner;//
+// - funcion de busqueda de 1024
+// - funcion sin movimientos
+// - generado de num aleatorio
+// - lectura de teclado 
 
 public class Main {
     private static final int MAX_SIZE = 4;
@@ -6,14 +11,45 @@ public class Main {
     private static final int ZERO = 0;
     private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
     public static void main(String[] args) {
-        /*int[][] matrix = {{2, ZERO, 2, ZERO},
+        int[][] matrix = {{2, ZERO, 2, ZERO},
                           {ZERO, ZERO, 2, 2},
                           {2, 2, 2, 2},
                           {2, ZERO, 2, 2}};
         Main main = new Main();
-        main.downMove(matrix);*/
+        // main.downMove(matrix);
+        main.readMoves(matrix);
         
     }
+    // {{2, 0, 2, 0},
+    //  {0, 0, 2, 2},
+    //  {2, 2, 2, 2},
+    //  {2, 0, 2, 2}};
+
+
+    public void readMoves(int[][] matrix){
+        String input;
+        Scanner data = new Scanner(System.in);
+        input=data.next();
+        System.out.println(input);
+
+        switch (input) {
+            case "a":
+                leftMove(matrix);
+                break;
+            case "w":
+                upMove(matrix);
+                break;
+            case "s":
+                downMove(matrix);
+                break;
+            case "d":
+                rightMove(matrix);
+                break;
+            default:
+                break;
+        }
+    }
+
 
     public void rightMove(int[][] matrix) {
         for (int row = ZERO; row < MAX_SIZE; row++) {
@@ -46,6 +82,7 @@ public class Main {
             }
         }
         showMatrix();
+        
     }
 
     public void leftMove(int[][] matrix) {

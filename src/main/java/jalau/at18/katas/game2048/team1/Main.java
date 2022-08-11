@@ -115,7 +115,3 @@ public class Main {
     }
 
 }
-0 1
-3 1
-3 2
-6 1

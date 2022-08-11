@@ -1,147 +1,136 @@
 package jalau.at18.katas.game2048.team3;
 
 public class Main {
-    
+    private static final int MAX_SIZE = 4;
+    private static final int MAX_INDEX = 3;
+    private static final int ZERO = 0;
+    private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
     public static void main(String[] args) {
-        // Scanner scan = new Scanner(System.in);
-        int[][] matrix = {{2,0,2,0},
-                          {0,0,2,2},
-                          {2,2,2,2},
-                          {2,0,2,2}};
-        // double randomNumber = Math.random()*1;
-        // double [] randomNumbers = {2, 4};
-        // showMatrix(matrix);
-        upMove(matrix);
+        /*int[][] matrix = {{2, ZERO, 2, ZERO},
+                          {ZERO, ZERO, 2, 2},
+                          {2, 2, 2, 2},
+                          {2, ZERO, 2, 2}};
+        Main main = new Main();
+        main.upMove(matrix);
+        */
     }
 
-    public static void rightMove(int[][] matrix) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 3; j >= 0; j--) {
-                if(matrix[i][j]!=0){
-                    for (int j2 = j-1; j2 >=0; j2--) {
-                        if(matrix[i][j2]!=0 && matrix[i][j]==matrix[i][j2]){
-                            matrix[i][j]+=matrix[i][j2];
-                            matrix[i][j2]=0;
-                        } 
-                    }
-                }
-
-                // System.out.print(matrix[i][j]);
-            }
-            // System.out.println();
-            
-        }
-        arrangeRight(matrix);
-        // {2,2,2,0}    // {0,0,4,0}   {0,0,2,4}    {4,2,0,0} 
-        // {0,0,2,2}
-        // {2,2,2,2}    // {0,4,0,4} // {0,0,4,4}
-        // {2,0,2,2}    // {2,0,0,4} // {0,0,2,4}
-
-        // {0,0,0,4}
-        // {0,0,0,4}
-        // {0,0,4,4}
-        // {0,0,2,4}
-    }
-    public static void arrangeRight(int[][] matrix) {
-        for(int i = 0; i < 4 ; i++) {
-            for(int j =0; j < 4 ; j++) {
-                if(matrix[i][j]==0){
-                    for (int j2 = j-1; j2 >=0; j2--) {
-                        if(matrix[i][j2]!=0){
-                            matrix[i][j] = matrix[i][j2];
-                            matrix[i][j2] = 0;
-                        } 
-                    }
-                }
-            }
-        }
-        showMatrix(matrix);
-    }
-    
-    public static void downMove(int[][] matrix) {
-
-    }
-    public static void leftMove(int[][] matrix) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4 ; j++) {
-                if(matrix[i][j]!=0){
-                    for (int j2 = j+1; j2 <4; j2++) {
-                        if(matrix[i][j2]!=0 && matrix[i][j]==matrix[i][j2]){
-                            matrix[i][j]+=matrix[i][j2];
-                            matrix[i][j2]=0;
-                        } 
-                    }
-                }
-
-                // System.out.print(matrix[i][j]);
-            }
-            // System.out.println();
-            
-        }
-        arrangeLeft(matrix);
-    }
-    public static void arrangeLeft(int[][] matrix) {
-        for(int i = 0; i < 4 ; i++) {
-            for(int j =0; j < 4 ; j++) {
-                if(matrix[i][j]==0){
-                    for (int j2 = j+1; j2 < 4; j2++) {
-                        if(matrix[i][j2]!=0){
-                            matrix[i][j] = matrix[i][j2];
-                            matrix[i][j2] = 0;
-                        } 
-                    }
-                }
-            }
-        }
-        showMatrix(matrix);
-    }
-
-
-    public static void upMove(int[][] matrix) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 3; j++) {
-                if(matrix[j][i]!=0) {
-                    int j2 = j+1;
-                    if (matrix[j2][i] != 0 && matrix[j][i] == matrix[j2][i]) {
-                        matrix[j][i] += matrix[j2][i];
-                        matrix[j2][i] = 0;
-                    } else {
-                        if (matrix[j2][i] == 0) {
-                            matrix[j2][i] = matrix[j][i];
-                            matrix[j][i] = 0;
+    public void rightMove(int[][] matrix) {
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = MAX_INDEX; column >= ZERO; column--) {
+                if (matrix[row][column] != ZERO) {
+                    for (int colAux = column - 1; colAux >= ZERO; colAux--) {
+                        if (matrix[row][colAux] != ZERO && matrix[row][column] == matrix[row][colAux]) {
+                            matrix[row][column] += matrix[row][colAux];
+                            matrix[row][colAux] = ZERO;
                         }
                     }
                 }
             }
         }
-        orderUp(matrix);
+        matrixG = matrix;
+        arrangeRight();
     }
 
-    public static void orderUp(int[][] matrix) {
-        for(int i = 0; i < 4 ; i++) {
-            for(int j =0; j < 4 ; j++) {
-                if(matrix[j][i]==0){
-                    for (int j2 = j+1; j2 < 4; j2++) {
-                        if(matrix[j2][i]!=0){
-                            matrix[j][i] = matrix[j2][i];
-                            matrix[j2][i] = 0;
+    private void arrangeRight() {
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = ZERO; column < MAX_SIZE; column++) {
+                if (matrixG[row][column] == ZERO) {
+                    for (int colAux = column - 1; colAux >= ZERO; colAux--) {
+                        if (matrixG[row][colAux] != ZERO) {
+                            matrixG[row][column] = matrixG[row][colAux];
+                            matrixG[row][colAux] = ZERO;
+                        }
+                    }
+                }
+            }
+        }
+        showMatrix();
+    }
+
+    public void downMove(int[][] matrix) {
+    }
+
+    public void leftMove(int[][] matrix) {
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = ZERO; column < MAX_SIZE; column++) {
+                if (matrix[row][column] != ZERO) {
+                    for (int colAux = column + 1; colAux < MAX_SIZE; colAux++) {
+                        if (matrix[row][colAux] != ZERO && matrix[row][column] == matrix[row][colAux]) {
+                            matrix[row][column] += matrix[row][colAux];
+                            matrix[row][colAux] = ZERO;
+                        }
+                    }
+                }
+            }
+        }
+        matrixG = matrix;
+        arrangeLeft();
+    }
+    private void arrangeLeft() {
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = ZERO; column < MAX_SIZE; column++) {
+                if (matrixG[row][column] == ZERO) {
+                    for (int colAux = column + 1; colAux < MAX_SIZE; colAux++) {
+                        if (matrixG[row][colAux] != ZERO) {
+                            matrixG[row][column] = matrixG[row][colAux];
+                            matrixG[row][colAux] = ZERO;
+                        }
+                    }
+                }
+            }
+        }
+        showMatrix();
+    }
+
+    public void upMove(int[][] matrix) {
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = ZERO; column < MAX_INDEX; column++) {
+                if (matrix[column][row] != ZERO) {
+                    int colAux = column + 1;
+                    if (matrix[colAux][row] != ZERO && matrix[column][row] == matrix[colAux][row]) {
+                        matrix[column][row] += matrix[colAux][row];
+                        matrix[colAux][row] = ZERO;
+                    } else {
+                        if (matrix[colAux][row] == ZERO) {
+                            matrix[colAux][row] = matrix[column][row];
+                            matrix[column][row] = ZERO;
+                        }
+                    }
+                }
+            }
+        }
+        matrixG = matrix;
+        orderUp();
+    }
+
+    private void orderUp() {
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = ZERO; column < MAX_SIZE; column++) {
+                if (matrixG[column][row] == ZERO) {
+                    for (int colAux = column + 1; colAux < MAX_SIZE; colAux++) {
+                        if (matrixG[colAux][row] != ZERO) {
+                            matrixG[column][row] = matrixG[colAux][row];
+                            matrixG[colAux][row] = ZERO;
                             break;
                         }
                     }
                 }
             }
         }
-        showMatrix(matrix);
+        showMatrix();
     }
 
-
-    // public static int[][] showMatrix(int[][] matrix){
-    public static void showMatrix(int[][] matrix) {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                System.out.print(matrix[i][j]);
+    public void showMatrix() {
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = ZERO; column < MAX_SIZE; column++) {
+                System.out.print(matrixG[row][column]);
             }
             System.out.println();
         }
+    }
+
+    public int[][] getMatrix() {
+        return matrixG;
     }
 }

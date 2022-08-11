@@ -45,38 +45,53 @@ public class Board {
             }
         }
     }
+
     public int getPosition(int x, int y) {
         return board[x][y];
     }
+
     public boolean isValidThePosition(int x, int y) {
-        if(board[x][y] == 0) {
+        if (board[x][y] == 0) {
             return true;
         } else {
             return false;
         }
     }
+
     public void replacePositions(int position1, int Position2, int number) {
 
         if (board[position1][Position2] == 0) {
             board[position1][Position2] = number;
         }
     }
-    public void moveNumbers(char direction) {
-        if(direction == 'w') {
-            for (int indexRows = 0; indexRows < 4; indexRows++) {
-                for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
-                    if( board[indexRows][indexColumns] != 0 && indexRows !=0){
-                        board[0][indexColumns] = board[indexRows][indexColumns];
-                        board[indexRows][indexColumns] = 0;
-                    }
-                }
 
+    public void moveNumbers(char direction) {
+        if (direction == 'w') {
+            for (int indexRow = 1; indexRow < 4; indexRow++) {
+                if (board[indexRow - 1][0] == 0) {
+                    board[indexRow - 1][0] = board[indexRow][0];
+                    board[indexRow][0] = 0;
+                }
             }
+            /*
+             * for (int indexRows = 0; indexRows < 4; indexRows++) {
+             * for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
+             * if( board[indexRows][indexColumns] != 0 && indexRows !=0){
+             * board[0][indexColumns] = board[indexRows][indexColumns];
+             * board[indexRows][indexColumns] = 0;
+             * }
+             * }
+             *
+             * }
+             */
         }
-        if(direction == 'a') {
+    }
+
+    public void moveNumberR(char direction) {
+        if (direction == 'a') {
             for (int indexRows = 0; indexRows < 4; indexRows++) {
                 for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
-                    if( board[indexRows][indexColumns] != 0 && indexColumns !=0){
+                    if (board[indexRows][indexColumns] != 0 && indexColumns != 0) {
                         board[indexRows][0] = board[indexRows][indexColumns];
                         board[indexRows][indexColumns] = 0;
                     }
@@ -84,10 +99,13 @@ public class Board {
 
             }
         }
-        if(direction == 'd') {
+    }
+
+    public void moveNumberL(char direction) {
+        if (direction == 'd') {
             for (int indexRows = 0; indexRows < 4; indexRows++) {
                 for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
-                    if( board[indexRows][indexColumns] != 0 && indexColumns !=0){
+                    if (board[indexRows][indexColumns] != 0 && indexColumns != 0) {
                         board[indexRows][3] = board[indexRows][indexColumns];
                         board[indexRows][indexColumns] = 0;
                     }
@@ -95,10 +113,13 @@ public class Board {
 
             }
         }
-        if(direction == 's') {
+    }
+
+    public void MoveNumberD(char direction) {
+        if (direction == 's') {
             for (int indexRows = 0; indexRows < 4; indexRows++) {
                 for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
-                    if( board[indexRows][indexColumns] != 0 && indexRows !=0){
+                    if (board[indexRows][indexColumns] != 0 && indexRows != 0) {
                         board[3][indexColumns] = board[indexRows][indexColumns];
                         board[indexRows][indexColumns] = 0;
                     }
@@ -106,7 +127,6 @@ public class Board {
 
             }
         }
-
 
     }
 

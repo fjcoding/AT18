@@ -91,11 +91,10 @@ public class MainRene {
                 if (matrix[index][jIndex] != 0 && index == 0) {
                     continue;
                 } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == 0) {
-                    // for (int innerIndex = index; innerIndex >= 0 || matrix[innerIndex -
-                    // 1][jIndex] != 0; innerIndex--) {
-                        matrix[index - 1][jIndex] = matrix[index][jIndex];
-                        matrix[index][jIndex] = 0;
-                    // } // movu up till reach a border or a number
+                    for (int innerIndex = index; innerIndex > 0 && matrix[innerIndex - 1][jIndex] == 0; innerIndex--) {
+                        matrix[innerIndex - 1][jIndex] = matrix[innerIndex][jIndex];
+                        matrix[innerIndex][jIndex] = 0;
+                    } // movu up till reach a border or a number
                     
                 }
             }

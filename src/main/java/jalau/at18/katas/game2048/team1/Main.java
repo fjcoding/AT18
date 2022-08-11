@@ -1,6 +1,4 @@
 package jalau.at18.katas.game2048.team1;
-
-
 import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Random;
 import java.util.Scanner;
@@ -10,13 +8,15 @@ public class Main {
     public static void main(String[] args) {
 
         int[] initialValues = randomValuesGrid();
+
         Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
         printMatrix(matrix);
         direcctions(matrix); // se envia la matriz
-        /*Integer [][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
-        gameOver(testMatrix);
-        System.out.println(verifySideUp(testMatrix));*/
-
+        //Integer [][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
+        //gameOver(testMatrix);
+        //System.out.println(verifySideUp(testMatrix));*/
+        //Integer [][] testMatrix = {{1,2,3,4},{5,2048,7,8},{9,0,2,3},{4,5,0,7}};
+        //got2048(testMatrix );
     }
 
     public static void printMatrix(Integer [][] matrix){
@@ -99,16 +99,19 @@ public class Main {
             newMatrix = moveTop(matrix);// guarda la matriz en una nueva
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
-            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
             gameOver(newMatrix);
+            got2048(newMatrix);
+            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
         if(directionValue.equals("s")){
             System.out.println("Move down");
             newMatrix=moveDown(matrix);// guarda la matriz en una nueva
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
-            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
             gameOver(newMatrix);
+            got2048(newMatrix);
+            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
+
 
         }
         if(directionValue.equals("a")){
@@ -116,16 +119,18 @@ public class Main {
             newMatrix=moveLeft(matrix);// guarda la matriz en una nueva
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
-            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
             gameOver(newMatrix);
+            got2048(newMatrix);
+            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
         if(directionValue.equals("d")){
             System.out.println("Move Rigth");
             newMatrix=moveRigth(matrix);// guarda la matriz en una nueva
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
-            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
             gameOver(newMatrix);
+            got2048(newMatrix);
+            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
 
     }
@@ -251,5 +256,15 @@ public class Main {
             }
         }
         return check;
+    }
+
+    public static void got2048(Integer[][] matrix) {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix.length; column++) {
+                if (matrix[row][column] == 2048) {
+                    System.out.println("Congratulations");
+                }
+            }
+        }
     }
 }

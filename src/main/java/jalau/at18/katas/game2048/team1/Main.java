@@ -101,7 +101,10 @@ public class Main {
 
         }
         if(directionValue.equals("a")){
-            System.out.println("metodo para mover izquierda");
+            System.out.println("Move left");
+            newMatrix=moveLeft(matrix);// guarda la matriz en una nueva
+            printMatrix(newMatrix); // imprime la nueva matriz
+            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
         if(directionValue.equals("d")){
             System.out.println("metodo para mover derecha");
@@ -134,7 +137,7 @@ public class Main {
         /*Integer[][] matrixAux = new Integer[4][4];
         Integer aux = 0;*/
         for(int moves = 0; moves < 3; moves++) { // en cada ciclo se mueven todas las lineas una vez
-            for (int row = 2; row <= 0; row--) {
+            for (int row = 2; row >= 0; row--) {
                 for (int column = 0; column < matrix.length; column++) {
                     if(matrix[row][column] != 0 && matrix[row+1][column] == 0) {
                         matrix[row+1][column] = matrix[row][column];
@@ -150,7 +153,25 @@ public class Main {
         return matrix;
     }
 
-
+    public static Integer [][] moveLeft(Integer[][] matrix){
+        /*Integer[][] matrixAux = new Integer[4][4];
+        Integer aux = 0;*/
+        for(int moves = 0; moves < 3; moves++) { // en cada ciclo se mueven todas las lineas una vez
+            for (int column = 1; column < matrix.length; column++) {
+                for (int row = 0; row < matrix.length; row++) {
+                    if(matrix[row][column] != 0 && matrix[row][column-1] == 0) {
+                        matrix[row][column-1] = matrix[row][column];
+                        matrix[row][column] = 0;
+                    }
+                    else if (matrix[row][column] != 0 && matrix[row][column-1] == matrix[row][column]){
+                        matrix[row][column-1] = 2 * (matrix[row][column]);
+                        matrix[row][column] = 0;
+                    }
+                }
+            }
+        }
+        return matrix;
+    }
 
 }
 

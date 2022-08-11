@@ -31,8 +31,7 @@ public class Main {
             nextDirection = keyBoard.nextLine();
             directionChecker(nextDirection);
             showMatrix();
-            
-            System.out.println("If you want to stop playing type exit \nif not type any key");
+            System.out.println("\nIf you want to stop playing type exit \nif not type any key");
             continuePlaying = keyBoard.nextLine();
             if (continuePlaying.equals("exit")){
                 exit = "exit";     
@@ -66,8 +65,9 @@ public class Main {
     static void directionChecker(String direction){ //
         switch(direction) {
             case "up":
-              System.out.println("uup");
+              System.out.println("You move the numbers up!");
               moveNumbersUp();
+              putNewTwoOnMatrix();
               System.out.println();
 
               break;
@@ -102,10 +102,10 @@ public class Main {
             }
         }
     }
-    static void putNewTwoOnMatrix() { //Recursividad?
+    static void putNewTwoOnMatrix() { //Recursividad? 
         int randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         int randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
-        while (matrix[randomPositionX][randomPositionY] != 0) {
+        while (matrix[randomPositionX][randomPositionY] != 0) { //It searchs a cell with a 0 for putting a 2
             randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
             randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1); 
         }

@@ -6,7 +6,7 @@ import org.junit.Test;
 public class MainTest {
 
     @Test
-    public void functionShouldGiveHighest() {
+    public void functionShouldGiveSumMultiples() {
         Main main = new Main();
         final Integer input = 10;
         final Integer sumatory = 23;

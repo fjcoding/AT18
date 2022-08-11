@@ -18,6 +18,7 @@ public class Game {
         System.out.println();
         board.showTable();
 
+
     }
     public void random() {
         int row;
@@ -45,13 +46,13 @@ public class Game {
     public void moveLeft() {
 
         System.out.println("se presiono izquierda");
-        board.moveNumberL('a');
+        board.moveNumberLeft('a');
 
     }
     public void moveRight() {
 
         System.out.println("se presiono derecha");
-        board.moveNumberR('d');
+        board.moveNumberRight('d');
 
     }
     public void moveDown() {

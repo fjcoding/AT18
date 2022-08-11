@@ -19,6 +19,7 @@ public class Main {
                 game.moveUp();
                 game.random();
                 board.showTable();
+                board.showScore();
 
 
             }
@@ -26,21 +27,25 @@ public class Main {
                 game.moveDown();
                 game.random();
                 board.showTable();
+                board.showScore();
 
             }
             if (letter == 'a') {
                 game.moveLeft();
                 game.random();
                 board.showTable();
+                board.showScore();
 
             }
             if (letter == 'd') {
                 game.moveRight();
                 game.random();
                 board.showTable();
+                board.showScore();
 
             }
             else if(letter == 'z') {
+                board.showScore();
                 break;
             }
         }

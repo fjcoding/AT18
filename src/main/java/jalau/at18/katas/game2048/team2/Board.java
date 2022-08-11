@@ -13,6 +13,14 @@ import java.util.Random;
 //Crear sumatoria de variables iguales
 //Solo la posición es random y el numero aparece es siempre el 2
 //public static final position1 = 0;
+
+//--------------------------------------
+/*   Score
+ * fin del juego :  1.- que no se pueeda sumar en ninguna posicion .  2.- que no exista casillas vacias. 3.- que una casillas sume 2048
+ * 
+ * Verificar: al inicio del juego que salte 4  
+ */
+//
 public class Board {
     public int[][] board;
     public int score;
@@ -87,9 +95,11 @@ public class Board {
             for(int col=0;col<4;col++) {
                 for(int row=0;row<4-1;row++) {
                     if(board[row][col]==board[row+1][col]) {
-                        board[row][col]+=board[row+1][col];
+                        board[row][col]+=board[row+1][col];//suma
                         board[row+1][col]=0;
-                        break;
+
+                        score = score + board[row][col];// vscore + numero sumado
+                        continue;
 
                    }
                 }
@@ -115,7 +125,7 @@ public class Board {
     }
 
 
-    public void moveNumberR(char direction) {
+    public void moveNumberRight(char direction) {
 
         if (direction == 'd') {
             for(int row=0;row<4;row++){
@@ -134,12 +144,13 @@ public class Board {
 
              }
 
-            for(int row=0;row<4;row++) {
-                for(int col=4-1;col>0;col--) {
-                    if(board[row][col]==board[row][col-1]) {
-                        board[row][col]+=board[row][col-1];
+            for(int row = 0; row < 4; row++) {
+                for(int col = 4 - 1; col > 0; col--) {
+                    if(board[row][col] == board[row][col - 1]) {
+                        board[row][col] += board[row][col - 1];
                         board[row][col-1]=0;
-                        break;
+                        score = score + board[row][col];// vscore + numero sumado
+                        continue;
                     }
                 }
             }
@@ -154,7 +165,7 @@ public class Board {
                           if(4-1-count!=col)
                           { board[row][col]=0;}
                           count++;}
-
+                      
                     }
 
             }
@@ -162,7 +173,7 @@ public class Board {
         }
     }
 
-    public void moveNumberL(char direction) {
+    public void moveNumberLeft(char direction) {
 
         if (direction == 'a') {
             for(int row=0;row<4;row++) {
@@ -182,9 +193,10 @@ public class Board {
             for(int row=0;row<4;row++) {
                 for(int col=0;col<4-1;col++) {
                     if(board[row][col]==board[row][col+1]) {
-                        board[row][col]+=board[row][col+1];
+                        board[row][col]+=board[row][col+1];   // suma
                         board[row][col+1]=0;
-                        break;
+                        score = score + board[row][col];// vscore + numero sumado
+                        continue;
 
                    }
                 }
@@ -229,16 +241,14 @@ public class Board {
                     if(board[row][col]==board[row-1][col]) {
                         board[row][col]+=board[row-1][col];
                         board[row-1][col]=0;
-                        break;
-
+                        score = score + board[row][col];// vscore + numero sumado
+                        continue;
                    }
                 }
                 }
             for(int col=0;col<4;col++) {
-
                 int count=0;
                 for(int row=4-1;row>=0;row--) {
-
                        if(board[row][col]!=0) {
                         board[4-1-count][col]=board[row][col];
                         if(4-1-count!=row) {
@@ -251,6 +261,10 @@ public class Board {
                  }
         }
 
+    }
+    public void showScore() {
+    
+    System.out.println(" Score : " + score);
     }
 
 }

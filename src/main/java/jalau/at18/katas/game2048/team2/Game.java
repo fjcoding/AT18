@@ -3,6 +3,8 @@ package jalau.at18.katas.game2048.team2;
 import java.util.Random;
 
 public class Game {
+    public static final int SIZE = 4;
+    public static final int SCORE = 2048;
     private Board board;
     private char character;
 
@@ -27,8 +29,8 @@ public class Game {
         int row;
         int column;
         Random r = new Random();
-        row = r.nextInt(4) + 0; // range 0-3
-        column = r.nextInt(4) + 0;
+        row = r.nextInt(SIZE) + 0; // range 0-3
+        column = r.nextInt(SIZE) + 0;
         // System.out.println("row: "+row );
         if (board.isValidThePosition(row, column) == true) {
             board.replacePositions(row, column, 2);
@@ -44,31 +46,30 @@ public class Game {
     }
 
     public void moveUp() {
-
         System.out.println("se presiono arriba");
         board.moveNumberUp('w');
-
     }
 
     public void moveLeft() {
-
         System.out.println("se presiono izquierda");
         board.moveNumberLeft('a');
-
     }
 
     public void moveRight() {
-
         System.out.println("se presiono derecha");
         board.moveNumberRight('d');
-
     }
 
     public void moveDown() {
-
         System.out.println("se presiono abajo");
         board.MoveNumberD('s');
+    }
 
+    public void finishGame() {
+        if (board.showScore() == SCORE) {
+            System.out.println("YOU WIN! CONGRATULATIONS");
+            System.exit(0);
+        }
     }
 
 }

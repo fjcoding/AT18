@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Board board = new Board(4, 0);
+        Board board = new Board(SIZE, 0);
         Game game = new Game(board);
         game.start();
 
@@ -17,6 +17,7 @@ public class Main {
             if (letter == 'w') {
                 game.moveUp();
                 game.random();
+                game.finishGame();
                 board.showTable();
                 board.showScore();
 
@@ -24,6 +25,7 @@ public class Main {
             if (letter == 's') {
                 game.moveDown();
                 game.random();
+                game.finishGame();
                 board.showTable();
                 board.showScore();
 
@@ -31,6 +33,7 @@ public class Main {
             if (letter == 'a') {
                 game.moveLeft();
                 game.random();
+                game.finishGame();
                 board.showTable();
                 board.showScore();
 
@@ -38,6 +41,7 @@ public class Main {
             if (letter == 'd') {
                 game.moveRight();
                 game.random();
+                game.finishGame();
                 board.showTable();
                 board.showScore();
 

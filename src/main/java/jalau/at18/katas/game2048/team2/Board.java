@@ -1,6 +1,6 @@
 package jalau.at18.katas.game2048.team2;
 
-import java.util.Random;
+//import java.util.Random;
 //import java.util.Vector;
 
 //import javax.swing.text.Position;
@@ -17,23 +17,23 @@ import java.util.Random;
 //--------------------------------------
 /*   Score
  * fin del juego :  1.- que no se pueeda sumar en ninguna posicion .  2.- que no exista casillas vacias. 3.- que una casillas sume 2048
- * 
- * Verificar: al inicio del juego que salte 4  
+ *
+ * Verificar: al inicio del juego que salte 4
  */
 //
 public class Board {
-    public int[][] board;
-    public int score;
-    public int sizeBoard;
-    public final int tokenInitial = 2;
-    public final int tokenSecond = 2;
-    public final int size = 4;
+    private int[][] board;
+    private int score;
+    private int sizeBoard;
+    private final int tokenInitial = 2;
+    private final int tokenSecond = 2;
+    private final int size = 4;
 
     public Board(int sizeBoard, int score) {
         this.sizeBoard = sizeBoard;
         this.score = score;
         score = 0;
-        board = new int[4][4];
+        board = new int[size][size];
         createTable();
     }
 
@@ -76,9 +76,9 @@ public class Board {
     public void moveNumberUp(char direction) {
 
         if (direction == 'w') {
-            for (int col = 0; col < 4; col++) {
+            for (int col = 0; col < size; col++) {
                 int count = 0;
-                for (int row = 0; row < 4; row++) {
+                for (int row = 0; row < size; row++) {
                     if (board[row][col] != 0) {
                         board[0 + count][col] = board[row][col];
 
@@ -92,22 +92,21 @@ public class Board {
 
             }
 
-            for (int col = 0; col < 4; col++) {
-                for (int row = 0; row < 4 - 1; row++) {
+            for (int col = 0; col < size; col++) {
+                for (int row = 0; row < size - 1; row++) {
                     if (board[row][col] == board[row + 1][col]) {
                         board[row][col] += board[row + 1][col];// suma
                         board[row + 1][col] = 0;
 
                         score = score + board[row][col];// vscore + numero sumado
                         continue;
-
                     }
                 }
             }
-            for (int col = 0; col < 4; col++) {
+            for (int col = 0; col < size; col++) {
 
                 int count = 0;
-                for (int row = 0; row < 4; row++) {
+                for (int row = 0; row < size; row++) {
                     if (board[row][col] != 0) {
                         board[0 + count][col] = board[row][col];
 
@@ -119,20 +118,19 @@ public class Board {
                 }
 
             }
-
         }
     }
 
     public void moveNumberRight(char direction) {
 
         if (direction == 'd') {
-            for (int row = 0; row < 4; row++) {
+            for (int row = 0; row < size; row++) {
                 int count = 0;
-                for (int col = 4 - 1; col >= 0; col--) {
+                for (int col = size - 1; col >= 0; col--) {
 
                     if (board[row][col] != 0) {
-                        board[row][4 - 1 - count] = board[row][col];
-                        if (4 - 1 - count != col) {
+                        board[row][size - 1 - count] = board[row][col];
+                        if (size - 1 - count != col) {
                             board[row][col] = 0;
                         }
                         count++;
@@ -142,8 +140,8 @@ public class Board {
 
             }
 
-            for (int row = 0; row < 4; row++) {
-                for (int col = 4 - 1; col > 0; col--) {
+            for (int row = 0; row < size; row++) {
+                for (int col = size - 1; col > 0; col--) {
                     if (board[row][col] == board[row][col - 1]) {
                         board[row][col] += board[row][col - 1];
                         board[row][col - 1] = 0;
@@ -152,14 +150,14 @@ public class Board {
                     }
                 }
             }
-            for (int row = 0; row < 4; row++) {
+            for (int row = 0; row < size; row++) {
                 int count = 0;
 
-                for (int col = 4 - 1; col >= 0; col--) {
+                for (int col = size - 1; col >= 0; col--) {
                     if (board[row][col] != 0) {
-                        board[row][4 - 1 - count] = board[row][col];
+                        board[row][size - 1 - count] = board[row][col];
                         // empty the original tile position after tile is moved
-                        if (4 - 1 - count != col) {
+                        if (size - 1 - count != col) {
                             board[row][col] = 0;
                         }
                         count++;
@@ -175,9 +173,9 @@ public class Board {
     public void moveNumberLeft(char direction) {
 
         if (direction == 'a') {
-            for (int row = 0; row < 4; row++) {
+            for (int row = 0; row < size; row++) {
                 int count = 0;
-                for (int col = 0; col < 4; col++) {
+                for (int col = 0; col < size; col++) {
                     if (board[row][col] != 0) {
 
                         board[row][0 + count] = board[row][col];
@@ -190,8 +188,8 @@ public class Board {
 
             }
 
-            for (int row = 0; row < 4; row++) {
-                for (int col = 0; col < 4 - 1; col++) {
+            for (int row = 0; row < size; row++) {
+                for (int col = 0; col < size - 1; col++) {
                     if (board[row][col] == board[row][col + 1]) {
                         board[row][col] += board[row][col + 1]; // suma
                         board[row][col + 1] = 0;
@@ -201,9 +199,9 @@ public class Board {
                     }
                 }
             }
-            for (int row = 0; row < 4; row++) {
+            for (int row = 0; row < size; row++) {
                 int count = 0;
-                for (int col = 0; col < 4; col++) {
+                for (int col = 0; col < size; col++) {
 
                     if (board[row][col] != 0) {
                         board[row][0 + count] = board[row][col];
@@ -223,12 +221,12 @@ public class Board {
         int cont = 0;
         if (direction == 's') {
 
-            for (int col = 0; col < 4; col++) {
+            for (int col = 0; col < size; col++) {
                 int count = 0;
-                for (int row = 4 - 1; row >= 0; row--) {
+                for (int row = size - 1; row >= 0; row--) {
                     if (board[row][col] != 0) {
-                        board[4 - 1 - count][col] = board[row][col];
-                        if (4 - 1 - count != row) {
+                        board[size - 1 - count][col] = board[row][col];
+                        if (size - 1 - count != row) {
 
                             board[row][col] = 0;
                         }
@@ -239,8 +237,8 @@ public class Board {
 
             }
             // sumar
-            for (int col = 0; col < 4; col++) {
-                for (int row = 4 - 1; row > 0; row--) {
+            for (int col = 0; col < size; col++) {
+                for (int row = size - 1; row > 0; row--) {
                     if (board[row][col] == board[row - 1][col]) {
                         board[row][col] += board[row - 1][col];
                         board[row - 1][col] = 0;
@@ -249,12 +247,12 @@ public class Board {
                     }
                 }
             }
-            for (int col = 0; col < 4; col++) {
+            for (int col = 0; col < size; col++) {
                 int count = 0;
-                for (int row = 4 - 1; row >= 0; row--) {
+                for (int row = size - 1; row >= 0; row--) {
                     if (board[row][col] != 0) {
-                        board[4 - 1 - count][col] = board[row][col];
-                        if (4 - 1 - count != row) {
+                        board[size - 1 - count][col] = board[row][col];
+                        if (size - 1 - count != row) {
                             board[row][col] = 0;
                         }
                         count++;
@@ -267,15 +265,16 @@ public class Board {
 
     }
 
-    public void showScore() {
-
+    public int showScore() {
+        int points = score;
         System.out.println(" Score : " + score);
+        return points;
     }
 
     public int countZeros() {
         int count = 0;
-        for (int col = 0; col < 4; col++) {
-            for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < size; col++) {
+            for (int row = 0; row < size; row++) {
                 if (board[col][row] == 0) {
                     count++;
                 }

@@ -5,17 +5,38 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Board board = new Board(4, 0);
+        Game game = new Game(board);
+        game.start();
+
+
         while(true) {
             System.out.println("Input a character 's' to start or 'n' to finish");
             char letter = scanner.next().charAt(0);
-            if (letter == 's') {
-                Board board = new Board(4, 0);
-                board.createTable();
+            if (letter == 'w') {
+                game.moveUp();
                 board.showTable();
-                board.generateTokens();
-            } else {
+
+            }
+            if (letter == 's') {
+                game.moveDown();
+                board.showTable();
+
+            }
+            if (letter == 'a') {
+                game.moveLeft();
+                board.showTable();
+
+            }
+            if (letter == 'd') {
+                game.moveRight();
+                board.showTable();
+
+            }
+            else if(letter == 'z') {
                 break;
             }
         }
+
     }
 }

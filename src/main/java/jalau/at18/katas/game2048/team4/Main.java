@@ -14,18 +14,18 @@ public class Main {
         System.out.println("Bienvenido al juego");
         String exit = "Y";
         String continuePlaying;
-
+        
         showMatrix();
         System.out.println();
         putNewTwoOnMatrix();
         putNewTwoOnMatrix();
         showMatrix();
         System.out.println();
-
+        
         do {
-
+            
             isWinner();
-
+            
             System.out.println("Type the direction you want to go \nDirections: up, left, right, down");
             nextDirection = keyBoard.nextLine();
             directionChecker(nextDirection);
@@ -33,13 +33,13 @@ public class Main {
             System.out.println("\nIf you want to stop playing type exit \nif not type any key");
             continuePlaying = keyBoard.nextLine();
             if (continuePlaying.equals("exit")) {
-                exit = "exit";
+                exit = "exit";     
             }
-
+            
         } while (!isWinner() && exit != "exit" && !isLoser()); // The game stops when the player type exit or wins
 
         keyBoard.close();
-
+        
     }
 
     static void showMatrix() {
@@ -59,30 +59,30 @@ public class Main {
                 }
             }
         }
-        return false;
+        return false; 
     }
 
     static void directionChecker(String direction) { //
         switch (direction) {
             case "up":
-                System.out.println("You move the numbers up!");
-                moveNumbersUp();
-                putNewTwoOnMatrix();
-                System.out.println();
+              System.out.println("You move the numbers up!");
+              moveNumbersUp();
+              putNewTwoOnMatrix();
+              System.out.println();
 
-                break;
+              break;
             case "left":
-                System.out.println("leeeft");
-                break;
+            System.out.println("leeeft");
+              break;
             case "right":
-                System.out.println("riiight");
-                break;
+            System.out.println("riiight");
+              break;
             case "down":
-                System.out.println("dooown");
-                break;
+            System.out.println("dooown");
+              break; 
             default:
-                System.out.println("Type a correct direction");
-        }
+              System.out.println("Type a correct direction");
+          }
     }
 
     static void moveNumbersUp() {
@@ -93,10 +93,10 @@ public class Main {
                 } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == 0) {
                     // for (int innerIndex = index; innerIndex >= 0 || matrix[innerIndex -
                     // 1][jIndex] != 0; innerIndex--) {
-                    matrix[index - 1][jIndex] = matrix[index][jIndex];
-                    matrix[index][jIndex] = 0;
+                        matrix[index - 1][jIndex] = matrix[index][jIndex];
+                        matrix[index][jIndex] = 0;
                     // } // movu up till reach a border or a number
-
+                    
                 }
             }
         }
@@ -107,10 +107,10 @@ public class Main {
         int randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         while (matrix[randomPositionX][randomPositionY] != 0) { // It searchs a cell with a 0 for putting a 2
             randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
-            randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
+            randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1); 
         }
         matrix[randomPositionX][randomPositionY] = 2;
-    }
+    } 
 
     // Is loser function
     static boolean isLoser() {
@@ -121,7 +121,8 @@ public class Main {
                 }
             }
         }
+        System.out.println("Game Over");
         return true;
-    }
+}
 
 }

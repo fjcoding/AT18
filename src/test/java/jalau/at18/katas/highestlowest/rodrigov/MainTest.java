@@ -1,8 +1,7 @@
-package jalau.at18.katas.highestlowest;
+package jalau.at18.katas.highestlowest.rodrigov;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import jalau.at18.katas.highestlowest.rodrigov.Main;
 public class MainTest {
 
     @Test

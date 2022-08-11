@@ -11,10 +11,14 @@ public class Main {
         final int threePeople = 3;
         final int fourPeople = 4;
         if (names.length == 0) {
-            nameDisplay = "no one like this";
+            nameDisplay = "no one likes this";
         } else {
             if (names.length == 1) {
-                nameDisplay = names[0] + " like this";
+                if (names[0].length() == 0) {
+                    nameDisplay = "no one likes this";
+                } else {
+                    nameDisplay = names[0] + " likes this";
+                }
             } else {
                 if (names.length == 2) {
                     nameDisplay = names[0] + " and " + names[1] + " like this";

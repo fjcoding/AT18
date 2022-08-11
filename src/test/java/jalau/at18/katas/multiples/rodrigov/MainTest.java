@@ -1,8 +1,7 @@
-package jalau.at18.katas.multiples;
+package jalau.at18.katas.multiples.rodrigov;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import jalau.at18.katas.multiples.rodrigov.Main;
 public class MainTest {
     @Test
     public void shouldReturnSumOfTheMultiples() {

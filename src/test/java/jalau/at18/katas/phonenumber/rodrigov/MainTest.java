@@ -1,8 +1,7 @@
-package jalau.at18.katas.phonenumber;
+package jalau.at18.katas.phonenumber.rodrigov;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import jalau.at18.katas.phonenumber.rodrigov.Main;
 public class MainTest {
     @Test
     public void shouldReturnPhoneNumberRefactored() {

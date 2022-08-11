@@ -25,7 +25,8 @@ public class Board {
         this.sizeBoard = sizeBoard;
         this.score = score;
         score = 0;
-        board = new int[size][size];
+        board = new int[4][4];
+        createTable();
     }
 
     public void showTable() {
@@ -44,35 +45,69 @@ public class Board {
             }
         }
     }
-
-    public void generateTokens() {
-        int[][] matrix = new int[size][size];
-        Random random = new Random();
-        int firstNumberRandomRow = random.nextInt(matrix.length);
-        int firstNumberRandomColumn = random.nextInt(matrix.length);
-        System.out.print("Row:" + firstNumberRandomRow + ", ");
-        System.out.print("Column:" + firstNumberRandomColumn + ": ");
-        // Position 2
-        int secondNumberRandomRow = random.nextInt(matrix.length);
-        int secondNumberRandomColumn = random.nextInt(matrix.length);
-        System.out.print("Row:" + secondNumberRandomRow + ", ");
-        System.out.println("Column:" + secondNumberRandomColumn + ": ");
-        int[][] mainMatrix = new int[size][size];
-        for (int index = 0; index < mainMatrix[0].length; index++) {
-            for (int indej = 0; indej < mainMatrix[1].length; indej++) {
-                if (index == firstNumberRandomRow && indej == firstNumberRandomColumn) {
-                    mainMatrix[index][indej] = tokenInitial;
-                }
-                if (index == secondNumberRandomRow && indej == secondNumberRandomColumn) {
-                    mainMatrix[index][indej] = tokenSecond;
-                }
-                System.out.print(mainMatrix[index][indej] + " ");
-            }
-            System.out.println("");
+    public int getPosition(int x, int y) {
+        return board[x][y];
+    }
+    public boolean isValidThePosition(int x, int y) {
+        if(board[x][y] == 0) {
+            return true;
+        } else {
+            return false;
         }
     }
+    public void replacePositions(int position1, int Position2, int number) {
 
-    public void replacePositions(int position1, int position2) {
+        if (board[position1][Position2] == 0) {
+            board[position1][Position2] = number;
+        }
+    }
+    public void moveNumbers(char direction) {
+        if(direction == 'w') {
+            for (int indexRows = 0; indexRows < 4; indexRows++) {
+                for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
+                    if( board[indexRows][indexColumns] != 0 && indexRows !=0){
+                        board[0][indexColumns] = board[indexRows][indexColumns];
+                        board[indexRows][indexColumns] = 0;
+                    }
+                }
+
+            }
+        }
+        if(direction == 'a') {
+            for (int indexRows = 0; indexRows < 4; indexRows++) {
+                for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
+                    if( board[indexRows][indexColumns] != 0 && indexColumns !=0){
+                        board[indexRows][0] = board[indexRows][indexColumns];
+                        board[indexRows][indexColumns] = 0;
+                    }
+                }
+
+            }
+        }
+        if(direction == 'd') {
+            for (int indexRows = 0; indexRows < 4; indexRows++) {
+                for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
+                    if( board[indexRows][indexColumns] != 0 && indexColumns !=0){
+                        board[indexRows][3] = board[indexRows][indexColumns];
+                        board[indexRows][indexColumns] = 0;
+                    }
+                }
+
+            }
+        }
+        if(direction == 's') {
+            for (int indexRows = 0; indexRows < 4; indexRows++) {
+                for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
+                    if( board[indexRows][indexColumns] != 0 && indexRows !=0){
+                        board[3][indexColumns] = board[indexRows][indexColumns];
+                        board[indexRows][indexColumns] = 0;
+                    }
+                }
+
+            }
+        }
+
+
     }
 
 }

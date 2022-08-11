@@ -11,8 +11,8 @@ public class Main {
                           {2, 2, 2, 2},
                           {2, ZERO, 2, 2}};
         Main main = new Main();
-        main.upMove(matrix);
-        */
+        main.downMove(matrix);*/
+        
     }
 
     public void rightMove(int[][] matrix) {
@@ -46,9 +46,6 @@ public class Main {
             }
         }
         showMatrix();
-    }
-
-    public void downMove(int[][] matrix) {
     }
 
     public void leftMove(int[][] matrix) {
@@ -113,6 +110,43 @@ public class Main {
                             matrixG[column][row] = matrixG[colAux][row];
                             matrixG[colAux][row] = ZERO;
                             break;
+                        }
+                    }
+                }
+            }
+        }
+        showMatrix();
+    }
+
+    public void downMove(int[][] matrix) {
+        for (int i = ZERO; i < MAX_SIZE; i++) {
+            for (int j = MAX_INDEX; j > ZERO; j--) {
+                if(matrix[j][i] != ZERO) {
+                    int j2 = j-1;
+                    if (matrix[j2][i] != ZERO && matrix[j][i] == matrix[j2][i]) {
+                        matrix[j][i] =  matrix[j][i] + matrix[j2][i];
+                        matrix[j2][i] = ZERO;
+                    } else {
+                        if (matrix[j2][i] == ZERO) {
+                            matrix[j2][i] = matrix[j][i];
+                            matrix[j][i] = ZERO;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        matrixG = matrix;
+        arrangeDown();
+    }
+    public void arrangeDown() {
+        for(int i = 0; i < MAX_SIZE ; i++) {
+            for(int j = 0; j < MAX_SIZE; j++) {
+                if(matrixG[j][i]==0){
+                    for (int j2 = j-1; j2 >= ZERO; j2--) {
+                        if(matrixG[j2][i] != ZERO){
+                            matrixG[j][i] = matrixG[j2][i];
+                            matrixG[j2][i] = ZERO;
                         }
                     }
                 }

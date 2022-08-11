@@ -219,6 +219,30 @@ public class Main {
         return matrix;
     }
 
+    public static void gameOver(Integer[][] matrix) {
+        Integer countZeros = 0;
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix.length; column++) {
+                if (matrix[row][column] == 0){
+                    countZeros++;
+                }
+            }
+        }
+        if (countZeros == 0){
+            
+            
+            System.out.println("Game Over");
+        }
+    }
+
+    public static Boolean verifySideUp(Integer[][] matrix) {
+        Integer countEquals = 0;
+        for (int row = 1; row < matrix.length; row++) {
+            for (int column = 0; column < matrix.length; column++) {
+                if (matrix[row][column] == matrix[row-1][column]){
+                    countEquals++;
+                }
+            }
+        }
+    }
 }
-
-

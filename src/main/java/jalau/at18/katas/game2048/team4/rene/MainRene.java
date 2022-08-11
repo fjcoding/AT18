@@ -1,12 +1,9 @@
-package jalau.at18.katas.game2048.team4.mauricio;
+package jalau.at18.katas.game2048.team4.rene;
 
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-
-
-
-public class Main1 {
+public class MainRene {
     public static int[][] matrix = new int[4][4];
     public static String nextDirection;
     public static final int MIN_BOUND = 0;
@@ -129,3 +126,4 @@ public class Main1 {
 }
 
 }
+

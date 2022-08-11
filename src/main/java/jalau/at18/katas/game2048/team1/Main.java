@@ -8,26 +8,13 @@ import java.util.Scanner;
 public class Main {
     //final int RANDOM_INITIAL_VALUES = 2;
     public static void main(String[] args) {
-        /*
-        for (int i = 0; i < 40; i++) {
-            System.out.println(Arrays.toString(randomValuesGrid()));
-        }
-        */
-        /*
-        int[] initialValues = randomValuesGrid();
-        Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println("");
-        }
-        */
+        
         int[] initialValues = randomValuesGrid();
         Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
         printMatrix(matrix);
-        direcctions(matrix); // se envia la matriz
+        //direcctions(matrix); // se envia la matriz
+        //Integer [][] testMatrix = {{1,1,1,1},{5,6,7,8},{2,2,2,2},{3,5,9,7}};
+        //System.out.println(verifySideUp(testMatrix));
 
     }
 
@@ -236,13 +223,26 @@ public class Main {
     }
 
     public static Boolean verifySideUp(Integer[][] matrix) {
-        Integer countEquals = 0;
+        boolean check = false;
         for (int row = 1; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
                 if (matrix[row][column] == matrix[row-1][column]){
-                    countEquals++;
+                    check = true;
                 }
             }
         }
+        return check;
+    }
+
+    public static Boolean verifySideLeft(Integer[][] matrix) {
+        boolean check = false;
+        for (int column = 1; column < matrix.length; column++) {
+            for (int row = 0; row < matrix.length; row++) {
+                if (matrix[row][column] == matrix[row][column-1]){
+                    check = true;
+                }
+            }
+        }
+        return check;
     }
 }

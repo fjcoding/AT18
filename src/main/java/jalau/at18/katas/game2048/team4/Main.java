@@ -18,12 +18,10 @@ public class Main {
         showMatrix();
         System.out.println();
         putNewTwoOnMatrix();
-        showMatrix();
-        System.out.println();
         putNewTwoOnMatrix();
         showMatrix();
         System.out.println();
-        showMatrix();
+        
         
         do{
             
@@ -104,13 +102,15 @@ public class Main {
             }
         }
     }
-    static void putNewTwoOnMatrix() {
-        int positionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
-        int positionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
-        matrix[positionX][positionY] = 2;
-    }
-
-    
+    static void putNewTwoOnMatrix() { //Recursividad?
+        int randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
+        int randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
+        while (matrix[randomPositionX][randomPositionY] != 0) {
+            randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
+            randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1); 
+        }
+        matrix[randomPositionX][randomPositionY] = 2;
+    } 
 
 }
 

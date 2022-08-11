@@ -11,8 +11,7 @@ public class Main {
         Game game = new Game(board);
         game.start();
 
-
-        while(true) {
+        while (true) {
             System.out.println("Input a character 's' to start or 'n' to finish");
             char letter = scanner.next().charAt(0);
             if (letter == 'w') {
@@ -20,7 +19,6 @@ public class Main {
                 game.random();
                 board.showTable();
                 board.showScore();
-
 
             }
             if (letter == 's') {
@@ -43,8 +41,7 @@ public class Main {
                 board.showTable();
                 board.showScore();
 
-            }
-            else if(letter == 'z') {
+            } else if (letter == 'z') {
                 board.showScore();
                 break;
             }

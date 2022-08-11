@@ -65,67 +65,190 @@ public class Board {
         }
     }
 
-    public void moveNumbers(char direction) {
+    public void moveNumberUp(char direction) {
+
         if (direction == 'w') {
-            for (int indexRow = 1; indexRow < 4; indexRow++) {
-                if (board[indexRow - 1][0] == 0) {
-                    board[indexRow - 1][0] = board[indexRow][0];
-                    board[indexRow][0] = 0;
+            for(int col=0;col<4;col++){
+                int count=0;
+                for(int row=0;row<4;row++) {
+                   if(board[row][col]!=0) {
+                        board[0+count][col]=board[row][col];
+
+                        if(0+count!=row) {
+                            board[row][col]=0;
+                        }
+                            count++;
+                        }
+
+                }
+
+             }
+
+            for(int col=0;col<4;col++) {
+                for(int row=0;row<4-1;row++) {
+                    if(board[row][col]==board[row+1][col]) {
+                        board[row][col]+=board[row+1][col];
+                        board[row+1][col]=0;
+                        break;
+
+                   }
                 }
             }
-            /*
-             * for (int indexRows = 0; indexRows < 4; indexRows++) {
-             * for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
-             * if( board[indexRows][indexColumns] != 0 && indexRows !=0){
-             * board[0][indexColumns] = board[indexRows][indexColumns];
-             * board[indexRows][indexColumns] = 0;
-             * }
-             * }
-             *
-             * }
-             */
-        }
-    }
+            for(int col=0;col<4;col++) {
 
-    public void moveNumberR(char direction) {
-        if (direction == 'a') {
-            for (int indexRows = 0; indexRows < 4; indexRows++) {
-                for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
-                    if (board[indexRows][indexColumns] != 0 && indexColumns != 0) {
-                        board[indexRows][0] = board[indexRows][indexColumns];
-                        board[indexRows][indexColumns] = 0;
+                int count=0;
+                for(int row=0;row<4;row++) {
+                    if(board[row][col]!=0) {
+                        board[0+count][col]=board[row][col];
+
+                        if(0+count!=row) {
+                            board[row][col]=0;
+                        }
+                        count++;
                     }
                 }
 
             }
+
+
+        }
+    }
+
+
+    public void moveNumberR(char direction) {
+
+        if (direction == 'd') {
+            for(int row=0;row<4;row++){
+                int count=0;
+                for(int col=4-1;col>=0;col--) {
+
+                    if(board[row][col]!=0) {
+                        board[row][4-1-count]=board[row][col];
+                        if(4-1-count!=col) {
+                            board[row][col]=0;
+                        }
+                    count++;
+                    }
+
+                }
+
+             }
+
+            for(int row=0;row<4;row++) {
+                for(int col=4-1;col>0;col--) {
+                    if(board[row][col]==board[row][col-1]) {
+                        board[row][col]+=board[row][col-1];
+                        board[row][col-1]=0;
+                        break;
+                    }
+                }
+            }
+            for(int row=0;row<4;row++){
+                    int count=0;
+
+                    for(int col=4-1;col>=0;col--)
+                    {
+                       if(board[row][col]!=0)
+                       {   board[row][4-1-count]=board[row][col];
+                          //empty the original tile position after tile is moved
+                          if(4-1-count!=col)
+                          { board[row][col]=0;}
+                          count++;}
+
+                    }
+
+            }
+
         }
     }
 
     public void moveNumberL(char direction) {
-        if (direction == 'd') {
-            for (int indexRows = 0; indexRows < 4; indexRows++) {
-                for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
-                    if (board[indexRows][indexColumns] != 0 && indexColumns != 0) {
-                        board[indexRows][3] = board[indexRows][indexColumns];
-                        board[indexRows][indexColumns] = 0;
+
+        if (direction == 'a') {
+            for(int row=0;row<4;row++) {
+                int count=0;
+                for(int col=0;col<4;col++) {
+                   if(board[row][col]!=0) {
+
+                    board[row][0+count]=board[row][col];
+                    if(0+count!=col) {
+                        board[row][col]=0;}
+                        count++;
                     }
                 }
 
+             }
+
+            for(int row=0;row<4;row++) {
+                for(int col=0;col<4-1;col++) {
+                    if(board[row][col]==board[row][col+1]) {
+                        board[row][col]+=board[row][col+1];
+                        board[row][col+1]=0;
+                        break;
+
+                   }
+                }
             }
-        }
+            for(int row=0;row<4;row++) {
+                int count=0;
+                for(int col=0;col<4;col++) {
+
+                    if(board[row][col]!=0) {
+                        board[row][0+count]=board[row][col];
+                        if(0+count!=col) {
+                            board[row][col]=0;}
+                            count++;}
+                    }
+
+                 }
+
+    }
     }
 
     public void MoveNumberD(char direction) {
+        int cont = 0;
         if (direction == 's') {
-            for (int indexRows = 0; indexRows < 4; indexRows++) {
-                for (int indexColumns = 0; indexColumns < 4; indexColumns++) {
-                    if (board[indexRows][indexColumns] != 0 && indexRows != 0) {
-                        board[3][indexColumns] = board[indexRows][indexColumns];
-                        board[indexRows][indexColumns] = 0;
+
+            for(int col=0;col<4;col++){
+                int count=0;
+                for(int row=4-1;row>=0;row--) {
+                   if(board[row][col]!=0) {
+                    board[4-1-count][col]=board[row][col];
+                    if(4-1-count!=row) {
+
+                        board[row][col]=0;}
+                        count++;
                     }
+
                 }
 
-            }
+             }
+             //sumar
+            for(int col=0;col<4;col++) {
+                for(int row=4-1;row>0;row--) {
+                    if(board[row][col]==board[row-1][col]) {
+                        board[row][col]+=board[row-1][col];
+                        board[row-1][col]=0;
+                        break;
+
+                   }
+                }
+                }
+            for(int col=0;col<4;col++) {
+
+                int count=0;
+                for(int row=4-1;row>=0;row--) {
+
+                       if(board[row][col]!=0) {
+                        board[4-1-count][col]=board[row][col];
+                        if(4-1-count!=row) {
+
+                        board[row][col]=0;}
+                        count++;}
+
+                    }
+
+                 }
         }
 
     }

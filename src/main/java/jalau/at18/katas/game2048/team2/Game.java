@@ -29,33 +29,35 @@ public class Game {
         if (board.isValidThePosition(row, column)) {
             board.replacePositions(row, column, 2);
         } else {
+
             System.out.println("no es valido");
+            random();
         }
 
     }
     public void moveUp() {
 
         System.out.println("se presiono arriba");
-        board.moveNumbers('w');
+        board.moveNumberUp('w');
 
 
     }
     public void moveLeft() {
 
         System.out.println("se presiono izquierda");
-        board.moveNumbers('a');
+        board.moveNumberL('a');
 
     }
     public void moveRight() {
 
         System.out.println("se presiono derecha");
-        board.moveNumbers('d');
+        board.moveNumberR('d');
 
     }
     public void moveDown() {
 
         System.out.println("se presiono abajo");
-        board.moveNumbers('s');
+        board.MoveNumberD('s');
 
     }
 }

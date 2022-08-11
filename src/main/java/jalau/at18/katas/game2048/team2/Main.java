@@ -17,21 +17,26 @@ public class Main {
             char letter = scanner.next().charAt(0);
             if (letter == 'w') {
                 game.moveUp();
+                game.random();
                 board.showTable();
+
 
             }
             if (letter == 's') {
                 game.moveDown();
+                game.random();
                 board.showTable();
 
             }
             if (letter == 'a') {
                 game.moveLeft();
+                game.random();
                 board.showTable();
 
             }
             if (letter == 'd') {
                 game.moveRight();
+                game.random();
                 board.showTable();
 
             }

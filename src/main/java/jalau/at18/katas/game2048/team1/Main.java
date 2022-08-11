@@ -27,8 +27,8 @@ public class Main {
         Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
         printMatrix(matrix);
         direcctions();
-
     }
+
     public static void printMatrix(Integer [][] matrix){
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
@@ -39,7 +39,7 @@ public class Main {
     }
 
     public static int[] randomValuesGrid() {
-        int[] numbers = {2, 4};
+        int[] numbers = { 2, 4 };
         Random random = new Random();
         int upperBound = 2; // utilizado para colocar el maximo valor, en nuestro caso la posicion de mi array
         int numberOne = random.nextInt(upperBound);
@@ -66,22 +66,22 @@ public class Main {
         while (firstPositionRowColum[0]  == secondPositionRowColum[0] && firstPositionRowColum[1]  == secondPositionRowColum[1]){
             secondPositionRowColum = randomPositionGrid();
         }
-
         matrix[firstPositionRowColum[0]][firstPositionRowColum[1]] = firstNumber;
         matrix[secondPositionRowColum[0] ][secondPositionRowColum[1]] = secondNumber;
-
         return matrix;
     }
 
     // w = arriba, a = izquierda, d = derecha, s = abajo
-    public static void direcctions(){
-        System.out.println("Instrucciones del juego");
+    public static void direcctions() {
+        System.out.println("Game intructions");
         System.out.println("Top: w");
         System.out.println("Left: a");
         System.out.println("Right: d");
         System.out.println("Down: s");
+
         Scanner scan = new Scanner(System.in);
         String directionValue = scan.nextLine();
+
         if(directionValue.equals("w")){
             System.out.println("metodo para mover arriba");
         }
@@ -96,9 +96,8 @@ public class Main {
         }
     }
 
-    public static Integer [][] moveTop(Integer[][] matrix){
-
-        Integer[][] matrixAux = new Integer[4][4]; 
+    public static Integer [][] moveTop(Integer[][] matrix) {
+        Integer[][] matrixAux = new Integer[4][4];
         Integer aux = 0;
         for (int row = 1; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
@@ -111,7 +110,6 @@ public class Main {
                 }
             }
         }
-         
     }
-
+    
 }

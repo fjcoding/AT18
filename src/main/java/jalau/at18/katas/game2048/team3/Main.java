@@ -1,5 +1,6 @@
 package jalau.at18.katas.game2048.team3;
 import java.util.Scanner;//
+import java.util.Random;
 // - funcion de busqueda de 1024
 // - funcion sin movimientos
 // - generado de num aleatorio
@@ -9,15 +10,18 @@ public class Main {
     private static final int MAX_SIZE = 4;
     private static final int MAX_INDEX = 3;
     private static final int ZERO = 0;
+    private static final int MIN_VAL = 0;
+    private static final int MAX_VAL = 1;
+    private static final int PRINCIPAL_NUMBER = 2;
     private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
     public static void main(String[] args) {
-        int[][] matrix = {{4, ZERO, ZERO, 4},
-                          {2, ZERO, ZERO, 4},
-                          {ZERO,ZERO,ZERO, 8},
-                          {4, ZERO, 4, 2}};
+        int[][] matrix = {{ZERO, ZERO, ZERO, ZERO},
+                          {ZERO, ZERO, ZERO, ZERO},
+                          {ZERO, ZERO, ZERO, ZERO},
+                          {ZERO, ZERO, ZERO, ZERO}};
         Main main = new Main();
         // main.downMove(matrix);
-        main.readMoves(matrix);
+        main.initializeMatrix(matrix);
         
     }
     // {{2, 0, 2, 0},
@@ -30,6 +34,37 @@ public class Main {
     //0 0 0 8
     //0 0 4 2
 
+    //validar
+    public void initializeMatrix(int [][] matrix){
+        //String [] controlArray = {};
+        for (int attempt = 0; attempt < 2; attempt++) {
+            Random rnd = new Random();
+            int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
+            int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
+            int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
+            //controlArray[attempt] = randomPositionI + " " + randomPositionJ; 
+            if (randomNumber == ZERO) {
+                matrix[randomPositionI][randomPositionJ] = PRINCIPAL_NUMBER;
+            } else {
+                matrix[randomPositionI][randomPositionJ] = MAX_SIZE;
+            }
+        }
+        
+        for (int row = ZERO;row < MAX_SIZE; row++){
+            for (int column = ZERO;column < MAX_SIZE; column++){
+                System.out.print(matrix[row][column]);    
+            }
+            System.out.println();
+        }
+        readMoves(matrix);
+    }
+
+    public void generateRandomNumbers(){
+        Random rnd = new Random();
+        int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
+        int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
+        int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
+    }
 
     public void readMoves(int[][] matrix){
         String input;
@@ -165,17 +200,17 @@ public class Main {
     }
 
     public void downMove(int[][] matrix) {
-        for (int i = ZERO; i < MAX_SIZE; i++) {
-            for (int j = MAX_INDEX; j > ZERO; j--) {
-                if(matrix[j][i] != ZERO) {
-                    int j2 = j-1;
-                    if (matrix[j2][i] != ZERO && matrix[j][i] == matrix[j2][i]) {
-                        matrix[j][i] =  matrix[j][i] + matrix[j2][i];
-                        matrix[j2][i] = ZERO;
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = MAX_INDEX; column > ZERO; column--) {
+                if(matrix[column][row] != ZERO) {
+                    int column2 = column-1;
+                    if (matrix[column2][row] != ZERO && matrix[column][row] == matrix[column2][row]) {
+                        matrix[column][row] =  matrix[column][row] + matrix[column2][row];
+                        matrix[column2][row] = ZERO;
                     } else {
-                        if (matrix[j2][i] == ZERO) {
-                            matrix[j2][i] = matrix[j][i];
-                            matrix[j][i] = ZERO;
+                        if (matrix[column2][row] == ZERO) {
+                            matrix[column2][row] = matrix[column][row];
+                            matrix[column][row] = ZERO;
                         }
                     }
                     break;  
@@ -189,13 +224,13 @@ public class Main {
         didYouWin();
     }
     public void arrangeDown() {
-        for(int i = 0; i < MAX_SIZE ; i++) {
-            for(int j = 0; j < MAX_SIZE; j++) {
-                if(matrixG[j][i]==0){
-                    for (int j2 = j-1; j2 >= ZERO; j2--) {
-                        if(matrixG[j2][i] != ZERO){
-                            matrixG[j][i] = matrixG[j2][i];
-                            matrixG[j2][i] = ZERO;
+        for(int row = 0; row < MAX_SIZE ; row++) {
+            for(int column = 0; column < MAX_SIZE; column++) {
+                if(matrixG[column][row]==0){
+                    for (int column2 = column-1; column2 >= ZERO; column2--) {
+                        if(matrixG[column2][row] != ZERO){
+                            matrixG[column][row] = matrixG[column2][row];
+                            matrixG[column2][row] = ZERO;
                             break;
                         }
                     }
@@ -218,18 +253,17 @@ public class Main {
         return matrixG;
     }
 
-    public boolean didYouWin(){
+    public void didYouWin(){
+
         for (int row = ZERO; row < MAX_SIZE; row++) {
             for (int column = ZERO; column < MAX_SIZE; column++) {
                 if(matrixG[row][column] == 2048){
-                    return true;
-
-                } else {
-                    readMoves(matrixG);
+                    System.out.println("WINNER!!");
+                    break;
                 }
             }
         }
-        return false;
-
+            System.out.println();
+            readMoves(matrixG);
     }
 }

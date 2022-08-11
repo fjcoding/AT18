@@ -8,7 +8,7 @@ public class PhonenumberTest {
     public void testPhonenumber() {
         Phone phone = new Phone();
         final Integer[] inputArray1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-        var outnumber = "(123)456-7890";
+        var outnumber = "(123) 456-7890";
         assertEquals(outnumber, phone.myPhone(inputArray1));
     }
 }

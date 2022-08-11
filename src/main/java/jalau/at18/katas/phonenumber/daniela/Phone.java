@@ -17,7 +17,7 @@ public class Phone {
             }
         }
         //System.out.println("(" + telephone1 + ")" + telephone2 + "-" + telephone3);
-        return "(" + telephone1 + ")" + telephone2 + "-" + telephone3;
+        return "(" + telephone1 + ")"+" " + telephone2 + "-" + telephone3;
     }
 
     public static void main(String[] args) {

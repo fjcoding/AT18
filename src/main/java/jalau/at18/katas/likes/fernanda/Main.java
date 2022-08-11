@@ -18,7 +18,7 @@ public class Main {
     }
     public String whoLikesIt(String likes) {
         String[] nameArray = likes.split(",");
-        String amountLikes = " ";
+        String amountLikes = "";
         if (nameArray.length >= FOUR_OR_MORELIKES) {
             amountLikes = (nameArray[0] + ", " +  nameArray[1] + " and " + (nameArray.length - 2) + " others like this");
         } else {
@@ -29,10 +29,10 @@ public class Main {
                     amountLikes = (nameArray[0] + " and " + nameArray[1] + " like this");
                 } else {
                     if (nameArray.length == 1) {
-                        if (nameArray[0] != " ") {
-                            amountLikes = (nameArray[0] + " likes this");
-                        } else {
+                        if (nameArray[0] == "") {
                             amountLikes = ("No one likes this");
+                        } else {
+                            amountLikes = (nameArray[0] + " likes this");
                         }
                     }
                 }

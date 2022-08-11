@@ -11,10 +11,10 @@ public class Main {
     private static final int ZERO = 0;
     private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
     public static void main(String[] args) {
-        int[][] matrix = {{2, ZERO, 2, ZERO},
-                          {ZERO, ZERO, 2, 2},
-                          {2, 2, 2, 2},
-                          {2, ZERO, 2, 2}};
+        int[][] matrix = {{4, ZERO, ZERO, 4},
+                          {2, ZERO, ZERO, 4},
+                          {ZERO,ZERO,ZERO, 8},
+                          {4, ZERO, 4, 2}};
         Main main = new Main();
         // main.downMove(matrix);
         main.readMoves(matrix);
@@ -25,12 +25,16 @@ public class Main {
     //  {2, 2, 2, 2},
     //  {2, 0, 2, 2}};
 
+    //0 0 0 4
+    //0 0 0 4
+    //0 0 0 8
+    //0 0 4 2
+
 
     public void readMoves(int[][] matrix){
         String input;
         Scanner data = new Scanner(System.in);
         input=data.next();
-        System.out.println(input);
 
         switch (input) {
             case "a":
@@ -66,16 +70,18 @@ public class Main {
         }
         matrixG = matrix;
         arrangeRight();
+        didYouWin();
     }
 
     private void arrangeRight() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
-            for (int column = ZERO; column < MAX_SIZE; column++) {
+            for (int column = MAX_INDEX; column >= ZERO; column--) {
                 if (matrixG[row][column] == ZERO) {
                     for (int colAux = column - 1; colAux >= ZERO; colAux--) {
                         if (matrixG[row][colAux] != ZERO) {
                             matrixG[row][column] = matrixG[row][colAux];
                             matrixG[row][colAux] = ZERO;
+                            break;
                         }
                     }
                 }
@@ -100,6 +106,7 @@ public class Main {
         }
         matrixG = matrix;
         arrangeLeft();
+        didYouWin();
     }
     private void arrangeLeft() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
@@ -109,6 +116,7 @@ public class Main {
                         if (matrixG[row][colAux] != ZERO) {
                             matrixG[row][column] = matrixG[row][colAux];
                             matrixG[row][colAux] = ZERO;
+                            break;
                         }
                     }
                 }
@@ -136,6 +144,7 @@ public class Main {
         }
         matrixG = matrix;
         orderUp();
+        didYouWin();
     }
 
     private void orderUp() {
@@ -169,12 +178,15 @@ public class Main {
                             matrix[j][i] = ZERO;
                         }
                     }
-                    
+                    break;  
                 }
+                
+
             }
         }
         matrixG = matrix;
         arrangeDown();
+        didYouWin();
     }
     public void arrangeDown() {
         for(int i = 0; i < MAX_SIZE ; i++) {
@@ -184,6 +196,7 @@ public class Main {
                         if(matrixG[j2][i] != ZERO){
                             matrixG[j][i] = matrixG[j2][i];
                             matrixG[j2][i] = ZERO;
+                            break;
                         }
                     }
                 }
@@ -195,7 +208,7 @@ public class Main {
     public void showMatrix() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
             for (int column = ZERO; column < MAX_SIZE; column++) {
-                System.out.print(matrixG[row][column]);
+                System.out.print(matrixG[row][column] + " ");
             }
             System.out.println();
         }
@@ -203,5 +216,20 @@ public class Main {
 
     public int[][] getMatrix() {
         return matrixG;
+    }
+
+    public boolean didYouWin(){
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = ZERO; column < MAX_SIZE; column++) {
+                if(matrixG[row][column] == 2048){
+                    return true;
+
+                } else {
+                    readMoves(matrixG);
+                }
+            }
+        }
+        return false;
+
     }
 }

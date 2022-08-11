@@ -72,13 +72,23 @@ public class MainRene {
 
               break;
             case "left":
-            System.out.println("leeeft");
+            System.out.println("You move the numbers left!");
+            moveNumbersLeft();
+            putNewTwoOnMatrix();
+            System.out.println();
+
               break;
             case "right":
-            System.out.println("riiight");
+            System.out.println("You move the numbers right!");
+            moveNumbersRight();
+            putNewTwoOnMatrix();
+            System.out.println();
               break;
             case "down":
-            System.out.println("dooown");
+            System.out.println("You move the numbers down!");
+            moveNumbersDown();
+            putNewTwoOnMatrix();
+            System.out.println();
               break; 
             default:
               System.out.println("Type a correct direction");
@@ -86,6 +96,51 @@ public class MainRene {
     }
 
     static void moveNumbersUp() {
+        for (int index = 0; index < matrix.length; index++) {
+            for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
+                if (matrix[index][jIndex] != 0 && index == 0) {
+                    continue;
+                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == 0) {
+                    for (int innerIndex = index; innerIndex > 0 && matrix[innerIndex - 1][jIndex] == 0; innerIndex--) {
+                        matrix[innerIndex - 1][jIndex] = matrix[innerIndex][jIndex];
+                        matrix[innerIndex][jIndex] = 0;
+                    } // movu up till reach a border or a number
+                    
+                }
+            }
+        }
+    }
+    static void moveNumbersDown() {
+        for (int index = 0; index < matrix.length; index++) {
+            for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
+                if (matrix[index][jIndex] != 0 && index == 3) {
+                    continue;
+                } else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == 0) {
+                    for (int innerIndex = index; innerIndex < 3 && matrix[innerIndex + 1][jIndex] == 0; innerIndex++) {
+                        matrix[innerIndex + 1][jIndex] = matrix[innerIndex][jIndex];
+                        matrix[innerIndex][jIndex] = 0;
+                    } // movu up till reach a border or a number
+                    
+                }
+            }
+        }
+    }
+    static void moveNumbersLeft() { //Fix!!!
+        for (int index = 0; index < matrix.length; index++) {
+            for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
+                if (matrix[index][jIndex] != 0 && jIndex == 0) {
+                    continue;
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == 0) {
+                    for (int innerIndex = jIndex; innerIndex > 0 && matrix[innerIndex][jIndex - 1] == 0; innerIndex--) {
+                        matrix[innerIndex][jIndex - 1] = matrix[innerIndex][jIndex];
+                        matrix[innerIndex][jIndex] = 0;
+                    } // movu up till reach a border or a number
+                    
+                }
+            }
+        }
+    }
+    static void moveNumbersRight() {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && index == 0) {

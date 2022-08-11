@@ -8,13 +8,14 @@ import java.util.Scanner;
 public class Main {
     //final int RANDOM_INITIAL_VALUES = 2;
     public static void main(String[] args) {
-        
+
         int[] initialValues = randomValuesGrid();
         Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
         printMatrix(matrix);
-        //direcctions(matrix); // se envia la matriz
-        //Integer [][] testMatrix = {{1,1,1,1},{5,6,7,8},{2,2,2,2},{3,5,9,7}};
-        //System.out.println(verifySideUp(testMatrix));
+        direcctions(matrix); // se envia la matriz
+        /*Integer [][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
+        gameOver(testMatrix);
+        System.out.println(verifySideUp(testMatrix));*/
 
     }
 
@@ -99,6 +100,7 @@ public class Main {
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
+            gameOver(newMatrix);
         }
         if(directionValue.equals("s")){
             System.out.println("Move down");
@@ -106,6 +108,7 @@ public class Main {
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
+            gameOver(newMatrix);
 
         }
         if(directionValue.equals("a")){
@@ -114,6 +117,7 @@ public class Main {
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
+            gameOver(newMatrix);
         }
         if(directionValue.equals("d")){
             System.out.println("Move Rigth");
@@ -121,6 +125,7 @@ public class Main {
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
+            gameOver(newMatrix);
         }
 
     }
@@ -215,10 +220,12 @@ public class Main {
                 }
             }
         }
-        if (countZeros == 0){
-            
-            
+        Boolean verifySideUp = verifySideUp(matrix);
+        Boolean verifySideLeft = verifySideLeft(matrix);
+
+        if (countZeros == 0 && !(verifySideUp) && !(verifySideLeft) ){
             System.out.println("Game Over");
+            System.exit(0);
         }
     }
 

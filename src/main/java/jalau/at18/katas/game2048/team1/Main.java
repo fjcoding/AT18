@@ -107,7 +107,10 @@ public class Main {
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
         if(directionValue.equals("d")){
-            System.out.println("metodo para mover derecha");
+            System.out.println("Move Rigth");
+            newMatrix=moveRigth(matrix);// guarda la matriz en una nueva
+            printMatrix(newMatrix); // imprime la nueva matriz
+            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
 
     }
@@ -165,6 +168,26 @@ public class Main {
                     }
                     else if (matrix[row][column] != 0 && matrix[row][column-1] == matrix[row][column]){
                         matrix[row][column-1] = 2 * (matrix[row][column]);
+                        matrix[row][column] = 0;
+                    }
+                }
+            }
+        }
+        return matrix;
+    }
+
+    public static Integer [][] moveRigth(Integer[][] matrix){
+        /*Integer[][] matrixAux = new Integer[4][4];
+        Integer aux = 0;*/
+        for(int moves = 0; moves < 3; moves++) { // en cada ciclo se mueven todas las lineas una vez
+            for (int column = 2; column >= 0; column--) {
+                for (int row = 0; row < matrix.length; row++) {
+                    if(matrix[row][column] != 0 && matrix[row][column+1] == 0) {
+                        matrix[row][column+1] = matrix[row][column];
+                        matrix[row][column] = 0;
+                    }
+                    else if (matrix[row][column] != 0 && matrix[row][column-1] == matrix[row][column]){
+                        matrix[row][column+1] = 2 * (matrix[row][column]);
                         matrix[row][column] = 0;
                     }
                 }

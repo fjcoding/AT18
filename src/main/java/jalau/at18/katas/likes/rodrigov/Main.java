@@ -1,8 +1,7 @@
 package jalau.at18.katas.likes.rodrigov;
-import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) {
-        String namesList = JOptionPane.showInputDialog("Enter names:");
+        String namesList = "Alex Jacob Mark Max";
         System.out.println(new Main().likes(namesList));
     }
     public String likes(String namesList) {

@@ -1,8 +1,7 @@
 package jalau.at18.katas.multiples.rodrigov;
-import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) {
-        int limitNumber = Integer.parseInt(JOptionPane.showInputDialog("Enter a number:"));
+        final int limitNumber = 10;
         System.out.println(new Main().multiplesThreeAndFive(limitNumber));
     }
     public int multiplesThreeAndFive(int limitNumber) {

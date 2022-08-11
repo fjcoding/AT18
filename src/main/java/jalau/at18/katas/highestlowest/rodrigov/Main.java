@@ -1,8 +1,7 @@
 package jalau.at18.katas.highestlowest.rodrigov;
-import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) {
-        String numbersList = JOptionPane.showInputDialog("Input numbers:");
+        String numbersList = "1 2 3 4 5";
         System.out.println(new Main().highestLowest(numbersList));
     }
     public String highestLowest(String numberList) {

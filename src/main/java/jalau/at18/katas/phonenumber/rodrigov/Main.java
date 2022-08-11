@@ -1,8 +1,7 @@
 package jalau.at18.katas.phonenumber.rodrigov;
-import javax.swing.JOptionPane;
 public class Main {
     public static void main(String[] args) {
-        String number = JOptionPane.showInputDialog("Enter your phone number:");
+        String number = "1234567890";
         System.out.println(new Main().phoneNumber(number));
     }
     public String phoneNumber(String number) {

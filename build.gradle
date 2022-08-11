@@ -31,7 +31,21 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
-
+task runHighestlowestAlvaro (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.alvaro.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runMultiplesAlvaro (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.alvaro.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runPhonenumberAlvaro (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.alvaro.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runLikesAlvaro (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.alvaro.Main'
+}
 task runHighestLowestRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigov.Main' // Example: 'jalau.at18.katas.highestlowest.Main'
     classpath = sourceSets.main.runtimeClasspath
@@ -47,6 +61,25 @@ task runPhonenumberRodrigov (dependsOn: 'classes', type: JavaExec) {
 }
 task runLikesRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.rodrigov.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runHighestLowestAdriana (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.adriana.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runMultiplesAdriana(dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.adriana.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+}
+task runPhonenumberAdriana (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.adriana.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.adriana.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
 

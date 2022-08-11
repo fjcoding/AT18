@@ -48,6 +48,13 @@ public class Main {
         int numberTwo = random.nextInt(upperBound);
         return new int[]{numbers[numberOne], numbers[numberTwo]};
     }
+    public static int randomOneValueGrid() {
+        int[] numbers = { 2, 4 };
+        Random random = new Random();
+        int upperBound = 2; // utilizado para colocar el maximo valor, en nuestro caso la posicion de mi array
+        int numberOne = random.nextInt(upperBound);
+        return numberOne;
+    }
 
     public static Integer[] randomPositionGrid() {
 
@@ -56,6 +63,17 @@ public class Main {
         int column = rand.nextInt(upperbound);
         int row = rand.nextInt(upperbound);
         return new Integer[]{row, column};
+    }
+
+
+    public static Integer[][] addTile(Integer[][] matrix) {
+        Integer[] randomPosition = randomPositionGrid();
+
+        while(matrix[randomPosition[0]][randomPosition[1]] != 0){
+            randomPosition = randomPositionGrid();
+        }
+        matrix[randomPosition[0]][randomPosition[1]]= randomOneValueGrid();
+        return matrix;
     }
 
 
@@ -89,7 +107,8 @@ public class Main {
 
         if(directionValue.equals("w")){
             System.out.println("metodo para mover arriba");
-            newMatrix=moveTop(matrix);// guarda la matriz en una nueva
+            newMatrix = moveTop(matrix);// guarda la matriz en una nueva
+            newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
@@ -186,7 +205,7 @@ public class Main {
                         matrix[row][column+1] = matrix[row][column];
                         matrix[row][column] = 0;
                     }
-                    else if (matrix[row][column] != 0 && matrix[row][column-1] == matrix[row][column]){
+                    else if (matrix[row][column] != 0 && matrix[row][column+1] == matrix[row][column]){
                         matrix[row][column+1] = 2 * (matrix[row][column]);
                         matrix[row][column] = 0;
                     }

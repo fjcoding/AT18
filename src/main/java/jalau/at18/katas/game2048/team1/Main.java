@@ -1,5 +1,6 @@
 package jalau.at18.katas.game2048.team1;
 
+
 import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Random;
 import java.util.Scanner;
@@ -26,7 +27,7 @@ public class Main {
         int[] initialValues = randomValuesGrid();
         Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
         printMatrix(matrix);
-        direcctions();
+        direcctions(matrix); // se envia la matriz
 
     }
     public static void printMatrix(Integer [][] matrix){
@@ -74,7 +75,8 @@ public class Main {
     }
 
     // w = arriba, a = izquierda, d = derecha, s = abajo
-    public static void direcctions(){
+    public static void direcctions(Integer [][] matrix){ // el metodo pide la matriz
+    	Integer [][] newMatrix= new Integer [4][4]; // nueva matriz
         System.out.println("Instrucciones del juego");
         System.out.println("Top: w");
         System.out.println("Left: a");
@@ -84,6 +86,9 @@ public class Main {
         String directionValue = scan.nextLine();
         if(directionValue.equals("w")){
             System.out.println("metodo para mover arriba");
+            newMatrix=moveTop(matrix);// guarda la matriz en una nueva
+            printMatrix(newMatrix); // imprime la nueva matriz
+            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
         if(directionValue.equals("a")){
             System.out.println("metodo para mover izquierda");
@@ -98,24 +103,23 @@ public class Main {
 
     public static Integer [][] moveTop(Integer[][] matrix){
 
-        Integer[][] matrixAux = new Integer[4][4]; 
-        Integer aux = 0;
-        for (int row = 1; row < matrix.length; row++) {
-            for (int column = 0; column < matrix.length; column++) {
-                if(matrix[row][column] != 0 && matrix[row-1][column] == 0) {
-                    matrixAux[row-1][column] = matrix[row][column];
-                }
-                else if (matrix[row][column] != 0 && matrix[row-1][column] == matrix[row][column]){
-                    matrixAux[row-1][column] = 2 * (matrix[row][column]);
-                    matrix[row][column] = 0;
+        /*Integer[][] matrixAux = new Integer[4][4];
+        Integer aux = 0;*/
+    	for(int moves = 0; moves < 3; moves++) { // en cada ciclo se mueven todas las lineas una vez
+    		for (int row = 1; row < matrix.length; row++) {
+                for (int column = 0; column < matrix.length; column++) {
+                    if(matrix[row][column] != 0 && matrix[row-1][column] == 0) {
+                        matrix[row-1][column] = matrix[row][column];
+                        matrix[row][column] = 0;
+                    }
+                    else if (matrix[row][column] != 0 && matrix[row-1][column] == matrix[row][column]){
+                        matrix[row-1][column] = 2 * (matrix[row][column]);
+                        matrix[row][column] = 0;
+                    }
                 }
             }
-        }
-         
+    	}
+    	return matrix;
     }
 
 }
-0 1
-3 1
-3 2
-6 1

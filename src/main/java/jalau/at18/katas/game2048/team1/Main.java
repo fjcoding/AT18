@@ -53,7 +53,7 @@ public class Main {
         Random random = new Random();
         int upperBound = 2; // utilizado para colocar el maximo valor, en nuestro caso la posicion de mi array
         int numberOne = random.nextInt(upperBound);
-        return numberOne;
+        return numbers[numberOne];
     }
 
     public static Integer[] randomPositionGrid() {
@@ -72,7 +72,8 @@ public class Main {
         while(matrix[randomPosition[0]][randomPosition[1]] != 0){
             randomPosition = randomPositionGrid();
         }
-        matrix[randomPosition[0]][randomPosition[1]]= randomOneValueGrid();
+        int randomNumber = randomOneValueGrid();
+        matrix[randomPosition[0]][randomPosition[1]] = randomNumber;
         return matrix;
     }
 
@@ -115,6 +116,7 @@ public class Main {
         if(directionValue.equals("s")){
             System.out.println("Move down");
             newMatrix=moveDown(matrix);// guarda la matriz en una nueva
+            newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
 
@@ -122,12 +124,14 @@ public class Main {
         if(directionValue.equals("a")){
             System.out.println("Move left");
             newMatrix=moveLeft(matrix);// guarda la matriz en una nueva
+            newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
         if(directionValue.equals("d")){
             System.out.println("Move Rigth");
             newMatrix=moveRigth(matrix);// guarda la matriz en una nueva
+            newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }

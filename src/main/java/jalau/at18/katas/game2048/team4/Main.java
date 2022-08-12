@@ -12,7 +12,8 @@ public class Main {
     public static void main(String[] args) {
         Main main = new Main();
         Scanner keyBoard = new Scanner(System.in);
-        System.out.println("Bienvenido al juego");
+        System.out.println();
+        System.out.println("Welcome to the game. Objective: get tile 2048 by moving existing tiles: up, down, left and right");
         String exit = "Y";
         String continuePlaying;
 

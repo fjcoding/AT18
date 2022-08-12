@@ -13,8 +13,8 @@ public class Main {
     public static final int MAX_COLUMN_MATRIX = 4;
     public static void main(String[] args) {
         Main main = new Main();
-        int[] initialValues = main.randomValuesGrid();
-        int[][] matrix = main.initialMatrix(initialValues[0], initialValues[1]);
+        //int[] initialValues = main.randomValuesGrid();
+        int[][] matrix = main.initialMatrix(main.randomValueGrid(), main.randomValueGrid());
         main.printMatrix(matrix);
 
         //gameOver = true yano puede jugar
@@ -44,16 +44,16 @@ public class Main {
         }
     }
 
-    public int[] randomValuesGrid() {
+    /*public int[] randomValuesGrid() {
         int[] numbers = {RANDOM_TWO, RANDOM_FOUR};
         Random random = new Random();
         int upperBound = 2; // utilizado para colocar el maximo valor, en nuestro caso la posicion de mi array
         int numberOne = random.nextInt(upperBound);
         int numberTwo = random.nextInt(upperBound);
         return new int[]{numbers[numberOne], numbers[numberTwo]};
-    }
+    }*/
 
-    public int randomOneValueGrid() {
+    public int randomValueGrid() {
         int[] numbers = {RANDOM_TWO, RANDOM_FOUR};
         Random random = new Random();
         int upperBound = 2; // utilizado para colocar el maximo valor, en nuestro caso la posicion de mi array
@@ -76,7 +76,7 @@ public class Main {
         while (matrix[randomPosition[0]][randomPosition[1]] != 0) {
             randomPosition = randomPositionGrid();
         }
-        int randomNumber = randomOneValueGrid();
+        int randomNumber = randomValueGrid();
         matrix[randomPosition[0]][randomPosition[1]] = randomNumber;
         return matrix;
     }

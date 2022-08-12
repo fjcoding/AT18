@@ -17,7 +17,6 @@ public class Main {
         String exit = "Y";
         String continuePlaying;
 
-        showMatrix();
         System.out.println();
         putNewTwoOnMatrix(matrix);
         putNewTwoOnMatrix(matrix);

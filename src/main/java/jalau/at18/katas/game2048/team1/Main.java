@@ -9,7 +9,7 @@ public class Main {
 
         int[] initialValues = randomValuesGrid();
 
-        Integer[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
+        int[][] matrix = initialMatrix(initialValues[0], initialValues[1]);
         printMatrix(matrix);
         direcctions(matrix); // se envia la matriz
         //Integer [][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
@@ -19,7 +19,7 @@ public class Main {
         //got2048(testMatrix );
     }
 
-    public static void printMatrix(Integer[][] matrix) {
+    public static void printMatrix(int[][] matrix) {
         System.out.println("\n-----------------------------------------------------------------");
         for (int row = 0; row < matrix.length; row++) {
             System.out.print("|\t");
@@ -50,18 +50,18 @@ public class Main {
         return numbers[numberOne];
     }
 
-    public static Integer[] randomPositionGrid() {
+    public static int[] randomPositionGrid() {
 
         Random rand = new Random(); //instance of random class
         int upperbound = 4; //generate random values from 0-4
         int column = rand.nextInt(upperbound);
         int row = rand.nextInt(upperbound);
-        return new Integer[]{row, column};
+        return new int[]{row, column};
     }
 
 
-    public static Integer[][] addTile(Integer[][] matrix) {
-        Integer[] randomPosition = randomPositionGrid();
+    public static int[][] addTile(int[][] matrix) {
+        int[] randomPosition = randomPositionGrid();
 
         while(matrix[randomPosition[0]][randomPosition[1]] != 0){
             randomPosition = randomPositionGrid();
@@ -72,10 +72,10 @@ public class Main {
     }
 
 
-    public static Integer[][] initialMatrix (int firstNumber, int secondNumber) {
-        Integer[][] matrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
-        Integer[] firstPositionRowColum = randomPositionGrid();
-        Integer[] secondPositionRowColum = randomPositionGrid();
+    public static int[][] initialMatrix (int firstNumber, int secondNumber) {
+        int[][] matrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+        int[] firstPositionRowColum = randomPositionGrid();
+        int[] secondPositionRowColum = randomPositionGrid();
         //System.out.println(firstPositionRowColum + ""+secondPositionRowColum);
 
         while (firstPositionRowColum[0]  == secondPositionRowColum[0] && firstPositionRowColum[1]  == secondPositionRowColum[1]){
@@ -88,8 +88,8 @@ public class Main {
 
     // w = arriba, a = izquierda, d = derecha, s = abajo
 
-    public static void direcctions(Integer[][] matrix) { // el metodo pide la matriz
-    	Integer [][] newMatrix= new Integer [4][4]; // nueva matriz
+    public static void direcctions(int[][] matrix) { // el metodo pide la matriz
+    	int [][] newMatrix= new int [4][4]; // nueva matriz
         System.out.println("Instrucciones del juego");
         System.out.println("Top: w");
         System.out.println("Left: a");
@@ -140,10 +140,7 @@ public class Main {
 
     }
 
-    public static Integer [][] moveTop(Integer[][] matrix){
-
-        /*Integer[][] matrixAux = new Integer[4][4];
-        Integer aux = 0;*/
+    public static int [][] moveTop(int[][] matrix){
     	for(int moves = 0; moves < 3; moves++) { // en cada ciclo se mueven todas las lineas una vez
     		for (int row = 1; row < matrix.length; row++) {
                 for (int column = 0; column < matrix.length; column++) {
@@ -161,9 +158,7 @@ public class Main {
     	return matrix;
     }
 
-    public static Integer [][] moveDown(Integer[][] matrix){
-        /*Integer[][] matrixAux = new Integer[4][4];
-        Integer aux = 0;*/
+    public static int [][] moveDown(int[][] matrix){
         for(int moves = 0; moves < 3; moves++) { // en cada ciclo se mueven todas las lineas una vez
             for (int row = 2; row >= 0; row--) {
                 for (int column = 0; column < matrix.length; column++) {
@@ -181,9 +176,7 @@ public class Main {
         return matrix;
     }
 
-    public static Integer [][] moveLeft(Integer[][] matrix){
-        /*Integer[][] matrixAux = new Integer[4][4];
-        Integer aux = 0;*/
+    public static int [][] moveLeft(int[][] matrix){
         for(int moves = 0; moves < 3; moves++) { // en cada ciclo se mueven todas las lineas una vez
             for (int column = 1; column < matrix.length; column++) {
                 for (int row = 0; row < matrix.length; row++) {
@@ -201,9 +194,7 @@ public class Main {
         return matrix;
     }
 
-    public static Integer [][] moveRigth(Integer[][] matrix){
-        /*Integer[][] matrixAux = new Integer[4][4];
-        Integer aux = 0;*/
+    public static int [][] moveRigth(int[][] matrix){
         for(int moves = 0; moves < 3; moves++) { // en cada ciclo se mueven todas las lineas una vez
             for (int column = 2; column >= 0; column--) {
                 for (int row = 0; row < matrix.length; row++) {
@@ -221,7 +212,7 @@ public class Main {
         return matrix;
     }
 
-    public static void gameOver(Integer[][] matrix) {
+    public static void gameOver(int[][] matrix) {
         Integer countZeros = 0;
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
@@ -239,7 +230,7 @@ public class Main {
         }
     }
 
-    public static Boolean verifySideUp(Integer[][] matrix) {
+    public static Boolean verifySideUp(int[][] matrix) {
         boolean check = false;
         for (int row = 1; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
@@ -251,7 +242,7 @@ public class Main {
         return check;
     }
 
-    public static Boolean verifySideLeft(Integer[][] matrix) {
+    public static Boolean verifySideLeft(int[][] matrix) {
         boolean check = false;
         for (int column = 1; column < matrix.length; column++) {
             for (int row = 0; row < matrix.length; row++) {
@@ -263,7 +254,7 @@ public class Main {
         return check;
     }
 
-    public static void got2048(Integer[][] matrix) {
+    public static void got2048(int[][] matrix) {
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
                 if (matrix[row][column] == 2048) {

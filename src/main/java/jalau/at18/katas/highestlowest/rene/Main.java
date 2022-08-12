@@ -2,11 +2,11 @@ package jalau.at18.katas.highestlowest.rene;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(func("12 3 23 55 0 -22 100 -33 2"));
+        System.out.println(new Main().func("1 3 400 5 6 7 -4 3 2"));
 
     }
 
-    static String func(String numbers) {
+    public String func(String numbers) {
         String[] numbersArray = numbers.split(" ");
         int highestNumber = Integer.parseInt(numbersArray[0]);
         for (int index = 0; index < numbersArray.length; index++) {

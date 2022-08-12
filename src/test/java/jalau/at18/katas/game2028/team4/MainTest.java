@@ -9,7 +9,7 @@ import org.junit.Test;
 public class MainTest {
 
     @Test
-    public void functionShouldGiveHighest() {
+    public void mainShould() {
         Main main = new Main();
         
         

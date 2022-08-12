@@ -25,8 +25,6 @@ public class Board {
     private int[][] board;
     private int score;
     private int sizeBoard;
-    private final int tokenInitial = 2;
-    private final int tokenSecond = 2;
     private final int size = 4;
 
     public Board(int sizeBoard, int score) {
@@ -37,33 +35,30 @@ public class Board {
         createTable();
     }
 
-    public void showTable() {
+    public boolean showTable() {
+        boolean condition = false;
         for (int indexRows = 0; indexRows < size; indexRows++) {
             for (int indexColumns = 0; indexColumns < size; indexColumns++) {
                 System.out.print(board[indexRows][indexColumns] + "\t");
+                condition = true;
             }
             System.out.println();
         }
+        return condition;
     }
 
-    public void createTable() {
+    public int[][] createTable() {
+        int [][] matrix = new int[3][3];
         for (int indexRows = 0; indexRows < size; indexRows++) {
             for (int indexColumns = 0; indexColumns < size; indexColumns++) {
                 board[indexRows][indexColumns] = 0;
             }
         }
-    }
-
-    public int getPosition(int x, int y) {
-        return board[x][y];
+        matrix=board;
+        return matrix;
     }
 
     public boolean isValidThePosition(int x, int y) {
-        /*if (board[x][y] == 0) {
-            return true;
-        } else {
-            return false;
-        }*/
         return !(board[x][y] != 0);
     }
 
@@ -219,7 +214,7 @@ public class Board {
     }
 
     public void moveNumberD(char direction) {
-        int cont = 0;
+
         if (direction == 's') {
 
             for (int col = 0; col < size; col++) {

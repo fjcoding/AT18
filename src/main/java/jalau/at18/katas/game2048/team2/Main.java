@@ -16,35 +16,17 @@ public class Main {
             char letter = scanner.next().charAt(0);
             if (letter == 'w') {
                 game.moveUp();
-                game.random();
-                game.finishGame();
-                board.showTable();
-                board.showScore();
 
             }
             if (letter == 's') {
                 game.moveDown();
-                game.random();
-                game.finishGame();
-                board.showTable();
-                board.showScore();
-
             }
             if (letter == 'a') {
                 game.moveLeft();
-                game.random();
-                game.finishGame();
-                board.showTable();
-                board.showScore();
-
             }
             if (letter == 'd') {
                 game.moveRight();
-                game.random();
-                game.finishGame();
-                board.showTable();
-                board.showScore();
-
+                
             } else if (letter == 'z') {
                 board.showScore();
                 break;

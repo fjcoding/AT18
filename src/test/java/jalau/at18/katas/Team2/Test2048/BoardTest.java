@@ -7,19 +7,35 @@ import org.junit.Test;
 import jalau.at18.katas.game2048.team2.Board;
 
 public class BoardTest {
-   // isValidThePosition(int x, int y) 
+   // isValidThePosition(int x, int y)
     @Test
     public void shoul_isValidThePosition() {
        // Board boardd = new Board(4 , 0 );
        Board board = new Board(4 , 0);
        board.createTable();
        assertEquals(true, board.isValidThePosition(0,0));
-       
-       /* 
+
+       /*
        MainTest main = new MainTest();
         String expecteds = "s";
-       
+
          assertEquals(expecteds, main.covertNumber(numberInput));
 */
+    }
+    @Test
+    public void shouldPrint() {
+       // Board boardd = new Board(4 , 0 );
+       Board board = new Board(4 , 0);
+       assertEquals(true, board.showTable());
+    }
+    @Test
+    public void shouldCreateTable() {
+       // Board boardd = new Board(4 , 0 );
+       int [][] compareMatrix = {{0,0,0,0},
+                                {0,0,0,0},
+                                {0,0,0,0},
+                                {0,0,0,0}};
+       Board board = new Board(4 , 0);
+       assertArrayEquals(compareMatrix, board.createTable());
     }
 }

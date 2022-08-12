@@ -6,37 +6,38 @@ public class Game {
     public static final int SIZE = 4;
     public static final int SCORE = 2048;
     private Board board;
-    private char character;
 
     public Game(Board board) {
         this.board = board;
-        // this.character = character;
-    }
-
-    public void move() {
     }
 
     public void start() {
         board.showTable();
-        random();
-        random();
+        tryToFillPosition();
+        tryToFillPosition();
         System.out.println();
         board.showTable();
 
     }
+    public int[] generateRandomNumber() {
 
-    public void random() {
-        int row;
-        int column;
+        int []numbersRandom = new int[2];
         Random randomPosition = new Random();
-        row = randomPosition.nextInt(SIZE) + 0; // range 0-3
-        column = randomPosition.nextInt(SIZE) + 0;
+        numbersRandom[0]= randomPosition.nextInt(SIZE) + 0; // range 0-3
+        numbersRandom[1]= randomPosition.nextInt(SIZE) + 0;
+        return numbersRandom;
+
+    }
+    public void tryToFillPosition() {
+
+        int [] numbersRandom = new int [2];
+        numbersRandom =generateRandomNumber();
         // System.out.println("row: "+row );
-        if (board.isValidThePosition(row, column)) {
-            board.replacePositions(row, column, 2);
+        if (board.isValidThePosition(numbersRandom[0], numbersRandom[1])) {
+            board.replacePositions(numbersRandom[0], numbersRandom[1], 2);
             System.out.println("no es valido");
         } else {
-            random();
+            tryToFillPosition();
         }
         if (board.countZeros() == 0) {
             board.showTable();
@@ -48,21 +49,37 @@ public class Game {
     public void moveUp() {
         System.out.println("se presiono arriba");
         board.moveNumberUp('w');
+        tryToFillPosition();
+        finishGame();
+        board.showTable();
+        board.showScore();
     }
 
     public void moveLeft() {
         System.out.println("se presiono izquierda");
         board.moveNumberLeft('a');
+        tryToFillPosition();
+        finishGame();
+        board.showTable();
+        board.showScore();
     }
 
     public void moveRight() {
         System.out.println("se presiono derecha");
         board.moveNumberRight('d');
+        tryToFillPosition();
+        finishGame();
+        board.showTable();
+        board.showScore();
     }
 
     public void moveDown() {
         System.out.println("se presiono abajo");
         board.moveNumberD('s');
+        tryToFillPosition();
+        finishGame();
+        board.showTable();
+        board.showScore();
     }
 
     public void finishGame() {

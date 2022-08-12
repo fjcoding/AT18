@@ -48,13 +48,13 @@ public class Board {
     }
 
     public int[][] createTable() {
-        int [][] matrix = new int[3][3];
+        int[][] matrix = new int[3][3];
         for (int indexRows = 0; indexRows < size; indexRows++) {
             for (int indexColumns = 0; indexColumns < size; indexColumns++) {
                 board[indexRows][indexColumns] = 0;
             }
         }
-        matrix=board;
+        matrix = board;
         return matrix;
     }
 
@@ -63,10 +63,13 @@ public class Board {
     }
 
     public void replacePositions(int position1, int position2, int number) {
-
         if (board[position1][position2] == 0) {
             board[position1][position2] = number;
         }
+    }
+
+    public int[][] returnBoard() {
+        return board;
     }
 
     public void moveNumberUp(char direction) {

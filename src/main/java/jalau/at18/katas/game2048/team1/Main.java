@@ -100,7 +100,7 @@ public class Main {
 
     public void direcctions(int[][] matrix) {
         int[][] newMatrix = new int[MAX_ROW_MATRIX][MAX_COLUMN_MATRIX]; // nueva matriz
-        System.out.println("Instrucciones del juego");
+        System.out.println("Game instructions");
         System.out.println("Top: w");
         System.out.println("Left: a");
         System.out.println("Right: d");
@@ -115,7 +115,7 @@ public class Main {
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
             got2048(newMatrix);
-            direcctions(newMatrix); // recursividad (funcion se llama a si misma)
+            //direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
         if (directionValue.equals("s")) {
             System.out.println("Move down");
@@ -123,7 +123,7 @@ public class Main {
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // Print matrix
             got2048(newMatrix);
-            direcctions(newMatrix); // recursion
+            //direcctions(newMatrix); // recursion
 
 
         }
@@ -133,7 +133,7 @@ public class Main {
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix);
             got2048(newMatrix);
-            direcctions(newMatrix);
+            //direcctions(newMatrix);
         }
         if (directionValue.equals("d")) {
             System.out.println("Move Rigth");
@@ -141,7 +141,7 @@ public class Main {
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix);
             got2048(newMatrix);
-            direcctions(newMatrix);
+            //direcctions(newMatrix);
         }
 
     }
@@ -216,8 +216,8 @@ public class Main {
 
     public boolean gameOver(int[][] matrix) {
         int countZeros = countZerosMatrix(matrix);
-        Boolean verifySideUp = verifySideUp(matrix);
-        Boolean verifySideLeft = verifySideLeft(matrix);
+        Boolean verifySideUp = verifySideRow(matrix);
+        Boolean verifySideLeft = verifySideColumn(matrix);
         boolean isGameOver = countZeros == 0 && !(verifySideUp) && !(verifySideLeft);
 
         if (isGameOver) {
@@ -238,7 +238,7 @@ public class Main {
         return countZeros;
     }
 
-    public Boolean verifySideUp(int[][] matrix) {
+    public Boolean verifySideRow(int[][] matrix) {
         boolean check = false;
         for (int row = 1; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
@@ -250,7 +250,7 @@ public class Main {
         return check;
     }
 
-    public Boolean verifySideLeft(int[][] matrix) {
+    public Boolean verifySideColumn(int[][] matrix) {
         boolean check = false;
         for (int column = 1; column < matrix.length; column++) {
             for (int row = 0; row < matrix.length; row++) {

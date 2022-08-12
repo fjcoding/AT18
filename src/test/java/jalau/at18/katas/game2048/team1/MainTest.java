@@ -15,11 +15,11 @@ public class MainTest {
     @Test
     public void mainGameOver() {
         Main main = new Main();
-        assertEquals("Game Over", main.countZerosMatrix(matrixGameOver));
+        assertEquals(true, main.gameOver(matrixGameOver));
     }
     @Test
     public void mainGameNoOver() {
         Main main = new Main();
-        assertEquals(false, main.countZerosMatrix(matrixGameNoOver));
+        assertEquals(false, main.gameOver(matrixGameNoOver));
     }
 }

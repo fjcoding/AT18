@@ -37,10 +37,18 @@ public class LikesTest {
     }
 
     @Test
-    public void hasFourOrMoreLikes() {
+    public void hasFourLikes() {
         Main main = new Main();
         String[] input = {"Juan","Jose","Pedro","Javier"};
         String expected = "Juan, Jose and 2 others like this";
+        assertEquals(expected,main.whoLikes(input));
+    }
+
+    @Test
+    public void hasMoreLikesThatFour() {
+        Main main = new Main();
+        String[] input = {"Juan","Jose","Pedro","Javier","Maria","Fernanda","Pedro O"};
+        String expected = "Juan, Jose and 5 others like this";
         assertEquals(expected,main.whoLikes(input));
     }
 }

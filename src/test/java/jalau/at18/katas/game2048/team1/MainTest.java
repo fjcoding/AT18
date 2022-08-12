@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MainTest {
-    int [][] zerosMatrix = {{1,2,3,4},{5,0,7,8},{9,1,2,0},{4,5,9,7}};
+    int [][] exampleMatrix = {{0,0,0,0},{0,0,0,0},{0,0,2,0},{0,0,0,0}};
     int [][] matrixGameOver = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
     int [][] matrixGameNoOver = {{1,2,3,4},{5,6,7,0},{9,1,2,4},{4,5,9,20}};
 
@@ -16,7 +16,7 @@ public class MainTest {
     @Test
     public void mainCountZerosMatrix() {
         Main main = new Main();
-        assertEquals(2, main.countZerosMatrix(zerosMatrix));
+        assertEquals(12, main.countZerosMatrix(exampleMatrix));
     }
     @Test
     public void mainGameOver() {
@@ -28,7 +28,6 @@ public class MainTest {
         Main main = new Main();
         assertEquals(false, main.gameOver(matrixGameNoOver));
     }
-
 
     @Test
     public void mainRandomValue(){
@@ -44,4 +43,26 @@ public class MainTest {
         assertTrue( valuesPosition[0] < MATRIX_LENGTH && valuesPosition[1] < MATRIX_LENGTH );
     }
 
+    @Test
+    public void mainAddTile(){
+        Main main = new Main();
+        int countTiles1 = 0;
+        for (int row = 0; row < exampleMatrix.length; row++) {
+            for (int column = 0; column < exampleMatrix.length; column++) {
+                if (exampleMatrix[row][column] != 0) {
+                    countTiles1++;
+                }
+            }
+        }
+        int [][] matrixPlusTile = main.addTile(exampleMatrix);
+        int countTiles2 = 0;
+        for (int row = 0; row < matrixPlusTile.length; row++) {
+            for (int column = 0; column < matrixPlusTile.length; column++) {
+                if (matrixPlusTile[row][column] != 0) {
+                    countTiles2++;
+                }
+            }
+        }
+        assertEquals(countTiles1 + 1, countTiles2);
+    }
 }

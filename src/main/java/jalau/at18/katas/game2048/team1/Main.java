@@ -20,6 +20,7 @@ public class Main {
         //gameOver = true yano puede jugar
         while (!main.gameOver(matrix)) {
             main.direcctions(matrix); // se envia la matriz
+            main.got2048(matrix);
         }
         //Integer [][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
         //gameOver(testMatrix);
@@ -61,7 +62,6 @@ public class Main {
     }
 
     public int[] randomPositionGrid() {
-
         Random rand = new Random(); //instance of random class
         int upperbound = MAX_RANDOM_POSITION; //generate random values from 0-4
         int column = rand.nextInt(upperbound);
@@ -97,9 +97,7 @@ public class Main {
     }
 
     // w = arriba, a = izquierda, d = derecha, s = abajo
-
-    public void direcctions(int[][] matrix) {
-        int[][] newMatrix = new int[MAX_ROW_MATRIX][MAX_COLUMN_MATRIX]; // nueva matriz
+    public String readDiretions() {
         System.out.println("Game instructions");
         System.out.println("Top: w");
         System.out.println("Left: a");
@@ -108,13 +106,22 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         String directionValue = scan.nextLine();
+        while (!directionValue.equals("w") && !directionValue.equals("a") && !directionValue.equals("d") && !directionValue.equals("s")) {
+            System.out.println("Incorrect letter");
+            directionValue = scan.nextLine();
+        }
+        return directionValue;
+    }
 
+    public int[][] direcctions(int[][] matrix) {
+        int[][] newMatrix = new int[MAX_ROW_MATRIX][MAX_COLUMN_MATRIX]; // nueva matrizw
+        String directionValue = readDiretions();
         if (directionValue.equals("w")) {
-            System.out.println("Move Top");
+            System.out.println("Move top");
             newMatrix = moveTop(matrix); // Save matrix in other
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // imprime la nueva matriz
-            got2048(newMatrix);
+            //got2048(newMatrix);
             //direcctions(newMatrix); // recursividad (funcion se llama a si misma)
         }
         if (directionValue.equals("s")) {
@@ -122,28 +129,26 @@ public class Main {
             newMatrix = moveDown(matrix); // Save matrix in other
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix); // Print matrix
-            got2048(newMatrix);
+            //got2048(newMatrix);
             //direcctions(newMatrix); // recursion
-
-
         }
         if (directionValue.equals("a")) {
             System.out.println("Move left");
             newMatrix = moveLeft(matrix);
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix);
-            got2048(newMatrix);
+            //got2048(newMatrix);
             //direcctions(newMatrix);
         }
         if (directionValue.equals("d")) {
-            System.out.println("Move Rigth");
+            System.out.println("Move rigth");
             newMatrix = moveRigth(matrix);
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix);
-            got2048(newMatrix);
+            //got2048(newMatrix);
             //direcctions(newMatrix);
         }
-
+        return newMatrix;
     }
 
     public int[][] moveTop(int[][] matrix) {

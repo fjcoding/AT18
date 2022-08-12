@@ -3,10 +3,10 @@ package jalau.at18.katas.multiples.rene;
 public class Main {
     public static void main(String[] args) {
         final int inputNumber = 20;
-        System.out.println(multiples(inputNumber));
+        System.out.println(new Main().multiples(inputNumber));
     }
 
-    static int multiples(int number) {
+    public int multiples(int number) {
         int sum = 0;
         final int multiple3 = 3;
         final int multiple5 = 5;

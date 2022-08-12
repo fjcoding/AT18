@@ -25,11 +25,11 @@ public class MainRene {
             
             isWinner();
             
-            System.out.println("Type the direction you want to go \nDirections: up, left, right, down");
+            System.out.println("***Type the direction you want to go*** \nDirections: up, left, right, down:");
             nextDirection = keyBoard.nextLine();
             directionChecker(nextDirection);
             showMatrix();
-            System.out.println("\nIf you want to stop playing type exit \nif not type any key");
+            System.out.println("\nIf you want to stop playing type exit \nif not type any key:");
             continuePlaying = keyBoard.nextLine();
             if (continuePlaying.equals("exit")) {
                 exit = "exit";     
@@ -41,13 +41,15 @@ public class MainRene {
         
     }
 
-    static void showMatrix() {
+    static void showMatrix() { //Fix display for larger numbers
         for (int index = 0; index < matrix.length; index++) {
+            System.out.println("----------------------------");
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
-                System.out.print(matrix[index][jIndex] + " ");
+                System.out.print("|  " + matrix[index][jIndex] + "  |");
             }
             System.out.println();
         }
+        System.out.println("----------------------------");
     }
 
     static boolean isWinner() {
@@ -61,7 +63,7 @@ public class MainRene {
         return false; 
     }
 
-    static void directionChecker(String direction) { //
+    static void directionChecker(String direction) { 
         switch (direction) {
             case "up":
               System.out.println("You move the numbers up!");
@@ -96,7 +98,7 @@ public class MainRene {
 
     //Case 1: The number is in a border cell
     //Case 2: The next number is 0
-    //Case 3: The next number is th same number (So it has to sum the numbers)
+    //Case 3: The next number is the same number (So it has to sum the numbers)
     //Case 4: Th next number is other number (So do nothing) 
 
     static void moveNumbersUp() {
@@ -108,7 +110,7 @@ public class MainRene {
                     for (int innerIndex = index; innerIndex > 0 && matrix[innerIndex - 1][jIndex] == 0; innerIndex--) {
                         matrix[innerIndex - 1][jIndex] = matrix[innerIndex][jIndex];
                         matrix[innerIndex][jIndex] = 0;
-                    } // movu up till reach a border or a number
+                    } // move till reach a border or a number
                 } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == matrix[index][jIndex]) { //Case 3
                     matrix[index - 1][jIndex] *= 2;
                     matrix[index][jIndex] = 0;
@@ -128,7 +130,7 @@ public class MainRene {
                     for (int innerIndex = index; innerIndex < 3 && matrix[innerIndex + 1][jIndex] == 0; innerIndex++) {
                         matrix[innerIndex + 1][jIndex] = matrix[innerIndex][jIndex];
                         matrix[innerIndex][jIndex] = 0;
-                    } // movu up till reach a border or a number 
+                    } 
                 }  else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == matrix[index][jIndex]) { //Case 3
                     matrix[index + 1][jIndex] *= 2;
                     matrix[index][jIndex] = 0;
@@ -138,7 +140,7 @@ public class MainRene {
             }
         }
     }
-    static void moveNumbersLeft() { //Fix!!!
+    static void moveNumbersLeft() { 
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && jIndex == 0) { //Case 1
@@ -147,7 +149,7 @@ public class MainRene {
                     for (int innerIndex = jIndex; innerIndex > 0 && matrix[index][innerIndex - 1] == 0; innerIndex--) {
                         matrix[index][innerIndex - 1] = matrix[index][innerIndex];
                         matrix[index][innerIndex] = 0;
-                    } // movu up till reach a border or a number   
+                    }    
                 } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == matrix[index][jIndex]) { //Case 3
                     matrix[index][jIndex - 1] *= 2;
                     matrix[index][jIndex] = 0;
@@ -157,7 +159,7 @@ public class MainRene {
             }
         }
     }
-    static void moveNumbersRight() { //Fix!!!
+    static void moveNumbersRight() { 
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && jIndex == 3) { //Case 1
@@ -166,7 +168,7 @@ public class MainRene {
                     for (int innerIndex = jIndex; innerIndex < 3 && matrix[index][innerIndex + 1] == 0; innerIndex++) {
                         matrix[index][innerIndex + 1] = matrix[index][innerIndex];
                         matrix[index][innerIndex] = 0;
-                    } // movu up till reach a border or a number   
+                    }   
                 } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == matrix[index][jIndex]) { //Case 3
                     matrix[index][jIndex + 1] *= 2;
                     matrix[index][jIndex] = 0;

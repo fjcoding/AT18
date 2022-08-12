@@ -1,7 +1,7 @@
 package jalau.at18.katas.game2048.team3;
 import java.util.Scanner;//
 import java.util.Random;
-import javafx.util.Pair;
+
 // - funcion de busqueda de 1024
 // - funcion sin movimientos
 // - generado de num aleatorio
@@ -40,11 +40,12 @@ public class Main {
     //0 0 0 4
     //0 0 0 8
     //0 0 4 2
-    public Pair <Integer, Integer> randomPair(){
+    public int [] randomPair(){
         Random rnd = new Random();
         int randomPositionI = rnd.nextInt(MAX_INDEX ) + ZERO;
         int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
-        return new Pair<Integer,Integer>(randomPositionI, randomPositionJ);
+        int [] result = {randomPositionI, randomPositionJ};
+        return result;
     }
 
     public int randomNumber(){
@@ -58,14 +59,13 @@ public class Main {
     }
 
     public void initializeMatrix(int [][] matrix) {    
-        randomPair();
-        int randomPositionI = randomPair().getKey();
-        int randomPositionJ = randomPair().getValue();
+        int randomPositionI = randomPair()[0];
+        int randomPositionJ = randomPair()[1];
         int randomPositionI2 = ZERO;
         int randomPositionJ2 = ZERO;
         do{
-            randomPositionI2 = randomPair().getKey();
-            randomPositionJ2 = randomPair().getValue();
+            randomPositionI2 = randomPair()[0];
+            randomPositionJ2 = randomPair()[1];
         } while (randomPositionI == randomPositionI2 && randomPositionJ == randomPositionJ2);
         matrix[randomPositionI][randomPositionJ] = randomNumber();
         matrix[randomPositionI2][randomPositionJ2] = randomNumber();

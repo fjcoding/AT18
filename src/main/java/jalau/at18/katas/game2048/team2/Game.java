@@ -48,40 +48,62 @@ public class Game {
         }
     }
 
-    public void moveUp() {
-        System.out.println("se presiono arriba");
-        board.moveNumberUp('w');
-        tryToFillPosition();
-        finishGame();
-        board.showTable();
-        board.showScore();
+    public boolean moveUp() {
+        try {
+            System.out.println("se presiono arriba");
+            board.moveNumberUp('w');
+            tryToFillPosition();
+            finishGame();
+            board.showTable();
+            board.showScore();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public void moveLeft() {
-        System.out.println("se presiono izquierda");
-        board.moveNumberLeft('a');
-        tryToFillPosition();
-        finishGame();
-        board.showTable();
-        board.showScore();
+    public boolean moveLeft() {
+        try {
+            System.out.println("se presiono izquierda");
+            board.moveNumberLeft('a');
+            tryToFillPosition();
+            finishGame();
+            board.showTable();
+            board.showScore();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
-    public void moveRight() {
-        System.out.println("se presiono derecha");
-        board.moveNumberRight('d');
-        tryToFillPosition();
-        finishGame();
-        board.showTable();
-        board.showScore();
+    public boolean moveRight() {
+        try {
+            System.out.println("se presiono derecha");
+            board.moveNumberRight('d');
+            tryToFillPosition();
+            finishGame();
+            board.showTable();
+            board.showScore();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+
     }
 
-    public void moveDown() {
-        System.out.println("se presiono abajo");
-        board.moveNumberDown('s');
-        tryToFillPosition();
-        finishGame();
-        board.showTable();
-        board.showScore();
+    public boolean moveDown() {
+        try {
+            System.out.println("se presiono abajo");
+            board.moveNumberDown('s');
+            tryToFillPosition();
+            finishGame();
+            board.showTable();
+            board.showScore();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public void finishGame() {

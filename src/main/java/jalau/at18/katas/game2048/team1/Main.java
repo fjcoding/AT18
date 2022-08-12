@@ -15,16 +15,22 @@ public class Main {
         //Integer [][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
         //gameOver(testMatrix);
         //System.out.println(verifySideUp(testMatrix));*/
-        //Integer [][] testMatrix = {{1,2,3,4},{5,2048,7,8},{9,0,2,3},{4,5,0,7}};
+        //wInteger [][] testMatrix = {{1,2,3,4},{5,2048,7,8},{9,0,2,3},{4,5,0,7}};
         //got2048(testMatrix );
     }
 
-    public static void printMatrix(Integer [][] matrix){
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                System.out.print(matrix[i][j] + " ");
+    public static void printMatrix(Integer[][] matrix) {
+        System.out.println("\n-----------------------------------------------------------------");
+        for (int row = 0; row < matrix.length; row++) {
+            System.out.print("|\t");
+            for (int column = 0; column < matrix.length; column++) {
+                if (matrix[row][column] == 0) {
+                    System.out.print(" " + "\t | \t");
+                } else {
+                    System.out.print(matrix[row][column] + "\t | \t");
+                }
             }
-            System.out.println("");
+            System.out.println("\n-----------------------------------------------------------------");
         }
     }
 
@@ -82,10 +88,9 @@ public class Main {
 
     // w = arriba, a = izquierda, d = derecha, s = abajo
 
-    public static void direcctions(Integer [][] matrix){ // el metodo pide la matriz
+    public static void direcctions(Integer[][] matrix) { // el metodo pide la matriz
     	Integer [][] newMatrix= new Integer [4][4]; // nueva matriz
         System.out.println("Instrucciones del juego");
-
         System.out.println("Top: w");
         System.out.println("Left: a");
         System.out.println("Right: d");

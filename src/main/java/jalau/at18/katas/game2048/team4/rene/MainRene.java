@@ -15,7 +15,6 @@ public class MainRene {
         String exit = "Y";
         String continuePlaying;
         
-        showMatrix();
         System.out.println();
         putNewTwoOnMatrix();
         putNewTwoOnMatrix();

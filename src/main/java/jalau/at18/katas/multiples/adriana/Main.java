@@ -15,7 +15,6 @@ public class Main {
             System.out.println("Sum: " + sumMultiples);
         }
     }
-
     public static Integer getSumMult(Integer number) {
         Integer sum = 0;
         if (number >= 0) {

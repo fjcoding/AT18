@@ -131,7 +131,7 @@ public class Main {
         return matrix;
     }
 
-    static int[][] moveNumbersDown(int[][] matrix) {
+    public static int[][] moveNumbersDown(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && index == 3) { // Case 1
@@ -152,7 +152,7 @@ public class Main {
         return matrix;
     }
 
-    static int[][] moveNumbersLeft(int[][] matrix) {
+    public static int[][] moveNumbersLeft(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && jIndex == 0) { // Case 1
@@ -173,7 +173,7 @@ public class Main {
         return matrix;
     }
 
-    static int[][] moveNumbersRight(int[][] matrix) {
+    public static int[][] moveNumbersRight(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && jIndex == 3) { // Case 1

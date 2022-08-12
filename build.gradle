@@ -31,10 +31,9 @@ task runhighestlowestSergio (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sergio.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
-<<<<<<< HEAD
 task phoneNumberSergio (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.sergio.Main'
-=======
+}
 
 task runHighestLowestRodrigo (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigob.Highestlowest'

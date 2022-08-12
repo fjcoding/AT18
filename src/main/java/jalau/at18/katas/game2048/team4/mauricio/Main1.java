@@ -3,9 +3,6 @@ package jalau.at18.katas.game2048.team4.mauricio;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-
-
-
 public class Main1 {
     public static int[][] matrix = new int[4][4];
     public static String nextDirection;
@@ -17,18 +14,18 @@ public class Main1 {
         System.out.println("Bienvenido al juego");
         String exit = "Y";
         String continuePlaying;
-        
+
         showMatrix();
         System.out.println();
         putNewTwoOnMatrix();
         putNewTwoOnMatrix();
         showMatrix();
         System.out.println();
-        
+
         do {
-            
+
             isWinner();
-            
+
             System.out.println("Type the direction you want to go \nDirections: up, left, right, down");
             nextDirection = keyBoard.nextLine();
             directionChecker(nextDirection);
@@ -36,13 +33,13 @@ public class Main1 {
             System.out.println("\nIf you want to stop playing type exit \nif not type any key");
             continuePlaying = keyBoard.nextLine();
             if (continuePlaying.equals("exit")) {
-                exit = "exit";     
+                exit = "exit";
             }
-            
+
         } while (!isWinner() && exit != "exit" && !isLoser()); // The game stops when the player type exit or wins
 
         keyBoard.close();
-        
+
     }
 
     static void showMatrix() {
@@ -62,30 +59,36 @@ public class Main1 {
                 }
             }
         }
-        return false; 
+        return false;
     }
 
     static void directionChecker(String direction) { //
         switch (direction) {
             case "up":
-              System.out.println("You move the numbers up!");
-              moveNumbersUp();
-              putNewTwoOnMatrix();
-              System.out.println();
+                System.out.println("You move the numbers up!");
+                moveNumbersUp();
+                putNewTwoOnMatrix();
+                System.out.println();
 
-              break;
+                break;
             case "left":
-            System.out.println("leeeft");
-              break;
+                System.out.println("You move the numbers left!");
+                moveNumbersLeft();
+                putNewTwoOnMatrix();
+                break;
             case "right":
-            System.out.println("riiight");
-              break;
+                System.out.println("You move the numbers right!");
+                moveNumbersRight();
+                putNewTwoOnMatrix();
+                break;
             case "down":
-            System.out.println("dooown");
-              break; 
+                System.out.println("You move the numbers down!");
+                moveNumbersDown();
+                putNewTwoOnMatrix();
+                break;
             default:
-              System.out.println("Type a correct direction");
-          }
+                System.out.println("Type a correct direction");
+        }
     }
 
     static void moveNumbersUp() {
@@ -94,13 +97,82 @@ public class Main1 {
                 if (matrix[index][jIndex] != 0 && index == 0) {
                     continue;
                 } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == 0) {
-                    // for (int innerIndex = index; innerIndex >= 0 || matrix[innerIndex -
-                    // 1][jIndex] != 0; innerIndex--) {
-                        matrix[index - 1][jIndex] = matrix[index][jIndex];
+                    for (int innerIndex = index; innerIndex > 0 && matrix[innerIndex - 1][jIndex] == 0; innerIndex--) {
+                        matrix[innerIndex - 1][jIndex] = matrix[innerIndex][jIndex];
+                        matrix[innerIndex][jIndex] = 0;
+                    }
+                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] != 0) {
+                    if (matrix[index][jIndex] == matrix[index - 1][jIndex]) {
+                        matrix[index - 1][jIndex] *= 2;
                         matrix[index][jIndex] = 0;
-                    // } // movu up till reach a border or a number
-                    
+                    }
                 }
+
+            }
+        }
+    }
+
+    static void moveNumbersDown() {
+        for (int index = 0; index < matrix.length; index++) {
+            for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
+                if (matrix[index][jIndex] != 0 && index == 3) {
+                    continue;
+                } else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == 0) {
+                    for (int innerIndex = index; innerIndex < 3 && matrix[innerIndex + 1][jIndex] == 0; innerIndex++) {
+                        matrix[innerIndex + 1][jIndex] = matrix[innerIndex][jIndex];
+                        matrix[innerIndex][jIndex] = 0;
+                    }
+                } else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] != 0) {
+                    if (matrix[index][jIndex] == matrix[index + 1][jIndex]) {
+                        matrix[index + 1][jIndex] *= 2;
+                        matrix[index][jIndex] = 0;
+                    }
+                }
+
+            }
+        }
+    }
+
+    static void moveNumbersLeft() {
+        for (int index = 0; index < matrix.length; index++) {
+            for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
+                if (matrix[index][jIndex] != 0 && jIndex == 0) {
+                    continue;
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == 0) {
+                    for (int innerJindex = jIndex; innerJindex > 0
+                            && matrix[index][innerJindex - 1] == 0; innerJindex--) {
+                        matrix[index][innerJindex - 1] = matrix[index][innerJindex];
+                        matrix[index][innerJindex] = 0;
+                    }
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] != 0) {
+                    if (matrix[index][jIndex] == matrix[index][jIndex - 1]) {
+                        matrix[index][jIndex - 1] *= 2;
+                        matrix[index][jIndex] = 0;
+                    }
+                }
+
+            }
+        }
+    }
+
+    static void moveNumbersRight() {
+        for (int index = 0; index < matrix.length; index++) {
+            for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
+                if (matrix[index][jIndex] != 0 && jIndex == 3) {
+                    continue;
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == 0) {
+                    for (int innerJindex = jIndex; innerJindex < 3
+                            && matrix[index][innerJindex + 1] == 0; innerJindex++) {
+                        matrix[index][innerJindex + 1] = matrix[index][innerJindex];
+                        matrix[index][innerJindex] = 0;
+                    }
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] != 0) {
+                    if (matrix[index][jIndex] == matrix[index][jIndex + 1]) {
+                        matrix[index][jIndex + 1] *= 2;
+                        matrix[index][jIndex] = 0;
+                    }
+                }
+
             }
         }
     }
@@ -110,10 +182,10 @@ public class Main1 {
         int randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         while (matrix[randomPositionX][randomPositionY] != 0) { // It searchs a cell with a 0 for putting a 2
             randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
-            randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1); 
+            randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         }
         matrix[randomPositionX][randomPositionY] = 2;
-    } 
+    }
 
     // Is loser function
     static boolean isLoser() {
@@ -126,6 +198,6 @@ public class Main1 {
         }
         System.out.println("Game Over");
         return true;
-}
+    }
 
 }

@@ -15,12 +15,17 @@ public class Main {
     private static final int PRINCIPAL_NUMBER = 2;
     private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
     public static void main(String[] args) {
-        int[][] matrix = {{ZERO, ZERO, ZERO, ZERO},
-                          {ZERO, ZERO, ZERO, ZERO},
-                          {ZERO, ZERO, ZERO, ZERO},
-                          {ZERO, ZERO, ZERO, ZERO}};
+        int[][] matrix = {{2, ZERO, 2, ZERO},
+                          {ZERO, 4, 2, ZERO},
+                          {ZERO, ZERO, 4, ZERO},
+                          {2, ZERO, ZERO, ZERO}};
         Main main = new Main();
-        main.downMove(matrix);
+        main.readMoves(matrix);
+        main.didYouWin();
+        while (main.didYouWin() == false){
+            main.readMoves(matrix);
+        }
+        //main.downMove(matrix);
         //main.initializeMatrix(matrix);
     }
     // {{2, 0, 2, 0},
@@ -33,7 +38,7 @@ public class Main {
     //0 0 0 8
     //0 0 4 2
 
-    public void initializeMatrix(int [][] matrix) {
+    /*public void initializeMatrix(int [][] matrix) {
         for (int attempt = 0; attempt < 2; attempt++) {
             Random rnd = new Random();
             int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
@@ -61,7 +66,7 @@ public class Main {
         int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
         int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
         int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
-    }
+    }*/
 
     public void readMoves(int[][] matrix) {
         String input;
@@ -101,7 +106,7 @@ public class Main {
         }
         matrixG = matrix;
         arrangeRight();
-        didYouWin();
+        
     }
 
     private void arrangeRight() {
@@ -137,7 +142,7 @@ public class Main {
         }
         matrixG = matrix;
         arrangeLeft();
-        didYouWin();
+        
     }
     private void arrangeLeft() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
@@ -175,7 +180,7 @@ public class Main {
         }
         matrixG = matrix;
         orderUp();
-        didYouWin();
+       
     }
 
     private void orderUp() {
@@ -247,16 +252,16 @@ public class Main {
         return matrixG;
     }
 
-    public void didYouWin() {
+    public boolean didYouWin() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
             for (int column = ZERO; column < MAX_SIZE; column++) {
                 if(matrixG[row][column] == 2048) {
                     System.out.println("WINNER!!");
-                    break;
+                    return true;
                 }
             }
         }
-        System.out.println();
-        readMoves(matrixG);    
+       
+        return false; 
     }
 }

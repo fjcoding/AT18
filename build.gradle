@@ -31,3 +31,15 @@ task runhighestlowestSergio (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sergio.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+task phoneNumberSergio (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.sergio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task likesSergio (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.sergio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task multiplesSergio (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.sergio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

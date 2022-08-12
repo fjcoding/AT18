@@ -238,7 +238,7 @@ public class Board {
 
     public int showScore() {
         int points = score;
-        System.out.println(" Score : " + score);
+        //System.out.println(" Score : " + score);
         return points;
     }
 

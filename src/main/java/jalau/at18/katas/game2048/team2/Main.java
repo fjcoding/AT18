@@ -12,22 +12,40 @@ public class Main {
         game.start();
 
         while (true) {
-            System.out.println("Input a character 's' to start or 'n' to finish");
+            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
             char letter = scanner.next().charAt(0);
             if (letter == 'w') {
                 game.moveUp();
+                System.out.println("   Score : " + board.showScore());
+                if(game.finishGame()){
+                    
+                    break;
+                }
             }
             if (letter == 's') {
                 game.moveDown();
+                System.out.println("  Score : " + board.showScore());
+                if(game.finishGame()){
+                    
+                    break;
+                }
             }
             if (letter == 'a') {
                 game.moveLeft();
+                System.out.println("   Score : " + board.showScore());
+                if(game.finishGame()){
+                     break;
+                }
             }
             if (letter == 'd') {
                 game.moveRight();
-                
-            } else if (letter == 'z') {
+                System.out.println("   Score : " + board.showScore());
+                if(game.finishGame()){
+                    break;
+                }
+            } else if (letter == 'z' || game.finishGame()) {
                 board.showScore();
+                System.out.println("    Score : " + board.showScore());
                 break;
             }
         }

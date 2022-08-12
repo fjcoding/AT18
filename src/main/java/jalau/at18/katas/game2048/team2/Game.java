@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Game {
     public static final int SIZE = 4;
-    public static final int SCORE = 2048;
+    public static final int SCORE = 4;//2048
     private Board board;
 
     public Game(Board board) {
@@ -53,64 +53,60 @@ public class Game {
             System.out.println("se presiono arriba");
             board.moveNumberUp('w');
             tryToFillPosition();
-            finishGame();
+            //finishGame();
             board.showTable();
-            board.showScore();
+            //board.showScore();
             return true;
         } catch (Exception e) {
             return false;
         }
     }
-
     public boolean moveLeft() {
         try {
             System.out.println("se presiono izquierda");
             board.moveNumberLeft('a');
             tryToFillPosition();
-            finishGame();
+            //finishGame();
             board.showTable();
-            board.showScore();
+            //board.showScore();
             return true;
         } catch (Exception e) {
             return false;
         }
-
     }
-
     public boolean moveRight() {
         try {
             System.out.println("se presiono derecha");
             board.moveNumberRight('d');
             tryToFillPosition();
-            finishGame();
+            //finishGame();
             board.showTable();
-            board.showScore();
+            //board.showScore();
             return true;
         } catch (Exception e) {
             return false;
         }
-
     }
-
     public boolean moveDown() {
         try {
             System.out.println("se presiono abajo");
             board.moveNumberDown('s');
             tryToFillPosition();
-            finishGame();
+            //finishGame();
             board.showTable();
-            board.showScore();
+            //board.showScore();
             return true;
         } catch (Exception e) {
             return false;
         }
     }
-
-    public void finishGame() {
+    public boolean finishGame() {
         if (board.showScore() == SCORE) {
-            System.out.println("YOU WIN! CONGRATULATIONS");
-            System.exit(0);
+            System.out.println("YOU WIN! CONGRATULATIONS ");
+          //  System.exit(0);
+        return true;
         }
+        return false;
     }
 
 }

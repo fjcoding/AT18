@@ -15,11 +15,11 @@ public class Main {
 
         int[] num = {NUMBER_ONE, NUMBER_TWO, NUMBER_THREE, NUMBER_FOUR, NUMBER_FIVE, NUMBER_SIX,
             NUMBER_SEVEN, NUMBER_EIGHT, NUMBER_NINE, NUMBER_CERO};
-        System.out.println(createPhoneNumber(num));
+        System.out.println(new Main().createPhoneNumber(num));
 
     }
 
-    static String createPhoneNumber(int[] numbers) {
+    public String createPhoneNumber(int[] numbers) {
         return "(" + numbers[NUMBER_CERO] + numbers[NUMBER_ONE] + numbers[NUMBER_TWO] + ") "
             + numbers[NUMBER_THREE] + numbers[NUMBER_FOUR] + numbers[NUMBER_FIVE]
             + "-" + numbers[NUMBER_SIX] + numbers[NUMBER_SEVEN] + numbers[NUMBER_EIGHT] + numbers[NUMBER_NINE];

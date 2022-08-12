@@ -215,8 +215,19 @@ public class Main {
     }
 
     public boolean gameOver(int[][] matrix) {
-        Integer countZeros = 0;
+        int countZeros = countZerosMatrix(matrix);
+        Boolean verifySideUp = verifySideUp(matrix);
+        Boolean verifySideLeft = verifySideLeft(matrix);
+        boolean isGameOver = countZeros == 0 && !(verifySideUp) && !(verifySideLeft);
 
+        if (isGameOver) {
+            System.out.println("Game Over");
+        }
+        return isGameOver;
+    }
+
+    public int countZerosMatrix(int[][] matrix) {
+        int countZeros = 0;
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
                 if (matrix[row][column] == 0) {
@@ -224,17 +235,8 @@ public class Main {
                 }
             }
         }
-        Boolean verifySideUp = verifySideUp(matrix);
-        Boolean verifySideLeft = verifySideLeft(matrix);
-
-        boolean isGameOver = countZeros == 0 && !(verifySideUp) && !(verifySideLeft);
-        if (isGameOver) {
-            System.out.println("Game Over");
-        }
-
-        return isGameOver;
+        return countZeros;
     }
-
 
     public Boolean verifySideUp(int[][] matrix) {
         boolean check = false;

@@ -16,7 +16,6 @@ public class Main {
             char letter = scanner.next().charAt(0);
             if (letter == 'w') {
                 game.moveUp();
-
             }
             if (letter == 's') {
                 game.moveDown();

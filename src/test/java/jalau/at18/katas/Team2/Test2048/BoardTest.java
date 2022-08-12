@@ -63,5 +63,33 @@ public class BoardTest {
       board.replacePositions(3, 3, 2);
       board.moveNumberUp('w');
       assertArrayEquals(compareMatrix, board.returnBoard());
+      
    }
+   @Test
+   public void shouldAditonUp() {
+      Board board = new Board(4, 0);
+      int[][] compareAditionMatrix = { {0, 0, 0, 4},
+                                       {0, 0, 0, 0},
+                                       {0, 0, 0, 0},
+                                       {0, 0, 0, 0}};
+      board.replacePositions(2, 3, 2);
+      board.replacePositions(3, 3, 2);
+      board.moveNumberUp('w');
+      assertArrayEquals(compareAditionMatrix, board.returnBoard());
+   }
+/* 
+   @Test
+   public void shouldMoveNumberUp() {
+      int[][] compareMatrix = {{0, 0, 0, 2},
+            {0, 0, 0, 0},
+            {0, 0, 0, 0},
+            {0, 0, 0, 0}};
+      Board board = new Board(4, 0);
+      board.createTable();
+      board.replacePositions(3, 3, 2);
+      board.moveNumberUp('w');
+      assertArrayEquals(compareMatrix, board.returnBoard());
+   }
+
+*/
 }

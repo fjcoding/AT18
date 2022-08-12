@@ -61,207 +61,170 @@ public class Board {
     public boolean isValidThePosition(int x, int y) {
         return !(board[x][y] != 0);
     }
-
     public void replacePositions(int position1, int position2, int number) {
         if (board[position1][position2] == 0) {
             board[position1][position2] = number;
         }
     }
-
     public int[][] returnBoard() {
         return board;
+    }
+    public void additionUp(){
+        for (int col = 0; col < size; col++) {
+            for (int row = 0; row < size - 1; row++) {
+                if (board[row][col] == board[row + 1][col]) {
+                    board[row][col] += board[row + 1][col]; // suma
+                    board[row + 1][col] = 0;
+                    score = score + board[row][col]; // vscore + numero sumado
+                    continue;
+                }
+            }
+        }
+    }
+    public void reverseUp(){
+            for (int col = 0; col < size; col++) {
+                int count = 0;
+                for (int row = 0; row < size; row++) {
+                    if (board[row][col] != 0) {
+                        board[0 + count][col] = board[row][col];
+                        if (0 + count != row) {
+                            board[row][col] = 0;
+                        }
+                        count++;
+                    }
+                }
+            } 
     }
 
     public void moveNumberUp(char direction) {
 
         if (direction == 'w') {
-            for (int col = 0; col < size; col++) {
-                int count = 0;
-                for (int row = 0; row < size; row++) {
-                    if (board[row][col] != 0) {
-                        board[0 + count][col] = board[row][col];
+            reverseUp();
+            additionUp();
+            reverseUp();
+        }
+    }
+    public void additionRight(){
 
-                        if (0 + count != row) {
-                            board[row][col] = 0;
-                        }
-                        count++;
-                    }
-
+        for (int row = 0; row < size; row++) {
+            for (int col = size - 1; col > 0; col--) {
+                if (board[row][col] == board[row][col - 1]) {
+                    board[row][col] += board[row][col - 1];
+                    board[row][col - 1] = 0;
+                    score = score + board[row][col]; // vscore + numero sumado
+                    continue;
                 }
-
-            }
-
-            for (int col = 0; col < size; col++) {
-                for (int row = 0; row < size - 1; row++) {
-                    if (board[row][col] == board[row + 1][col]) {
-                        board[row][col] += board[row + 1][col]; // suma
-                        board[row + 1][col] = 0;
-
-                        score = score + board[row][col]; // vscore + numero sumado
-                        continue;
-                    }
-                }
-            }
-            for (int col = 0; col < size; col++) {
-
-                int count = 0;
-                for (int row = 0; row < size; row++) {
-                    if (board[row][col] != 0) {
-                        board[0 + count][col] = board[row][col];
-
-                        if (0 + count != row) {
-                            board[row][col] = 0;
-                        }
-                        count++;
-                    }
-                }
-
             }
         }
     }
 
+    public void reverseRight(){
+        for (int row = 0; row < size; row++) {
+            int count = 0;
+            for (int col = size - 1; col >= 0; col--) {
+                if (board[row][col] != 0) {
+                    board[row][size - 1 - count] = board[row][col];
+                    if (size - 1 - count != col) {
+                        board[row][col] = 0;
+                    }
+                    count++;
+                }
+            }
+        }
+        for (int row = 0; row < size; row++) {
+            int count = 0;
+            for (int col = size - 1; col >= 0; col--) {
+                if (board[row][col] != 0) {
+                    board[row][size - 1 - count] = board[row][col];
+                    // empty the original tile position after tile is moved
+                    if (size - 1 - count != col) {
+                        board[row][col] = 0;
+                    }
+                    count++;
+                }
+            }
+        }
+    }
     public void moveNumberRight(char direction) {
 
         if (direction == 'd') {
-            for (int row = 0; row < size; row++) {
-                int count = 0;
-                for (int col = size - 1; col >= 0; col--) {
-
-                    if (board[row][col] != 0) {
-                        board[row][size - 1 - count] = board[row][col];
-                        if (size - 1 - count != col) {
-                            board[row][col] = 0;
-                        }
-                        count++;
-                    }
-
-                }
-
-            }
-
-            for (int row = 0; row < size; row++) {
-                for (int col = size - 1; col > 0; col--) {
-                    if (board[row][col] == board[row][col - 1]) {
-                        board[row][col] += board[row][col - 1];
-                        board[row][col - 1] = 0;
-                        score = score + board[row][col]; // vscore + numero sumado
-                        continue;
-                    }
-                }
-            }
-            for (int row = 0; row < size; row++) {
-                int count = 0;
-
-                for (int col = size - 1; col >= 0; col--) {
-                    if (board[row][col] != 0) {
-                        board[row][size - 1 - count] = board[row][col];
-                        // empty the original tile position after tile is moved
-                        if (size - 1 - count != col) {
-                            board[row][col] = 0;
-                        }
-                        count++;
-                    }
-
-                }
-
-            }
-
+            reverseRight();
+            additionRight();
+            reverseRight();
         }
+    }
+    public void aditionLeft(){
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size - 1; col++) {
+                if (board[row][col] == board[row][col + 1]) {
+                    board[row][col] += board[row][col + 1]; // suma
+                    board[row][col + 1] = 0;
+                    score = score + board[row][col]; // vscore + numero sumado
+                    continue;
+
+                }
+            }
+        }
+    }
+    public void reverseLeft(){
+        for (int row = 0; row < size; row++) {
+            int count = 0;
+            for (int col = 0; col < size; col++) {
+                if (board[row][col] != 0) {
+
+                    board[row][0 + count] = board[row][col];
+                    if (0 + count != col) {
+                        board[row][col] = 0;
+                    }
+                    count++;
+                }
+            }
+        }
+        
     }
 
     public void moveNumberLeft(char direction) {
-
         if (direction == 'a') {
-            for (int row = 0; row < size; row++) {
-                int count = 0;
-                for (int col = 0; col < size; col++) {
-                    if (board[row][col] != 0) {
-
-                        board[row][0 + count] = board[row][col];
-                        if (0 + count != col) {
-                            board[row][col] = 0;
-                        }
-                        count++;
-                    }
-                }
-
-            }
-
-            for (int row = 0; row < size; row++) {
-                for (int col = 0; col < size - 1; col++) {
-                    if (board[row][col] == board[row][col + 1]) {
-                        board[row][col] += board[row][col + 1]; // suma
-                        board[row][col + 1] = 0;
-                        score = score + board[row][col]; // vscore + numero sumado
-                        continue;
-
-                    }
-                }
-            }
-            for (int row = 0; row < size; row++) {
-                int count = 0;
-                for (int col = 0; col < size; col++) {
-
-                    if (board[row][col] != 0) {
-                        board[row][0 + count] = board[row][col];
-                        if (0 + count != col) {
-                            board[row][col] = 0;
-                        }
-                        count++;
-                    }
-                }
-
-            }
-
+            reverseLeft();
+            aditionLeft();
+            reverseLeft();
         }
     }
 
-    public void moveNumberD(char direction) {
-
-        if (direction == 's') {
-
-            for (int col = 0; col < size; col++) {
-                int count = 0;
-                for (int row = size - 1; row >= 0; row--) {
-                    if (board[row][col] != 0) {
-                        board[size - 1 - count][col] = board[row][col];
-                        if (size - 1 - count != row) {
-
-                            board[row][col] = 0;
-                        }
-                        count++;
-                    }
-
+    public void addionDonw(){
+        // sumar
+        for (int col = 0; col < size; col++) {
+            for (int row = size - 1; row > 0; row--) {
+                if (board[row][col] == board[row - 1][col]) {
+                    board[row][col] += board[row - 1][col];
+                    board[row - 1][col] = 0;
+                    score = score + board[row][col]; // vscore + numero sumado
+                    continue;
                 }
-
-            }
-            // sumar
-            for (int col = 0; col < size; col++) {
-                for (int row = size - 1; row > 0; row--) {
-                    if (board[row][col] == board[row - 1][col]) {
-                        board[row][col] += board[row - 1][col];
-                        board[row - 1][col] = 0;
-                        score = score + board[row][col]; // vscore + numero sumado
-                        continue;
-                    }
-                }
-            }
-            for (int col = 0; col < size; col++) {
-                int count = 0;
-                for (int row = size - 1; row >= 0; row--) {
-                    if (board[row][col] != 0) {
-                        board[size - 1 - count][col] = board[row][col];
-                        if (size - 1 - count != row) {
-                            board[row][col] = 0;
-                        }
-                        count++;
-                    }
-
-                }
-
             }
         }
+    }
+ public void reverseDonw(){
+    for (int col = 0; col < size; col++) {
+        int count = 0;
+        for (int row = size - 1; row >= 0; row--) {
+            if (board[row][col] != 0) {
+                board[size - 1 - count][col] = board[row][col];
+                if (size - 1 - count != row) {
+                    board[row][col] = 0;
+                }
+                count++;
+            }
+        }
+    }
+ }
 
+    public void moveNumberD(char direction) {
+        if (direction == 's') {
+            reverseDonw();
+            addionDonw();
+            reverseDonw();
+        }
     }
 
     public int showScore() {

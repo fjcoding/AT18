@@ -10,8 +10,11 @@ public class MainTest {
 
     final int RANDOM_VALUE1 = 2;
     final int RANDOM_VALUE2 = 4;
+    final int MATRIX_LENGTH = 4;
+
+
     @Test
-    public void mainCountZerosMatrix(int[][] matrix) {
+    public void mainCountZerosMatrix() {
         Main main = new Main();
         assertEquals(2, main.countZerosMatrix(zerosMatrix));
     }
@@ -25,9 +28,20 @@ public class MainTest {
         Main main = new Main();
         assertEquals(false, main.gameOver(matrixGameNoOver));
     }
-    /*@Test
+
+
+    @Test
     public void mainRandomValue(){
         Main main = new Main();
-        assertTrue( main.randomValueGrid() == RANDOM_VALUE1);
-    }*/
+        int num = main.randomValueGrid();
+        assertTrue( num == RANDOM_VALUE1 || num == RANDOM_VALUE2 );
+    }
+
+    @Test
+    public void mainRandomPositionGrid(){
+        Main main = new Main();
+        int [] valuesPosition = main.randomPositionGrid();
+        assertTrue( valuesPosition[0] < MATRIX_LENGTH && valuesPosition[1] < MATRIX_LENGTH );
+    }
+
 }

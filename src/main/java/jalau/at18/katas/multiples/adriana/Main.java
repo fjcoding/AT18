@@ -7,13 +7,12 @@ public class Main {
     static final Integer DIVISORS_OF_2 = 5;
     public static void main(String[] args) {
         System.out.print("Enter a number: ");
-        try (Scanner scan = new Scanner(System.in)) {
-            Integer number = scan.nextInt();
-            System.out.println(" ");
-            System.out.println("Number: " + number);
-            Integer sumMultiples = getSumMult(number);
-            System.out.println("Sum: " + sumMultiples);
-        }
+        Scanner scan = new Scanner(System.in);
+        Integer number = scan.nextInt();
+        System.out.println(" ");
+        System.out.println("Number: " + number);
+        Integer sumMultiples = getSumMult(number);
+        System.out.println("Sum: " + sumMultiples);
     }
     public static Integer getSumMult(Integer number) {
         Integer sum = 0;

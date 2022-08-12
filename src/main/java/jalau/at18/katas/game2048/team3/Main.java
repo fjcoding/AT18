@@ -1,6 +1,7 @@
 package jalau.at18.katas.game2048.team3;
 import java.util.Scanner;//
 import java.util.Random;
+import javafx.util.Pair;
 // - funcion de busqueda de 1024
 // - funcion sin movimientos
 // - generado de num aleatorio
@@ -15,50 +16,62 @@ public class Main {
     private static final int PRINCIPAL_NUMBER = 2;
     private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
     public static void main(String[] args) {
-        int[][] matrix = {{2, ZERO, 2, ZERO},
-                          {ZERO, 4, 2, ZERO},
-                          {ZERO, ZERO, 4, ZERO},
-                          {2, ZERO, ZERO, ZERO}};
+        int[][] matrix = {{ZERO, ZERO, ZERO, ZERO},
+                          {ZERO, ZERO, ZERO, ZERO},
+                          {ZERO, ZERO, ZERO, ZERO},
+                          {ZERO, ZERO, ZERO, ZERO}};
         Main main = new Main();
-        main.readMoves(matrix);
-        main.didYouWin();
+        main.initializeMatrix(matrix);
         while (main.didYouWin() == false){
             main.readMoves(matrix);
         }
-        //main.downMove(matrix);
-        //main.initializeMatrix(matrix);
     }
     // {{2, 0, 2, 0},
     //  {0, 0, 2, 2},
     //  {2, 2, 2, 2},
     //  {2, 0, 2, 2}};
-
+    /*
+     *  int[][] matrix = {{2, ZERO, 2, ZERO},
+                          {ZERO, 4, 2, ZERO},
+                          {ZERO, ZERO, 4, ZERO},
+                          {2, ZERO, ZERO, ZERO}};
+     */
     //0 0 0 4
     //0 0 0 4
     //0 0 0 8
     //0 0 4 2
+    public Pair <Integer, Integer> randomPair(){
+        Random rnd = new Random();
+        int randomPositionI = rnd.nextInt(MAX_INDEX ) + ZERO;
+        int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
+        return new Pair<Integer,Integer>(randomPositionI, randomPositionJ);
+    }
 
-    /*public void initializeMatrix(int [][] matrix) {
-        for (int attempt = 0; attempt < 2; attempt++) {
-            Random rnd = new Random();
-            int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
-            int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
-            int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
-            //controlArray[attempt] = randomPositionI + " " + randomPositionJ; 
-            if (randomNumber == ZERO) {
-                matrix[randomPositionI][randomPositionJ] = PRINCIPAL_NUMBER;
-            } else {
-                matrix[randomPositionI][randomPositionJ] = MAX_SIZE;
-            }
+    public int randomNumber(){
+        Random rnd = new Random();
+        int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
+        if (randomNumber == ZERO) {
+            return PRINCIPAL_NUMBER;
+        } else {
+            return MAX_SIZE;
         }
-        
-        for (int row = ZERO;row < MAX_SIZE; row++) {
-            for (int column = ZERO; column < MAX_SIZE; column++) {
-                System.out.print(matrix[row][column]);    
-            }
-            System.out.println();
-        }
-        readMoves(matrix);
+    }
+
+    public void initializeMatrix(int [][] matrix) {    
+        randomPair();
+        int randomPositionI = randomPair().getKey();
+        int randomPositionJ = randomPair().getValue();
+        int randomPositionI2 = ZERO;
+        int randomPositionJ2 = ZERO;
+        do{
+            randomPositionI2 = randomPair().getKey();
+            randomPositionJ2 = randomPair().getValue();
+        } while (randomPositionI == randomPositionI2 && randomPositionJ == randomPositionJ2);
+        matrix[randomPositionI][randomPositionJ] = randomNumber();
+        matrix[randomPositionI2][randomPositionJ2] = randomNumber();
+        System.out.println(randomPositionI + " - " + randomPositionJ);
+        System.out.println(randomPositionI2 + " - " + randomPositionJ2);
+        matrixG=matrix;
     }
 
     public void generateRandomNumbers() {
@@ -66,7 +79,7 @@ public class Main {
         int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
         int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
         int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
-    }*/
+    }
 
     public void readMoves(int[][] matrix) {
         String input;

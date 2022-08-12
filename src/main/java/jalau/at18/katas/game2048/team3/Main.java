@@ -23,23 +23,13 @@ public class Main {
         Main main = new Main();
         main.initializeMatrix(matrix);
         while (main.didYouWin() == false){
+            main.showMatrix();
+            System.out.println("Make a move:");
             main.readMoves(matrix);
+            main.generateRandomNumbers(matrix);
         }
     }
-    // {{2, 0, 2, 0},
-    //  {0, 0, 2, 2},
-    //  {2, 2, 2, 2},
-    //  {2, 0, 2, 2}};
-    /*
-     *  int[][] matrix = {{2, ZERO, 2, ZERO},
-                          {ZERO, 4, 2, ZERO},
-                          {ZERO, ZERO, 4, ZERO},
-                          {2, ZERO, ZERO, ZERO}};
-     */
-    //0 0 0 4
-    //0 0 0 4
-    //0 0 0 8
-    //0 0 4 2
+    
     public int [] randomPair(){
         Random rnd = new Random();
         int randomPositionI = rnd.nextInt(MAX_INDEX ) + ZERO;
@@ -74,11 +64,16 @@ public class Main {
         matrixG=matrix;
     }
 
-    public void generateRandomNumbers() {
-        Random rnd = new Random();
-        int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
-        int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
-        int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
+    public void generateRandomNumbers(int[][] matrix) {
+        int positionI = randomPair()[0];
+        int positionJ = randomPair()[1];
+        int value = matrix[positionI][positionJ];
+        while( value != 0){
+            positionI = randomPair()[0];
+            positionJ = randomPair()[1];
+            value = matrix[positionI][positionJ];
+        }
+        matrixG[positionI][positionJ] = randomNumber();
     }
 
     public void readMoves(int[][] matrix) {
@@ -136,8 +131,6 @@ public class Main {
                 }
             }
         }
-        showMatrix();
-        
     }
 
     public void leftMove(int[][] matrix) {
@@ -171,7 +164,6 @@ public class Main {
                 }
             }
         }
-        showMatrix();
     }
 
     public void upMove(int[][] matrix) {
@@ -210,7 +202,6 @@ public class Main {
                 }
             }
         }
-        showMatrix();
     }
 
     public void downMove(int[][] matrix) {
@@ -249,7 +240,6 @@ public class Main {
                 }
             }
         }
-        showMatrix();
     }
 
     public void showMatrix() {
@@ -274,7 +264,6 @@ public class Main {
                 }
             }
         }
-       
         return false; 
     }
 }

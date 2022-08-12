@@ -20,7 +20,10 @@ public class Main {
         //gameOver = true yano puede jugar
         while (!main.gameOver(matrix)) {
             main.direcctions(matrix); // se envia la matriz
-            main.got2048(matrix);
+            if (main.got2048(matrix)) {
+                System.out.print("Congratulations, You got 2048!!!");
+            }
+
         }
         //Integer [][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
         //gameOver(testMatrix);
@@ -267,13 +270,14 @@ public class Main {
         return check;
     }
 
-    public void got2048(int[][] matrix) {
+    public Boolean got2048(int[][] matrix) {
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
                 if (matrix[row][column] == WIN_POINT_2048) {
-                    System.out.println("Congratulations");
+                    return true;
                 }
             }
         }
+        return false;
     }
 }

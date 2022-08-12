@@ -3,7 +3,6 @@ package jalau.at18.katas.game2048.team1;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.beans.Transient;
 
 public class MainTest {
     int [][] exampleMatrix = {{0,0,0,0},{0,0,0,0},{0,0,2,0},{0,0,0,0}};
@@ -113,10 +112,28 @@ public class MainTest {
         int [][] matrixExpected = {{0,0,0,0},{0,0,0,4},{0,0,0,8},{0,0,0,2}};
         assertEquals(matrixExpected,main.moveRigth(matrixTest));
     }
-
-
-
-
-
-
+    @Test
+    public void mainVerifySideRow(){
+        Main main = new Main();
+        int [][] matrixTest = {{1,2,3,4},{1,5,6,7},{2,3,5,7},{9,0,7,5}};
+        assertEquals(true,main.verifySideRow(matrixTest));
+        int [][] matrixTest1 = {{1,2,3,4},{3,5,6,9},{2,3,5,7},{9,0,7,5}};
+        assertEquals(false,main.verifySideRow(matrixTest1));
+    }
+    @Test
+    public void mainVerifySideColumn(){
+        Main main = new Main();
+        int [][] matrixTest = {{1,1,3,4},{1,5,6,7},{2,3,5,7},{9,0,7,5}};
+        assertEquals(true,main.verifySideColumn(matrixTest));
+        int [][] matrixTest1 = {{1,2,3,4},{3,5,6,9},{2,3,5,7},{9,0,7,5}};
+        assertEquals(false,main.verifySideColumn(matrixTest1));
+    }
+    @Test
+    public void mainGot2048(){
+        Main main = new Main();
+        int [][] matrixTest = {{0,0,0,0},{4,0,2048,0},{4,4,0,0},{2,0,0,0}};
+        assertEquals(true,main.got2048(matrixTest));
+        int [][] matrixTest1 = {{0,0,0,0},{4,0,0,0},{4,4,0,0},{2,0,0,0}};
+        assertEquals(false,main.got2048(matrixTest1));
+    }
 }

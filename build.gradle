@@ -32,24 +32,24 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task runhighlow (dependsOn: 'classes', type: JavaExec) {
+task runhighlowJoseR (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.joser.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
 
-task runphone(dependsOn: 'classes', type: JavaExec) {
+task runphoneJoseR(dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.joser.Main'
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
 }
 
-task runlikes (dependsOn: 'classes', type: JavaExec) {
+task runlikesJoseR (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.joser.Main'
     classpath = sourceSets.main.runtimeClasspath
         standardInput = System.in
 }
 
-task runmultiples(dependsOn: 'classes', type: JavaExec) {
+task runmultiplesJoseR(dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.joser.Main'
     classpath = sourceSets.main.runtimeClasspath
      standardInput = System.in

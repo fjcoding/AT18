@@ -10,6 +10,6 @@ public class MainTest {
         Main main = new Main();
         final Integer input = 10;
         final Integer sumatory = 23;
-        assertEquals(sumatory, main.getSumMult(input));
+        assertEquals(sumatory, Main.getSumMult(input));
     }
 }

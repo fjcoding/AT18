@@ -46,7 +46,7 @@ public class Main {
 
     }
 
-    static void showMatrix() { // Fix display for larger numbers
+    public static void showMatrix() { // Fix display for larger numbers
         for (int index = 0; index < matrix.length; index++) {
             System.out.println("----------------------------");
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
@@ -72,25 +72,25 @@ public class Main {
         switch (direction) {
             case "w":
                 System.out.println("You moved the numbers up!");
-                moveNumbersUp();
+                moveNumbersUp(matrix);
                 putNewTwoOnMatrix();
                 System.out.println();
                 break;
             case "a":
                 System.out.println("You moved the numbers left!");
-                moveNumbersLeft();
+                moveNumbersLeft(matrix);
                 putNewTwoOnMatrix();
                 System.out.println();
                 break;
             case "d":
                 System.out.println("You moved the numbers right!");
-                moveNumbersRight();
+                moveNumbersRight(matrix);
                 putNewTwoOnMatrix();
                 System.out.println();
                 break;
             case "s":
                 System.out.println("You moved the numbers down!");
-                moveNumbersDown();
+                moveNumbersDown(matrix);
                 putNewTwoOnMatrix();
                 System.out.println();
                 break;
@@ -109,7 +109,7 @@ public class Main {
     // Case 3: The next number is the same number (So it has to sum the numbers)
     // Case 4: Th next number is other number (So do nothing)
 
-    static void moveNumbersUp() {
+    public static int[][] moveNumbersUp(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && index == 0) { // Case 1
@@ -128,9 +128,10 @@ public class Main {
 
             }
         }
+        return matrix;
     }
 
-    static void moveNumbersDown() {
+    static int[][] moveNumbersDown(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && index == 3) { // Case 1
@@ -148,9 +149,10 @@ public class Main {
                 }
             }
         }
+        return matrix;
     }
 
-    static void moveNumbersLeft() {
+    static int[][] moveNumbersLeft(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && jIndex == 0) { // Case 1
@@ -168,9 +170,10 @@ public class Main {
                 }
             }
         }
+        return matrix;
     }
 
-    static void moveNumbersRight() {
+    static int[][] moveNumbersRight(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] != 0 && jIndex == 3) { // Case 1
@@ -188,9 +191,10 @@ public class Main {
                 }
             }
         }
+        return matrix;
     }
 
-    static void putNewTwoOnMatrix() { // Recursividad?
+    public static void putNewTwoOnMatrix() { // Recursividad?
         int randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         int randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         while (matrix[randomPositionX][randomPositionY] != 0) { // It searchs a cell with a 0 for putting a 2
@@ -201,7 +205,7 @@ public class Main {
     }
 
     // Is loser function
-    static boolean isLoser() {
+    public static boolean isLoser() {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] == 0) {

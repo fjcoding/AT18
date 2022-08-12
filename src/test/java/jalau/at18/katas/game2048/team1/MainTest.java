@@ -3,6 +3,8 @@ package jalau.at18.katas.game2048.team1;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.beans.Transient;
+
 public class MainTest {
     int [][] exampleMatrix = {{0,0,0,0},{0,0,0,0},{0,0,2,0},{0,0,0,0}};
     int [][] matrixGameOver = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
@@ -64,5 +66,28 @@ public class MainTest {
             }
         }
         assertEquals(countTiles1 + 1, countTiles2);
+    }
+
+    @Test
+    public void mainInitialMatrix(){
+        Main main = new Main();
+        int countTiles1 = 0;
+        int [][] matrixInitialTest = main.initialMatrix(2,1);
+        for (int row = 0; row < matrixInitialTest.length; row++) {
+            for (int column = 0; column < matrixInitialTest.length; column++) {
+                if (matrixInitialTest[row][column] != 0) {
+                    countTiles1++;
+                }
+            }
+        }
+        assertEquals(2, countTiles1);
+    }
+
+    @Test
+    public void mainMoveTop(){
+        Main main = new Main();
+        int [][] matrixTest = {{0,0,0,0},{4,0,0,0},{0,0,2,0},{0,0,2,0}};
+        int [][] matrixExpected = {{4,0,4,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+        assertEquals(matrixExpected,main.moveTop(matrixTest));
     }
 }

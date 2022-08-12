@@ -1,4 +1,4 @@
-package multiples;
+package main.java.jalau.at18.katas.multiples.hugo;
 
 import java.util.Scanner;
 

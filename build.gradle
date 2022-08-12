@@ -30,31 +30,25 @@ test.finalizedBy("checkstyleMain")
 task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
-     standardInput = System.in
-
 }
 
 task runhighestlowestSarai (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sarai.Main'
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath  
 }
 
 task runlikesSarai (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.sarai.Main'
     classpath = sourceSets.main.runtimeClasspath
-     standardInput = System.in
 }
 
 task runmultiplesSarai (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.sarai.Main'
     classpath = sourceSets.main.runtimeClasspath
-     standardInput = System.in
 }
 
 task runphonenumberSarai (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.sarai.Main'
     classpath = sourceSets.main.runtimeClasspath
-     standardInput = System.in
 }
 

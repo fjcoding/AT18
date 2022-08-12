@@ -1,22 +1,10 @@
 package jalau.at18.katas.highestlowest.sarai;
-import java.util.Scanner;
 
 public class Main {
+    public static final int NUMAUX = 1;
     public static void main(String[] args) {
-        System.out.println("how many numbers do you want to enter?");
-        System.out.println(enterNumbers());
-    }
-    public static String enterNumbers() {
-        Scanner scankeyboard = new Scanner(System.in);
-        int quantity = scankeyboard.nextInt();
-        int[] save = new int[quantity];
-        System.out.println("enter numbers");
-        for (int index = 0; index < quantity; index++) {
-            int num = scankeyboard.nextInt();
-            save[index] = num;
-        }
-        String message = highestLowestNumber(save);
-        return message;
+        int[] save = new int[] {NUMAUX, NUMAUX, NUMAUX, NUMAUX, NUMAUX};
+        System.out.println(highestLowestNumber(save));
     }
     public static String highestLowestNumber(int[] save) {
         int highestNumber  = save[0];
@@ -29,6 +17,6 @@ public class Main {
                 lowestNumber = save[index];
             }
         }
-        return "numbers " + " " + lowestNumber;
+        return highestNumber + " " + lowestNumber;
     }
 }

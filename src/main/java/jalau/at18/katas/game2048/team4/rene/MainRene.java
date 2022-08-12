@@ -15,7 +15,6 @@ public class MainRene {
         String exit = "Y";
         String continuePlaying;
         
-        showMatrix();
         System.out.println();
         putNewTwoOnMatrix();
         putNewTwoOnMatrix();
@@ -105,8 +104,11 @@ public class MainRene {
                         matrix[innerIndex - 1][jIndex] = matrix[innerIndex][jIndex];
                         matrix[innerIndex][jIndex] = 0;
                     } // movu up till reach a border or a number
-                    
+                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == matrix[index][jIndex]) {
+                    matrix[index - 1][jIndex] *= 2;
+                    matrix[index][jIndex] = 0;
                 }
+
             }
         }
     }
@@ -119,9 +121,11 @@ public class MainRene {
                     for (int innerIndex = index; innerIndex < 3 && matrix[innerIndex + 1][jIndex] == 0; innerIndex++) {
                         matrix[innerIndex + 1][jIndex] = matrix[innerIndex][jIndex];
                         matrix[innerIndex][jIndex] = 0;
-                    } // movu up till reach a border or a number
-                    
-                }
+                    } // movu up till reach a border or a number 
+                }  else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == matrix[index][jIndex]) {
+                    matrix[index + 1][jIndex] *= 2;
+                    matrix[index][jIndex] = 0;
+                }  
             }
         }
     }
@@ -132,26 +136,30 @@ public class MainRene {
                     continue;
                 } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == 0) {
                     for (int innerIndex = jIndex; innerIndex > 0 && matrix[innerIndex][jIndex - 1] == 0; innerIndex--) {
-                        matrix[innerIndex][jIndex - 1] = matrix[innerIndex][jIndex];
-                        matrix[innerIndex][jIndex] = 0;
-                    } // movu up till reach a border or a number
-                    
-                }
+                        matrix[index][innerIndex - 1] = matrix[index][innerIndex];
+                        matrix[index][innerIndex] = 0;
+                    } // movu up till reach a border or a number   
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == matrix[index][jIndex]) {
+                    matrix[index][jIndex - 1] *= 2;
+                    matrix[index][jIndex] = 0;
+                }  
             }
         }
     }
-    static void moveNumbersRight() {
+    static void moveNumbersRight() { //Fix!!!
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
-                if (matrix[index][jIndex] != 0 && index == 0) {
+                if (matrix[index][jIndex] != 0 && jIndex == 3) {
                     continue;
-                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == 0) {
-                    for (int innerIndex = index; innerIndex > 0 && matrix[innerIndex - 1][jIndex] == 0; innerIndex--) {
-                        matrix[innerIndex - 1][jIndex] = matrix[innerIndex][jIndex];
-                        matrix[innerIndex][jIndex] = 0;
-                    } // movu up till reach a border or a number
-                    
-                }
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == 0) {
+                    for (int innerIndex = jIndex; innerIndex < 3 && matrix[innerIndex][jIndex + 1] == 0; innerIndex++) {
+                        matrix[index][innerIndex + 1] = matrix[index][innerIndex];
+                        matrix[index][innerIndex] = 0;
+                    } // movu up till reach a border or a number   
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == matrix[index][jIndex]) {
+                    matrix[index][jIndex + 1] *= 2;
+                    matrix[index][jIndex] = 0;
+                }  
             }
         }
     }

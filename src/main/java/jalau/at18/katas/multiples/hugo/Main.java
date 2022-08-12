@@ -3,6 +3,8 @@ package jalau.at18.katas.multiples.hugo;
 import java.util.Scanner;
 
 public class Main {
+    static final Integer MULT_OF_3 = 3;
+    static final Integer MULT_OF_5 = 5;
 
     public static void main(String[] args) {
 
@@ -14,10 +16,10 @@ public class Main {
         int five = 0;
         if (numint >= 0) {
             for (int index = 0; index < numint; index++) {
-                if (index % 3 == 0 && index != 0) {
+                if (index % MULT_OF_3 == 0 && index != 0) {
                     three = three + index;
                 } else {
-                    if (index % 5 == 0 && index != 0) {
+                    if (index % MULT_OF_5 == 0 && index != 0) {
 
                         five = five + index;
                     }

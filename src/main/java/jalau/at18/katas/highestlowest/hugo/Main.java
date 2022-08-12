@@ -3,7 +3,7 @@ package jalau.at18.katas.highestlowest.hugo;
 import java.util.Scanner;
 
 public class Main {
-
+    static final Integer NUM_10 = 10;
     public static void main(String[] args) {
 
         System.out.println("Enter a string of numbers spaced with a blank space e.g: (1 2 -3 4 5)");
@@ -38,7 +38,7 @@ public class Main {
 
             String[] concat = inputNum.split(" ");
 
-            int[] vector = new int[10];
+            int[] vector = new int[NUM_10];
 
             for (int index = 0; index < concat.length; index++) {
 

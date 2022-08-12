@@ -68,7 +68,6 @@ task runLikesAlvaro (dependsOn: 'classes', type: JavaExec) {
 }
 task runHighestLowestRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigov.Main' // Example: 'jalau.at18.katas.highestlowest.Main'
->>>>>>> dev/katas
     classpath = sourceSets.main.runtimeClasspath
 }
 task likesSergio (dependsOn: 'classes', type: JavaExec) {

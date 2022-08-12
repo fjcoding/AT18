@@ -26,17 +26,17 @@ public class MainHugo {
 
             isWinner();
 
-            System.out.println("Type the direction you want to go. Directions: w, a, s, d");
+            System.out.println("Type the direction you want to go. Directions: [up, down, left, right] = [w, s, a, d]");
             nextDirection = keyBoard.nextLine();
             directionChecker(nextDirection);
             showMatrix();
-            System.out.println("\nIf you want to stop playing type exit \nif not type any key");
+            System.out.println("\nIf you want to stop playing type q. If not type any key");
             continuePlaying = keyBoard.nextLine();
-            if (continuePlaying.equals("exit")) {
-                exit = "exit";
+            if (continuePlaying.equals("q")) {
+                exit = "q";
             }
 
-        } while (!isWinner() && exit != "exit" && !isLoser()); // The game stops when the player type exit or wins
+        } while (!isWinner() && exit != "q" && !isLoser()); // The game stops when the player type exit or wins
 
         keyBoard.close();
 

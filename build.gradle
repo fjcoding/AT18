@@ -182,9 +182,7 @@ task runMultiplesHugo(dependsOn: 'classes', type: JavaExec) {
 task runPhonenumberHugo (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.hugo.Main'
     classpath = sourceSets.main.runtimeClasspath
-<<<<<<< HEAD
 }
-
 
 task runferHighlow (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.fernanda.Main'

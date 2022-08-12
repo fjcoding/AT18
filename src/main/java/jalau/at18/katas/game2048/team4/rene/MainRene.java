@@ -94,19 +94,26 @@ public class MainRene {
           }
     }
 
+    //Case 1: The number is in a border cell
+    //Case 2: The next number is 0
+    //Case 3: The next number is th same number (So it has to sum the numbers)
+    //Case 4: Th next number is other number (So do nothing) 
+
     static void moveNumbersUp() {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
-                if (matrix[index][jIndex] != 0 && index == 0) {
+                if (matrix[index][jIndex] != 0 && index == 0) { // Case 1
                     continue;
-                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == 0) {
+                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == 0) { //Case 2
                     for (int innerIndex = index; innerIndex > 0 && matrix[innerIndex - 1][jIndex] == 0; innerIndex--) {
                         matrix[innerIndex - 1][jIndex] = matrix[innerIndex][jIndex];
                         matrix[innerIndex][jIndex] = 0;
                     } // movu up till reach a border or a number
-                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == matrix[index][jIndex]) {
+                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] == matrix[index][jIndex]) { //Case 3
                     matrix[index - 1][jIndex] *= 2;
                     matrix[index][jIndex] = 0;
+                } else if (matrix[index][jIndex] != 0 && matrix[index - 1][jIndex] != 0) { //Case 4
+                    continue;
                 }
 
             }
@@ -115,51 +122,57 @@ public class MainRene {
     static void moveNumbersDown() {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
-                if (matrix[index][jIndex] != 0 && index == 3) {
+                if (matrix[index][jIndex] != 0 && index == 3) { //Case 1
                     continue;
-                } else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == 0) {
+                } else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == 0) { //Case 2
                     for (int innerIndex = index; innerIndex < 3 && matrix[innerIndex + 1][jIndex] == 0; innerIndex++) {
                         matrix[innerIndex + 1][jIndex] = matrix[innerIndex][jIndex];
                         matrix[innerIndex][jIndex] = 0;
                     } // movu up till reach a border or a number 
-                }  else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == matrix[index][jIndex]) {
+                }  else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == matrix[index][jIndex]) { //Case 3
                     matrix[index + 1][jIndex] *= 2;
                     matrix[index][jIndex] = 0;
-                }  
+                }  else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] != 0) { //Case 4
+                    continue;
+                }
             }
         }
     }
     static void moveNumbersLeft() { //Fix!!!
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
-                if (matrix[index][jIndex] != 0 && jIndex == 0) {
+                if (matrix[index][jIndex] != 0 && jIndex == 0) { //Case 1
                     continue;
-                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == 0) {
-                    for (int innerIndex = jIndex; innerIndex > 0 && matrix[innerIndex][jIndex - 1] == 0; innerIndex--) {
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == 0) { //Case 2
+                    for (int innerIndex = jIndex; innerIndex > 0 && matrix[index][innerIndex - 1] == 0; innerIndex--) {
                         matrix[index][innerIndex - 1] = matrix[index][innerIndex];
                         matrix[index][innerIndex] = 0;
                     } // movu up till reach a border or a number   
-                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == matrix[index][jIndex]) {
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] == matrix[index][jIndex]) { //Case 3
                     matrix[index][jIndex - 1] *= 2;
                     matrix[index][jIndex] = 0;
-                }  
+                }  else if (matrix[index][jIndex] != 0 && matrix[index][jIndex - 1] != 0) { //Case 4
+                    continue;
+                }
             }
         }
     }
     static void moveNumbersRight() { //Fix!!!
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
-                if (matrix[index][jIndex] != 0 && jIndex == 3) {
+                if (matrix[index][jIndex] != 0 && jIndex == 3) { //Case 1
                     continue;
-                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == 0) {
-                    for (int innerIndex = jIndex; innerIndex < 3 && matrix[innerIndex][jIndex + 1] == 0; innerIndex++) {
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == 0) { //Case 2
+                    for (int innerIndex = jIndex; innerIndex < 3 && matrix[index][innerIndex + 1] == 0; innerIndex++) {
                         matrix[index][innerIndex + 1] = matrix[index][innerIndex];
                         matrix[index][innerIndex] = 0;
                     } // movu up till reach a border or a number   
-                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == matrix[index][jIndex]) {
+                } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == matrix[index][jIndex]) { //Case 3
                     matrix[index][jIndex + 1] *= 2;
                     matrix[index][jIndex] = 0;
-                }  
+                }  else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] != 0) { //Case 4
+                    continue;
+                }
             }
         }
     }

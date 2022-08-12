@@ -1,4 +1,4 @@
-package main.java.jalau.at18.katas.helloworld.hugo;
+package jalau.at18.katas.helloworld.hugo;
 
 public class Main {
 

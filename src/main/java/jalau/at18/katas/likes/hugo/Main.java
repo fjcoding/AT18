@@ -1,4 +1,4 @@
-package main.java.jalau.at18.katas.likes.hugo;
+package jalau.at18.katas.likes.hugo;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package main.java.jalau.at18.katas.highestlowest.hugo;
+package jalau.at18.katas.highestlowest.hugo;
 
 import java.util.Scanner;
 

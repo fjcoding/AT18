@@ -1,4 +1,4 @@
-package main.java.jalau.at18.katas.phonenumber.hugo;
+package jalau.at18.katas.phonenumber.hugo;
 
 import java.util.Scanner;
 

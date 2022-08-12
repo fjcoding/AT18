@@ -82,3 +82,28 @@ task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.adriana.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
+task runHelloWorldHugo (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.helloworld.hugo.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runHighestLowestHugo (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.hugo.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runLikesHugo (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.hugo.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runMultiplesHugo(dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.hugo.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runPhonenumberHugo (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.hugo.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}

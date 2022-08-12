@@ -11,7 +11,7 @@ public class BoardTest {
    public void shoul_isValidThePosition() {
       // Board boardd = new Board(4 , 0 );
       Board board = new Board(4, 0);
-      board.createTable();
+      //board.createTable();
       assertEquals(true, board.isValidThePosition(0, 0));
 
       /*
@@ -47,7 +47,7 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 } };
       Board board = new Board(4, 0);
-      board.createTable();
+      //board.createTable();
       board.replacePositions(0, 0, 2);
       assertArrayEquals(compareMatrix, board.returnBoard());
    }
@@ -59,7 +59,7 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 } };
       Board board = new Board(4, 0);
-      board.createTable();
+      //board.createTable();
       board.replacePositions(3, 3, 2);
       board.moveNumberUp('w');
       assertArrayEquals(compareMatrix, board.returnBoard());
@@ -86,7 +86,7 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 } };
       Board board = new Board(4, 0);
-      board.createTable();
+      //board.createTable();
       board.replacePositions(1, 3, 2);
       board.moveNumberLeft('a');
       assertArrayEquals(compareMatrix, board.returnBoard());
@@ -112,7 +112,7 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 } };
       Board board = new Board(4, 0);
-      board.createTable();
+      //board.createTable();
       board.replacePositions(1, 0, 2);
       board.moveNumberRight('d');
       assertArrayEquals(compareMatrix, board.returnBoard());
@@ -138,7 +138,7 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 2, 0, 0 } };
       Board board = new Board(4, 0);
-      board.createTable();
+      //board.createTable();
       board.replacePositions(0, 1, 2);
       board.moveNumberDown('s');
       assertArrayEquals(compareMatrix, board.returnBoard());
@@ -156,5 +156,17 @@ public class BoardTest {
       board.moveNumberDown('s');
       assertArrayEquals(compareAditionMatrix, board.returnBoard());
    }
-
+   @Test
+   public void shouldShowScore() {
+      Board board = new Board(4, 0);
+      board.replacePositions(1, 1, 2);
+      board.replacePositions(2, 1, 2);
+      board.moveNumberDown('s');
+      assertEquals(4, board.showScore());
+   }
+   @Test
+   public void shouldCountZeros() {
+      Board board = new Board(4, 0);
+      assertEquals(16, board.countZeros());
+   }
 }

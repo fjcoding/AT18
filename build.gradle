@@ -50,7 +50,7 @@ task runMultiplesLibertad (dependsOn: 'classes', type: JavaExec) {
 
 task runCreatePhoneNumberLibertad (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.libertad.Main'
-
+}
 task runhighestlowestSarai (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sarai.Main'
     classpath = sourceSets.main.runtimeClasspath  

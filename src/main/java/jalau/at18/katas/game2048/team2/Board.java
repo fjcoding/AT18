@@ -61,15 +61,18 @@ public class Board {
     public boolean isValidThePosition(int x, int y) {
         return !(board[x][y] != 0);
     }
+
     public void replacePositions(int position1, int position2, int number) {
         if (board[position1][position2] == 0) {
             board[position1][position2] = number;
         }
     }
+
     public int[][] returnBoard() {
         return board;
     }
-    public void additionUp(){
+
+    public void additionUp() {
         for (int col = 0; col < size; col++) {
             for (int row = 0; row < size - 1; row++) {
                 if (board[row][col] == board[row + 1][col]) {
@@ -81,19 +84,20 @@ public class Board {
             }
         }
     }
-    public void reverseUp(){
-            for (int col = 0; col < size; col++) {
-                int count = 0;
-                for (int row = 0; row < size; row++) {
-                    if (board[row][col] != 0) {
-                        board[0 + count][col] = board[row][col];
-                        if (0 + count != row) {
-                            board[row][col] = 0;
-                        }
-                        count++;
+
+    public void reverseUp() {
+        for (int col = 0; col < size; col++) {
+            int count = 0;
+            for (int row = 0; row < size; row++) {
+                if (board[row][col] != 0) {
+                    board[0 + count][col] = board[row][col];
+                    if (0 + count != row) {
+                        board[row][col] = 0;
                     }
+                    count++;
                 }
-            } 
+            }
+        }
     }
 
     public void moveNumberUp(char direction) {
@@ -104,7 +108,8 @@ public class Board {
             reverseUp();
         }
     }
-    public void additionRight(){
+
+    public void additionRight() {
 
         for (int row = 0; row < size; row++) {
             for (int col = size - 1; col > 0; col--) {
@@ -118,7 +123,7 @@ public class Board {
         }
     }
 
-    public void reverseRight(){
+    public void reverseRight() {
         for (int row = 0; row < size; row++) {
             int count = 0;
             for (int col = size - 1; col >= 0; col--) {
@@ -145,6 +150,7 @@ public class Board {
             }
         }
     }
+
     public void moveNumberRight(char direction) {
 
         if (direction == 'd') {
@@ -153,7 +159,8 @@ public class Board {
             reverseRight();
         }
     }
-    public void aditionLeft(){
+
+    public void aditionLeft() {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size - 1; col++) {
                 if (board[row][col] == board[row][col + 1]) {
@@ -166,7 +173,8 @@ public class Board {
             }
         }
     }
-    public void reverseLeft(){
+
+    public void reverseLeft() {
         for (int row = 0; row < size; row++) {
             int count = 0;
             for (int col = 0; col < size; col++) {
@@ -180,7 +188,7 @@ public class Board {
                 }
             }
         }
-        
+
     }
 
     public void moveNumberLeft(char direction) {
@@ -191,7 +199,7 @@ public class Board {
         }
     }
 
-    public void addionDonw(){
+    public void additionDown() {
         // sumar
         for (int col = 0; col < size; col++) {
             for (int row = size - 1; row > 0; row--) {
@@ -204,26 +212,27 @@ public class Board {
             }
         }
     }
- public void reverseDonw(){
-    for (int col = 0; col < size; col++) {
-        int count = 0;
-        for (int row = size - 1; row >= 0; row--) {
-            if (board[row][col] != 0) {
-                board[size - 1 - count][col] = board[row][col];
-                if (size - 1 - count != row) {
-                    board[row][col] = 0;
+
+    public void reverseDown() {
+        for (int col = 0; col < size; col++) {
+            int count = 0;
+            for (int row = size - 1; row >= 0; row--) {
+                if (board[row][col] != 0) {
+                    board[size - 1 - count][col] = board[row][col];
+                    if (size - 1 - count != row) {
+                        board[row][col] = 0;
+                    }
+                    count++;
                 }
-                count++;
             }
         }
     }
- }
 
-    public void moveNumberD(char direction) {
+    public void moveNumberDown(char direction) {
         if (direction == 's') {
-            reverseDonw();
-            addionDonw();
-            reverseDonw();
+            reverseDown();
+            additionDown();
+            reverseDown();
         }
     }
 

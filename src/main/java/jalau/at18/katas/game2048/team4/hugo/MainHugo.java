@@ -11,7 +11,8 @@ public class MainHugo {
 
     public static void main(String[] args) {
         Scanner keyBoard = new Scanner(System.in);
-        System.out.println("Bienvenido al juego");
+        System.out.println();
+        System.out.println("Welcome to the game. Objective: get tile 2048 by moving existing tiles: up, down, left and right");
         String exit = "Y";
         String continuePlaying;
 
@@ -20,20 +21,21 @@ public class MainHugo {
         putNewTwoOnMatrix();
         putNewTwoOnMatrix();
         showMatrix();
-        System.out.println();
 
         do {
 
             isWinner();
-
-            System.out.println("Type the direction you want to go. Directions: [up, down, left, right] = [w, s, a, d]");
+            System.out.println();
+            System.out.println("Type the direction you want to go. Directions: [up, down, left, right] = [w, s, a, d]. If you want to exit type 'q'");
             nextDirection = keyBoard.nextLine();
             directionChecker(nextDirection);
             showMatrix();
-            System.out.println("\nIf you want to stop playing type q. If not type any key");
-            continuePlaying = keyBoard.nextLine();
-            if (continuePlaying.equals("q")) {
-                exit = "q";
+            if ("q".equals(nextDirection)) {
+                System.out.println("\nIf you want to stop playing type 'q' again. If not type any key.");
+                continuePlaying = keyBoard.nextLine();
+                if (continuePlaying.equals("q")) {
+                    exit = "q";
+                }
             }
 
         } while (!isWinner() && exit != "q" && !isLoser()); // The game stops when the player type exit or wins
@@ -65,29 +67,36 @@ public class MainHugo {
     static void directionChecker(String direction) { //
         switch (direction) {
             case "w":
-                System.out.println("You move the numbers up!");
+                System.out.println("You moved the numbers up!");
                 moveNumbersUp();
                 putNewTwoOnMatrix();
                 System.out.println();
-
                 break;
             case "a":
-                System.out.println("You move the numbers left!");
+                System.out.println("You moved the numbers left!");
                 moveNumbersLeft();
                 putNewTwoOnMatrix();
+                System.out.println();
                 break;
             case "d":
-                System.out.println("You move the numbers right!");
+                System.out.println("You moved the numbers right!");
                 moveNumbersRight();
                 putNewTwoOnMatrix();
+                System.out.println();
                 break;
             case "s":
-                System.out.println("You move the numbers down!");
+                System.out.println("You moved the numbers down!");
                 moveNumbersDown();
                 putNewTwoOnMatrix();
+                System.out.println();
+                break;
+            case "q":
+                System.out.println("You are about to Quit!");
+                System.out.println();
                 break;
             default:
-                System.out.println("Type a correct direction");
+                System.out.println("Type a correct direction. Directions: [up, down, left, right] = [w, s, a, d].");
+                System.out.println();
         }
     }
 

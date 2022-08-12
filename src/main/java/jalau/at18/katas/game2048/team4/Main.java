@@ -10,6 +10,7 @@ public class Main {
     public static final int MAX_BOUND = 3;
 
     public static void main(String[] args) {
+        Main main = new Main ();
         Scanner keyBoard = new Scanner(System.in);
         System.out.println("Bienvenido al juego");
         String exit = "Y";

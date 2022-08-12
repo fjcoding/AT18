@@ -66,10 +66,10 @@ public class Board {
         }
     }
 
-    public void replacePositions(int position1, int Position2, int number) {
+    public void replacePositions(int position1, int position2, int number) {
 
-        if (board[position1][Position2] == 0) {
-            board[position1][Position2] = number;
+        if (board[position1][position2] == 0) {
+            board[position1][position2] = number;
         }
     }
 
@@ -95,10 +95,10 @@ public class Board {
             for (int col = 0; col < size; col++) {
                 for (int row = 0; row < size - 1; row++) {
                     if (board[row][col] == board[row + 1][col]) {
-                        board[row][col] += board[row + 1][col];// suma
+                        board[row][col] += board[row + 1][col]; // suma
                         board[row + 1][col] = 0;
 
-                        score = score + board[row][col];// vscore + numero sumado
+                        score = score + board[row][col]; // vscore + numero sumado
                         continue;
                     }
                 }
@@ -145,7 +145,7 @@ public class Board {
                     if (board[row][col] == board[row][col - 1]) {
                         board[row][col] += board[row][col - 1];
                         board[row][col - 1] = 0;
-                        score = score + board[row][col];// vscore + numero sumado
+                        score = score + board[row][col]; // vscore + numero sumado
                         continue;
                     }
                 }
@@ -193,7 +193,7 @@ public class Board {
                     if (board[row][col] == board[row][col + 1]) {
                         board[row][col] += board[row][col + 1]; // suma
                         board[row][col + 1] = 0;
-                        score = score + board[row][col];// vscore + numero sumado
+                        score = score + board[row][col]; // vscore + numero sumado
                         continue;
 
                     }
@@ -217,7 +217,7 @@ public class Board {
         }
     }
 
-    public void MoveNumberD(char direction) {
+    public void moveNumberD(char direction) {
         int cont = 0;
         if (direction == 's') {
 
@@ -242,7 +242,7 @@ public class Board {
                     if (board[row][col] == board[row - 1][col]) {
                         board[row][col] += board[row - 1][col];
                         board[row - 1][col] = 0;
-                        score = score + board[row][col];// vscore + numero sumado
+                        score = score + board[row][col]; // vscore + numero sumado
                         continue;
                     }
                 }

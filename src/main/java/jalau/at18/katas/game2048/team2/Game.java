@@ -13,7 +13,7 @@ public class Game {
         // this.character = character;
     }
 
-    public void Move() {
+    public void move() {
     }
 
     public void start() {
@@ -28,9 +28,9 @@ public class Game {
     public void random() {
         int row;
         int column;
-        Random r = new Random();
-        row = r.nextInt(SIZE) + 0; // range 0-3
-        column = r.nextInt(SIZE) + 0;
+        Random randomPosition = new Random();
+        row = randomPosition.nextInt(SIZE) + 0; // range 0-3
+        column = randomPosition.nextInt(SIZE) + 0;
         // System.out.println("row: "+row );
         if (board.isValidThePosition(row, column) == true) {
             board.replacePositions(row, column, 2);
@@ -62,7 +62,7 @@ public class Game {
 
     public void moveDown() {
         System.out.println("se presiono abajo");
-        board.MoveNumberD('s');
+        board.moveNumberD('s');
     }
 
     public void finishGame() {

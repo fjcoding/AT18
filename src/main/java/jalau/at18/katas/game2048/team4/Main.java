@@ -18,14 +18,14 @@ public class Main {
 
         showMatrix();
         System.out.println();
-        putNewTwoOnMatrix();
-        putNewTwoOnMatrix();
+        putNewTwoOnMatrix(matrix);
+        putNewTwoOnMatrix(matrix);
         showMatrix();
         System.out.println();
 
         do {
 
-            isWinner();
+            isWinner(matrix);
             System.out.println();
             System.out.println(
                     "Type the direction you want to go. Directions: [up, down, left, right] = [w, s, a, d]. If you want to exit type 'q'");
@@ -40,7 +40,8 @@ public class Main {
                 }
             }
 
-        } while (!isWinner() && exit != "q" && !isLoser()); // The game stops when the player type exit or wins
+        } while (!isWinner(matrix) && exit != "q" && !isLoser(matrix)); // The game stops when the player type exit or
+                                                                        // wins
 
         keyBoard.close();
 
@@ -57,7 +58,7 @@ public class Main {
         System.out.println("----------------------------");
     }
 
-    static boolean isWinner() {
+    public static boolean isWinner(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] == 2048) {
@@ -73,25 +74,25 @@ public class Main {
             case "w":
                 System.out.println("You moved the numbers up!");
                 moveNumbersUp(matrix);
-                putNewTwoOnMatrix();
+                putNewTwoOnMatrix(matrix);
                 System.out.println();
                 break;
             case "a":
                 System.out.println("You moved the numbers left!");
                 moveNumbersLeft(matrix);
-                putNewTwoOnMatrix();
+                putNewTwoOnMatrix(matrix);
                 System.out.println();
                 break;
             case "d":
                 System.out.println("You moved the numbers right!");
                 moveNumbersRight(matrix);
-                putNewTwoOnMatrix();
+                putNewTwoOnMatrix(matrix);
                 System.out.println();
                 break;
             case "s":
                 System.out.println("You moved the numbers down!");
                 moveNumbersDown(matrix);
-                putNewTwoOnMatrix();
+                putNewTwoOnMatrix(matrix);
                 System.out.println();
                 break;
             case "q":
@@ -194,7 +195,7 @@ public class Main {
         return matrix;
     }
 
-    public static void putNewTwoOnMatrix() { // Recursividad?
+    public static int[][] putNewTwoOnMatrix(int[][] matrix) { // Recursividad?
         int randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         int randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         while (matrix[randomPositionX][randomPositionY] != 0) { // It searchs a cell with a 0 for putting a 2
@@ -202,10 +203,11 @@ public class Main {
             randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         }
         matrix[randomPositionX][randomPositionY] = 2;
+        return matrix;
     }
 
     // Is loser function
-    public static boolean isLoser() {
+    public static boolean isLoser(int[][] matrix) {
         for (int index = 0; index < matrix.length; index++) {
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
                 if (matrix[index][jIndex] == 0) {

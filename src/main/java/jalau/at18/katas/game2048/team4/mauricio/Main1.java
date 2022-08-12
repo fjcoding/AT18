@@ -118,7 +118,7 @@ public class Main1 {
                 if (matrix[index][jIndex] != 0 && index == 3) {
                     continue;
                 } else if (matrix[index][jIndex] != 0 && matrix[index + 1][jIndex] == 0) {
-                    for (int innerIndex = index; innerIndex > 0 && matrix[innerIndex + 1][jIndex] == 0; innerIndex--) {
+                    for (int innerIndex = index; innerIndex < 3 && matrix[innerIndex + 1][jIndex] == 0; innerIndex++) {
                         matrix[innerIndex + 1][jIndex] = matrix[innerIndex][jIndex];
                         matrix[innerIndex][jIndex] = 0;
                     }
@@ -161,8 +161,8 @@ public class Main1 {
                 if (matrix[index][jIndex] != 0 && jIndex == 3) {
                     continue;
                 } else if (matrix[index][jIndex] != 0 && matrix[index][jIndex + 1] == 0) {
-                    for (int innerJindex = jIndex; innerJindex > 0
-                            && matrix[index][innerJindex + 1] == 0; innerJindex--) {
+                    for (int innerJindex = jIndex; innerJindex < 3
+                            && matrix[index][innerJindex + 1] == 0; innerJindex++) {
                         matrix[index][innerJindex + 1] = matrix[index][innerJindex];
                         matrix[index][innerJindex] = 0;
                     }

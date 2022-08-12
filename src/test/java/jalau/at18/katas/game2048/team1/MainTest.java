@@ -90,4 +90,33 @@ public class MainTest {
         int [][] matrixExpected = {{4,0,4,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
         assertEquals(matrixExpected,main.moveTop(matrixTest));
     }
+
+    @Test
+    public void mainMoveDown(){
+        Main main = new Main();
+        int [][] matrixTest = {{0,0,0,0},{4,0,0,0},{0,0,2,0},{0,0,2,0}};
+        int [][] matrixExpected = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{4,0,4,0}};
+        assertEquals(matrixExpected,main.moveDown(matrixTest));
+    }
+
+    @Test
+    public void mainMoveLeft(){
+        Main main = new Main();
+        int [][] matrixTest = {{0,0,0,0},{4,0,0,0},{0,0,2,2},{0,0,2,0}};
+        int [][] matrixExpected = {{0,0,0,0},{4,0,0,0},{4,0,0,0},{2,0,0,0}};
+        assertEquals(matrixExpected,main.moveLeft(matrixTest));
+    }
+    @Test
+    public void mainMoveRight(){
+        Main main = new Main();
+        int [][] matrixTest = {{0,0,0,0},{4,0,0,0},{4,4,0,0},{2,0,0,0}};
+        int [][] matrixExpected = {{0,0,0,0},{0,0,0,4},{0,0,0,8},{0,0,0,2}};
+        assertEquals(matrixExpected,main.moveRigth(matrixTest));
+    }
+
+
+
+
+
+
 }

@@ -37,6 +37,23 @@ task runHighlowLibertad (dependsOn: 'classes', type: JavaExec) {
     standardInput = System.in
 }
 
+task runhighestlowestDaniela (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.daniela.highestlowest'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runlikesDaniela (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.daniela.likes'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runmultiplesDaniela (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.daniela.multiples'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runphonenumberDaniela (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phoneNumber.daniela.phoneNumber'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
 task runLikesLibertad (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.libertad.Main'
     classpath = sourceSets.main.runtimeClasspath
@@ -53,7 +70,7 @@ task runCreatePhoneNumberLibertad (dependsOn: 'classes', type: JavaExec) {
 }
 task runhighestlowestSarai (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sarai.Main'
-    classpath = sourceSets.main.runtimeClasspath  
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 task runlikesSarai (dependsOn: 'classes', type: JavaExec) {
@@ -70,6 +87,7 @@ task runphonenumberSarai (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.sarai.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
 task runHighestLowestRodrigo (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigob.Highestlowest'
     classpath = sourceSets.main.runtimeClasspath
@@ -164,6 +182,7 @@ task runMultiplesHugo(dependsOn: 'classes', type: JavaExec) {
 task runPhonenumberHugo (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.hugo.Main'
     classpath = sourceSets.main.runtimeClasspath
+<<<<<<< HEAD
 }
 
 

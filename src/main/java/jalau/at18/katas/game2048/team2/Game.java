@@ -32,7 +32,7 @@ public class Game {
         row = randomPosition.nextInt(SIZE) + 0; // range 0-3
         column = randomPosition.nextInt(SIZE) + 0;
         // System.out.println("row: "+row );
-        if (board.isValidThePosition(row, column) == true) {
+        if (board.isValidThePosition(row, column)) {
             board.replacePositions(row, column, 2);
             System.out.println("no es valido");
         } else {

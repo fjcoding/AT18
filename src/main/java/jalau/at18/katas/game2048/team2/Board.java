@@ -59,11 +59,12 @@ public class Board {
     }
 
     public boolean isValidThePosition(int x, int y) {
-        if (board[x][y] == 0) {
+        /*if (board[x][y] == 0) {
             return true;
         } else {
             return false;
-        }
+        }*/
+        return !(board[x][y] != 0);
     }
 
     public void replacePositions(int position1, int position2, int number) {

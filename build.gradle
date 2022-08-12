@@ -31,7 +31,45 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+task runHighlowLibertad (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.libertad.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+}
 
+task runLikesLibertad (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.libertad.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runMultiplesLibertad (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.libertad.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+}
+
+task runCreatePhoneNumberLibertad (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.libertad.Main'
+}
+task runhighestlowestSarai (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.sarai.Main'
+    classpath = sourceSets.main.runtimeClasspath  
+}
+
+task runlikesSarai (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.sarai.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runmultiplesSarai (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.sarai.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task runphonenumberSarai (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.sarai.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
 task runHighestLowestRodrigo (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigob.Highestlowest'
     classpath = sourceSets.main.runtimeClasspath
@@ -63,6 +101,7 @@ task runPhonenumberAlvaro (dependsOn: 'classes', type: JavaExec) {
 task runLikesAlvaro (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.alvaro.Main'
 }
+
 task runHighestLowestRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigov.Main' // Example: 'jalau.at18.katas.highestlowest.Main'
     classpath = sourceSets.main.runtimeClasspath
@@ -72,10 +111,12 @@ task runMultiplesRodrigov(dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.rodrigov.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
 task runPhonenumberRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.rodrigov.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
 task runLikesRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.rodrigov.Main'
     classpath = sourceSets.main.runtimeClasspath

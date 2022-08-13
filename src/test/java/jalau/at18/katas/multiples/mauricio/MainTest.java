@@ -8,7 +8,7 @@ public class MainTest {
     private static final int OUTPUT_NUMBER = 23;
 
     @Test
-    public void mainShouldSayHello() {
+    public void multiplesOfThreeOrFive() {
         int input = INPUT_NUMBER;
         String output = String.valueOf(OUTPUT_NUMBER);
         Main main = new Main();

@@ -14,37 +14,37 @@ public class Main {
     }
 
     static String getLikesFromPost(String[] nameList) {
-        String first_name = "None";
-        String second_name = "None";
-        String third_name = "None";
+        String firstName = "None";
+        String secondName = "None";
+        String thirdName = "None";
         switch (nameList.length) {
             case FIRST_CASE:
-                String first_message = "No one likes this";
-                return first_message;
+                String firstMessage = "No one likes this";
+                return firstMessage;
             case SECOND_CASE:
-                first_name = nameList[0];
-                String second_message = first_name + " likes this";
+                firstName = nameList[0];
+                String second_message = firstName + " likes this";
                 return second_message;
             case THIRD_CASE:
-                first_name = nameList[0];
-                second_name = nameList[1];
-                String third_message = first_name + " and " + second_name + " like this";
+                firstName = nameList[0];
+                secondName = nameList[1];
+                String third_message = firstName + " and " + secondName + " like this";
                 return third_message;
             case FOURTH_CASE:
-                first_name = nameList[0];
-                second_name = nameList[1];
-                third_name = nameList[2];
-                String fourth_message = first_name + ", " + second_name + " and " + third_name + " like this";
-                return fourth_message;
+                firstName = nameList[0];
+                secondName = nameList[1];
+                thirdName = nameList[2];
+                String fourthMessage = firstName + ", " + secondName + " and " + thirdName + " like this";
+                return fourthMessage;
             case FIFTH_CASE:
-                first_name = nameList[0];
-                second_name = nameList[1];
-                int rest_of_names = nameList.length - 2;
-                String fifth_message = first_name + ", " + second_name + " and " + rest_of_names + " others like this";
-                return fifth_message;
+                firstName = nameList[0];
+                secondName = nameList[1];
+                int restOfNames = nameList.length - 2;
+                String fifthMessage = firstName + ", " + secondName + " and " + restOfNames + " others like this";
+                return fifthMessage;
             default:
-                String no_indicator = "There is no a likes indicator";
-                return no_indicator;
+                String noIndicator = "There is no a likes indicator";
+                return noIndicator;
         }
     }
 }

@@ -10,16 +10,28 @@ public class Main {
     private static final int MIN_VAL = 0;
     private static final int MAX_VAL = 1;
     private static final int PRINCIPAL_NUMBER = 2;
+    private static final int TOTAL_TILES = 16;
+    private int[][] oldmatrix = new int[MAX_SIZE][MAX_SIZE];
     private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
     public static void main(String[] args) {
         int[][] matrix = {{ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}};
         Main main = new Main();
         main.initializeMatrix(matrix);
         while (!main.didYouWin()) {
-            main.showMatrix();
-            System.out.println("Make a move:");
-            main.readMoves(matrix);
-            main.generateRandomNumbers(matrix);
+            if (main.areThereSpacesLeft(matrix) == true){
+                main.showMatrix();
+                System.out.println("Make a move:");
+                main.readMoves(matrix);
+                main.generateRandomNumbers(matrix);
+            } else {
+                System.out.println("Make a move:");
+                main.readMoves(matrix);
+                if (main.didMatrixChange() == false) {
+                    System.out.println("YOU LOST!  NO MORE MOVES");
+                }
+            }
+
+
         }
     }
 
@@ -67,6 +79,7 @@ public class Main {
             value = matrix[positionI][positionJ];
         }
         matrixG[positionI][positionJ] = randomNumber();
+        oldmatrix = matrixG;
     }
 
     public void readMoves(int[][] matrix) {
@@ -216,11 +229,11 @@ public class Main {
     }
 
     public void arrangeDown() {
-        for(int row = ZERO; row < MAX_SIZE ; row++) {
-            for(int column = MAX_INDEX; column > ZERO; column--) {
-                if(matrixG[column][row] == ZERO){
-                    for (int columnAux = column-1; columnAux >= ZERO; columnAux--) {
-                        if(matrixG[columnAux][row] != ZERO){
+        for(int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = MAX_INDEX; column > ZERO; column--) {
+                if (matrixG[column][row] == ZERO) {
+                    for (int columnAux = column - 1; columnAux >= ZERO; columnAux--) {
+                        if (matrixG[columnAux][row] != ZERO) {
                             matrixG[column][row] = matrixG[columnAux][row];
                             matrixG[columnAux][row] = ZERO;
                             break;
@@ -255,4 +268,28 @@ public class Main {
         }
         return false; 
     }
+    public boolean areThereSpacesLeft(int[][] matrix) {
+        int spacesOccupied = 0;
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = ZERO; column < MAX_SIZE; column++) {
+                if(matrix[row][column] != 0) {
+                    spacesOccupied = spacesOccupied +1;         
+                }
+            }
+        }
+
+        if (spacesOccupied < TOTAL_TILES){
+                    return true;
+        } else {
+            return false;
+        }
+        
+    }
+    public boolean didMatrixChange(){
+        if( oldmatrix == matrixG){
+            return false;
+        }
+        return true;
+    }
+
 }

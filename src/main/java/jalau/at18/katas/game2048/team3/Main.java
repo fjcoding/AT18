@@ -2,11 +2,6 @@ package jalau.at18.katas.game2048.team3;
 import java.util.Scanner;//
 import java.util.Random;
 
-// - funcion de busqueda de 1024
-// - funcion sin movimientos
-// - generado de num aleatorio
-// - lectura de teclado 
-
 public class Main {
     private static final int MAX_SIZE = 4;
     private static final int MAX_INDEX = 3;
@@ -29,11 +24,11 @@ public class Main {
             main.generateRandomNumbers(matrix);
         }
     }
-    
+
     public int [] randomPair(){
         Random rnd = new Random();
-        int randomPositionI = rnd.nextInt(MAX_INDEX ) + ZERO;
-        int randomPositionJ = rnd.nextInt(MAX_INDEX ) + ZERO;
+        int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
+        int randomPositionJ = rnd.nextInt(MAX_SIZE ) + ZERO;
         int [] result = {randomPositionI, randomPositionJ};
         return result;
     }
@@ -64,16 +59,19 @@ public class Main {
         matrixG=matrix;
     }
 
-    public void generateRandomNumbers(int[][] matrix) {
+    public boolean generateRandomNumbers(int[][] matrix) {
         int positionI = randomPair()[0];
         int positionJ = randomPair()[1];
+        boolean res = false;
         int value = matrix[positionI][positionJ];
         while( value != 0){
             positionI = randomPair()[0];
             positionJ = randomPair()[1];
             value = matrix[positionI][positionJ];
+            res = true;
         }
         matrixG[positionI][positionJ] = randomNumber();
+        return res;
     }
 
     public void readMoves(int[][] matrix) {
@@ -116,7 +114,6 @@ public class Main {
         arrangeRight();
         
     }
-
     private void arrangeRight() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
             for (int column = MAX_INDEX; column >= ZERO; column--) {

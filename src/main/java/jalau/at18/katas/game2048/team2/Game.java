@@ -34,7 +34,6 @@ public class Game {
 
         int[] numbersRandom = new int[2];
         numbersRandom = generateRandomNumber();
-        // System.out.println("row: "+row );
         if (board.isValidThePosition(numbersRandom[0], numbersRandom[1])) {
             board.replacePositions(numbersRandom[0], numbersRandom[1], 2);
             System.out.println("no es valido");
@@ -53,9 +52,7 @@ public class Game {
             System.out.println("se presiono arriba");
             board.moveNumberUp('w');
             tryToFillPosition();
-            //finishGame();
             board.showTable();
-            //board.showScore();
             return true;
         } catch (Exception e) {
             return false;
@@ -66,9 +63,7 @@ public class Game {
             System.out.println("se presiono izquierda");
             board.moveNumberLeft('a');
             tryToFillPosition();
-            //finishGame();
             board.showTable();
-            //board.showScore();
             return true;
         } catch (Exception e) {
             return false;
@@ -79,9 +74,7 @@ public class Game {
             System.out.println("se presiono derecha");
             board.moveNumberRight('d');
             tryToFillPosition();
-            //finishGame();
             board.showTable();
-            //board.showScore();
             return true;
         } catch (Exception e) {
             return false;
@@ -92,9 +85,7 @@ public class Game {
             System.out.println("se presiono abajo");
             board.moveNumberDown('s');
             tryToFillPosition();
-            //finishGame();
             board.showTable();
-            //board.showScore();
             return true;
         } catch (Exception e) {
             return false;

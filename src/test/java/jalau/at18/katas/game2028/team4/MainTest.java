@@ -5,11 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class MainTest {
+    public static final int WINNER_NUM = 2048;
+    public static final int NUMBER_TWO = 2;
 
     @Test
     public void moveNumbersUpTest() {
-        int[][] matrix = { { 0, 0, 0, 0 }, { 0, 2, 2, 2 }, { 0, 4, 2, 8 }, { 2, 0, 0, 0 } };
-        int[][] expectedMatrix = { { 2, 2, 2, 2 }, { 0, 4, 2, 8 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+        int[][] matrix = {{0, 0, 0, 0},  {0, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {0, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  
+        {NUMBER_TWO, 0, 0, 0}};
+        int[][] expectedMatrix = {{NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {0, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO}, 
+        {0, 0, 0, 0},  {0, 0, 0, 0}};
         Main main = new Main();
         int[][] new_matrix = main.moveNumbersUp(matrix);
         assertArrayEquals(expectedMatrix, new_matrix);
@@ -17,8 +21,10 @@ public class MainTest {
 
     @Test
     public void moveNumbersLeftTest() {
-        int[][] matrix = { { 0, 0, 0, 0 }, { 0, 2, 2, 2 }, { 0, 4, 2, 8 }, { 2, 0, 0, 0 } };
-        int[][] expectedMatrix = { { 0, 0, 0, 0 }, { 2, 2, 2, 0 }, { 4, 2, 8, 0 }, { 2, 0, 0, 0 } };
+        int[][] matrix = {{0, 0, 0, 0},  {0, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {0, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},
+        {NUMBER_TWO, 0, 0, 0}};
+        int[][] expectedMatrix = {{0, 0, 0, 0},  {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, 0},  {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, 0}, 
+        {NUMBER_TWO, 0, 0, 0}};
         Main main = new Main();
         int[][] new_matrix = Main.moveNumbersLeft(matrix);
         assertArrayEquals(expectedMatrix, new_matrix);
@@ -26,8 +32,10 @@ public class MainTest {
 
     @Test
     public void moveNumbersRightTest() {
-        int[][] matrix = { { 0, 0, 0, 0 }, { 0, 2, 2, 2 }, { 0, 4, 2, 8 }, { 2, 0, 0, 0 } };
-        int[][] expectedMatrix = { { 0, 0, 0, 0 }, { 0, 0, 4, 2 }, { 0, 4, 2, 8 }, { 0, 0, 0, 2 } };
+        int[][] matrix = {{0, 0, 0, 0},  {0, 0, NUMBER_TWO, 0},  {0, 0, NUMBER_TWO, 0}, 
+        {NUMBER_TWO, 0, 0, 0}};
+        int[][] expectedMatrix = {{0, 0, 0, 0},  {0, 0, 0, NUMBER_TWO},  {0, 0, 0, NUMBER_TWO},
+        {0, 0, 0, NUMBER_TWO}};
         Main main = new Main();
         int[][] new_matrix = Main.moveNumbersRight(matrix);
         assertArrayEquals(expectedMatrix, new_matrix);
@@ -35,8 +43,10 @@ public class MainTest {
 
     @Test
     public void moveNumbersDownTest() {
-        int[][] matrix = { { 0, 0, 0, 0 }, { 0, 2, 2, 2 }, { 0, 4, 2, 8 }, { 2, 0, 0, 0 } };
-        int[][] expectedMatrix = { { 0, 0, 0, 0 }, { 0, 2, 0, 2 }, { 0, 0, 0, 0 }, { 2, 4, 4, 8 } };
+        int[][] matrix = {{0, 0, 0, 0},  {0, 0, 0, 0},  {0, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},
+        {NUMBER_TWO, 0, 0, 0}};
+        int[][] expectedMatrix = {{0, 0, 0, 0},  {0, 0, 0, 0},  {0, 0, 0, 0}, 
+        {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO}};
         Main main = new Main();
         int[][] new_matrix = Main.moveNumbersDown(matrix);
         assertArrayEquals(expectedMatrix, new_matrix);
@@ -44,8 +54,8 @@ public class MainTest {
 
     @Test
     public void thereIsAWinner() {
-        int[][] matrix = { { 1024, 512, 1024, 256 }, { 2048, 512, 1024, 256 }, { 128, 1024, 512, 1024 },
-                { 512, 128, 128, 1024 } };
+        int[][] matrix = {{NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {WINNER_NUM, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},
+        {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO}};
         Main main = new Main();
         boolean winner = Main.isWinner(matrix);
         assertEquals(true, winner);
@@ -53,8 +63,9 @@ public class MainTest {
 
     @Test
     public void thereIsALoser() {
-        int[][] matrix = { { 1024, 512, 1024, 256 }, { 128, 64, 1024, 256 }, { 64, 1024, 512, 1024 },
-                { 512, 256, 128, 512 } };
+        int[][] matrix = {{NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  
+        {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},
+        {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO}};
         Main main = new Main();
         boolean loser = Main.isLoser(matrix);
         assertEquals(true, loser);
@@ -62,8 +73,11 @@ public class MainTest {
 
     @Test
     public void putANewNumberOnMatrix() {
-        int[][] matrix = { { 2, 4, 8, 16 }, { 8, 32, 32, 2 }, { 2, 4, 2, 8 }, { 2, 4, 2, 0 } };
-        int[][] expectedMatrix = { { 2, 4, 8, 16 }, { 8, 32, 32, 2 }, { 2, 4, 2, 8 }, { 2, 4, 2, 2 } };
+        int[][] matrix = {{NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO}, 
+        {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, 0}};
+        int[][] expectedMatrix = {{NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO}, 
+        {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO},  {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO}, 
+        {NUMBER_TWO, NUMBER_TWO, NUMBER_TWO, NUMBER_TWO}};
         Main main = new Main();
         int[][] new_matrix = Main.putNewTwoOnMatrix(matrix);
         assertArrayEquals(expectedMatrix, new_matrix);

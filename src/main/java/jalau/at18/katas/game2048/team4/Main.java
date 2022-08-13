@@ -12,19 +12,17 @@ public class Main {
     public static final int MAX_BOUND = 3;
 
     public static void main(String[] args) {
-        Main main = new Main();
+        // Main main = new Main();
         Scanner keyBoard = new Scanner(System.in);
         System.out.println();
         System.out.println(
-                "Welcome to the game. Objective: get tile 2048 by moving existing tiles: up, down, left and right");
+                "Welcome to the game. Objective: get tile 2048 by moving existing tiles: up, down, left and right.");
         String exit = "Y";
         String continuePlaying;
-
         System.out.println();
         putNewTwoOnMatrix(matrix);
         putNewTwoOnMatrix(matrix);
         showMatrix();
-        System.out.println();
 
         do {
 
@@ -42,15 +40,14 @@ public class Main {
                     exit = "q";
                 }
             }
-
-        } while (!isWinner(matrix) && exit != "q" && !isLoser(matrix)); // The game stops when the player type exit or
-                                                                        // wins
+            // The game stops when the player type q to exit or wins
+        } while (!isWinner(matrix) && exit != "q" && !isLoser(matrix));
 
         keyBoard.close();
 
     }
 
-    public static void showMatrix() { // Fix display for larger numbers
+    public static void showMatrix() { // Fixed display for larger numbers
         for (int index = 0; index < matrix.length; index++) {
             System.out.println("----------------------------");
             for (int jIndex = 0; jIndex < matrix.length; jIndex++) {
@@ -210,7 +207,7 @@ public class Main {
     public static int[][] putNewTwoOnMatrix(int[][] matrixToShow) { // Recursividad?
         int randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         int randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
-        while (matrixToShow[randomPositionX][randomPositionY] != 0) { // It searchs a cell with a 0 for putting a 2
+        while (matrixToShow[randomPositionX][randomPositionY] != 0) { // Searches a cell with a 0, replaces with a 2
             randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
             randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         }
@@ -218,7 +215,7 @@ public class Main {
         return matrixToShow;
     }
 
-    // Is loser function
+    // Isloser function
     public static boolean isLoser(int[][] matrixToCheck) {
         for (int index = 0; index < matrixToCheck.length; index++) {
             for (int jIndex = 0; jIndex < matrixToCheck.length; jIndex++) {
@@ -231,7 +228,7 @@ public class Main {
         return true;
     }
 
-    public static String getNextDirection() {
+    /* public static String getNextDirection() {
         return nextDirection;
     }
 
@@ -245,6 +242,6 @@ public class Main {
 
     public static void setMatrix(int[][] newMatrix) {
         matrix = newMatrix;
-    }
+    } */
 
 }

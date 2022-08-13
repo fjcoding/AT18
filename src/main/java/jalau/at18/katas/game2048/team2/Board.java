@@ -1,26 +1,5 @@
 package jalau.at18.katas.game2048.team2;
 
-//import java.util.Random;
-//import java.util.Vector;
-
-//import javax.swing.text.Position;
-
-//2 clases una de jugador y de tablero
-//Array de 2 dimensiones
-//funcion de movimientos validos
-//Casillas vacias y con eso limitar los movimientos
-//Variable score
-//Crear sumatoria de variables iguales
-//Solo la posición es random y el numero aparece es siempre el 2
-//public static final position1 = 0;
-
-//--------------------------------------
-/*   Score
- * fin del juego :  1.- que no se pueeda sumar en ninguna posicion .  2.- que no exista casillas vacias. 3.- que una casillas sume 2048
- *
- * Verificar: al inicio del juego que salte 4
- */
-//
 public class Board {
     private int[][] board;
     private int score;
@@ -76,9 +55,9 @@ public class Board {
         for (int col = 0; col < size; col++) {
             for (int row = 0; row < size - 1; row++) {
                 if (board[row][col] == board[row + 1][col]) {
-                    board[row][col] += board[row + 1][col]; // suma
+                    board[row][col] += board[row + 1][col]; // summatory
                     board[row + 1][col] = 0;
-                    score = score + board[row][col]; // vscore + numero sumado
+                    score = score + board[row][col]; // vscore + number added
                     continue;
                 }
             }
@@ -116,7 +95,7 @@ public class Board {
                 if (board[row][col] == board[row][col - 1]) {
                     board[row][col] += board[row][col - 1];
                     board[row][col - 1] = 0;
-                    score = score + board[row][col]; // vscore + numero sumado
+                    score = score + board[row][col]; // vscore + number added
                     continue;
                 }
             }
@@ -141,7 +120,6 @@ public class Board {
             for (int col = size - 1; col >= 0; col--) {
                 if (board[row][col] != 0) {
                     board[row][size - 1 - count] = board[row][col];
-                    // empty the original tile position after tile is moved
                     if (size - 1 - count != col) {
                         board[row][col] = 0;
                     }
@@ -164,9 +142,9 @@ public class Board {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size - 1; col++) {
                 if (board[row][col] == board[row][col + 1]) {
-                    board[row][col] += board[row][col + 1]; // suma
+                    board[row][col] += board[row][col + 1]; // summatory
                     board[row][col + 1] = 0;
-                    score = score + board[row][col]; // vscore + numero sumado
+                    score = score + board[row][col]; // vscore + number added
                     continue;
 
                 }
@@ -206,7 +184,7 @@ public class Board {
                 if (board[row][col] == board[row - 1][col]) {
                     board[row][col] += board[row - 1][col];
                     board[row - 1][col] = 0;
-                    score = score + board[row][col]; // vscore + numero sumado
+                    score = score + board[row][col]; // vscore + number added
                     continue;
                 }
             }
@@ -238,7 +216,6 @@ public class Board {
 
     public int showScore() {
         int points = score;
-        //System.out.println(" Score : " + score);
         return points;
     }
 

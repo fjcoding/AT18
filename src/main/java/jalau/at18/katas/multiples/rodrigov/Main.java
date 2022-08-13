@@ -2,6 +2,9 @@ package jalau.at18.katas.multiples.rodrigov;
 public class Main {
     public static void main(String[] args) {
         final int limitNumber = 10;
+        System.out.println(new Main().multiplesThreeAndFive(limitNumber));
+    }
+    public int multiplesThreeAndFive(int limitNumber) {
         final int three = 3;
         final int five = 5;
         int count = 0;
@@ -12,9 +15,9 @@ public class Main {
             }
         }
         if (count < 0) {
-            count = 0;
+            return 0;
         } else {
-            System.out.println(count);
+            return count;
         }
     }
 }

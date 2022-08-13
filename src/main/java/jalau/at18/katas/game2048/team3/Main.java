@@ -11,6 +11,7 @@ public class Main {
     private static final int MAX_VAL = 1;
     private static final int PRINCIPAL_NUMBER = 2;
     private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
+    private static final int NUMBER_WINNER = 2048;
     public static void main(String[] args) {
         int[][] matrix = {{ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}};
         Main main = new Main();
@@ -25,9 +26,9 @@ public class Main {
 
     public int[] randomPair() {
         Random rnd = new Random();
-        int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
-        int randomPositionJ = rnd.nextInt(MAX_SIZE ) + ZERO;
-        int [] result = {randomPositionI, randomPositionJ};
+        int randomPositionI = rnd.nextInt(MAX_SIZE) + ZERO;
+        int randomPositionJ = rnd.nextInt(MAX_SIZE) + ZERO;
+        int[] result = {randomPositionI, randomPositionJ};
         return result;
     }
 
@@ -41,12 +42,12 @@ public class Main {
         }
     }
 
-    public void initializeMatrix(int [][] matrix) {    
+    public void initializeMatrix(int[][] matrix) {
         int randomPositionI = randomPair()[0];
         int randomPositionJ = randomPair()[1];
         int randomPositionI2 = ZERO;
         int randomPositionJ2 = ZERO;
-        do{
+        do {
             randomPositionI2 = randomPair()[0];
             randomPositionJ2 = randomPair()[1];
         } while (randomPositionI == randomPositionI2 && randomPositionJ == randomPositionJ2);
@@ -54,14 +55,14 @@ public class Main {
         matrix[randomPositionI2][randomPositionJ2] = randomNumber();
         System.out.println(randomPositionI + " - " + randomPositionJ);
         System.out.println(randomPositionI2 + " - " + randomPositionJ2);
-        matrixG=matrix;
+        matrixG = matrix;
     }
 
     public void generateRandomNumbers(int[][] matrix) {
         int positionI = randomPair()[0];
         int positionJ = randomPair()[1];
         int value = matrix[positionI][positionJ];
-        while( value != 0){
+        while (value != 0) {
             positionI = randomPair()[0];
             positionJ = randomPair()[1];
             value = matrix[positionI][positionJ];
@@ -196,7 +197,7 @@ public class Main {
     public void downMove(int[][] matrix) {
         for (int row = ZERO; row < MAX_SIZE; row++) {
             for (int column = MAX_INDEX; column > ZERO; column--) {
-                if(matrix[column][row] != ZERO) {
+                if (matrix[column][row] != ZERO) {
                     int columnAux = column - 1;
                     if (matrix[columnAux][row] != ZERO && matrix[column][row] == matrix[columnAux][row]) {
                         matrix[column][row] =  matrix[column][row] + matrix[columnAux][row];
@@ -216,11 +217,11 @@ public class Main {
     }
 
     public void arrangeDown() {
-        for(int row = ZERO; row < MAX_SIZE ; row++) {
-            for(int column = MAX_INDEX; column > ZERO; column--) {
-                if(matrixG[column][row] == ZERO){
-                    for (int columnAux = column-1; columnAux >= ZERO; columnAux--) {
-                        if(matrixG[columnAux][row] != ZERO){
+        for (int row = ZERO; row < MAX_SIZE; row++) {
+            for (int column = MAX_INDEX; column > ZERO; column--) {
+                if (matrixG[column][row] == ZERO) {
+                    for (int columnAux = column - 1; columnAux >= ZERO; columnAux--) {
+                        if (matrixG[columnAux][row] != ZERO) {
                             matrixG[column][row] = matrixG[columnAux][row];
                             matrixG[columnAux][row] = ZERO;
                             break;
@@ -247,12 +248,12 @@ public class Main {
     public boolean didYouWin() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
             for (int column = ZERO; column < MAX_SIZE; column++) {
-                if(matrixG[row][column] == 2048) {
+                if (matrixG[row][column] == NUMBER_WINNER) {
                     System.out.println("WINNER!!");
                     return true;
                 }
             }
         }
-        return false; 
+        return false;
     }
 }

@@ -103,7 +103,8 @@ public class Main {
                 System.out.println();
                 break;
             default:
-                System.out.println("PLease type a correct direction. Directions: [up, down, left, right] = [w, s, a, d]. if you want to exit type 'q' and ENTER");
+                System.out.println(
+                        "PLease type a correct direction. Directions: [up, down, left, right] = [w, s, a, d]. if you want to exit type 'q'");
                 System.out.println();
         }
     }

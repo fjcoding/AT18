@@ -5,6 +5,7 @@ public class Board {
     private int score;
     private int sizeBoard;
     private final int size = 4;
+    private final int numberThree = 3;
 
     public Board(int sizeBoard, int score) {
         this.sizeBoard = sizeBoard;
@@ -27,7 +28,7 @@ public class Board {
     }
 
     public int[][] createTable() {
-        int[][] matrix = new int[3][3];
+        int[][] matrix = new int[numberThree][numberThree];
         for (int indexRows = 0; indexRows < size; indexRows++) {
             for (int indexColumns = 0; indexColumns < size; indexColumns++) {
                 board[indexRows][indexColumns] = 0;

@@ -17,30 +17,30 @@ public class Main {
             if (letter == 'w') {
                 game.moveUp();
                 System.out.println("   Score : " + board.showScore());
-                if(game.finishGame()){
-                    
+                if (game.finishGame()) {
+
                     break;
                 }
             }
             if (letter == 's') {
                 game.moveDown();
                 System.out.println("  Score : " + board.showScore());
-                if(game.finishGame()){
-                    
+                if (game.finishGame()) {
+
                     break;
                 }
             }
             if (letter == 'a') {
                 game.moveLeft();
                 System.out.println("   Score : " + board.showScore());
-                if(game.finishGame()){
-                     break;
+                if (game.finishGame()) {
+                    break;
                 }
             }
             if (letter == 'd') {
                 game.moveRight();
                 System.out.println("   Score : " + board.showScore());
-                if(game.finishGame()){
+                if (game.finishGame()) {
                     break;
                 }
             } else if (letter == 'z' || game.finishGame()) {

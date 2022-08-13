@@ -28,6 +28,7 @@ checkstyleMain {
 test.finalizedBy("checkstyleMain")
 
 task runMainGame2048(dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.jalau.at18.katas.game2048.Main'
+    main = 'jalau.at18.katas.game2048.team2.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in 
 }

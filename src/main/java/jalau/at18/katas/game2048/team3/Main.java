@@ -19,7 +19,7 @@ public class Main {
         Main main = new Main();
         main.initializeMatrix(matrix);
         while (!main.didYouWin()) {
-            if (main.areThereSpacesLeft(matrix) == true){
+            if (main.areThereSpacesLeft(matrix)) {
                 main.showMatrix();
                 System.out.println("Make a move:");
                 main.readMoves(matrix);
@@ -27,7 +27,7 @@ public class Main {
             } else {
                 System.out.println("Make a move:");
                 main.readMoves(matrix);
-                if (main.didMatrixChange() == false) {
+                if (!main.didMatrixChange()) {
                     System.out.println("YOU LOST!  NO MORE MOVES");
                 }
             }
@@ -230,7 +230,7 @@ public class Main {
     }
 
     public void arrangeDown() {
-        for(int row = ZERO; row < MAX_SIZE; row++) {
+        for (int row = ZERO; row < MAX_SIZE; row++) {
             for (int column = MAX_INDEX; column > ZERO; column--) {
                 if (matrixG[column][row] == ZERO) {
                     for (int columnAux = column - 1; columnAux >= ZERO; columnAux--) {
@@ -273,21 +273,15 @@ public class Main {
         int spacesOccupied = 0;
         for (int row = ZERO; row < MAX_SIZE; row++) {
             for (int column = ZERO; column < MAX_SIZE; column++) {
-                if(matrix[row][column] != 0) {
-                    spacesOccupied = spacesOccupied +1;         
+                if (matrix[row][column] != 0) {
+                    spacesOccupied = spacesOccupied + 1;
                 }
             }
         }
-
-        if (spacesOccupied < TOTAL_TILES){
-                    return true;
-        } else {
-            return false;
-        }
-        
+        return spacesOccupied < TOTAL_TILES;
     }
-    public boolean didMatrixChange(){
-        if( oldmatrix == matrixG){
+    public boolean didMatrixChange() {
+        if (oldmatrix == matrixG) {
             return false;
         }
         return true;

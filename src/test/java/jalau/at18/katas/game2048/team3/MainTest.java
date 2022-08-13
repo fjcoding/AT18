@@ -1,5 +1,6 @@
 package jalau.at18.katas.game2048.team3;
 import static org.junit.Assert.*;
+
 import java.util.Arrays;
 import org.junit.Test;
 

@@ -160,4 +160,23 @@ public class MainTest {
         main.initializeMatrix(matrix); 
         assertNotEquals(Arrays.toString(unexpected), Arrays.toString(main.getMatrix()));
     }
+    @Test
+    public void testAreThereSpacesLeft() {
+        Main main = new Main();
+        int[][] matrix = {{2,2,2,0},
+                          {2,2,2,0},
+                          {2,2,2,0},
+                          {2,0,0,0}};
+        assertTrue(main.areThereSpacesLeft(matrix));
+    }
+    @Test
+    public void testAreNoThereSpacesLeft() {
+        Main main = new Main();
+        int[][] matrix = {{128,2,2,8},
+                          {2,512,2,32},
+                          {2,256,2,2},
+                          {2,64,128,16}};
+        assertFalse(main.areThereSpacesLeft(matrix));
+    }
+
 }

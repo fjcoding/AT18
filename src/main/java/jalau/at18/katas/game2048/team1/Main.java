@@ -13,23 +13,17 @@ public class Main {
     public static final int MAX_COLUMN_MATRIX = 4;
     public static void main(String[] args) {
         Main main = new Main();
-        //int[] initialValues = main.randomValuesGrid();
         int[][] matrix = main.initialMatrix(main.randomValueGrid(), main.randomValueGrid());
         main.printMatrix(matrix);
 
-        //gameOver = true yano puede jugar
         while (!main.gameOver(matrix)) {
-            main.direcctions(matrix); // se envia la matriz
+            main.direcctions(matrix);
             if (main.got2048(matrix)) {
                 System.out.print("Congratulations, You got 2048!!!");
             }
 
         }
-        //Integer [][] testMatrix = {{1,2,3,4},{5,6,7,8},{9,1,2,3},{4,5,9,7}};
-        //gameOver(testMatrix);
-        //System.out.println(verifySideUp(testMatrix));*/
-        //wInteger [][] testMatrix = {{1,2,3,4},{5,2048,7,8},{9,0,2,3},{4,5,0,7}};
-        //got2048(testMatrix );
+
     }
 
     public void printMatrix(int[][] matrix) {
@@ -47,26 +41,17 @@ public class Main {
         }
     }
 
-    /*public int[] randomValuesGrid() {
-        int[] numbers = {RANDOM_TWO, RANDOM_FOUR};
-        Random random = new Random();
-        int upperBound = 2; // utilizado para colocar el maximo valor, en nuestro caso la posicion de mi array
-        int numberOne = random.nextInt(upperBound);
-        int numberTwo = random.nextInt(upperBound);
-        return new int[]{numbers[numberOne], numbers[numberTwo]};
-    }*/
-
     public int randomValueGrid() {
         int[] numbers = {RANDOM_TWO, RANDOM_FOUR};
         Random random = new Random();
-        int upperBound = 2; // utilizado para colocar el maximo valor, en nuestro caso la posicion de mi array
+        int upperBound = 2;
         int numberOne = random.nextInt(upperBound);
         return numbers[numberOne];
     }
 
     public int[] randomPositionGrid() {
-        Random rand = new Random(); //instance of random class
-        int upperbound = MAX_RANDOM_POSITION; //generate random values from 0-4
+        Random rand = new Random();
+        int upperbound = MAX_RANDOM_POSITION;
         int column = rand.nextInt(upperbound);
         int row = rand.nextInt(upperbound);
         return new int[]{row, column};
@@ -89,7 +74,6 @@ public class Main {
         int[][] matrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
         int[] firstPositionRowColum = randomPositionGrid();
         int[] secondPositionRowColum = randomPositionGrid();
-        //System.out.println(firstPositionRowColum + ""+secondPositionRowColum);
 
         while (firstPositionRowColum[0] == secondPositionRowColum[0] && firstPositionRowColum[1] == secondPositionRowColum[1]) {
             secondPositionRowColum = randomPositionGrid();
@@ -99,7 +83,6 @@ public class Main {
         return matrix;
     }
 
-    // w = arriba, a = izquierda, d = derecha, s = abajo
     public String readDiretions() {
         System.out.println("Game instructions");
         System.out.println("Top: w");
@@ -117,45 +100,38 @@ public class Main {
     }
 
     public int[][] direcctions(int[][] matrix) {
-        int[][] newMatrix = new int[MAX_ROW_MATRIX][MAX_COLUMN_MATRIX]; // nueva matrizw
+        int[][] newMatrix = new int[MAX_ROW_MATRIX][MAX_COLUMN_MATRIX];
         String directionValue = readDiretions();
         if (directionValue.equals("w")) {
             System.out.println("Move top");
-            newMatrix = moveTop(matrix); // Save matrix in other
+            newMatrix = moveTop(matrix);
             newMatrix = addTile(newMatrix);
-            printMatrix(newMatrix); // imprime la nueva matriz
-            //got2048(newMatrix);
-            //direcctions(newMatrix); // recursividad (funcion se llama a si misma)
+            printMatrix(newMatrix);
+
         }
         if (directionValue.equals("s")) {
             System.out.println("Move down");
-            newMatrix = moveDown(matrix); // Save matrix in other
+            newMatrix = moveDown(matrix);
             newMatrix = addTile(newMatrix);
-            printMatrix(newMatrix); // Print matrix
-            //got2048(newMatrix);
-            //direcctions(newMatrix); // recursion
+            printMatrix(newMatrix);
         }
         if (directionValue.equals("a")) {
             System.out.println("Move left");
             newMatrix = moveLeft(matrix);
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix);
-            //got2048(newMatrix);
-            //direcctions(newMatrix);
         }
         if (directionValue.equals("d")) {
             System.out.println("Move rigth");
             newMatrix = moveRigth(matrix);
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix);
-            //got2048(newMatrix);
-            //direcctions(newMatrix);
         }
         return newMatrix;
     }
 
     public int[][] moveTop(int[][] matrix) {
-        for (int moves = 0; moves < MAX_ROW_MOVES; moves++) { // en cada ciclo se mueven todas las lineas una vez
+        for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int row = 1; row < matrix.length; row++) {
                 for (int column = 0; column < matrix.length; column++) {
                     if (matrix[row][column] != 0 && matrix[row - 1][column] == 0) {
@@ -172,7 +148,7 @@ public class Main {
     }
 
     public int[][] moveDown(int[][] matrix) {
-        for (int moves = 0; moves < MAX_ROW_MOVES; moves++) { // en cada ciclo se mueven todas las lineas una vez
+        for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int row = 2; row >= 0; row--) {
                 for (int column = 0; column < matrix.length; column++) {
                     if (matrix[row][column] != 0 && matrix[row + 1][column] == 0) {
@@ -189,7 +165,7 @@ public class Main {
     }
 
     public int[][] moveLeft(int[][] matrix) {
-        for (int moves = 0; moves < MAX_ROW_MOVES; moves++) { // en cada ciclo se mueven todas las lineas una vez
+        for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int column = 1; column < matrix.length; column++) {
                 for (int row = 0; row < matrix.length; row++) {
                     if (matrix[row][column] != 0 && matrix[row][column - 1] == 0) {
@@ -206,7 +182,7 @@ public class Main {
     }
 
     public int[][] moveRigth(int[][] matrix) {
-        for (int moves = 0; moves < MAX_ROW_MOVES; moves++) { // en cada ciclo se mueven todas las lineas una vez
+        for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int column = 2; column >= 0; column--) {
                 for (int row = 0; row < matrix.length; row++) {
                     if (matrix[row][column] != 0 && matrix[row][column + 1] == 0) {

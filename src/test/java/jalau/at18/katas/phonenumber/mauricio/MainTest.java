@@ -17,13 +17,19 @@ public class MainTest {
     private static final int FOURTEEN = 14;
 
     @Test
-    public void mainShouldSayHello() {
+    public void getAPhoneNumber() {
         int[] numberList = {ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE};
         int phoneNumberLengthExpected = FOURTEEN;
 
         Main main = new Main();
 
         int phoneNumberLengthObtained = main.phoneNumber(numberList).length();
+        String phoneNumberStructure = main.phoneNumber(numberList);
+
         assertEquals(phoneNumberLengthExpected, phoneNumberLengthObtained);
+        assertEquals(ZERO, phoneNumberStructure.indexOf("("));
+        assertEquals(FOUR, phoneNumberStructure.indexOf(")"));
+        assertEquals(FIVE, phoneNumberStructure.indexOf(" "));
+        assertEquals(NINE, phoneNumberStructure.indexOf("-"));
     }
 }

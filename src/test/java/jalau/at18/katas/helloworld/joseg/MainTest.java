@@ -9,6 +9,5 @@ public class MainTest {
     public void mainShouldSayHello() {
         Main main = new Main();
         assertEquals("Hello wooooooorld!!!", main.sayHello());
-        // Se puede tener mas de un assert
     }
 }

@@ -1,10 +1,6 @@
 package jalau.at18.katas.game2048.team3;
-
 import static org.junit.Assert.*;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
-
 import org.junit.Test;
 
 public class MainTest {
@@ -90,7 +86,7 @@ public class MainTest {
                           {2,0,2,0},
                           {2,0,0,0},
                           {2,0,4,4}};
-        main.initializeMatrix(matrix);
+        main.upMove(matrix);
         assertTrue(main.didYouWin());
     }
     
@@ -101,10 +97,6 @@ public class MainTest {
                           {2,0,2,0},
                           {2,0,0,0},
                           {2,0,4,4}};
-        int[][] expecteds = {{0,0,0,0},
-                             {0,0,0,0},
-                             {4,0,2,0},
-                             {4,0,4,8}};
         main.rightMove(matrix);
         assertTrue(main.didYouWin());
     }
@@ -124,7 +116,12 @@ public class MainTest {
                           {0,0,0,2},
                           {0,2,2,2},
                           {2,4,4,2}};
-        assertTrue(main.generateRandomNumbers(matrix));
+        int[][] unexpected = {{0,0,0,2},
+                          {0,0,0,2},
+                          {0,2,2,2},
+                          {2,4,4,2}};                  
+        main.generateRandomNumbers(matrix);
+        assertNotEquals(Arrays.toString(unexpected),Arrays.toString(main.getMatrix()));
     }
 
     @Test
@@ -134,7 +131,12 @@ public class MainTest {
                           {2,2,2,0},
                           {2,2,2,0},
                           {2,0,0,0}};
-        assertTrue(main.generateRandomNumbers(matrix));
+        int[][] unexpected = {{2,2,2,0},
+                              {2,2,2,0},
+                              {2,2,2,0},
+                              {2,0,0,0}};
+        main.generateRandomNumbers(matrix);
+        assertNotEquals(Arrays.toString(unexpected),Arrays.toString(main.getMatrix()));
     }
 
     @Test
@@ -142,7 +144,6 @@ public class MainTest {
         Main main = new Main();
         int expecteds = 2;
         int expecteds2 = 4;
-        boolean flag = false;
         if (main.randomNumber() == expecteds || main.randomNumber() == expecteds2) {
             assertTrue(true);
         } else {

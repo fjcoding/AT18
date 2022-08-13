@@ -1,5 +1,6 @@
 package jalau.at18.katas.game2048.team3;
-import java.util.Scanner;//
+
+import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
@@ -11,13 +12,10 @@ public class Main {
     private static final int PRINCIPAL_NUMBER = 2;
     private int[][] matrixG = new int[MAX_SIZE][MAX_SIZE];
     public static void main(String[] args) {
-        int[][] matrix = {{ZERO, ZERO, ZERO, ZERO},
-                          {ZERO, ZERO, ZERO, ZERO},
-                          {ZERO, ZERO, ZERO, ZERO},
-                          {ZERO, ZERO, ZERO, ZERO}};
+        int[][] matrix = {{ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}, {ZERO, ZERO, ZERO, ZERO}};
         Main main = new Main();
         main.initializeMatrix(matrix);
-        while (main.didYouWin() == false){
+        while (!main.didYouWin()) {
             main.showMatrix();
             System.out.println("Make a move:");
             main.readMoves(matrix);
@@ -25,7 +23,7 @@ public class Main {
         }
     }
 
-    public int [] randomPair(){
+    public int[] randomPair() {
         Random rnd = new Random();
         int randomPositionI = rnd.nextInt(MAX_SIZE ) + ZERO;
         int randomPositionJ = rnd.nextInt(MAX_SIZE ) + ZERO;
@@ -33,7 +31,7 @@ public class Main {
         return result;
     }
 
-    public int randomNumber(){
+    public int randomNumber() {
         Random rnd = new Random();
         int randomNumber = rnd.nextInt(MAX_VAL) + MIN_VAL;
         if (randomNumber == ZERO) {
@@ -59,19 +57,16 @@ public class Main {
         matrixG=matrix;
     }
 
-    public boolean generateRandomNumbers(int[][] matrix) {
+    public void generateRandomNumbers(int[][] matrix) {
         int positionI = randomPair()[0];
         int positionJ = randomPair()[1];
-        boolean res = false;
         int value = matrix[positionI][positionJ];
         while( value != 0){
             positionI = randomPair()[0];
             positionJ = randomPair()[1];
             value = matrix[positionI][positionJ];
-            res = true;
         }
         matrixG[positionI][positionJ] = randomNumber();
-        return res;
     }
 
     public void readMoves(int[][] matrix) {
@@ -112,7 +107,6 @@ public class Main {
         }
         matrixG = matrix;
         arrangeRight();
-        
     }
     private void arrangeRight() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
@@ -145,7 +139,6 @@ public class Main {
         }
         matrixG = matrix;
         arrangeLeft();
-        
     }
     private void arrangeLeft() {
         for (int row = ZERO; row < MAX_SIZE; row++) {
@@ -182,7 +175,6 @@ public class Main {
         }
         matrixG = matrix;
         orderUp();
-       
     }
 
     private void orderUp() {

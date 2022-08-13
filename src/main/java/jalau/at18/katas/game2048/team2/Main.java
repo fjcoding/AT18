@@ -16,7 +16,7 @@ public class Main {
             char letter = scanner.next().charAt(0);
             if (letter == 'w') {
                 game.moveUp();
-                System.out.println("   Score : " + board.showScore());
+                System.out.println("  ( o _ o)  Score : " + board.showScore());
                 if (game.finishGame()) {
 
                     break;
@@ -24,7 +24,7 @@ public class Main {
             }
             if (letter == 's') {
                 game.moveDown();
-                System.out.println("  Score : " + board.showScore());
+                System.out.println(" ( o _ o)  Score : " + board.showScore());
                 if (game.finishGame()) {
 
                     break;
@@ -32,20 +32,20 @@ public class Main {
             }
             if (letter == 'a') {
                 game.moveLeft();
-                System.out.println("   Score : " + board.showScore());
+                System.out.println("  ( o _ o)  Score : " + board.showScore());
                 if (game.finishGame()) {
                     break;
                 }
             }
             if (letter == 'd') {
                 game.moveRight();
-                System.out.println("   Score : " + board.showScore());
+                System.out.println(" ( o _ o)  Score : " + board.showScore());
                 if (game.finishGame()) {
                     break;
                 }
             } else if (letter == 'z' || game.finishGame()) {
                 board.showScore();
-                System.out.println("    Score : " + board.showScore());
+                System.out.println("  ( o _ o)  Score : " + board.showScore());
                 break;
             }
         }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Game {
     public static final int SIZE = 4;
-    public static final int SCORE = 4; //2048
+    public static final int SCORE = 2048;
     private Board board;
 
     public Game(Board board) {
@@ -41,7 +41,7 @@ public class Game {
         }
         if (board.countZeros() == 0) {
             board.showTable();
-            System.out.println("¡Game Over Jose!");
+            System.out.println("( ^ . ^ ) ¡Game Over Jose!");
             System.exit(1);
         }
     }

@@ -2,7 +2,6 @@ package jalau.at18.katas.game2048.team3;
 
 import static org.junit.Assert.*;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -142,7 +141,6 @@ public class MainTest {
         Main main = new Main();
         int expecteds = 2;
         int expecteds2 = 4;
-        boolean flag = false;
         if (main.randomNumber() == expecteds || main.randomNumber() == expecteds2) {
             assertTrue(true);
         } else {

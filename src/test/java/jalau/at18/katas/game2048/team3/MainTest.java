@@ -1,6 +1,10 @@
 package jalau.at18.katas.game2048.team3;
 
 import static org.junit.Assert.*;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import org.junit.Test;
 
 public class MainTest {
@@ -131,5 +135,27 @@ public class MainTest {
                           {2,2,2,0},
                           {2,0,0,0}};
         assertTrue(main.generateRandomNumbers(matrix));
+    }
+
+    @Test
+    public void testRandomNumber() {
+        Main main = new Main();
+        int expecteds = 2;
+        int expecteds2 = 4;
+        boolean flag = false;
+        if (main.randomNumber() == expecteds || main.randomNumber() == expecteds2) {
+            assertTrue(true);
+        } else {
+            assertTrue(false);
+        }
+    }
+    
+    @Test
+    public void testInitializateMatrix() {
+        Main main = new Main();
+        int[][] matrix = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+        int[][] unexpected = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+        main.initializeMatrix(matrix); 
+        assertNotEquals(Arrays.toString(unexpected), Arrays.toString(main.getMatrix()));
     }
 }

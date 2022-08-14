@@ -27,7 +27,15 @@ checkstyleMain {
 
 test.finalizedBy("checkstyleMain")
 
-task runHelloWorldJoseG  (dependsOn: 'classes', type: JavaExec) {
+task runhighestlowestSergio (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.highestlowest.sergio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task phoneNumberSergio (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.phonenumber.sergio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
+task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.joseg.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
@@ -120,18 +128,21 @@ task runPhonenumberAlvaro (dependsOn: 'classes', type: JavaExec) {
 }
 task runLikesAlvaro (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.alvaro.Main'
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 task runHighestLowestRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.rodrigov.Main' // Example: 'jalau.at18.katas.highestlowest.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
-
-task runMultiplesRodrigov(dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.multiples.rodrigov.Main'
+task likesSergio (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.likes.sergio.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
-
+task multiplesSergio (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.multiples.sergio.Main'
+    classpath = sourceSets.main.runtimeClasspath
+}
 task runPhonenumberRodrigov (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.rodrigov.Main'
     classpath = sourceSets.main.runtimeClasspath
@@ -180,7 +191,6 @@ task runPhoneNumberMariaH (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 
-
 task runHelloWorldHugo (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.helloworld.hugo.Main'
     classpath = sourceSets.main.runtimeClasspath
@@ -208,23 +218,20 @@ task runPhonenumberHugo (dependsOn: 'classes', type: JavaExec) {
 
 task runferHighlow (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.fernanda.Main'
-    standardInput=System.in
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 task runferLikes (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.fernanda.Main'
-    standardInput=System.in 
     classpath = sourceSets.main.runtimeClasspath
 }
 
 task runfermultiples (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.fernanda.Main'
-    standardInput=System.in
     classpath = sourceSets.main.runtimeClasspath
 }
 task runferphone (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.fernanda.Main'
-    standardInput=System.in
     classpath = sourceSets.main.runtimeClasspath
 }
 

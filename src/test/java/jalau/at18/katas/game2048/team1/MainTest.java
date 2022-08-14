@@ -23,12 +23,12 @@ public class MainTest {
     @Test
     public void mainGameOver() {
         Main main = new Main();
-        assertEquals(true, main.gameOver(matrixGameOver));
+        assertEquals(true, main.isGameOver(matrixGameOver));
     }
     @Test
     public void mainGameNoOver() {
         Main main = new Main();
-        assertEquals(false, main.gameOver(matrixGameNoOver));
+        assertEquals(false, main.isGameOver(matrixGameNoOver));
     }
 
     @Test
@@ -111,23 +111,23 @@ public class MainTest {
         Main main = new Main();
         final int[][] matrixTest = {{0, 0, 0, 0}, {4, 0, 0, 0}, {4, 4, 0, 0}, {2, 0, 0, 0}};
         final int[][] matrixExpected = {{0, 0, 0, 0}, {0, 0, 0, 4}, {0, 0, 0, 8}, {0, 0, 0, 2}};
-        assertEquals(matrixExpected, main.moveRigth(matrixTest));
+        assertEquals(matrixExpected, main.moveRight(matrixTest));
     }
     @Test
     public void mainVerifySideRow() {
         Main main = new Main();
         final int[][] matrixTest = {{1, 2, 3, 4}, {1, 5, 6, 7}, {2, 3, 5, 7}, {9, 0, 7, 5}};
-        assertEquals(true, main.verifySideRow(matrixTest));
+        assertEquals(true, main.canRowSlide(matrixTest));
         final int[][] matrixTest1 = {{1, 2, 3, 4}, {3, 5, 6, 9}, {2, 3, 5, 7}, {9, 0, 7, 5}};
-        assertEquals(false, main.verifySideRow(matrixTest1));
+        assertEquals(false, main.canRowSlide(matrixTest1));
     }
     @Test
     public void mainVerifySideColumn() {
         Main main = new Main();
         final int[][] matrixTest = {{1, 1, 3, 4}, {1, 5, 6, 7}, {2, 3, 5, 7}, {9, 0, 7, 5}};
-        assertEquals(true, main.verifySideColumn(matrixTest));
+        assertEquals(true, main.canColumnSlide(matrixTest));
         final int[][] matrixTest1 = {{1, 2, 3, 4}, {3, 5, 6, 9}, {2, 3, 5, 7}, {9, 0, 7, 5}};
-        assertEquals(false, main.verifySideColumn(matrixTest1));
+        assertEquals(false, main.canColumnSlide(matrixTest1));
     }
     @Test
     public void mainGot2048() {

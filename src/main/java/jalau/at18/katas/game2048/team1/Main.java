@@ -4,26 +4,23 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static final int RANDOM_TWO = 2;
-    public static final int RANDOM_FOUR = 4;
+    public static final int TILE_VALUE_TWO = 2;
+    public static final int TILE_VALUE_FOUR = 4;
     public static final int MAX_RANDOM_POSITION = 4;
     public static final int MAX_ROW_MOVES = 3;
-    public static final int WIN_POINT_2048 = 2048;
+    public static final int WIN_POINT = 2048;
     public static final int MAX_ROW_MATRIX = 4;
     public static final int MAX_COLUMN_MATRIX = 4;
     public static void main(String[] args) {
         Main main = new Main();
         int[][] matrix = main.initialMatrix(main.randomValueGrid(), main.randomValueGrid());
         main.printMatrix(matrix);
-
-        while (!main.gameOver(matrix)) {
+        while (!main.isGameOver(matrix)) {
             main.direcctions(matrix);
             if (main.got2048(matrix)) {
                 System.out.print("Congratulations, You got 2048!!!");
             }
-
         }
-
     }
 
     public void printMatrix(int[][] matrix) {
@@ -42,7 +39,7 @@ public class Main {
     }
 
     public int randomValueGrid() {
-        int[] numbers = {RANDOM_TWO, RANDOM_FOUR};
+        int[] numbers = {TILE_VALUE_TWO, TILE_VALUE_FOUR};
         Random random = new Random();
         int upperBound = 2;
         int numberOne = random.nextInt(upperBound);
@@ -122,8 +119,8 @@ public class Main {
             printMatrix(newMatrix);
         }
         if (directionValue.equals("d")) {
-            System.out.println("Move rigth");
-            newMatrix = moveRigth(matrix);
+            System.out.println("Move right");
+            newMatrix = moveRight(matrix);
             newMatrix = addTile(newMatrix);
             printMatrix(newMatrix);
         }
@@ -181,7 +178,7 @@ public class Main {
         return matrix;
     }
 
-    public int[][] moveRigth(int[][] matrix) {
+    public int[][] moveRight(int[][] matrix) {
         for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int column = 2; column >= 0; column--) {
                 for (int row = 0; row < matrix.length; row++) {
@@ -198,11 +195,11 @@ public class Main {
         return matrix;
     }
 
-    public boolean gameOver(int[][] matrix) {
+    public boolean isGameOver(int[][] matrix) {
         int countZeros = countZerosMatrix(matrix);
-        Boolean verifySideUp = verifySideRow(matrix);
-        Boolean verifySideLeft = verifySideColumn(matrix);
-        boolean isGameOver = countZeros == 0 && !(verifySideUp) && !(verifySideLeft);
+        Boolean canRowSlide = canRowSlide(matrix);
+        Boolean canColumnSlide = canColumnSlide(matrix);
+        boolean isGameOver = countZeros == 0 && !(canRowSlide) && !(canColumnSlide);
 
         if (isGameOver) {
             System.out.println("Game Over");
@@ -222,7 +219,7 @@ public class Main {
         return countZeros;
     }
 
-    public Boolean verifySideRow(int[][] matrix) {
+    public Boolean canRowSlide(int[][] matrix) {
         boolean check = false;
         for (int row = 1; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
@@ -234,7 +231,7 @@ public class Main {
         return check;
     }
 
-    public Boolean verifySideColumn(int[][] matrix) {
+    public Boolean canColumnSlide(int[][] matrix) {
         boolean check = false;
         for (int column = 1; column < matrix.length; column++) {
             for (int row = 0; row < matrix.length; row++) {
@@ -249,7 +246,7 @@ public class Main {
     public Boolean got2048(int[][] matrix) {
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
-                if (matrix[row][column] == WIN_POINT_2048) {
+                if (matrix[row][column] == WIN_POINT) {
                     return true;
                 }
             }

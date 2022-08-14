@@ -19,28 +19,28 @@ public class GameTest {
     public void shouldMoveNumberUp() {
         Board board = new Board(4, 0);
         Game game = new Game(board);
-        assertTrue(game.moveUp());
+        assertTrue(game.gameMoves('w'));
     }
 
     @Test
     public void shouldMoveNumberDown() {
         Board board = new Board(4, 0);
         Game game = new Game(board);
-        assertTrue(game.moveDown());
+        assertTrue(game.gameMoves('s'));
     }
 
     @Test
     public void shouldMoveNumberLeft() {
         Board board = new Board(4, 0);
         Game game = new Game(board);
-        assertTrue(game.moveLeft());
+        assertTrue(game.gameMoves('a'));
     }
 
     @Test
     public void shouldMoveNumberRight() {
         Board board = new Board(4, 0);
         Game game = new Game(board);
-        assertTrue(game.moveRight());
+        assertTrue(game.gameMoves('d'));
     }
 
 }

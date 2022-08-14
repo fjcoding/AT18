@@ -12,7 +12,7 @@ public class BoardTest {
       // Board boardd = new Board(4 , 0 );
       Board board = new Board(4, 0);
       //board.createTable();
-      assertEquals(true, board.isValidThePosition(0, 0));
+      assertEquals(true, board.isEmptyPosition(0, 0));
 
       /*
        * MainTest main = new MainTest();

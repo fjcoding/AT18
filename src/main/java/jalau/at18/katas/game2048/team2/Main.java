@@ -15,7 +15,7 @@ public class Main {
             System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
             char letter = scanner.next().charAt(0);
             if (letter == 'w') {
-                game.moveUp();
+                game.gameMoves('w');
                 System.out.println("  ( o _ o)  Score : " + board.showScore());
                 if (game.finishGame()) {
 
@@ -23,7 +23,7 @@ public class Main {
                 }
             }
             if (letter == 's') {
-                game.moveDown();
+                game.gameMoves('s');
                 System.out.println(" ( o _ o)  Score : " + board.showScore());
                 if (game.finishGame()) {
 
@@ -31,14 +31,14 @@ public class Main {
                 }
             }
             if (letter == 'a') {
-                game.moveLeft();
+                game.gameMoves('a');
                 System.out.println("  ( o _ o)  Score : " + board.showScore());
                 if (game.finishGame()) {
                     break;
                 }
             }
             if (letter == 'd') {
-                game.moveRight();
+                game.gameMoves('d');
                 System.out.println(" ( o _ o)  Score : " + board.showScore());
                 if (game.finishGame()) {
                     break;

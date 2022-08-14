@@ -34,7 +34,7 @@ public class Game {
 
         int[] numbersRandom = new int[2];
         numbersRandom = generateRandomNumber();
-        if (board.isValidThePosition(numbersRandom[0], numbersRandom[1])) {
+        if (board.isEmptyPosition(numbersRandom[0], numbersRandom[1])) {
             board.replacePositions(numbersRandom[0], numbersRandom[1], 2);
         } else {
             tryToFillPosition();
@@ -45,44 +45,24 @@ public class Game {
             System.exit(1);
         }
     }
-
-    public boolean moveUp() {
-        try {
+    public boolean gameMoves(char direction) {
+        if (direction == 'w') {
             System.out.println("Push UP");
             board.moveNumberUp('w');
-            tryToFillPosition();
-            board.showTable();
-            return true;
-        } catch (Exception e) {
-            return false;
         }
-    }
-    public boolean moveLeft() {
-        try {
+        if (direction == 'a') {
             System.out.println("Push LEFT");
             board.moveNumberLeft('a');
-            tryToFillPosition();
-            board.showTable();
-            return true;
-        } catch (Exception e) {
-            return false;
         }
-    }
-    public boolean moveRight() {
-        try {
+        if (direction == 'd') {
             System.out.println("Push RIGHT");
             board.moveNumberRight('d');
-            tryToFillPosition();
-            board.showTable();
-            return true;
-        } catch (Exception e) {
-            return false;
         }
-    }
-    public boolean moveDown() {
-        try {
+        if (direction == 's') {
             System.out.println("Push DOWN");
             board.moveNumberDown('s');
+        }
+        try {
             tryToFillPosition();
             board.showTable();
             return true;

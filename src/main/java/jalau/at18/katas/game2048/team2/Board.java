@@ -28,18 +28,16 @@ public class Board {
     }
 
     public int[][] createTable() {
-        int[][] matrix = new int[numberThree][numberThree];
         for (int indexRows = 0; indexRows < size; indexRows++) {
             for (int indexColumns = 0; indexColumns < size; indexColumns++) {
                 board[indexRows][indexColumns] = 0;
             }
         }
-        matrix = board;
-        return matrix;
+        return board;
     }
 
-    public boolean isValidThePosition(int x, int y) {
-        return !(board[x][y] != 0);
+    public boolean isEmptyPosition(int x, int y) {
+        return (board[x][y] == 0);
     }
 
     public void replacePositions(int position1, int position2, int number) {

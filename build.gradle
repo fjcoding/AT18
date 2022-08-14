@@ -43,6 +43,7 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
 task runHighlowLibertad (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.libertad.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 
 task runhighestlowestDaniela (dependsOn: 'classes', type: JavaExec) {
@@ -70,6 +71,7 @@ task runLikesLibertad (dependsOn: 'classes', type: JavaExec) {
 task runMultiplesLibertad (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.libertad.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 
 task runCreatePhoneNumberLibertad (dependsOn: 'classes', type: JavaExec) {
@@ -126,6 +128,7 @@ task runPhonenumberAlvaro (dependsOn: 'classes', type: JavaExec) {
 }
 task runLikesAlvaro (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.alvaro.Main'
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 task runHighestLowestRodrigov (dependsOn: 'classes', type: JavaExec) {
@@ -157,6 +160,7 @@ task runHighestLowestAdriana (dependsOn: 'classes', type: JavaExec) {
 task runMultiplesAdriana(dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.adriana.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 task runPhonenumberAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.adriana.Main'
@@ -215,6 +219,7 @@ task runPhonenumberHugo (dependsOn: 'classes', type: JavaExec) {
 task runferHighlow (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.fernanda.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 task runferLikes (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.fernanda.Main'

@@ -31,19 +31,16 @@ public class Game {
     }
 
     public void tryToFillPosition() {
-
         int[] numbersRandom = new int[2];
         numbersRandom = generateRandomNumber();
         if (board.isEmptyPosition(numbersRandom[0], numbersRandom[1])) {
             board.replacePositions(numbersRandom[0], numbersRandom[1], 2);
-        } else {
+        } else if (board.countZeros() != 0){
             tryToFillPosition();
         }
-        if (board.countZeros() == 0) {
-            board.showTable();
-            System.out.println("( ^ . ^ ) ¡Game Over Jose!");
-            System.exit(1);
-        }
+        
+        
+        
     }
     public boolean gameMoves(char direction) {
         if (direction == 'w') {
@@ -63,7 +60,16 @@ public class Game {
             board.moveNumberDown('s');
         }
         try {
-            tryToFillPosition();
+            if(board.countZeros()!=0)
+            {
+                board.showTable();
+                tryToFillPosition();
+            }
+            if(!board.MovesS()){
+                board.showTable();
+                System.out.println("( ^ . ^ ) ¡Game Over Jose!");
+                System.exit(1);
+            } 
             board.showTable();
             return true;
         } catch (Exception e) {

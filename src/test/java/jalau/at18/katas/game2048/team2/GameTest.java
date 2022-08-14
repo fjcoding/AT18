@@ -1,10 +1,10 @@
-package jalau.at18.katas.Team2.Test2048;
-
+//package jalau.at18.katas.Test2048.Team2;
+package jalau.at18.katas.game2048.team2;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import jalau.at18.katas.game2048.team2.Board;
-import jalau.at18.katas.game2048.team2.Game;
+//import jalau.at18.katas.game2048.team2.Board;
+//import jalau.at18.katas.game2048.team2.Game;
 
 public class GameTest {
     @Test

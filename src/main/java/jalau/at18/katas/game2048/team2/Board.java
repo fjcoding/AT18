@@ -229,4 +229,27 @@ public class Board {
         }
         return count;
     }
+
+    public boolean MovesS()
+    {
+        boolean check = false;
+        for (int col = 0; col < size; col++){
+            for (int row = 1; row < size; row++){
+                if (board[col][row] == board[col][row-1]){
+                    check = true;
+                }
+            }
+        }
+        for (int col = 0; col <size ;col++){
+            for (int row = 1; row < size; row++){
+                if (board[col][row]== board[col-1][row]){
+                    check=true;
+                }
+
+            }
+        }
+        return check;
+    }
+
+
 }

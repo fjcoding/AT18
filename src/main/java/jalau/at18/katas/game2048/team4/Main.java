@@ -10,6 +10,8 @@ public class Main {
     private static String nextDirection;
     public static final int MIN_BOUND = 0;
     public static final int MAX_BOUND = 3;
+    public static final double PROB_LEVEL = 0.2;
+    public static final int RARE_TILE = 4;
 
     public static void main(String[] args) {
         // Main main = new Main();
@@ -23,9 +25,7 @@ public class Main {
         putNewTwoOnMatrix(matrix);
         putNewTwoOnMatrix(matrix);
         showMatrix();
-
         do {
-
             isWinner(matrix);
             System.out.println();
             System.out.println(
@@ -41,10 +41,8 @@ public class Main {
                 }
             }
             // The game stops when the player type q to exit or wins
-        } while (!isWinner(matrix) && exit != "q" && !isLoser(matrix));
-
+        } while (exit != "q" && !isWinner(matrix) && !isLoser(matrix));
         keyBoard.close();
-
     }
 
     public static void showMatrix() { // Fixed display for larger numbers
@@ -62,6 +60,7 @@ public class Main {
         for (int index = 0; index < matrixToCheck.length; index++) {
             for (int jIndex = 0; jIndex < matrixToCheck.length; jIndex++) {
                 if (matrixToCheck[index][jIndex] == WINNER_NUMBER) {
+                    System.out.println("*** Congratulations, you found tile 2048, You have won the game!! ***");
                     return true;
                 }
             }
@@ -211,7 +210,13 @@ public class Main {
             randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
             randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         }
-        matrixToShow[randomPositionX][randomPositionY] = 2;
+
+        double rand = Math.random();
+        if (rand < PROB_LEVEL) {
+            matrixToShow[randomPositionX][randomPositionY] = RARE_TILE;
+        } else {
+            matrixToShow[randomPositionX][randomPositionY] = 2;
+        }
         return matrixToShow;
     }
 
@@ -227,21 +232,4 @@ public class Main {
         System.out.println("Game Over");
         return true;
     }
-
-    /* public static String getNextDirection() {
-        return nextDirection;
-    }
-
-    public static void setNextDirection(String direction) {
-        nextDirection = direction;
-    }
-
-    public static int[][] getMatrix() {
-        return matrix;
-    }
-
-    public static void setMatrix(int[][] newMatrix) {
-        matrix = newMatrix;
-    } */
-
 }

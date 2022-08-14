@@ -35,12 +35,12 @@ public class Game {
         numbersRandom = generateRandomNumber();
         if (board.isEmptyPosition(numbersRandom[0], numbersRandom[1])) {
             board.replacePositions(numbersRandom[0], numbersRandom[1], 2);
-        } else if (board.countZeros() != 0){
+        } else if (board.countZeros() != 0) {
             tryToFillPosition();
         }
-        
-        
-        
+
+
+
     }
     public boolean gameMoves(char direction) {
         if (direction == 'w') {
@@ -59,23 +59,22 @@ public class Game {
             System.out.println("Push DOWN");
             board.moveNumberDown('s');
         }
-        try {
-            if(board.countZeros()!=0)
-            {
-                board.showTable();
-                tryToFillPosition();
-            }
-            if(!board.MovesS()){
-                board.showTable();
-                System.out.println("( ^ . ^ ) ¡Game Over Jose!");
-                System.exit(1);
-            } 
+
+        if (board.countZeros() != 0) {
             board.showTable();
+            tryToFillPosition();
             return true;
-        } catch (Exception e) {
-            return false;
+        } else if (!board.acceptedMovements()) {
+            board.showTable();
+            System.out.println("( ^ . ^ ) ¡Game Over Jose!");
+            System.exit(1);
         }
+        board.showTable();
+        return false;
+
     }
+
+
     public boolean finishGame() {
         if (board.showScore() == SCORE) {
             System.out.println("YOU WIN! CONGRATULATIONS ");

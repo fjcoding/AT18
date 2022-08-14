@@ -230,20 +230,21 @@ public class Board {
         return count;
     }
 
-    public boolean MovesS()
-    {
+    public boolean acceptedMovements() {
+
         boolean check = false;
-        for (int col = 0; col < size; col++){
-            for (int row = 1; row < size; row++){
-                if (board[col][row] == board[col][row-1]){
+        for (int col = 0; col < size; col++) {
+            for (int row = 1; row < size; row++) {
+
+                if (board[col][row] == board[col][row - 1]) {
                     check = true;
                 }
             }
         }
-        for (int col = 0; col <size ;col++){
-            for (int row = 1; row < size; row++){
-                if (board[col][row]== board[col-1][row]){
-                    check=true;
+        for (int row = 0; row < size; row++) {
+            for (int col = 1; col < size; col++) {
+                if (board[col][row] == board[col - 1][row]) {
+                    check = true;
                 }
 
             }

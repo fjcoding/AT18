@@ -1,37 +1,24 @@
-package jalau.at18.katas.Team2.Test2048;
+package jalau.at18.katas.game2048.team2;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import jalau.at18.katas.game2048.team2.Board;
 
 public class BoardTest {
-   // isValidThePosition(int x, int y)
    @Test
    public void shoul_isValidThePosition() {
-      // Board boardd = new Board(4 , 0 );
       Board board = new Board(4, 0);
-      //board.createTable();
       assertEquals(true, board.isEmptyPosition(0, 0));
-
-      /*
-       * MainTest main = new MainTest();
-       * String expecteds = "s";
-       *
-       * assertEquals(expecteds, main.covertNumber(numberInput));
-       */
    }
 
    @Test
    public void shouldPrint() {
-      // Board boardd = new Board(4 , 0 );
       Board board = new Board(4, 0);
       assertEquals(true, board.showTable());
    }
 
    @Test
    public void shouldCreateTable() {
-      // Board boardd = new Board(4 , 0 );
       int[][] compareMatrix = { { 0, 0, 0, 0 },
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 },
@@ -47,7 +34,6 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 } };
       Board board = new Board(4, 0);
-      //board.createTable();
       board.replacePositions(0, 0, 2);
       assertArrayEquals(compareMatrix, board.returnBoard());
    }
@@ -59,7 +45,6 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 } };
       Board board = new Board(4, 0);
-      //board.createTable();
       board.replacePositions(3, 3, 2);
       board.moveNumberUp('w');
       assertArrayEquals(compareMatrix, board.returnBoard());
@@ -86,7 +71,6 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 } };
       Board board = new Board(4, 0);
-      //board.createTable();
       board.replacePositions(1, 3, 2);
       board.moveNumberLeft('a');
       assertArrayEquals(compareMatrix, board.returnBoard());
@@ -112,7 +96,6 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 0, 0, 0 } };
       Board board = new Board(4, 0);
-      //board.createTable();
       board.replacePositions(1, 0, 2);
       board.moveNumberRight('d');
       assertArrayEquals(compareMatrix, board.returnBoard());
@@ -138,7 +121,6 @@ public class BoardTest {
             { 0, 0, 0, 0 },
             { 0, 2, 0, 0 } };
       Board board = new Board(4, 0);
-      //board.createTable();
       board.replacePositions(0, 1, 2);
       board.moveNumberDown('s');
       assertArrayEquals(compareMatrix, board.returnBoard());

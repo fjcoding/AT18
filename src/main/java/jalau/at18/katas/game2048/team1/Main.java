@@ -128,15 +128,19 @@ public class Main {
     }
 
     public int[][] moveTop(int[][] matrix) {
+        int[][] auxiliarMatrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
         for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int row = 1; row < matrix.length; row++) {
                 for (int column = 0; column < matrix.length; column++) {
+                    boolean verifyPrevious = auxiliarMatrix[row - 1][column] == 0 ? true : false;
+                    boolean verifyActual = auxiliarMatrix[row][column] == 0 ? true : false;
                     if (matrix[row][column] != 0 && matrix[row - 1][column] == 0) {
                         matrix[row - 1][column] = matrix[row][column];
                         matrix[row][column] = 0;
-                    } else if (matrix[row][column] != 0 && matrix[row - 1][column] == matrix[row][column]) {
+                    } else if (matrix[row][column] != 0 && matrix[row - 1][column] == matrix[row][column] && verifyPrevious && verifyActual) {
                         matrix[row - 1][column] = 2 * (matrix[row][column]);
                         matrix[row][column] = 0;
+                        auxiliarMatrix[row - 1][column] = 1;
                     }
                 }
             }
@@ -145,15 +149,19 @@ public class Main {
     }
 
     public int[][] moveDown(int[][] matrix) {
+        int[][] auxiliarMatrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
         for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int row = 2; row >= 0; row--) {
                 for (int column = 0; column < matrix.length; column++) {
+                    boolean verifyPrevious = auxiliarMatrix[row + 1][column] == 0 ? true : false;
+                    boolean verifyActual = auxiliarMatrix[row][column] == 0 ? true : false;
                     if (matrix[row][column] != 0 && matrix[row + 1][column] == 0) {
                         matrix[row + 1][column] = matrix[row][column];
                         matrix[row][column] = 0;
-                    } else if (matrix[row][column] != 0 && matrix[row + 1][column] == matrix[row][column]) {
+                    } else if (matrix[row][column] != 0 && matrix[row + 1][column] == matrix[row][column] && verifyPrevious && verifyActual) {
                         matrix[row + 1][column] = 2 * (matrix[row][column]);
                         matrix[row][column] = 0;
+                        auxiliarMatrix[row + 1][column] = 1;
                     }
                 }
             }
@@ -162,15 +170,19 @@ public class Main {
     }
 
     public int[][] moveLeft(int[][] matrix) {
+        int[][] auxiliarMatrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
         for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int column = 1; column < matrix.length; column++) {
                 for (int row = 0; row < matrix.length; row++) {
+                    boolean verifyPrevious = auxiliarMatrix[row][column - 1] == 0 ? true : false;
+                    boolean verifyActual = auxiliarMatrix[row][column] == 0 ? true : false;
                     if (matrix[row][column] != 0 && matrix[row][column - 1] == 0) {
                         matrix[row][column - 1] = matrix[row][column];
                         matrix[row][column] = 0;
-                    } else if (matrix[row][column] != 0 && matrix[row][column - 1] == matrix[row][column]) {
+                    } else if (matrix[row][column] != 0 && matrix[row][column - 1] == matrix[row][column] && verifyPrevious && verifyActual) {
                         matrix[row][column - 1] = 2 * (matrix[row][column]);
                         matrix[row][column] = 0;
+                        auxiliarMatrix[row][column - 1] = 1;
                     }
                 }
             }
@@ -179,15 +191,19 @@ public class Main {
     }
 
     public int[][] moveRight(int[][] matrix) {
+        int[][] auxiliarMatrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
         for (int moves = 0; moves < MAX_ROW_MOVES; moves++) {
             for (int column = 2; column >= 0; column--) {
                 for (int row = 0; row < matrix.length; row++) {
+                    boolean verifyPrevious = auxiliarMatrix[row][column + 1] == 0 ? true : false;
+                    boolean verifyActual = auxiliarMatrix[row][column] == 0 ? true : false;
                     if (matrix[row][column] != 0 && matrix[row][column + 1] == 0) {
                         matrix[row][column + 1] = matrix[row][column];
                         matrix[row][column] = 0;
-                    } else if (matrix[row][column] != 0 && matrix[row][column + 1] == matrix[row][column]) {
+                    } else if (matrix[row][column] != 0 && matrix[row][column + 1] == matrix[row][column] && verifyPrevious && verifyActual) {
                         matrix[row][column + 1] = 2 * (matrix[row][column]);
                         matrix[row][column] = 0;
+                        auxiliarMatrix[row][column + 1] = 1;
                     }
                 }
             }

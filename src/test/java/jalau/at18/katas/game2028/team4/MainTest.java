@@ -54,13 +54,13 @@ public class MainTest {
         assertEquals(true, winner);
     }
 
-    @Test
+    /*@Test
     public void thereIsALoser() {
         int[][] matrix = { { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE },
                 { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE } };
         boolean loser = Main.isLoser(matrix);
         assertEquals(true, loser);
-    }
+    }*/
 
     @Test
     public void putANewNumberOnMatrix() {

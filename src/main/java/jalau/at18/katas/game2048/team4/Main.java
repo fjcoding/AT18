@@ -18,7 +18,7 @@ public class Main {
         Scanner keyBoard = new Scanner(System.in);
         System.out.println();
         System.out.println(
-                "Welcome to the game. Objective: get tile 2048 by moving existing tiles: up, down, left and right.");
+                "***Welcome to the game. Objective: get tile 2048 by moving existing tiles: up, down, left and right.***");
         String exit = "Y";
         String continuePlaying;
         System.out.println();
@@ -26,12 +26,13 @@ public class Main {
         putNewTwoOnMatrix(matrix);
         showMatrix();
         do {
-            isWinner(matrix);
+            // isWinner(matrix);
             System.out.println();
             System.out.println(
                     "Type the direction you want to go. Directions: [up, down, left, right] = [w, s, a, d]. If you want to exit type 'q' and ENTER");
             nextDirection = keyBoard.nextLine();
             directionChecker(nextDirection);
+            System.out.println();
             showMatrix();
             if ("q".equals(nextDirection)) {
                 System.out.println("\nIf you want to stop playing type 'q' again. If not type any key.");
@@ -40,8 +41,9 @@ public class Main {
                     exit = "q";
                 }
             }
-            // The game stops when the player type q to exit or wins
-        } while (exit != "q" && !isWinner(matrix) && !isLoser(matrix));
+            // The game stops when the player types q to exit, wins or is detected a losing
+            // scenario
+        } while (!"q".equals(exit) && !isWinner(matrix) && !isLoser(matrix));
         keyBoard.close();
     }
 
@@ -61,6 +63,7 @@ public class Main {
             for (int jIndex = 0; jIndex < matrixToCheck.length; jIndex++) {
                 if (matrixToCheck[index][jIndex] == WINNER_NUMBER) {
                     System.out.println("*** Congratulations, you found tile 2048, You have won the game!! ***");
+                    System.out.println();
                     return true;
                 }
             }
@@ -74,34 +77,28 @@ public class Main {
                 System.out.println("You moved the numbers up!");
                 moveNumbersUp(matrix, MIN_BOUND);
                 putNewTwoOnMatrix(matrix);
-                System.out.println();
                 break;
             case "a":
                 System.out.println("You moved the numbers left!");
                 moveNumbersLeft(matrix, MIN_BOUND);
                 putNewTwoOnMatrix(matrix);
-                System.out.println();
                 break;
             case "d":
                 System.out.println("You moved the numbers right!");
                 moveNumbersRight(matrix, MIN_BOUND);
                 putNewTwoOnMatrix(matrix);
-                System.out.println();
                 break;
             case "s":
                 System.out.println("You moved the numbers down!");
                 moveNumbersDown(matrix, MIN_BOUND);
                 putNewTwoOnMatrix(matrix);
-                System.out.println();
                 break;
             case "q":
                 System.out.println("You are about to Quit!");
-                System.out.println();
                 break;
             default:
                 System.out.println(
                         "PLease type a correct direction. Directions: [up, down, left, right] = [w, s, a, d]. if you want to exit type 'q'");
-                System.out.println();
         }
     }
 
@@ -134,7 +131,6 @@ public class Main {
                 } else if (matrixToMove[index][jIndex] != 0 && matrixToMove[index - 1][jIndex] != 0) { // Case 4
                     continue;
                 }
-
             }
         }
         return matrixToMove;
@@ -227,16 +223,32 @@ public class Main {
         return matrixToMove;
     }
 
-    public static int[][] putNewTwoOnMatrix(int[][] matrixToShow) { // Recursividad?
+    public static int[][] putNewTwoOnMatrix(int[][] matrixToShow) {
         int randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
         int randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
-        while (matrixToShow[randomPositionX][randomPositionY] != 0) { // Searches a cell with a 0, replaces with a 2
+        double rand = Math.random();
+        boolean full = false;
+        // Searches a cell with a 0, if found replaces it with a number
+        int trigger = 0;
+        while ((matrixToShow[randomPositionX][randomPositionY] != 0) && !full) {
             randomPositionX = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
             randomPositionY = ThreadLocalRandom.current().nextInt(MIN_BOUND, MAX_BOUND + 1);
+            trigger++;
+            if (trigger == (GRID_SIZE * GRID_SIZE)) {
+                for (int index = 0; index < matrixToShow.length; index++) {
+                    for (int jIndex = 0; jIndex < matrixToShow.length; jIndex++) {
+                        if (matrixToShow[index][jIndex] == 0) {
+                            randomPositionX = index;
+                            randomPositionY = jIndex;
+                            full = false;
+                        } else {
+                            full = true;
+                        }
+                    }
+                }
+            }
         }
-
-        double rand = Math.random();
-        if (rand < PROB_LEVEL) {
+        if (rand < PROB_LEVEL && !full) {
             matrixToShow[randomPositionX][randomPositionY] = RARE_TILE;
         } else {
             matrixToShow[randomPositionX][randomPositionY] = 2;
@@ -244,16 +256,90 @@ public class Main {
         return matrixToShow;
     }
 
-    // Isloser function
     public static boolean isLoser(int[][] matrixToCheck) {
+        int zeros = 0;
         for (int index = 0; index < matrixToCheck.length; index++) {
             for (int jIndex = 0; jIndex < matrixToCheck.length; jIndex++) {
                 if (matrixToCheck[index][jIndex] == 0) {
-                    return false;
+                    zeros++;
                 }
             }
         }
-        System.out.println("Game Over");
-        return true;
+        if (zeros <= 0) {
+            if (checkMoves(matrix)) {
+                System.out.println("***Game Over***");
+                System.out.println();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkMoves(int[][] noZeros) {
+        int count = 0;
+        for (int index = 0; index < noZeros.length; index++) {
+
+            for (int jindex = 0; jindex < noZeros[index].length; jindex++) {
+                    // search corners
+                if (index == 0 && jindex == 0) {
+                    if (noZeros[index][jindex] != noZeros[index + 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index][jindex + 1]) {
+                        count++;
+                    }
+                } else if (index == 0 && jindex == MAX_BOUND) {
+                    if (noZeros[index][jindex] != noZeros[index + 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index][jindex - 1]) {
+                        count++;
+                    }
+                } else if (index == MAX_BOUND && jindex == MAX_BOUND) {
+                    if (noZeros[index][jindex] != noZeros[index - 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index][jindex - 1]) {
+                        count++;
+                    }
+                } else if (index == MAX_BOUND && jindex == 0) {
+                    if (noZeros[index][jindex] != noZeros[index - 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index][jindex + 1]) {
+                        count++;
+                    }
+                    // search middle sides
+                } else if (index == 0 && (jindex == 1 || jindex == 2)) {
+                    if (noZeros[index][jindex] != noZeros[index + 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index][jindex + 1]
+                            && noZeros[index][jindex] != noZeros[index][jindex - 1]) {
+                        count++;
+                    }
+                } else if (index == MAX_BOUND && (jindex == 1 || jindex == 2)) {
+                    if (noZeros[index][jindex] != noZeros[index - 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index][jindex + 1]
+                            && noZeros[index][jindex] != noZeros[index][jindex - 1]) {
+                        count++;
+                    }
+                } else if (jindex == 0 && (index == 1 || index == 2)) {
+                    if (noZeros[index][jindex] != noZeros[index][jindex + 1]
+                            && noZeros[index][jindex] != noZeros[index - 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index + 1][jindex]) {
+                        count++;
+                    }
+                } else if (jindex == MAX_BOUND && (index == 1 || index == 2)) {
+                    if (noZeros[index][jindex] != noZeros[index][jindex - 1]
+                            && noZeros[index][jindex] != noZeros[index - 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index + 1][jindex]) {
+                        count++;
+                    }
+                } else {
+                    // search middle four
+                    if (noZeros[index][jindex] != noZeros[index][jindex - 1]
+                            && noZeros[index][jindex] != noZeros[index][jindex + 1]
+                            && noZeros[index][jindex] != noZeros[index - 1][jindex]
+                            && noZeros[index][jindex] != noZeros[index + 1][jindex]) {
+                        count++;
+                    }
+                }
+            }
+        }
+        if (count == (GRID_SIZE * GRID_SIZE)) {
+            return true;
+        }
+        return false;
     }
 }

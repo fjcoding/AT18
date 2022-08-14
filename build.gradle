@@ -162,7 +162,7 @@ task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
 }
 
 task runTeam32048 (dependsOn: 'classes', type: JavaExec) {
-    main = 'jalau.at18.katas.2048.team3.Main'
+    main = 'jalau.at18.katas.game2048.team3.Main'
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
 }

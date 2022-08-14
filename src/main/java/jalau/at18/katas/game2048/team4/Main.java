@@ -72,25 +72,25 @@ public class Main {
         switch (direction) {
             case "w":
                 System.out.println("You moved the numbers up!");
-                moveNumbersUp(matrix);
+                moveNumbersUp(matrix, MIN_BOUND);
                 putNewTwoOnMatrix(matrix);
                 System.out.println();
                 break;
             case "a":
                 System.out.println("You moved the numbers left!");
-                moveNumbersLeft(matrix);
+                moveNumbersLeft(matrix, MIN_BOUND);
                 putNewTwoOnMatrix(matrix);
                 System.out.println();
                 break;
             case "d":
                 System.out.println("You moved the numbers right!");
-                moveNumbersRight(matrix);
+                moveNumbersRight(matrix, MIN_BOUND);
                 putNewTwoOnMatrix(matrix);
                 System.out.println();
                 break;
             case "s":
                 System.out.println("You moved the numbers down!");
-                moveNumbersDown(matrix);
+                moveNumbersDown(matrix, MIN_BOUND);
                 putNewTwoOnMatrix(matrix);
                 System.out.println();
                 break;
@@ -110,7 +110,7 @@ public class Main {
     // Case 3: The next number is the same number (So it has to sum the numbers)
     // Case 4: Th next number is other number (So do nothing)
 
-    public static int[][] moveNumbersUp(int[][] matrixToMove) {
+    public static int[][] moveNumbersUp(int[][] matrixToMove, int sum) {
         for (int index = 0; index < matrixToMove.length; index++) {
             for (int jIndex = 0; jIndex < matrixToMove.length; jIndex++) {
                 if (matrixToMove[index][jIndex] != 0 && index == 0) { // Case 1
@@ -120,11 +120,17 @@ public class Main {
                             && matrixToMove[innerIndex - 1][jIndex] == 0; innerIndex--) {
                         matrixToMove[innerIndex - 1][jIndex] = matrixToMove[innerIndex][jIndex];
                         matrixToMove[innerIndex][jIndex] = 0;
+                        moveNumbersUp(matrix, 0);
                     } // move till reach a border or a number
                 } else if (matrixToMove[index][jIndex] != 0
                         && matrixToMove[index - 1][jIndex] == matrixToMove[index][jIndex]) { // Case 3
-                    matrixToMove[index - 1][jIndex] *= 2;
-                    matrixToMove[index][jIndex] = 0;
+                    if (sum < 1) {
+                        matrixToMove[index - 1][jIndex] *= 2;
+                        matrixToMove[index][jIndex] = 0;
+                        moveNumbersUp(matrix, MIN_BOUND + 1);
+                    } else {
+                        continue;
+                    }
                 } else if (matrixToMove[index][jIndex] != 0 && matrixToMove[index - 1][jIndex] != 0) { // Case 4
                     continue;
                 }
@@ -134,7 +140,7 @@ public class Main {
         return matrixToMove;
     }
 
-    public static int[][] moveNumbersDown(int[][] matrixToMove) {
+    public static int[][] moveNumbersDown(int[][] matrixToMove, int sum) {
         for (int index = 0; index < matrixToMove.length; index++) {
             for (int jIndex = 0; jIndex < matrixToMove.length; jIndex++) {
                 if (matrixToMove[index][jIndex] != 0 && index == MAX_BOUND) { // Case 1
@@ -144,11 +150,17 @@ public class Main {
                             && matrixToMove[innerIndex + 1][jIndex] == 0; innerIndex++) {
                         matrixToMove[innerIndex + 1][jIndex] = matrixToMove[innerIndex][jIndex];
                         matrixToMove[innerIndex][jIndex] = 0;
+                        moveNumbersDown(matrix, 0);
                     }
                 } else if (matrixToMove[index][jIndex] != 0
                         && matrixToMove[index + 1][jIndex] == matrixToMove[index][jIndex]) { // Case 3
-                    matrixToMove[index + 1][jIndex] *= 2;
-                    matrixToMove[index][jIndex] = 0;
+                    if (sum < 1) {
+                        matrixToMove[index + 1][jIndex] *= 2;
+                        matrixToMove[index][jIndex] = 0;
+                        moveNumbersDown(matrix, MIN_BOUND + 1);
+                    } else {
+                        continue;
+                    }
                 } else if (matrixToMove[index][jIndex] != 0 && matrixToMove[index + 1][jIndex] != 0) { // Case 4
                     continue;
                 }
@@ -157,7 +169,7 @@ public class Main {
         return matrixToMove;
     }
 
-    public static int[][] moveNumbersLeft(int[][] matrixToMove) {
+    public static int[][] moveNumbersLeft(int[][] matrixToMove, int sum) {
         for (int index = 0; index < matrixToMove.length; index++) {
             for (int jIndex = 0; jIndex < matrixToMove.length; jIndex++) {
                 if (matrixToMove[index][jIndex] != 0 && jIndex == 0) { // Case 1
@@ -167,11 +179,17 @@ public class Main {
                             && matrixToMove[index][innerIndex - 1] == 0; innerIndex--) {
                         matrixToMove[index][innerIndex - 1] = matrixToMove[index][innerIndex];
                         matrixToMove[index][innerIndex] = 0;
+                        moveNumbersLeft(matrix, 0);
                     }
                 } else if (matrixToMove[index][jIndex] != 0
                         && matrixToMove[index][jIndex - 1] == matrixToMove[index][jIndex]) { // Case 3
-                    matrixToMove[index][jIndex - 1] *= 2;
-                    matrixToMove[index][jIndex] = 0;
+                    if (sum < 1) {
+                        matrixToMove[index][jIndex - 1] *= 2;
+                        matrixToMove[index][jIndex] = 0;
+                        moveNumbersLeft(matrix, MIN_BOUND + 1);
+                    } else {
+                        continue;
+                    }
                 } else if (matrixToMove[index][jIndex] != 0 && matrixToMove[index][jIndex - 1] != 0) { // Case 4
                     continue;
                 }
@@ -180,7 +198,7 @@ public class Main {
         return matrixToMove;
     }
 
-    public static int[][] moveNumbersRight(int[][] matrixToMove) {
+    public static int[][] moveNumbersRight(int[][] matrixToMove, int sum) {
         for (int index = 0; index < matrixToMove.length; index++) {
             for (int jIndex = 0; jIndex < matrixToMove.length; jIndex++) {
                 if (matrixToMove[index][jIndex] != 0 && jIndex == MAX_BOUND) { // Case 1
@@ -190,11 +208,17 @@ public class Main {
                             && matrixToMove[index][innerIndex + 1] == 0; innerIndex++) {
                         matrixToMove[index][innerIndex + 1] = matrixToMove[index][innerIndex];
                         matrixToMove[index][innerIndex] = 0;
+                        moveNumbersRight(matrix, 0);
                     }
                 } else if (matrixToMove[index][jIndex] != 0
                         && matrixToMove[index][jIndex + 1] == matrixToMove[index][jIndex]) { // Case 3
-                    matrixToMove[index][jIndex + 1] *= 2;
-                    matrixToMove[index][jIndex] = 0;
+                    if (sum < 1) {
+                        matrixToMove[index][jIndex + 1] *= 2;
+                        matrixToMove[index][jIndex] = 0;
+                        moveNumbersRight(matrix, MIN_BOUND + 1);
+                    } else {
+                        continue;
+                    }
                 } else if (matrixToMove[index][jIndex] != 0 && matrixToMove[index][jIndex + 1] != 0) { // Case 4
                     continue;
                 }

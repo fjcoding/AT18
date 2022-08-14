@@ -10,49 +10,50 @@ public class MainTest {
 
     @Test
     public void moveNumbersUpTest() {
-        int[][] matrix = {{0, 0, 0, 0}, {0, MIN_TILE, MIN_TILE, MIN_TILE}, 
-			{0, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, 0, 0, 0}};
-        int[][] expectedMatrix = {{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, 
-			{0, MIN_TILE, MIN_TILE, MIN_TILE}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+        int[][] matrix = { { 0, 0, 0, 0 }, { 0, MIN_TILE, MIN_TILE, MIN_TILE },
+                { 0, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, 0, 0, 0 } };
+        int[][] expectedMatrix = { { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE },
+                { 0, MIN_TILE, MIN_TILE, MIN_TILE }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
         Main main = new Main();
-        int[][] new_matrix = main.moveNumbersUp(matrix);
+        int[][] new_matrix = main.moveNumbersUp(matrix, 0);
         assertArrayEquals(expectedMatrix, new_matrix);
     }
 
     @Test
     public void moveNumbersLeftTest() {
-        int[][] matrix = {{0, 0, 0, 0 }, {0, MIN_TILE, MIN_TILE, MIN_TILE}, 
-			{0, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, 0, 0, 0}};
-        int[][] expectedMatrix = {{0, 0, 0, 0}, {MIN_TILE, MIN_TILE, MIN_TILE, 0}, 
-			{MIN_TILE, MIN_TILE, MIN_TILE, 0}, {MIN_TILE, 0, 0, 0}};
+        int[][] matrix = { { 0, 0, 0, 0 }, { 0, MIN_TILE, MIN_TILE, MIN_TILE },
+                { 0, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, 0, 0, 0 } };
+        int[][] expectedMatrix = { { 0, 0, 0, 0 }, { MIN_TILE, MIN_TILE, MIN_TILE, 0 },
+                { MIN_TILE, MIN_TILE, MIN_TILE, 0 }, { MIN_TILE, 0, 0, 0 } };
         Main main = new Main();
-        int[][] new_matrix = Main.moveNumbersLeft(matrix);
+        int[][] new_matrix = Main.moveNumbersLeft(matrix, 0);
         assertArrayEquals(expectedMatrix, new_matrix);
     }
 
     @Test
     public void moveNumbersRightTest() {
-        int[][] matrix = {{0, 0, 0, 0}, {0, 0, MIN_TILE, 0}, {0, 0, MIN_TILE, 0}, {MIN_TILE, 0, 0, 0}};
-        int[][] expectedMatrix = {{0, 0, 0, 0}, {0, 0, 0, MIN_TILE}, {0, 0, 0, MIN_TILE}, {0, 0, 0, MIN_TILE}};
+        int[][] matrix = { { 0, 0, 0, 0 }, { 0, 0, MIN_TILE, 0 }, { 0, 0, MIN_TILE, 0 }, { MIN_TILE, 0, 0, 0 } };
+        int[][] expectedMatrix = { { 0, 0, 0, 0 }, { 0, 0, 0, MIN_TILE }, { 0, 0, 0, MIN_TILE },
+                { 0, 0, 0, MIN_TILE } };
         Main main = new Main();
-        int[][] new_matrix = Main.moveNumbersRight(matrix);
+        int[][] new_matrix = Main.moveNumbersRight(matrix, 0);
         assertArrayEquals(expectedMatrix, new_matrix);
     }
 
     @Test
     public void moveNumbersDownTest() {
-        int[][] matrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, 0, 0, 0}};
-        int[][] expectedMatrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, 
-	{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}};
+        int[][] matrix = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, 0, 0, 0 } };
+        int[][] expectedMatrix = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 },
+                { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE } };
         Main main = new Main();
-        int[][] new_matrix = Main.moveNumbersDown(matrix);
+        int[][] new_matrix = Main.moveNumbersDown(matrix, 0);
         assertArrayEquals(expectedMatrix, new_matrix);
     }
 
     @Test
     public void thereIsAWinner() {
-        int[][] matrix = {{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, {WINNER_NUM, MIN_TILE, MIN_TILE, MIN_TILE}, 
-			{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}};
+        int[][] matrix = { { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { WINNER_NUM, MIN_TILE, MIN_TILE, MIN_TILE },
+                { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE } };
         Main main = new Main();
         boolean winner = Main.isWinner(matrix);
         assertEquals(true, winner);
@@ -60,8 +61,8 @@ public class MainTest {
 
     @Test
     public void thereIsALoser() {
-        int[][] matrix = {{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, 
-			{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}};
+        int[][] matrix = { { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE },
+                { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE } };
         Main main = new Main();
         boolean loser = Main.isLoser(matrix);
         assertEquals(true, loser);
@@ -69,10 +70,11 @@ public class MainTest {
 
     @Test
     public void putANewNumberOnMatrix() {
-        int[][] matrix = {{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, 
-			{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, MIN_TILE, MIN_TILE, 0}};
-        int[][] expectedMatrix = {{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, 
-			{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}, {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}};
+        int[][] matrix = { { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE },
+                { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, MIN_TILE, MIN_TILE, 0 } };
+        int[][] expectedMatrix = { { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE },
+                { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE },
+                { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE }, { MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE } };
         Main main = new Main();
         int[][] new_matrix = Main.putNewTwoOnMatrix(matrix);
         assertArrayEquals(expectedMatrix, new_matrix);

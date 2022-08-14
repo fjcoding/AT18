@@ -3,12 +3,9 @@ package jalau.at18.katas.game2048.team2;
 public class Board {
     private int[][] board;
     private int score;
-    private int sizeBoard;
     private final int size = 4;
-    private final int numberThree = 3;
 
     public Board(int sizeBoard, int score) {
-        this.sizeBoard = sizeBoard;
         this.score = score;
         score = 0;
         board = new int[size][size];
@@ -251,6 +248,5 @@ public class Board {
         }
         return check;
     }
-
 
 }

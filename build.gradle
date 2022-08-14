@@ -229,7 +229,7 @@ task runferphone (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.fernanda.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
-task runMainGame2048(dependsOn: 'classes', type: JavaExec) {
+task runMainGame2048Team2(dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.game2048.team2.Main'
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in

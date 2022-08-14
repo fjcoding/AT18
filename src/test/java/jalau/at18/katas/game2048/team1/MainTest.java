@@ -6,11 +6,11 @@ import static org.junit.Assert.*;
 
 public class MainTest {
     private final int[][] exampleMatrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 2, 0}, {0, 0, 0, 0}};
-    private final int[][] matrixGameOver = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 1, 2, 3}, {4, 5, 9, 7}};
-    private final int[][] matrixGameNoOver = {{1, 2, 3, 4}, {5, 6, 7, 0}, {9, 1, 2, 4}, {4, 5, 9, 20}};
+    private final int[][] matrixGameOver = {{2, 4, 8, 2}, {16, 8, 2, 8}, {4, 2, 16, 4}, {2, 8, 2, 16}};
+    private final int[][] matrixGameNoOver = {{2, 4, 2, 2}, {16, 8, 2, 8}, {4, 2, 16, 4}, {2, 8, 2, 16}};
 
-    public static final int RANDOM_VALUE_ONE = 2;
-    public static final int RANDOM_VALUE2 = 4;
+    public static final int TILE_VALUE_TWO = 2;
+    public static final int TILE_VALUE_FOUR = 4;
     public static final int MATRIX_LENGTH = 4;
     public static final int COUNT_ZEROS = 15;
 
@@ -21,12 +21,12 @@ public class MainTest {
         assertEquals(COUNT_ZEROS, main.countZerosMatrix(exampleMatrix));
     }
     @Test
-    public void mainGameOver() {
+    public void mainIsGameOver() {
         Main main = new Main();
         assertEquals(true, main.isGameOver(matrixGameOver));
     }
     @Test
-    public void mainGameNoOver() {
+    public void mainIsGameNoOver() {
         Main main = new Main();
         assertEquals(false, main.isGameOver(matrixGameNoOver));
     }
@@ -35,7 +35,7 @@ public class MainTest {
     public void mainRandomValue() {
         Main main = new Main();
         int num = main.randomValueGrid();
-        assertTrue(num == RANDOM_VALUE_ONE || num == RANDOM_VALUE2);
+        assertTrue(num == TILE_VALUE_TWO || num == TILE_VALUE_FOUR);
     }
 
     @Test
@@ -48,24 +48,16 @@ public class MainTest {
     @Test
     public void mainAddTile() {
         Main main = new Main();
-        int countTiles1 = 0;
-        for (int row = 0; row < exampleMatrix.length; row++) {
-            for (int column = 0; column < exampleMatrix.length; column++) {
-                if (exampleMatrix[row][column] != 0) {
-                    countTiles1++;
-                }
-            }
-        }
+        int countTiles = 0;
         int[][] matrixPlusTile = main.addTile(exampleMatrix);
-        int countTiles2 = 0;
         for (int row = 0; row < matrixPlusTile.length; row++) {
             for (int column = 0; column < matrixPlusTile.length; column++) {
                 if (matrixPlusTile[row][column] != 0) {
-                    countTiles2++;
+                    countTiles++;
                 }
             }
         }
-        assertEquals(countTiles1 + 1, countTiles2);
+        assertEquals(2, countTiles);
     }
 
     @Test
@@ -114,7 +106,7 @@ public class MainTest {
         assertEquals(matrixExpected, main.moveRight(matrixTest));
     }
     @Test
-    public void mainVerifySideRow() {
+    public void mainCanRowSlide() {
         Main main = new Main();
         final int[][] matrixTest = {{1, 2, 3, 4}, {1, 5, 6, 7}, {2, 3, 5, 7}, {9, 0, 7, 5}};
         assertEquals(true, main.canRowSlide(matrixTest));
@@ -122,7 +114,7 @@ public class MainTest {
         assertEquals(false, main.canRowSlide(matrixTest1));
     }
     @Test
-    public void mainVerifySideColumn() {
+    public void mainCanColumnSlide() {
         Main main = new Main();
         final int[][] matrixTest = {{1, 1, 3, 4}, {1, 5, 6, 7}, {2, 3, 5, 7}, {9, 0, 7, 5}};
         assertEquals(true, main.canColumnSlide(matrixTest));

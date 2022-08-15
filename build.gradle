@@ -1,8 +1,9 @@
+apply plugin: 'jacoco'
 apply plugin: 'java'
 apply plugin: 'checkstyle'
 
 repositories {
-    mavenCentral()  
+    mavenCentral()
 }
 
 dependencies {
@@ -26,6 +27,7 @@ checkstyleMain {
 }
 
 test.finalizedBy("checkstyleMain")
+test.finalizedBy("jacocoTestReport")
 
 task runhighestlowestSergio (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sergio.Main'

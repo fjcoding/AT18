@@ -18,6 +18,7 @@ public class MainTest {
         Integer expected3 = 9;
         assertEquals(expected3, main.getHighest(inputArray3));
     }
+
     @Test
     public void functionShouldGiveLowest() {
         Main main = new Main();
@@ -31,6 +32,7 @@ public class MainTest {
         Integer expected3 = -5;
         assertEquals(expected3, main.getLowest(inputArray3));
     }
+
     @Test
     public void mainShouldShowHighestLowest() {
         Main main = new Main();

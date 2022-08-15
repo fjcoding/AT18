@@ -12,3 +12,8 @@ https://freepacman.org/
 Implement Pacman game as described above as a Command Line game.
 
 ## Team members
+- Sarai
+- Daniela
+- Rene
+- Jose
+- Mauricio

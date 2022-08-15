@@ -10,3 +10,8 @@ https://freeinvaders.org/
 Implement Space Invaders game as described above as a Command Line game.
 
 ## Team members
+- RodrigoV
+- Carlos
+- Alvaro
+- Libertad
+- Hugo

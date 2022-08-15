@@ -10,3 +10,8 @@ https://old-games.online/nes/battle-city
 Implement Battle City game as described above as a Command Line game.
 
 ## Team members
+- Maria
+- Adriana
+- Fernanda
+- RodrigoB
+- Sergio

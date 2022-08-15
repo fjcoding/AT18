@@ -266,7 +266,7 @@ public class Main {
             }
         }
         if (zeros <= 0) {
-            if (checkMoves(matrix)) {
+            if (checkMoves(matrixToCheck)) {
                 System.out.println("***Game Over***");
                 System.out.println();
                 return true;
@@ -280,7 +280,7 @@ public class Main {
         for (int index = 0; index < noZeros.length; index++) {
 
             for (int jindex = 0; jindex < noZeros[index].length; jindex++) {
-                    // search corners
+                // search corners
                 if (index == 0 && jindex == 0) {
                     if (noZeros[index][jindex] != noZeros[index + 1][jindex]
                             && noZeros[index][jindex] != noZeros[index][jindex + 1]) {

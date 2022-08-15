@@ -1,3 +1,4 @@
+apply plugin: 'jacoco'
 apply plugin: 'java'
 apply plugin: 'checkstyle'
 
@@ -26,6 +27,7 @@ checkstyleMain {
 }
 
 test.finalizedBy("checkstyleMain")
+test.finalizedBy("jacocoTestReport")
 
 task runhighestlowestSergio (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sergio.Main'
@@ -43,6 +45,7 @@ task runHelloWorldJoseG (dependsOn: 'classes', type: JavaExec) {
 task runHighlowLibertad (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.libertad.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 
 task runhighestlowestDaniela (dependsOn: 'classes', type: JavaExec) {
@@ -70,6 +73,7 @@ task runLikesLibertad (dependsOn: 'classes', type: JavaExec) {
 task runMultiplesLibertad (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.multiples.libertad.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 
 task runCreatePhoneNumberLibertad (dependsOn: 'classes', type: JavaExec) {
@@ -126,6 +130,7 @@ task runPhonenumberAlvaro (dependsOn: 'classes', type: JavaExec) {
 }
 task runLikesAlvaro (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.alvaro.Main'
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 task runHighestLowestRodrigov (dependsOn: 'classes', type: JavaExec) {
@@ -162,9 +167,22 @@ task runPhonenumberAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.adriana.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
 task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.adriana.Main'
     classpath = sourceSets.main.runtimeClasspath
+}
+
+task runTeam32048 (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.game2048.team3.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+}
+
+task runTeam1Game2048 (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.game2048.team1.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
 
 task runHighestLowestMariaH (dependsOn: 'classes', type: JavaExec) {
@@ -215,7 +233,9 @@ task runPhonenumberHugo (dependsOn: 'classes', type: JavaExec) {
 task runferHighlow (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.fernanda.Main'
     classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
 }
+
 task runferLikes (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.likes.fernanda.Main'
     classpath = sourceSets.main.runtimeClasspath
@@ -229,8 +249,16 @@ task runferphone (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.phonenumber.fernanda.Main'
     classpath = sourceSets.main.runtimeClasspath
 }
+
 task runMainGame2048Team2(dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.game2048.team2.Main'
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
 }
+
+task runTeam4Game2048 (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.game2048.team4.Main'
+    standardInput=System.in
+    classpath = sourceSets.main.runtimeClasspath
+}
+

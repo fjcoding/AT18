@@ -84,7 +84,15 @@ public class MainTest {
                                 {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE},
                                 {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE},
                                 {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE}};
+                int[][] expectedMatrix2 = {{MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE},
+                                {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE},
+                                {MIN_TILE, MIN_TILE, MIN_TILE, MIN_TILE},
+                                {MIN_TILE, MIN_TILE, MIN_TILE, FOUR}};
                 int[][] new_matrix = Main.putNewTwoOnMatrix(matrix);
-                assertArrayEquals(expectedMatrix, new_matrix);
+                if (new_matrix[3][3] == 2) {
+                        assertArrayEquals(expectedMatrix, new_matrix);
+                } else if (new_matrix[3][3] == 4) {
+                        assertArrayEquals(expectedMatrix2, new_matrix);
+                }
         }
 }

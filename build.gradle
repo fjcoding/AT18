@@ -173,6 +173,11 @@ task runLikesAdriana (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 
+task runTeam1Game2048 (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.katas.game2048.team1.Main'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+}
 task runHighestLowestMariaH (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.maria.HighestLowest'
     classpath = sourceSets.main.runtimeClasspath

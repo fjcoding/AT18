@@ -38,4 +38,7 @@ public class Board {
     public char[][] getMatrix() {
         return matrix;
     }
+    public int getMaxSize() {
+        return MAX_SIZE;
+    }
 }

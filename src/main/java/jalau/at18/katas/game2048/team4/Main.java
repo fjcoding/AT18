@@ -1,6 +1,5 @@
 package jalau.at18.katas.game2048.team4;
 
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -15,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Main main = new Main();
-        Scanner keyBoard = new Scanner(System.in);
+        /*Scanner keyBoard = new Scanner(System.in);
         System.out.println();
         System.out.println(
                 "***Welcome to the game. Objective: get tile 2048 by moving existing tiles: up, down, left and right.***");
@@ -44,7 +43,10 @@ public class Main {
             // The game stops when the player types q to exit, wins or is detected a losing
             // scenario
         } while (!"q".equals(exit) && !isWinner(matrix) && !isLoser(matrix));
-        keyBoard.close();
+        keyBoard.close();*/
+        Screen screen = new Screen();
+        screen.loadGame(new Game2048(matrix));
+        screen.runGame();
     }
 
     public static void showMatrix() { // Fixed display for larger numbers

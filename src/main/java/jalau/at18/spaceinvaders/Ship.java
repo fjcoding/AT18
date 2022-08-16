@@ -1,31 +1,31 @@
 package jalau.at18.spaceinvaders;
 
 public class Ship {
-    private int lifes = 3;
+    private static final int MAX_LIFES = 3;
+    private int lifes;
     private int posX;
     private int posY;
-
-    public Ship(){
-
+    public Ship() {
+        lifes = MAX_LIFES;
     }
 
-    public void setLifes(int updateLifes){
-        lifes= updateLifes;
+    public void setLifes(int updateLifes) {
+        lifes = updateLifes;
     }
 
-    public void setPosX(int newPosition){
+    public void setPosX(int newPosition) {
         posX = newPosition;
     }
 
-    public int getLifes(){
+    public int getLifes() {
         return lifes;
     }
 
-    public int getPosX(){
+    public int getPosX() {
         return posX;
     }
 
-    public int getPosY(){
+    public int getPosY() {
         return posY;
     }
 }

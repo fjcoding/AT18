@@ -1,29 +1,29 @@
 package jalau.at18.spaceinvaders;
 
 public class Board {
+    private static final int MAX_SIZE = 10;
     private char[][] matrix;
-    
-    public Board(){
-        matrix = new char[10][10];
+    public Board() {
+        matrix = new char[MAX_SIZE][MAX_SIZE];
         initialize();
     }
 
-    private void initialize(){
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                matrix[i][j] = '*';
+    private void initialize() {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int column = 0; column < matrix.length; column++) {
+                matrix[row][column] = '*';
             }
         }
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         String showBoard = "";
         showBoard += "-----------------------" + "\n";
-        for (int i = 0; i < matrix.length; i++) {
+        for (int row = 0; row < matrix.length; row++) {
             showBoard += "| ";
-            for (int j = 0; j < matrix.length; j++) {
-                showBoard += matrix[i][j] + " ";
+            for (int column = 0; column < matrix.length; column++) {
+                showBoard += matrix[row][column] + " ";
             }
             showBoard += "|" + "\n";
         }
@@ -31,11 +31,11 @@ public class Board {
         return showBoard;
     }
 
-    public void setElement(int posX, int posY, char newContent){
+    public void setElement(int posX, int posY, char newContent) {
         matrix[posX][posY] = newContent;
     }
 
-    public char[][] getMatrix(){
+    public char[][] getMatrix() {
         return matrix;
     }
 }

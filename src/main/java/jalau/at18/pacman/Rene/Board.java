@@ -3,7 +3,7 @@ package jalau.at18.pacman.Rene;
 import java.util.Scanner;
 
 public class Board {
-   private String[][] gameBoard = { { "▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒"},
+   public String[][] gameBoard = { { "▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒","▒"},
    {"▒","·","·","·","·","·","·","·","·","·","·","·","·","·","▒","·","·","·","·","·","·","·","·","·","·","·","·","·","▒"},
    {"▒","·","▒","▒","▒","▒","·","▒","▒","▒","▒","▒","▒","·","▒","·","▒","▒","▒","▒","▒","▒","·","▒","▒","▒","▒","·","▒"},
    {"▒","·","▒"," "," ","▒","·","▒"," "," "," "," ","▒","·","▒","·","▒"," "," "," "," ","▒","·","▒"," "," ","▒","·","▒"},
@@ -39,9 +39,16 @@ public class Board {
     }
    
    }
+
    public String[][] getBoard() {
     return this.gameBoard;
-}
+    }
+    public String[][] addElementToTheBoard(String elementRepresentation, int[] elementPosition) {
+        String[][] boardToReturn = this.gameBoard;
+        boardToReturn[elementPosition[0]][elementPosition[1]] = elementRepresentation;
+        return boardToReturn;
+    }
+    
 
 }
 

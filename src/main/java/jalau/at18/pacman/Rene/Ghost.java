@@ -1,10 +1,10 @@
 package jalau.at18.pacman.Rene;
 
 public class Ghost {
-    public static final char GHOST_CHAR = 'G';
+    public static final String GHOST_CHAR = "G";
    
     private boolean isBlue = false;
-    private char ghostRepresentation = GHOST_CHAR;
+    private String ghostRepresentation = GHOST_CHAR;
     private int[] position;
 
 
@@ -19,5 +19,8 @@ public class Ghost {
     }
     public int[] getPosition() {
         return this.position;
+    }
+    public String getRepresentation() {
+        return this.ghostRepresentation;
     }
 }

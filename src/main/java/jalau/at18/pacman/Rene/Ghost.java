@@ -1,5 +1,7 @@
 package jalau.at18.pacman.Rene;
 
+
+
 public class Ghost {
     public static final String GHOST_CHAR = "G";
    
@@ -23,4 +25,25 @@ public class Ghost {
     public String getRepresentation() {
         return this.ghostRepresentation;
     }
+
+    public void startGhostMovement() {
+        int i = 0;
+        while(i < 5) {
+            System.out.println("skere");
+            longRunningMethod();
+            i++;
+        }
+       
+    }
+
+     public static void longRunningMethod() {
+        try {
+           Thread.sleep(2000);
+        } catch (InterruptedException e) {
+           e.printStackTrace();
+        }
+    }
+    
+
+    
 }

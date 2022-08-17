@@ -9,8 +9,10 @@ public class Main {
         board.showBoard(board.getBoard());
         int[] position = { 10, 15 };
         board.gameBoard = board.addElementToTheBoard(new Ghost().getRepresentation(), position );
-        board.showBoard(board.getBoard());
-        
+        board.showBoard(board.getBoard());   
+
+        new Ghost().startGhostMovement();
     }
+    
 
 }

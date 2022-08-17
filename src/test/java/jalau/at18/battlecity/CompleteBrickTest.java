@@ -20,11 +20,11 @@ public class CompleteBrickTest {
     @Test
     public void allowPassBullet() {
         CompleteBrick completeBrick = new CompleteBrick();
-        assertTrue(completeBrick.isAllowPassBullet());
+        assertFalse(completeBrick.isAllowPassBullet());
     }
     @Test
     public void allowStaySamePosition() {
         CompleteBrick completeBrick = new CompleteBrick();
-        assertTrue(!completeBrick.isAllowStaySamePosition());
+        assertFalse(completeBrick.isAllowStaySamePosition());
     }
 }

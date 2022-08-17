@@ -20,13 +20,13 @@ public class LeftBrickTest {
     @Test
     public void allowPassBullet() {
         LeftBrick leftBrick = new LeftBrick();
-        assertTrue(leftBrick.isAllowPassBullet());
+        assertFalse(leftBrick.isAllowPassBullet());
     }
 
     @Test
     public void allowStaySamePosition() {
         LeftBrick leftBrick = new LeftBrick();
-        assertTrue(leftBrick.isAllowPassBullet());
+        assertFalse(leftBrick.isAllowPassBullet());
     }
 
 }

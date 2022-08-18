@@ -1,39 +1,66 @@
 package jalau.at18.battlecity;
 
-public class TankPlayer {
-    private String direction;
-    private int [] frontPosition;
-    private int [] backPosition;
+public class TankPlayer extends Tank {
 
+    private String direction;
+    public static final int[][] INITIAL_POSITION = {{24, 9}, {24, 10}, {25, 9}, {25, 10}};
+    private int[][] position = new int [4][2];
+    public static final int SIZE_ROW_POSITION = 4;
 
     public TankPlayer(){
-        this.frontPosition = new int [] {10, 25, 11, 25};
-        this.backPosition = new int [] {10, 26, 11, 26};
 
+    }
+
+    @Override
+    public int[][] initialPosition() {
+        this.position = INITIAL_POSITION;
+        return position;
     }
 
     public void setMove(String direction){
         this.direction = direction;
     }
 
-    public void movement(){
-        if(this.direction.equals("w")){
-
-        }
-        if(this.direction.equals("s")){
-
-        }
-        if(this.direction.equals("a")){
-
-        }
-        if(this.direction.equals("d")){
-
-        }
-    }
-
-    public int [][] moveUp(String direction){
-        this.frontPosition = new int [] {10, (this.frontPosition[1] - 1), 11, (this.frontPosition[3] - 1)};
-        this.backPosition = new int [] {10, (this.backPosition[1] - 1), 11, (this.backPosition[3] - 1)};
+    public void setPosition(int [][] position){
+        this.position = position;
 
     }
+
+    @Override
+    public int[][] moveUp(int[][] position){
+        for(int row = 0; row < SIZE_ROW_POSITION; row++){
+            position[row][0] = position[row][0] - 1;
+        }
+    	return position;
+    }
+
+    @Override
+    public int[][] moveDown(int[][] position){
+        for(int row = 0; row < SIZE_ROW_POSITION; row++){
+            position[row][0] = position[row][0] + 1;
+        }
+    	return position;
+    }
+
+    @Override
+    public int[][] moveRight(int[][] position){
+        for(int row = 0; row < SIZE_ROW_POSITION; row++){
+            position[row][1] = position[row][1] + 1;
+        }
+    	return position;
+    }
+
+    @Override
+    public int[][] moveLeft(int[][] position){
+        for(int row = 0; row < SIZE_ROW_POSITION; row++){
+            position[row][1] = position[row][1] - 1;
+        }
+    	return position;
+    }
+
+    @Override
+    public void shoot() {
+
+    }
+
 }

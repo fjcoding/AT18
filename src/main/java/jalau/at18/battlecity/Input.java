@@ -11,10 +11,9 @@ public class Input {
         this.tankOne = new TankPlayer();
     }
 
-    public String read (){
+    public void read(){
          this.tankOne.setMove(scan.nextLine());
     }
-
 
     public void finish(){
         scan.close();

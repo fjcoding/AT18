@@ -2,33 +2,31 @@ package jalau.at18.battlecity;
 
 public class Missile {
 
-    
-    private final int BOARD_DIMENSION = 5;
-    private final String POINTING_WHERE = "LEFT";
-    private int[][] BOARD = new int[5][5];
-    private int row;
-    private int column;
+    private static final int BOARD_DIMENSION = 7;
+    private final String pointingWhere = "RIGHT";
+    private static final int[][] BOARD = new int[BOARD_DIMENSION][BOARD_DIMENSION];
+    private int row1;
+    private int column1;
+    private int row2;
+    private int column2;
 //Just to test code
-    public static void main(String [] args) throws Exception {
-        Missile mainMissile = new Missile();
-        mainMissile.createMissile(1, 3);
+    public static void main(String[] args) throws Exception {
+        Missile mainMissile = new Missile(1, 2, 2, 2);
         mainMissile.showBoard();
         mainMissile.missileDirection();
     }
-    public Missile(){
+    public Missile(int xCoordinate1, int yCoordinate1, int xCoordinate2, int yCoordinate2) {
+        this.row1 = xCoordinate1;
+        this.column1 = yCoordinate1;
+        this.row2 = xCoordinate2;
+        this.column2 = yCoordinate2;
 
-
+        BOARD[row1][column1] = 1;
+        BOARD[row2][column2] = 1;
     }
 
-    public void createMissile(int xCoordinate, int yCoordinate){
-        this.row = xCoordinate;
-        this.column = yCoordinate;
-        BOARD[row][column] = 1;
-        
-    }
-
-    public void missileDirection(){
-        switch (POINTING_WHERE) {
+    public void missileDirection() {
+        switch (pointingWhere) {
             case "UP":
                 moveMissileUp(BOARD);
                 break;
@@ -39,7 +37,7 @@ public class Missile {
                 moveMissileLeft(BOARD);
                 break;
             case "RIGHT":
-                moveMissileRight(BOARD);
+                shootMissileRight(BOARD);
                 break;
             default:
                 break;
@@ -47,42 +45,65 @@ public class Missile {
 
     }
 
-    public void moveMissileUp(int [][] board) {
-
-    }
-    public void moveMissileDown(int [][] board) {
-
-    }
-    public void moveMissileLeft(int [][] board) {
-        while (column >= 0) {
-            BOARD[row][column] = 0;
-            column = column - 1;
-            BOARD[row][column] = 1;
+    public void moveMissileUp(int[][] board) {
+        while (row1 > 0) {
+            board[row1][column1] = 0;
+            row1 = row1 - 1;
+            board[row1][column1] = 1;
+            board[row2][column2] = 0;
+            row2 = row2 - 1;
+            board[row2][column2] = 1;
             showBoard();
         }
 
     }
-    public void moveMissileRight(int [][] board) {
-        while (column < BOARD_DIMENSION) {
-            BOARD[row][column] = 0;
-            column = column + 1;
-            BOARD[row][column] = 1;
+    public void moveMissileDown(int[][] board) {
+        while (row1 < BOARD_DIMENSION - 1) {
+            board[row1][column1] = 0;
+            row1 = row1 + 1;
+            board[row1][column1] = 1;
+            board[row2][column2] = 0;
+            row2 = row2 + 1;
+            board[row2][column2] = 1;
             showBoard();
         }
-        
+
+    }
+    public void moveMissileLeft(int[][] board) {
+        while (column1 > 0 && board[row1][column1 - 1] == 0 && board[row2][column2 - 1] == 0) {
+            board[row1][column1] = 0;
+            column1 = column1 - 1;
+            board[row1][column1] = 1;
+            board[row2][column2] = 0;
+            column2 = column2 - 1;
+            board[row2][column2] = 1;
+            showBoard();
+        }
+
+    }
+    public void shootMissileRight(int[][] board) {
+        while (column1 < (BOARD_DIMENSION - 1) && board[row1][column1 + 1] == 0 && board[row2][column2 + 1] == 0) {
+            board[row1][column1] = 0;
+            column1 = column1 + 1;
+            board[row1][column1] = 1;
+            board[row2][column2] = 0;
+            column2 = column2 + 1;
+            board[row2][column2] = 1;
+            showBoard();
+        }
     }
     public void showBoard() {
-        for (int row = 0; row < 5; row++) {
-            for (int column = 0; column < 5; column++) {
+        for (int row = 0; row < BOARD_DIMENSION; row++) {
+            for (int column = 0; column < BOARD_DIMENSION; column++) {
                 System.out.print(BOARD[row][column] + " ");
             }
             System.out.println();
         }
         System.out.println();
     }
+
     public int[][] getBoard() {
         return BOARD;
     }
-    
 
 }

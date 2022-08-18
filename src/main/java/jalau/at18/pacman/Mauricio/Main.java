@@ -1,5 +1,5 @@
 package jalau.at18.pacman.Mauricio;
-
+import java.util.Date; 
 import java.util.Scanner;
 
 public class Main {
@@ -107,75 +107,123 @@ public class Main {
                 while (true) {
                         System.out.println("Enter a move:");
                         movements = keyword.next().charAt(0);
+
                         if (movements == 's') {
-                                if (arr[n + 1][m] != "▒" && arr[n + 1][m] == "·") {
-                                        n++;
-                                        arr[n - 1][m] = " ";
-                                        score += 10;
-                                } else if (arr[n + 1][m] != "▒") {
-                                        n++;
-                                        arr[n - 1][m] = " ";
-                                        score = score + 0;
-                                } else {
-                                        score = score + 0;
+                                /////////////////////////////////////////////
+                                try{
+                                        while(arr[n + 1][m] != "▒"){
+                                            n++;
+                                            if (arr[n][m] == "·") {
+                                            arr[n-1][m] = " ";
+                                            score += 10;
+                                            }else {
+                                            arr[n-1][m] = " ";
+                                            score = score + 0;
+                                            }
+                                            
+                                            arr[n][m] = "C";
+                                            Thread.sleep(200); 
+                                            System.out.print("\033[H\033[2J");
+                                            System.out.flush();
+                                            showBoard(arr);
+                                        }
+                                }
+                                catch(InterruptedException ex)
+                                {
+                                    ex.printStackTrace();
                                 }
                         }
                         if (movements == 'w') {
-                                if (arr[n - 1][m] != "▒" && arr[n - 1][m] == "·") {
-                                        n--;
-                                        arr[n + 1][m] = " ";
-                                        score += 10;
-                                } else if (arr[n - 1][m] != "▒") {
-                                        n--;
-                                        arr[n + 1][m] = " ";
-                                        score = score + 0;
-                                } else {
-                                        score = score + 0;
+                                /////////////////////////////////////////////////
+                                try{
+                                        while(arr[n - 1][m] != "▒"){
+                                            n--;
+                                            if (arr[n][m] == "·") {
+                                            arr[n + 1][m] = " ";
+                                            score += 10;
+                                            }else {
+                                            arr[n + 1][m] = " ";
+                                            score = score + 0;
+                                            }
+                                            
+                                            arr[n][m] = "C";
+                                            Thread.sleep(200); 
+                                            System.out.print("\033[H\033[2J");
+                                            System.out.flush();
+                                            showBoard(arr);
+                                        }
+                                }
+                                catch(InterruptedException ex)
+                                {
+                                    ex.printStackTrace();
                                 }
                         }
                         if (movements == 'a') {
-                                if (arr[n][m - 1] != "▒" && arr[n][m - 1] == "·") {
-                                        m--;
-                                        arr[n][m + 1] = " ";
-                                        score += 10;
-                                } else if (arr[n][m - 1] != "▒") {
-                                        m--;
-                                        arr[n][m + 1] = " ";
-                                        score = score + 0;
-                                } else {
-                                        score = score + 0;
+                                try{
+                                        while(arr[n][m - 1] != "▒"){
+                                            m--;
+                                            if (arr[n][m] == "·") {
+                                            arr[n][m + 1] = " ";
+                                            score += 10;
+                                            }else {
+                                            arr[n][m + 1] = " ";
+                                            score = score + 0;
+                                            }
+                                            
+                                            arr[n][m] = "C";
+                                            Thread.sleep(200); 
+                                            System.out.print("\033[H\033[2J");
+                                            System.out.flush();
+                                            showBoard(arr);
+                                        }
                                 }
+                                catch(InterruptedException ex)
+                                {
+                                    ex.printStackTrace();
+                                }
+                              
                         }
                         if (movements == 'd') {
-                                if (arr[n][m + 1] != "▒" && arr[n][m + 1] == "·") {
-                                        m++;
-                                        arr[n][m - 1] = " ";
-                                        score += 10;
-                                } else if (arr[n][m + 1] != "▒") {
-                                        m++;
-                                        arr[n][m - 1] = " ";
-                                        score = score + 0;
-                                } else {
-                                        score = score + 0;
+                                try{
+                                        while(arr[n][m+ 1] != "▒"){
+                                            m++;
+                                            if (arr[n][m] == "·") {
+                                            arr[n][m - 1] = " ";
+                                            score += 10;
+                                            }else {
+                                            arr[n][m - 1] = " ";
+                                            score = score + 0;
+                                            }
+                                            
+                                            arr[n][m] = "C";
+                                            Thread.sleep(200); 
+                                            System.out.print("\033[H\033[2J");
+                                            System.out.flush();
+                                            showBoard(arr);
+                                        }
+                                }
+                                catch(InterruptedException ex)
+                                {
+                                    ex.printStackTrace();
                                 }
                         }
 
-                        if (m != 0 && m != 28) {
-                                arr[n][m] = "C";
-                                showBoard(arr);
-                        } else if (m == 0) {
-                                arr[n][m] = " ";
-                                arr[n][m + 28] = "C";
-                                m = 28;
-                                showBoard(arr);
+                        // if (m != 0 && m != 28) {
+                        //         arr[n][m] = "C";
+                        //         showBoard(arr);
+                        // } else if (m == 0) {
+                        //         arr[n][m] = " ";
+                        //         arr[n][m + 28] = "C";
+                        //         m = 28;
+                        //         showBoard(arr);
 
-                        } else if (m == 28) {
-                                arr[n][m] = " ";
-                                arr[n][m - 28] = "C";
-                                m = 0;
-                                showBoard(arr);
+                        // } else if (m == 28) {
+                        //         arr[n][m] = " ";
+                        //         arr[n][m - 28] = "C";
+                        //         m = 0;
+                        //         showBoard(arr);
 
-                        }
+                        // }
                 }
         }
 

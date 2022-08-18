@@ -72,21 +72,20 @@ public class Board {
                 }
             }
             if (movements == 'd') {
-                try
-                    {
-                        while(arr[n][m] != "▒"){
+                try{
+                        while(arr[n][m+1] != "▒"){
                             m++;
                             if (n > 0) {
                             arr[n][m - 1] = " ";
                             }
         
                             arr[n][m] = "C";
-                            Thread.sleep(300); 
+                            Thread.sleep(200); 
                             System.out.print("\033[H\033[2J");
                             System.out.flush();
                             showBoard(arr);
                         }
-                    }
+                }
                     catch(InterruptedException ex)
                     {
                         ex.printStackTrace();

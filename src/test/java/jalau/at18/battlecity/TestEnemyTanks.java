@@ -19,14 +19,6 @@ public class TestEnemyTanks {
     }
 
     @Test
-    public void functionShouldArrangeUpMatrix() {
-        EnemyTank enemyTank1 = new EnemyTank(20);
-        int[][] input = {{3, 7}, {3, 6}, {2, 7}, {2, 6}};
-        int[][] expected1 = {{2, 6}, {2, 7}, {3, 6}, {3, 7}};
-        assertEquals(expected1, enemyTank1.arrangeUp(input));
-    }
-
-    @Test
     public void functionShouldMoveUp() {
         EnemyTank enemyTank1 = new EnemyTank(20);
         int[][] input = {{3, 7}, {3, 6}, {2, 7}, {2, 6}};
@@ -35,14 +27,6 @@ public class TestEnemyTanks {
         int[][] input2 = {{0, 7}, {1, 7}, {0, 6}, {1, 6}};
         int[][] expected2 = {{0, 6}, {0, 7}, {1, 6}, {1, 7}};
         assertEquals(expected2, enemyTank1.moveUp(input2));
-    }
-
-    @Test
-    public void functionShouldArrangeDownMatrix() {
-        EnemyTank enemyTank1 = new EnemyTank(20);
-        int[][] input = {{2, 6}, {2, 7}, {3, 6}, {3, 7}};
-        int[][] expected1 = {{3, 7}, {3, 6}, {2, 7}, {2, 6}};
-        assertEquals(expected1, enemyTank1.arrangeDown(input));
     }
 
     @Test
@@ -56,13 +40,6 @@ public class TestEnemyTanks {
         assertEquals(expected2, enemyTank1.moveDown(input2));
     }
 
-    @Test
-    public void functionShouldArrangeLeftMatrix() {
-        EnemyTank enemyTank1 = new EnemyTank(20);
-        int[][] input = {{2, 6}, {2, 7}, {3, 6}, {3, 7}};
-        int[][] expected1 = {{3, 6}, {2, 6}, {3, 7}, {2, 7}};
-        assertEquals(expected1, enemyTank1.arrangeLeft(input));
-    }
 
     @Test
     public void functionShouldMoveLeft() {
@@ -73,14 +50,6 @@ public class TestEnemyTanks {
         int[][] input2 = {{2, 0}, {2, 1}, {3, 0}, {3, 1}};
         int[][] expected2 = {{3, 0}, {2, 0}, {3, 1}, {2, 1}};
         assertEquals(expected2, enemyTank1.moveLeft(input2));
-    }
-
-    @Test
-    public void functionShouldArrangeRightMatrix() {
-        EnemyTank enemyTank1 = new EnemyTank(20);
-        int[][] input = {{2, 6}, {2, 7}, {3, 6}, {3, 7}};
-        int[][] expected1 = {{2, 7}, {3, 7}, {2, 6}, {3, 6}};
-        assertEquals(expected1, enemyTank1.arrangeRight(input));
     }
 
     @Test

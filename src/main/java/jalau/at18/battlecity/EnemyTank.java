@@ -42,41 +42,6 @@ public class EnemyTank extends Tank {
         }
         return newPosition;
     }
-
-    public int[][] arrangeUp(int[][] position) {
-        int minRow = GRID_LENGHT;
-        int maxRow = -1;
-        int minColumn = GRID_LENGHT;
-        int maxColumn = -1;
-        for (int row = 0; row < POSITIONS_LENGTH; row++) {
-            if (position[row][0] > maxRow) {
-                maxRow = position[row][0];
-            }
-            if (position[row][0] < minRow) {
-                minRow = position[row][0];
-            }
-            if (position[row][1] > maxColumn) {
-                maxColumn = position[row][1];
-            }
-            if (position[row][1] < minColumn) {
-                minColumn = position[row][1];
-            }
-        }
-        int[][] arrangePosition = {{minRow, minColumn}, {minRow, maxColumn}, {maxRow, minColumn}, {maxRow, maxColumn}};
-        return arrangePosition;
-    }
-    /*public int[][] searchTank(int[][] matrix) {
-        int[][] position = new int[2][2];
-        /*for (int row = 0; row < 4 ; row++) {
-            for (int column = 0; column < 2 ; column++) {
-                if (matrix[row][column] == ENEMY_FRONT || matrix[row][column] == ENEMY_BACK) {
-                    position[][0] = row;
-                    position[][1] = column;
-                }
-            }
-        }
-        return position;
-    }*/
     @Override
     public int[][] moveDown(int[][] position) {
         int[][] newPosition = arrangeDown(position);
@@ -86,29 +51,6 @@ public class EnemyTank extends Tank {
             }
         }
         return newPosition;
-    }
-
-    public int[][] arrangeDown(int[][] position) {
-        int minRow = GRID_LENGHT;
-        int maxRow = -1;
-        int minColumn = GRID_LENGHT;
-        int maxColumn = -1;
-        for (int row = 0; row < POSITIONS_LENGTH; row++) {
-            if (position[row][0] > maxRow) {
-                maxRow = position[row][0];
-            }
-            if (position[row][0] < minRow) {
-                minRow = position[row][0];
-            }
-            if (position[row][1] > maxColumn) {
-                maxColumn = position[row][1];
-            }
-            if (position[row][1] < minColumn) {
-                minColumn = position[row][1];
-            }
-        }
-        int[][] arrangePosition = {{maxRow, maxColumn}, {maxRow, minColumn}, {minRow, maxColumn}, {minRow, minColumn}};
-        return arrangePosition;
     }
 
     @Override
@@ -122,29 +64,6 @@ public class EnemyTank extends Tank {
         return newPosition;
     }
 
-    public int[][] arrangeLeft(int[][] position) {
-        int minRow = GRID_LENGHT;
-        int maxRow = -1;
-        int minColumn = GRID_LENGHT;
-        int maxColumn = -1;
-        for (int row = 0; row < POSITIONS_LENGTH; row++) {
-            if (position[row][0] > maxRow) {
-                maxRow = position[row][0];
-            }
-            if (position[row][0] < minRow) {
-                minRow = position[row][0];
-            }
-            if (position[row][1] > maxColumn) {
-                maxColumn = position[row][1];
-            }
-            if (position[row][1] < minColumn) {
-                minColumn = position[row][1];
-            }
-        }
-        int[][] arrangePosition = {{maxRow, minColumn}, {minRow, minColumn}, {maxRow, maxColumn}, {minRow, maxColumn}};
-        return arrangePosition;
-    }
-
     @Override
     public int[][] moveRight(int[][] position) {
         int[][] newPosition = arrangeRight(position);
@@ -156,32 +75,21 @@ public class EnemyTank extends Tank {
         return newPosition;
     }
 
-    public int[][] arrangeRight(int[][] position) {
-        int minRow = GRID_LENGHT;
-        int maxRow = -1;
-        int minColumn = GRID_LENGHT;
-        int maxColumn = -1;
-        for (int row = 0; row < POSITIONS_LENGTH; row++) {
-            if (position[row][0] > maxRow) {
-                maxRow = position[row][0];
-            }
-            if (position[row][0] < minRow) {
-                minRow = position[row][0];
-            }
-            if (position[row][1] > maxColumn) {
-                maxColumn = position[row][1];
-            }
-            if (position[row][1] < minColumn) {
-                minColumn = position[row][1];
-            }
-        }
-        int[][] arrangePosition = {{minRow, maxColumn}, {maxRow, maxColumn}, {minRow, minColumn}, {maxRow, minColumn}};
-        return arrangePosition;
-    }
-
     @Override
     public void shoot() {
 
     }
 
+    /*public int[][] searchTank(int[][] matrix) {
+        int[][] position = new int[2][2];
+        /*for (int row = 0; row < 4 ; row++) {
+            for (int column = 0; column < 2 ; column++) {
+                if (matrix[row][column] == ENEMY_FRONT || matrix[row][column] == ENEMY_BACK) {
+                    position[][0] = row;
+                    position[][1] = column;
+                }
+            }
+        }
+        return position;
+    }*/
 }

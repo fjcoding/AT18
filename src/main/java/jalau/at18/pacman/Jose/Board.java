@@ -1,5 +1,5 @@
 package jalau.at18.pacman.Jose;
-
+import java.util.Date; 
 import java.util.Scanner;
 
 public class Board {
@@ -72,14 +72,28 @@ public class Board {
                 }
             }
             if (movements == 'd') {
-                m++;
-                if (n > 0) {
-                    arr[n][m - 1] = " ";
-                }
-            }
-            arr[n][m] = "C";
+                try
+                    {
+                        while(arr[n][m] != "▒"){
+                            m++;
+                            if (n > 0) {
+                            arr[n][m - 1] = " ";
+                            }
+        
+                            arr[n][m] = "C";
+                            Thread.sleep(300); 
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+                            showBoard(arr);
+                        }
+                    }
+                    catch(InterruptedException ex)
+                    {
+                        ex.printStackTrace();
+                    }
 
-            showBoard(arr);
+              
+            }
         }
     }
     public static void showBoard(String arr[][]){

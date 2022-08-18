@@ -4,10 +4,10 @@ public class TankPlayer extends Tank {
 
     private String direction;
     public static final int[][] INITIAL_POSITION = {{24, 9}, {24, 10}, {25, 9}, {25, 10}};
-    private int[][] position = new int [4][2];
     public static final int SIZE_ROW_POSITION = 4;
+    private int[][] position = new int[SIZE_ROW_POSITION][2];
 
-    public TankPlayer(){
+    public TankPlayer() {
 
     }
 
@@ -17,50 +17,49 @@ public class TankPlayer extends Tank {
         return position;
     }
 
-    public void setMove(String direction){
-        this.direction = direction;
+    public void setMove(String newDirection) {
+        this.direction = newDirection;
     }
 
-    public void setPosition(int [][] position){
-        this.position = position;
+    public void setPosition(int[][] newPosition) {
+        this.position = newPosition;
 
-    }
-
-    @Override
-    public int[][] moveUp(int[][] position){
-        for(int row = 0; row < SIZE_ROW_POSITION; row++){
-            position[row][0] = position[row][0] - 1;
-        }
-    	return position;
     }
 
     @Override
-    public int[][] moveDown(int[][] position){
-        for(int row = 0; row < SIZE_ROW_POSITION; row++){
-            position[row][0] = position[row][0] + 1;
+    public int[][] moveUp(int[][] newPosition) {
+        for (int row = 0; row < SIZE_ROW_POSITION; row++) {
+            newPosition[row][0] = newPosition[row][0] - 1;
         }
-    	return position;
+        return newPosition;
     }
 
     @Override
-    public int[][] moveRight(int[][] position){
-        for(int row = 0; row < SIZE_ROW_POSITION; row++){
-            position[row][1] = position[row][1] + 1;
+    public int[][] moveDown(int[][] newPosition) {
+        for (int row = 0; row < SIZE_ROW_POSITION; row++) {
+            newPosition[row][0] = newPosition[row][0] + 1;
         }
-    	return position;
+        return newPosition;
     }
 
     @Override
-    public int[][] moveLeft(int[][] position){
-        for(int row = 0; row < SIZE_ROW_POSITION; row++){
-            position[row][1] = position[row][1] - 1;
+    public int[][] moveRight(int[][] newPosition) {
+        for (int row = 0; row < SIZE_ROW_POSITION; row++) {
+            newPosition[row][1] = newPosition[row][1] + 1;
         }
-    	return position;
+        return newPosition;
+    }
+
+    @Override
+    public int[][] moveLeft(int[][] newPosition) {
+        for (int row = 0; row < SIZE_ROW_POSITION; row++) {
+            newPosition[row][1] = newPosition[row][1] - 1;
+        }
+        return newPosition;
     }
 
     @Override
     public void shoot() {
 
     }
-
 }

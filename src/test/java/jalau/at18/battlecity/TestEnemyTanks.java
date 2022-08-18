@@ -56,4 +56,41 @@ public class TestEnemyTanks {
         assertEquals(expected2, enemyTank1.moveDown(input2));
     }
 
+    @Test
+    public void functionShouldArrangeLeftMatrix() {
+        EnemyTank enemyTank1 = new EnemyTank(20);
+        int[][] input = {{2, 6}, {2, 7}, {3, 6}, {3, 7}};
+        int[][] expected1 = {{3, 6}, {2, 6}, {3, 7}, {2, 7}};
+        assertEquals(expected1, enemyTank1.arrangeLeft(input));
+    }
+
+    @Test
+    public void functionShouldMoveLeft() {
+        EnemyTank enemyTank1 = new EnemyTank(20);
+        int[][] input = {{2, 6}, {2, 7}, {3, 6}, {3, 7}};
+        int[][] expected1 = {{3, 5}, {2, 5}, {3, 6}, {2, 6}};
+        assertEquals(expected1, enemyTank1.moveLeft(input));
+        int[][] input2 = {{2, 0}, {2, 1}, {3, 0}, {3, 1}};
+        int[][] expected2 = {{3, 0}, {2, 0}, {3, 1}, {2, 1}};
+        assertEquals(expected2, enemyTank1.moveLeft(input2));
+    }
+
+    @Test
+    public void functionShouldArrangeRightMatrix() {
+        EnemyTank enemyTank1 = new EnemyTank(20);
+        int[][] input = {{2, 6}, {2, 7}, {3, 6}, {3, 7}};
+        int[][] expected1 = {{2, 7}, {3, 7}, {2, 6}, {3, 6}};
+        assertEquals(expected1, enemyTank1.arrangeRight(input));
+    }
+
+    @Test
+    public void functionShouldMoveRight() {
+        EnemyTank enemyTank1 = new EnemyTank(20);
+        int[][] input = {{2, 6}, {2, 7}, {3, 6}, {3, 7}};
+        int[][] expected1 = {{2, 8}, {3, 8}, {2, 7}, {3, 7}};
+        assertEquals(expected1, enemyTank1.moveRight(input));
+        int[][] input2 = {{2, 24}, {2, 25}, {3, 24}, {3, 25}};
+        int[][] expected2 = {{2, 25}, {3, 25}, {2, 24}, {3, 24}};
+        assertEquals(expected2, enemyTank1.moveRight(input2));
+    }
 }

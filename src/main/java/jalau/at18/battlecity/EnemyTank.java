@@ -112,13 +112,71 @@ public class EnemyTank extends Tank {
     }
 
     @Override
-    public int[][] moveRight(int[][] matrix) {
-        return matrix;
+    public int[][] moveLeft(int[][] position) {
+        int[][] newPosition = arrangeLeft(position);
+        if (newPosition[0][1] != 0) {
+            for (int row = 0; row < POSITIONS_LENGTH; row++) {
+                newPosition[row][1] = newPosition[row][1] - 1;
+            }
+        }
+        return newPosition;
+    }
+
+    public int[][] arrangeLeft(int[][] position) {
+        int minRow = GRID_LENGHT;
+        int maxRow = -1;
+        int minColumn = GRID_LENGHT;
+        int maxColumn = -1;
+        for (int row = 0; row < POSITIONS_LENGTH; row++) {
+            if (position[row][0] > maxRow) {
+                maxRow = position[row][0];
+            }
+            if (position[row][0] < minRow) {
+                minRow = position[row][0];
+            }
+            if (position[row][1] > maxColumn) {
+                maxColumn = position[row][1];
+            }
+            if (position[row][1] < minColumn) {
+                minColumn = position[row][1];
+            }
+        }
+        int[][] arrangePosition = {{maxRow, minColumn}, {minRow, minColumn}, {maxRow, maxColumn}, {minRow, maxColumn}};
+        return arrangePosition;
     }
 
     @Override
-    public int[][] moveLeft(int[][] matrix) {
-        return matrix;
+    public int[][] moveRight(int[][] position) {
+        int[][] newPosition = arrangeRight(position);
+        if (newPosition[0][1] != GRID_LENGHT - 1) {
+            for (int row = 0; row < POSITIONS_LENGTH; row++) {
+                newPosition[row][1] = newPosition[row][1] + 1;
+            }
+        }
+        return newPosition;
+    }
+
+    public int[][] arrangeRight(int[][] position) {
+        int minRow = GRID_LENGHT;
+        int maxRow = -1;
+        int minColumn = GRID_LENGHT;
+        int maxColumn = -1;
+        for (int row = 0; row < POSITIONS_LENGTH; row++) {
+            if (position[row][0] > maxRow) {
+                maxRow = position[row][0];
+            }
+            if (position[row][0] < minRow) {
+                minRow = position[row][0];
+            }
+            if (position[row][1] > maxColumn) {
+                maxColumn = position[row][1];
+            }
+            if (position[row][1] < minColumn) {
+                minColumn = position[row][1];
+            }
+        }
+        int[][] arrangePosition = {{minRow, maxColumn}, {maxRow, maxColumn}, {minRow, minColumn}, {maxRow, minColumn}};
+        return arrangePosition;
     }
 
     @Override

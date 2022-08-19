@@ -21,12 +21,14 @@ public class ShipTest {
         Ship ship = new Ship();
         ship.moveLeft();
         assertEquals(3, ship.getPosX());
+        assertEquals(9, ship.getPosY());
     }
     @Test
     public void shouldMoveRight() {
         Ship ship = new Ship();
         ship.moveRight();
         assertEquals(5, ship.getPosX());
+        assertEquals(9, ship.getPosY());
     }
     @Test
     public void itShouldReturnPositionY() {

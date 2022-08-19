@@ -3,6 +3,7 @@ package jalau.at18.battlecity;
 
 public class EnemyTank extends Tank {
 
+    private String direction;
     public static final int GRID_LENGHT = 26;
     public static final int[][] INITIAL_POSITION_ONE = {{1, 1}, {1, 0}, {0, 1}, {0, 0}};
     public static final int[][] INITIAL_POSITION_TWO = {{1, 14}, {1, 13}, {0, 14}, {0, 13}};
@@ -78,7 +79,7 @@ public class EnemyTank extends Tank {
 
     @Override
     public void shoot() {
-        Missile missil = new Missile(enemyPosition[0][0], enemyPosition[0][1], enemyPosition[1][0], enemyPosition[1][1]);
+        Missile missil = new Missile(enemyPosition[0][0], enemyPosition[0][1], enemyPosition[1][0], enemyPosition[1][1], direction);
         missil.missileDirection();
     }
 

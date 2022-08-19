@@ -2,7 +2,7 @@ package jalau.at18.battlecity;
 
 public class Missile {
 
-    private static final int BOARD_DIMENSION = 7;
+    private static final int BOARD_DIMENSION = 26;
     private String pointingWhere;
     private static final int[][] BOARD = new int[BOARD_DIMENSION][BOARD_DIMENSION];
     private int row1;
@@ -55,7 +55,7 @@ public class Missile {
             board[row2][column2] = 1;
             showBoard();
         }
-	  return BOARD;
+        return BOARD;
     }
     public int[][] moveMissileDown(int[][] board) {
         while (row1 < BOARD_DIMENSION - 1) {
@@ -67,7 +67,7 @@ public class Missile {
             board[row2][column2] = 1;
             showBoard();
         }
-	  return BOARD;
+        return BOARD;
     }
     public int[][] moveMissileLeft(int[][] board) {
         while (column1 > 0 && board[row1][column1 - 1] == 0 && board[row2][column2 - 1] == 0) {
@@ -79,7 +79,7 @@ public class Missile {
             board[row2][column2] = 1;
             showBoard();
         }
-	  return BOARD;
+        return BOARD;
     }
     public int[][] shootMissileRight(int[][] board) {
         while (column1 < (BOARD_DIMENSION - 1) && board[row1][column1 + 1] == 0 && board[row2][column2 + 1] == 0) {
@@ -91,7 +91,7 @@ public class Missile {
             board[row2][column2] = 1;
             showBoard();
         }
-	  return BOARD;
+        return BOARD;
     }
     public void showBoard() {
         for (int row = 0; row < BOARD_DIMENSION; row++) {

@@ -30,7 +30,7 @@ public class TankPlayer extends Tank {
     @Override
     public int[][] moveUp(int[][] position) {
         newPosition = arrangeUp(position);
-        if (newPosition[0][0] !=0) {
+        if (newPosition[0][0] != 0) {
             for (int row = 0; row < SIZE_ROW_POSITION; row++) {
                 newPosition[row][0] = newPosition[row][0] - 1;
             }
@@ -40,7 +40,7 @@ public class TankPlayer extends Tank {
 
     @Override
     public int[][] moveDown(int[][] position) {
-        newPosition = arrangeUp(position);
+        newPosition = arrangeDown(position);
         if (newPosition[0][0] != SIZE_MAX_BOARD - 1) {
             for (int row = 0; row < SIZE_ROW_POSITION; row++) {
                 newPosition[row][0] = newPosition[row][0] + 1;
@@ -51,7 +51,7 @@ public class TankPlayer extends Tank {
 
     @Override
     public int[][] moveRight(int[][] position) {
-        newPosition = arrangeUp(position);
+        newPosition = arrangeRight(position);
         if (newPosition[0][1] != SIZE_MAX_BOARD - 1) {
             for (int row = 0; row < SIZE_ROW_POSITION; row++) {
                 newPosition[row][1] = newPosition[row][1] + 1;
@@ -62,13 +62,13 @@ public class TankPlayer extends Tank {
 
     @Override
     public int[][] moveLeft(int[][] position) {
-        newPosition = arrangeUp(position);
+        newPosition = arrangeLeft(position);
         if (newPosition[0][1] != 0) {
             for (int row = 0; row < SIZE_ROW_POSITION; row++) {
                 newPosition[row][1] = newPosition[row][1] - 1;
             }
         }
-       return newPosition;
+        return newPosition;
     }
 
     @Override

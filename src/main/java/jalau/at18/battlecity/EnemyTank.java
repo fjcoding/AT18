@@ -7,8 +7,8 @@ public class EnemyTank extends Tank {
     public static final int[][] INITIAL_POSITION_ONE = {{1, 1}, {1, 0}, {0, 1}, {0, 0}};
     public static final int[][] INITIAL_POSITION_TWO = {{1, 14}, {1, 13}, {0, 14}, {0, 13}};
     public static final int[][] INITIAL_POSITION_THREE = {{1, 25}, {1, 24}, {0, 25}, {0, 24}};
-    public static final int ENEMY_FRONT = 10;
-    public static final int ENEMY_BACK = 11;
+    //public static final int ENEMY_FRONT = 10;
+    //public static final int ENEMY_BACK = 11;
     public static final int INITIAL_POSITIONS = 3;
     public static final int POSITIONS_LENGTH = 4;
     private int enemyCount;
@@ -42,6 +42,7 @@ public class EnemyTank extends Tank {
         }
         return newPosition;
     }
+
     @Override
     public int[][] moveDown(int[][] position) {
         int[][] newPosition = arrangeDown(position);
@@ -77,7 +78,8 @@ public class EnemyTank extends Tank {
 
     @Override
     public void shoot() {
-
+        Missile missil = new Missile(position[0][0], position[0][1],position[1][0], position[1][1]);
+        missil.missileDirection();
     }
 
     /*public int[][] searchTank(int[][] matrix) {

@@ -78,7 +78,7 @@ public class EnemyTank extends Tank {
 
     @Override
     public void shoot() {
-        Missile missil = new Missile(position[0][0], position[0][1],position[1][0], position[1][1]);
+        Missile missil = new Missile(enemyPosition[0][0], enemyPosition[0][1], enemyPosition[1][0], enemyPosition[1][1]);
         missil.missileDirection();
     }
 

@@ -17,6 +17,15 @@ public enum ElementType {
         this.code = code;
     }
 
+    public static ElementType findByCode(int code) {
+        for (ElementType type: values()) {
+            if (type.getCode() == code) {
+                return type;
+            }
+        }
+        return null;
+    }
+
     public int getCode() {
         return code;
     }

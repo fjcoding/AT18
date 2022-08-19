@@ -22,13 +22,20 @@ public class Game2048 extends Game {
     }
 
     @Override
-    public void play(String nextDirection) {
+    public void play(GameInput input) {
+        String nextDirection = input.getTextInput();
         System.out.println(
                     "Type the direction you want to go. Directions: [up, down, left, right] = [w, s, a, d]. If you want to exit type 'q' and ENTER");
         Main.directionChecker(nextDirection);
         System.out.println();
         Main.showMatrix();
-        this.hasEnded = nextDirection.equals("q");
+        if ("q".equals(nextDirection)) {
+            System.out.println("\nIf you want to stop playing type 'q' again. If not type any key.");
+            String continuePlaying = input.getReader().read();
+            if (continuePlaying.equals("q")) {
+                this.hasEnded = nextDirection.equals("q");
+            }
+        }
     }
 
     @Override

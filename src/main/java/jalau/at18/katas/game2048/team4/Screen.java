@@ -16,7 +16,13 @@ public class Screen {
         this.game.start();
         do {
             String input = this.reader.read();
-            this.game.play(input);
+            GameInput gameInput = null;
+            if (game instanceof Game2048) {
+                gameInput = new Input2048(input, reader);
+            } else if (game instanceof HelloName) {
+                gameInput = new InputHello(input);
+            }
+            this.game.play(gameInput);
         } while (!this.game.hasEnded());
         this.reader.close();
     }

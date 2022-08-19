@@ -12,6 +12,16 @@ public class TankPlayer extends Tank {
 
     }
 
+    public Element[][] putTankOnBoard(Element[][] matrix, int[][] position) {
+        TankTop tankTop = new TankTop();
+        TankBack backTop = new TankBack();
+        matrix[position[0][0]][position[0][1]] = tankTop;
+        matrix[position[1][0]][position[1][1]] = tankTop;
+        matrix[position[2][0]][position[2][1]] = backTop;
+        matrix[position[SIZE_ROW_POSITION - 1][0]][position[SIZE_ROW_POSITION - 1][1]] = backTop;
+
+        return matrix;
+    }
     @Override
     public int[][] initialPosition() {
         this.newPosition = INITIAL_POSITION;

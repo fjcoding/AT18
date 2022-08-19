@@ -1,8 +1,9 @@
-package jalau.at18.pacman.Mauricio;
-import java.util.Date; 
+package jalau.at18.pacman;
+
+import java.util.Date;
 import java.util.Scanner;
 
-public class Main {
+public class Prueba {
         public static int score = 0;
         public static int minutos = 0;
         public static int segundos = 0;
@@ -110,118 +111,110 @@ public class Main {
 
                         if (movements == 's') {
                                 /////////////////////////////////////////////
-                                try{
-                                        while(arr[n + 1][m] != "▒"){
-                                            n++;
-                                            if (arr[n][m] == "·") {
-                                            arr[n-1][m] = " ";
-                                            score += 10;
-                                            }else {
-                                            arr[n-1][m] = " ";
-                                            score = score + 0;
-                                            }
-                                            
-                                            arr[n][m] = "C";
-                                            Thread.sleep(200); 
-                                            System.out.print("\033[H\033[2J");
-                                            System.out.flush();
-                                            showBoard(arr);
+                                try {
+                                        while (arr[n + 1][m] != "▒") {
+                                                n++;
+                                                if (arr[n][m] == "·") {
+                                                        arr[n - 1][m] = " ";
+                                                        score += 10;
+                                                } else {
+                                                        arr[n - 1][m] = " ";
+                                                        score = score + 0;
+                                                }
+
+                                                arr[n][m] = "C";
+                                                Thread.sleep(200);
+                                                System.out.print("\033[H\033[2J");
+                                                System.out.flush();
+                                                showBoard(arr);
                                         }
-                                }
-                                catch(InterruptedException ex)
-                                {
-                                    ex.printStackTrace();
+                                } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
                                 }
                         }
                         if (movements == 'w') {
                                 /////////////////////////////////////////////////
-                                try{
-                                        while(arr[n - 1][m] != "▒"){
-                                            n--;
-                                            if (arr[n][m] == "·") {
-                                            arr[n + 1][m] = " ";
-                                            score += 10;
-                                            }else {
-                                            arr[n + 1][m] = " ";
-                                            score = score + 0;
-                                            }
-                                            
-                                            arr[n][m] = "C";
-                                            Thread.sleep(200); 
-                                            System.out.print("\033[H\033[2J");
-                                            System.out.flush();
-                                            showBoard(arr);
+                                try {
+                                        while (arr[n - 1][m] != "▒") {
+                                                n--;
+                                                if (arr[n][m] == "·") {
+                                                        arr[n + 1][m] = " ";
+                                                        score += 10;
+                                                } else {
+                                                        arr[n + 1][m] = " ";
+                                                        score = score + 0;
+                                                }
+
+                                                arr[n][m] = "C";
+                                                Thread.sleep(200);
+                                                System.out.print("\033[H\033[2J");
+                                                System.out.flush();
+                                                showBoard(arr);
                                         }
-                                }
-                                catch(InterruptedException ex)
-                                {
-                                    ex.printStackTrace();
+                                } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
                                 }
                         }
                         if (movements == 'a') {
-                                try{
-                                        while(arr[n][m - 1] != "▒"){
-                                            m--;
-                                            if (arr[n][m] == "·") {
-                                            arr[n][m + 1] = " ";
-                                            score += 10;
-                                            }else {
-                                            arr[n][m + 1] = " ";
-                                            score = score + 0;
-                                            }
-                                            
-                                            arr[n][m] = "C";
-                                            Thread.sleep(200); 
-                                            System.out.print("\033[H\033[2J");
-                                            System.out.flush();
-                                            showBoard(arr);
+                                try {
+                                        while (arr[n][m - 1] != "▒") {
+                                                m--;
+                                                if (arr[n][m] == "·") {
+                                                        arr[n][m + 1] = " ";
+                                                        score += 10;
+                                                } else {
+                                                        arr[n][m + 1] = " ";
+                                                        score = score + 0;
+                                                }
+
+                                                arr[n][m] = "C";
+                                                Thread.sleep(200);
+                                                System.out.print("\033[H\033[2J");
+                                                System.out.flush();
+                                                showBoard(arr);
                                         }
+                                } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
                                 }
-                                catch(InterruptedException ex)
-                                {
-                                    ex.printStackTrace();
-                                }
-                              
+
                         }
                         if (movements == 'd') {
-                                try{
-                                        while(arr[n][m+ 1] != "▒"){
-                                            m++;
-                                            if (arr[n][m] == "·") {
-                                            arr[n][m - 1] = " ";
-                                            score += 10;
-                                            }else {
-                                            arr[n][m - 1] = " ";
-                                            score = score + 0;
-                                            }
-                                            
-                                            arr[n][m] = "C";
-                                            Thread.sleep(200); 
-                                            System.out.print("\033[H\033[2J");
-                                            System.out.flush();
-                                            showBoard(arr);
+                                try {
+                                        while (arr[n][m + 1] != "▒") {
+                                                m++;
+                                                if (arr[n][m] == "·") {
+                                                        arr[n][m - 1] = " ";
+                                                        score += 10;
+                                                } else {
+                                                        arr[n][m - 1] = " ";
+                                                        score = score + 0;
+                                                }
+
+                                                arr[n][m] = "C";
+                                                Thread.sleep(200);
+                                                System.out.print("\033[H\033[2J");
+                                                System.out.flush();
+                                                showBoard(arr);
                                         }
-                                }
-                                catch(InterruptedException ex)
-                                {
-                                    ex.printStackTrace();
+                                } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
                                 }
                         }
 
                         // if (m != 0 && m != 28) {
-                        //         arr[n][m] = "C";
-                        //         showBoard(arr);
+                        // arr[n][m] = "C";
+                        // showBoard(arr);
                         // } else if (m == 0) {
-                        //         arr[n][m] = " ";
-                        //         arr[n][m + 28] = "C";
-                        //         m = 28;
-                        //         showBoard(arr);
+                        // arr[n][m] = " ";
+                        // arr[n][m + 28] = "C";
+                        // m = 28;
+                        // showBoard(arr);
 
                         // } else if (m == 28) {
-                        //         arr[n][m] = " ";
-                        //         arr[n][m - 28] = "C";
-                        //         m = 0;
-                        //         showBoard(arr);
+                        // arr[n][m] = " ";
+                        // arr[n][m - 28] = "C";
+                        // m = 0;
+                        // showBoard(arr);
 
                         // }
                 }

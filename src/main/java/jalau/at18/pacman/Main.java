@@ -1,4 +1,4 @@
-package jalau.at18.pacman.Dani;
+package jalau.at18.pacman;
 
 //import jalau.at18.pacman.Dani.Board;
 

@@ -40,6 +40,8 @@ jacocoTestReport {
 test.finalizedBy("checkstyleMain")
 test.finalizedBy("jacocoTestReport")
 
+
+
 task runhighestlowestSergio (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sergio.Main'
     classpath = sourceSets.main.runtimeClasspath
@@ -272,4 +274,8 @@ task runTeam4Game2048 (dependsOn: 'classes', type: JavaExec) {
     standardInput=System.in
     classpath = sourceSets.main.runtimeClasspath
 }
-
+task runPacman(dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.pacman.Main'
+    standardInput=System.in
+    classpath = sourceSets.main.runtimeClasspath
+}

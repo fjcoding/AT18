@@ -3,6 +3,7 @@ package jalau.at18.spaceinvaders;
 public class Board {
     private static final int MAX_SIZE = 10;
     private char[][] matrix;
+    
     public Board() {
         matrix = new char[MAX_SIZE][MAX_SIZE];
         initialize();

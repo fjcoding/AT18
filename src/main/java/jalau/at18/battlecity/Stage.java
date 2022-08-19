@@ -52,6 +52,7 @@ public class Stage {
                         default:
                             Empty empty = new Empty();
                             matrix[rowIndex][columnIndex] = empty;
+                            break;
                     }
                 }
             }

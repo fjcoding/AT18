@@ -2,8 +2,6 @@ package jalau.at18.battlecity;
 
 public enum ElementType {
     EMPTY(0),
-    BULLET(1),
-    TANK(2),
     BRICK(3),
     STEEL(4),
     BUSHES(5),

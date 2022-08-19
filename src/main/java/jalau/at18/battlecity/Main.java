@@ -2,8 +2,9 @@ package jalau.at18.battlecity;
 
 public class Main {
     public static void main(String[] arg) {
-        Board board = createBoard();
-        showMatrix(board);
+        Game game = new GameBattlecity();
+        game.startGame();
+        //showMatrix(board);
     }
 
     public static void showMatrix(Board board) {

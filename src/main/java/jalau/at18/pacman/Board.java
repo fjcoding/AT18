@@ -3,6 +3,7 @@ package jalau.at18.pacman;
 public class Board {
     public static final int X_BORDER = 25;
     public static final int Y_BORDER = 29;
+    public static final int INITIAL_PACMAN_POSITION = 1;
     public static final int INITIAL_DOTS_NUMBER = 290;
     public static final int DOT_POINTS = 10;
 
@@ -94,5 +95,11 @@ public class Board {
     }
     public void setScore(int points) {
         this.score = points;
+    }
+    public String[][] addPacman(Pacman pacman, String[][] boardWhereAdd) {
+        boardWhereAdd = this.gameBoard;
+        boardWhereAdd[INITIAL_PACMAN_POSITION][INITIAL_PACMAN_POSITION] = pacman.getRepresentation();
+        setGameBoard(boardWhereAdd);
+        return getGameBoard();
     }
 }

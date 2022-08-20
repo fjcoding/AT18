@@ -9,6 +9,31 @@ public class Moves {
     public Moves(String nextDirection) {
         this.direction = nextDirection;
     }
+    public void directionChecker() {
+        switch (this.direction) {
+            case "w":
+             
+                break;
+            case "a":
+                System.out.println("You moved the numbers left!");
+               
+                break;
+            case "d":
+                System.out.println("You moved the numbers right!");
+             
+                break;
+            case "s":
+                System.out.println("You moved the numbers down!");
+               
+                break;
+            case "q":
+                System.out.println("You are about to Quit!");
+                break;
+            default:
+                System.out.println(
+                        "PLease type a correct direction. Directions: [up, down, left, right] = [w, s, a, d]. if you want to exit type 'q'");
+        }
+    }
 
     public void movements(char a) {
         Board board = new Board();

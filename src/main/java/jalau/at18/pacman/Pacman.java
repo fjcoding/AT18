@@ -4,10 +4,16 @@ public class Pacman {
     private static int row = 1;
     private static int column = 1;
     private static final int TIME = 200;
+    private String representation = "C";
 
 
 
-
+    public void setRepresentation(String representationToSet) {
+        this.representation = representationToSet;
+    }
+    public String getRepresentation() {
+        return this.representation;
+    }
 
     
     public void moveUp(char a) {

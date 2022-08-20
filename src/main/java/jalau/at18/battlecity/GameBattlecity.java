@@ -1,6 +1,7 @@
 package jalau.at18.battlecity;
 
 public class GameBattlecity extends Game {
+    public int enemyCount = 20;
     public GameBattlecity() {
 
     }
@@ -8,9 +9,12 @@ public class GameBattlecity extends Game {
     public void startGame() {
         Board board = createBoard();
         TankPlayer tankPlayer = new TankPlayer();
+        EnemyTank enemyTank = new EnemyTank(enemyCount);
         Element[][] elementsMatrix = board.getMatrix();
-        int[][] position = tankPlayer.initialPosition();
-        elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, position);
+        int[][] positionPlayer = tankPlayer.initialPosition();
+        int[][] positionEnemy = enemyTank.initialPosition();
+        elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, positionPlayer);
+        elementsMatrix = enemyTank.putTankOnBoard(elementsMatrix, positionEnemy);
         showMatrix(board);
     }
     public void playGame() {

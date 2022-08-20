@@ -11,7 +11,18 @@ abstract class Tank {
 
     public static final int GRID_LENGHT = 26;
     public static final int POSITIONS_LENGTH = 4;
+    public static final int SIZE_ROW_POSITION = 4;
 
+    public Element[][] putTankOnBoard(Element[][] matrix, int[][] position) {
+        TankTop tankTop = new TankTop();
+        TankBack backTop = new TankBack();
+        matrix[position[0][0]][position[0][1]] = tankTop;
+        matrix[position[1][0]][position[1][1]] = tankTop;
+        matrix[position[2][0]][position[2][1]] = backTop;
+        matrix[position[POSITIONS_LENGTH - 1][0]][position[POSITIONS_LENGTH - 1][1]] = backTop;
+
+        return matrix;
+    }
     public int[][] arrangeUp(int[][] position) {
         int[][] minMaxValues = findMinMaxValues(position);
         int minRow = minMaxValues[0][0];

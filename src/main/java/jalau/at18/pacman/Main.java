@@ -15,7 +15,7 @@ public class Main {
         final int colums = 1;
         int score = 0;
         board.getGameBoard()[row][colums] = "C";
-        board.showBoard(board.getGameBoard());;
+        board.showBoard(board.getGameBoard());
         while (true) {
             System.out.println("Enter a move:");
             movements = keyword.next().charAt(0);

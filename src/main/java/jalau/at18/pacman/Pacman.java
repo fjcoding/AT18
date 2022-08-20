@@ -4,9 +4,8 @@ public class Pacman {
     private static int row = 1;
     private static int column = 1;
     private static final int TIME = 200;
-    Board board = new Board();
-
     public void moveUp(char a) {
+        Board board = new Board();
         Board tablero = new Board();
         if (a == 'd') {
             try {

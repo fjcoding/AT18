@@ -56,7 +56,6 @@ public class Board {
         {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
          "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒"}
         };
-    
     public void showBoard(String[][] boardToShow) {
         for (int rows = 0; rows < X_BORDER; rows++) {
             for (int colums = 0; colums < Y_BORDER; colums++) {
@@ -66,14 +65,10 @@ public class Board {
         }
     }
 
-    public void setGameBoard (String[][] newBoard) {
+    public void setGameBoard(String[][] newBoard) {
         this.gameBoard = newBoard;
     }
-    public String[][] getGameBoard () {
+    public String[][] getGameBoard() {
         return this.gameBoard;
     }
-
-
-
-    
 }

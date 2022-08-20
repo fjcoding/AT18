@@ -2,14 +2,11 @@ package jalau.at18.pacman;
 
 public class Game {
     
-
-
     public void runGame() {
         initGame();
         while(!(isWinner() || isGameOver())) {
-            System.out.println("Enter s move:");
+            System.out.println("Enter a move:");
         }
-
     }
     public boolean isGameOver() {
         return true;

@@ -3,7 +3,8 @@ package jalau.at18.pacman;
 public class Board {
     public static final int X_BORDER = 25;
     public static final int Y_BORDER = 29;
-    public static final int INITIAL_DOTS_NUMBER = 29;
+    public static final int INITIAL_DOTS_NUMBER = 290;
+    public static final int DOT_POINTS = 10;
 
     private String[][] gameBoard = {
         {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
@@ -57,15 +58,15 @@ public class Board {
         {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
          "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒"}
         };
-
         private int dots;
-
+        private int score;
         public Board() {
             this.dots = INITIAL_DOTS_NUMBER;
+            this.score = 0;
         }
 
-
     public void showBoard(String[][] boardToShow) {
+        System.out.println("                                        Score: " + getScore());
         for (int rows = 0; rows < X_BORDER; rows++) {
             for (int colums = 0; colums < Y_BORDER; colums++) {
                 System.out.print(boardToShow[rows][colums] + "");
@@ -83,5 +84,15 @@ public class Board {
 
     public int getDots() {
         return this.dots;
+    }
+    public void restDots() {
+        this.dots -= 1;
+        setScore(DOT_POINTS);
+    }
+    public int getScore() {
+        return this.score;
+    }
+    public void setScore(int points) {
+        this.score = points;
     }
 }

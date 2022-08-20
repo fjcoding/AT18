@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 
 public class MainTest {
-    private final int[][] exampleMatrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 2, 0}, {0, 0, 0, 0}};
+  /*   private final int[][] exampleMatrix = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 2, 0}, {0, 0, 0, 0}};
     private final int[][] matrixGameOver = {{2, 4, 8, 2}, {16, 8, 2, 8}, {4, 2, 16, 4}, {2, 8, 2, 16}};
     private final int[][] matrixGameNoOver = {{2, 4, 2, 2}, {16, 8, 2, 8}, {4, 2, 16, 4}, {2, 8, 2, 16}};
 
@@ -128,6 +128,6 @@ public class MainTest {
         assertEquals(true, main.got2048(matrixTest));
         final int[][] matrixTest1 = {{0, 0, 0, 0}, {4, 0, 0, 0}, {4, 4, 0, 0}, {2, 0, 0, 0}};
         assertEquals(false, main.got2048(matrixTest1));
-    }
+    }*/
 
 }

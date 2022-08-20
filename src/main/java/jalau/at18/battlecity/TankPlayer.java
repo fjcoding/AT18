@@ -3,13 +3,13 @@ package jalau.at18.battlecity;
 public class TankPlayer extends Tank {
 
     private String direction;
-    public static final int[][] INITIAL_POSITION = {{24, 9}, {24, 10}, {25, 9}, {25, 10}};
+    public static final int[][] INITIAL_POSITION = {{24, 8}, {24, 9}, {25, 8}, {25, 9}};
     public static final int SIZE_ROW_POSITION = 4;
     public static final int SIZE_MAX_BOARD = 26;
     private int[][] newPosition = new int[SIZE_ROW_POSITION][2];
 
     public TankPlayer() {
-
+        this.newPosition = INITIAL_POSITION;
     }
 
     public Element[][] putTankOnBoard(Element[][] matrix, int[][] position) {
@@ -22,19 +22,38 @@ public class TankPlayer extends Tank {
 
         return matrix;
     }
+    public int[][] movements(String input) {
+        switch (input) {
+            case "w":
+                newPosition = moveUp(newPosition);
+                break;
+            case "s":
+                newPosition = moveDown(newPosition);
+                break;
+            case "a":
+                newPosition = moveLeft(newPosition);
+                break;
+            case "d":
+                newPosition = moveRight(newPosition);
+                break;
+            default:
+                newPosition = newPosition;
+                break;
+        }
+        return newPosition;
+
+    }
     @Override
     public int[][] initialPosition() {
-        this.newPosition = INITIAL_POSITION;
         return newPosition;
-    }
-
-    public void setMove(String newDirection) {
-        this.direction = newDirection;
     }
 
     public void setPosition(int[][] position) {
         this.newPosition = position;
 
+    }
+    public int[][] getPosition() {
+        return newPosition;
     }
 
     @Override

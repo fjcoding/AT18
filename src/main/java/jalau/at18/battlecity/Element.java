@@ -18,7 +18,8 @@ public class Element {
     }
 
     public int reduceLive(int livesToTake) {
-        return live - livesToTake;
+        live = live - livesToTake;
+        return live;
     }
 
     public boolean isBlockTank() {

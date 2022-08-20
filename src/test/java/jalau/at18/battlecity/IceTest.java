@@ -1,13 +1,16 @@
 package jalau.at18.battlecity;
+
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class IceTest {
     @Test
-    public void reduceLive () {
+    public void reduceLive() {
         Ice ice = new Ice();
         assertEquals(0, ice.reduceLive(0));
     }
+
     @Test
     public void blockTank() {
         Ice ice = new Ice();

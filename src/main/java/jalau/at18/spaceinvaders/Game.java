@@ -1,7 +1,5 @@
 package jalau.at18.spaceinvaders;
 
-import java.util.Scanner;
-
 import java.awt.event.KeyEvent;
 
 public class Game {
@@ -16,21 +14,38 @@ public class Game {
     private boolean falseFlag = false;
     private static final int LIMIT_ALIEN_DOWN = 8;
     private static final int SIZE_BOARD = 9;
-    // private KeyboardObserver keyboardObserver;
 
-    public Game() throws InterruptedException {
+    // private KeyboardObserver keyboardObserver;
+    public Game() {
         board = new Board();
         ship = new Ship();
         alien = new Aliens();
     }
 
-    public void initializeAliens() {
+    public void runGame(char instruction) {
+
         // print alien matrix
         for (int row = 0; row < LIMIT_ROW; row++) {
             for (int column = 0; column < LIMIT_COLUMN; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
             }
         }
+        System.out.println(board.toString());
+        if (instruction == 'a' && ship.getPosX() > 0) {
+            ship.moveLeft();
+            board.setElement(ship.getPosY(), ship.getPosX(), '^');
+            board.setElement(ship.getPosY(), ship.getPosX() + 1, '*');
+        }
+        if (instruction == 'd' && ship.getPosX() < SIZE_BOARD) {
+            ship.moveRight();
+            board.setElement(ship.getPosY(), ship.getPosX(), '^');
+            board.setElement(ship.getPosY(), ship.getPosX() - 1, '*');
+        }
+        System.out.println(board.toString());
+        if (instruction == 'w') {
+            System.out.println("Fire");
+        }
+
     }
 
     public void moveAlienRigth() {
@@ -94,13 +109,12 @@ public class Game {
         int cont = 0;
         KeyboardReader keyboardObserver = new KeyboardReader();
         keyboardObserver.start();
-        initializeAliens();
+        runGame('a');
         while (true) {
-            // Does the observer have any key events?
-            //board.setElement(posX, posY, newContent);
             if (cont % LIMIT_ROW - 1 == 0) {
                 alienMovement();
             }
+            // alienMovement();
             if (keyboardObserver.hasKeyEvents()) {
                 KeyEvent event = keyboardObserver.getEventFromTop();
                 // If "left arrow", then move the game piece to the left
@@ -124,46 +138,69 @@ public class Game {
             }
             System.out.println(board.toString());
             System.out.println(cont);
-            //board.setElement(cont, ship.getPosX(), '0');
             cont++;
             Thread.sleep(DELAY);
             gameOver();
         }
     }
 
-    public void run() {
+    /*
+     * public void run() {
+     *
+     * Scanner scanner = new Scanner(System.in);
+     * // entrada de un carácter
+     * while (true) {
+     *
+     * char direction = scanner.next().charAt(0);
+     * if (direction == 'a') {
+     *
+     * char instruction = scanner.next().charAt(0);
+     *
+     * if (instruction == 'a') {
+     *
+     * ship.moveLeft();
+     * board.setElement(ship.getPosY(), ship.getPosX(), '^');
+     * System.out.println(board.toString());
+     * board.setElement(ship.getPosY(), ship.getPosX(), '*');
+     * // System.out.println(ship.getPosX());
+     * // System.out.println(ship.getPosX());
+     * }
+     * if (instruction == 'd') {
+     * ship.moveRight();
+     * // board.setElement(alien.getPosX(), alien.getPosY(), '%')
+     * board.setElement(ship.getPosY(), ship.getPosX(), '^');
+     * System.out.println(board.toString());
+     * board.setElement(ship.getPosY(), ship.getPosX(), '*');
+     * // System.out.println(ship.getPosX());
+     * }
+     * // System.out.println(ship.getPosX());
+     * if (instruction == 'w') {
+     * System.out.println("Fire");
+     * }
+     * System.out.println(board.toString());
+     * if (instruction == 'a' && ship.getPosX() > 0) {
+     * ship.moveLeft();
+     * board.setElement(ship.getPosY(), ship.getPosX(), '^');
+     * board.setElement(ship.getPosY(), ship.getPosX() + 1, '*');
+     * }
+     * if (instruction == 'd' && ship.getPosX() < SIZE_BOARD) {
+     * ship.moveRight();
+     * board.setElement(ship.getPosY(), ship.getPosX(), '^');
+     * board.setElement(ship.getPosY(), ship.getPosX() - 1, '*');
+     * }
+     * System.out.println(board.toString());
+     * if (instruction == 'w') {
+     * System.out.println("Fire");
+     * }
+     * }
+     * }
+     * }
+     */
+    public int getPosXShip() {
+        return ship.getPosX();
+    }
 
-        Scanner scanner = new Scanner(System.in);
-        // entrada de un carácter
-        while (true) {
-
-            char direction = scanner.next().charAt(0);
-            if (direction == 'a') {
-
-                char instruction = scanner.next().charAt(0);
-
-                if (instruction == 'a') {
-
-                    ship.moveLeft();
-                    board.setElement(ship.getPosY(), ship.getPosX(), '^');
-                    System.out.println(board.toString());
-                    board.setElement(ship.getPosY(), ship.getPosX(), '*');
-                    // System.out.println(ship.getPosX());
-                    // System.out.println(ship.getPosX());
-                }
-                if (instruction == 'd') {
-                    ship.moveRight();
-                    // board.setElement(alien.getPosX(), alien.getPosY(), '%')
-                    board.setElement(ship.getPosY(), ship.getPosX(), '^');
-                    System.out.println(board.toString());
-                    board.setElement(ship.getPosY(), ship.getPosX(), '*');
-                    // System.out.println(ship.getPosX());
-                }
-                // System.out.println(ship.getPosX());
-                if (instruction == 'w') {
-                    System.out.println("Fire");
-                }
-            }
-        }
+    public int getPosYShip() {
+        return ship.getPosY();
     }
 }

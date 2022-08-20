@@ -10,7 +10,7 @@ public class Block {
         duration = MAX_DURABILITY;
     }
 
-    public void impactBlock() {
+    public void impact() {
         duration--;
     }
 

@@ -2,6 +2,9 @@ package jalau.at18.battlecity;
 
 public class GameBattlecity extends Game {
     public int enemyCount = 20;
+    private TankPlayer tankPlayer = new TankPlayer();
+    public static final int SIZE_ROW_POSITION = 4;
+
     public GameBattlecity() {
 
     }
@@ -18,13 +21,20 @@ public class GameBattlecity extends Game {
         showMatrix(board);
     }
     public void playGame() {
-
+        Board board = createBoard();
+        Input direction = new Input();
+        String input = direction.read();
+        int[][] newPosition = new int[SIZE_ROW_POSITION][2];
+        newPosition = tankPlayer.movements(input);
+        Element[][] elementsMatrix = board.getMatrix();
+        elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, newPosition);
+        showMatrix(board);
     }
     public void endGame() {
 
     }
     public static Board createBoard() {
-        String rute = "C:\\Users\\Hp\\Documents\\JalaUniversity\\Coding\\workspace\\AT18\\src\\main\\java\\jalau\\at18\\battlecity\\stage1.csv";
+        String rute = "stage1.csv";
         Stage stage = new Stage(rute);
         Board board = stage.initBoard();
         return board;

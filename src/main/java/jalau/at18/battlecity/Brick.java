@@ -4,7 +4,7 @@ public class Brick extends Element {
     private static final int LIVE = 2;
 
     public Brick() {
-        super(ElementType.BRICK, LIVE, true, false, false, "B");
+        super(ElementType.BRICK, LIVE, true, false, false, "▓");
     }
 
 }

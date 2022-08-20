@@ -22,23 +22,23 @@ public class TankPlayer extends Tank {
 
         return matrix;
     }
-    public int[][] movements (String input) {
-        switch(input){
+    public int[][] movements(String input) {
+        switch (input) {
             case "w":
-            newPosition = moveUp(newPosition);
-            break;
+                newPosition = moveUp(newPosition);
+                break;
             case "s":
-            newPosition = moveDown(newPosition);
-            break;
+                newPosition = moveDown(newPosition);
+                break;
             case "a":
-            newPosition = moveLeft(newPosition);
-            break;
+                newPosition = moveLeft(newPosition);
+                break;
             case "d":
-            newPosition = moveRight(newPosition);
-            break;
+                newPosition = moveRight(newPosition);
+                break;
             default:
-            newPosition = newPosition;
-            break;
+                newPosition = newPosition;
+                break;
         }
         return newPosition;
 
@@ -52,7 +52,7 @@ public class TankPlayer extends Tank {
         this.newPosition = position;
 
     }
-    public int [][] getPosition() {
+    public int[][] getPosition() {
         return newPosition;
     }
 

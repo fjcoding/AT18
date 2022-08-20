@@ -3,6 +3,7 @@ package jalau.at18.pacman;
 public class Board {
     public static final int X_BORDER = 25;
     public static final int Y_BORDER = 29;
+    public static final int INITIAL_DOTS_NUMBER = 29;
 
     private String[][] gameBoard = {
         {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
@@ -56,6 +57,14 @@ public class Board {
         {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
          "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒"}
         };
+
+        private int dots;
+
+        public Board() {
+            this.dots = INITIAL_DOTS_NUMBER;
+        }
+
+
     public void showBoard(String[][] boardToShow) {
         for (int rows = 0; rows < X_BORDER; rows++) {
             for (int colums = 0; colums < Y_BORDER; colums++) {
@@ -70,5 +79,9 @@ public class Board {
     }
     public String[][] getGameBoard() {
         return this.gameBoard;
+    }
+
+    public int getDots() {
+        return this.dots;
     }
 }

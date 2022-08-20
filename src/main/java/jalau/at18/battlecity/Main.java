@@ -7,7 +7,10 @@ import java.net.URL;
 
 public class Main {
     public static void main(String[] arg) {
-        Main main = new Main();
+        Game game = new GameBattlecity();
+        game.startGame();
+        //showMatrix(board);
+    }
 
         Board board = main.createBoard();
         main.showMatrix(board);

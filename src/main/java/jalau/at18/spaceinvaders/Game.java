@@ -9,6 +9,7 @@ public class Game {
     private static final int DELAY = 600;
     private static final int LIMIT_ALIEN_DOWN = 8;
     private static final int SIZE_BOARD = 9;
+    private static final int DELAY_ALIENS_MOVEMENT = 3;
 
     // private KeyboardObserver keyboardObserver;
     public Game() {
@@ -16,16 +17,14 @@ public class Game {
         ship = new Ship();
         aliensList = new AliensList(board);
     }
-    
     public void move() throws InterruptedException {
         int cont = 0;
         KeyboardReader keyboardObserver = new KeyboardReader();
         keyboardObserver.start();
         while (true) {
-             if (cont % 3 == 0) {
+            if (cont % DELAY_ALIENS_MOVEMENT == 0) {
                 aliensList.alienMovement();
-             }
-            
+            }
             if (keyboardObserver.hasKeyEvents()) {
                 KeyEvent event = keyboardObserver.getEventFromTop();
                 // If "left arrow", then move the game piece to the left
@@ -52,7 +51,7 @@ public class Game {
 
         }
     }
-    
+
     public int getPosXShip() {
         return ship.getPosX();
     }

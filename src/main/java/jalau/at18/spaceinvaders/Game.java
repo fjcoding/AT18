@@ -2,8 +2,6 @@ package jalau.at18.spaceinvaders;
 
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
 import java.awt.event.KeyEvent;
 
 public class Game {
@@ -13,7 +11,11 @@ public class Game {
     private static final int LIMIT_ROW = 4;
     private static final int LIMIT_COLUMN = 2;
     private static final int DELAY = 600;
-    boolean alienFlag = true;
+    private boolean alienFlag = true;
+    private boolean trueFlag = true;
+    private boolean falseFlag = false;
+    private static final int LIMIT_ALIEN_DOWN = 8;
+    private static final int SIZE_BOARD = 9;
     // private KeyboardObserver keyboardObserver;
 
     public Game() throws InterruptedException {
@@ -31,10 +33,10 @@ public class Game {
         }
     }
 
-    public void moveAlienRigth(){
+    public void moveAlienRigth() {
         alien.alienRigth();
-        for(int row = 3; row >= 0; row--){
-            for(int column = 0; column < 2; column++){
+        for (int row = LIMIT_ROW - 1; row >= 0; row--) {
+            for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
                 System.out.println(board.toString());
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row] - 1, '*');
@@ -42,10 +44,10 @@ public class Game {
         }
     }
 
-    public void moveAlienLeft(){
+    public void moveAlienLeft() {
         alien.alienLeft();
-        for(int row = 0; row < 4; row++){
-            for(int column = 0; column < 2; column++){
+        for (int row = 0; row < LIMIT_ROW; row++) {
+            for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
                 System.out.println(board.toString());
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row] + 1, '*');
@@ -53,38 +55,37 @@ public class Game {
         }
     }
 
-    public void moveAlienDown(){
+    public void moveAlienDown() {
         alien.alienDown();
-        for(int row = 0; row < 4; row++){
-            for(int column = 0; column < 2; column++){
+        for (int row = 0; row < LIMIT_ROW; row++) {
+            for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
                 System.out.println(board.toString());
-                if(column == 1){
-                    board.setElement(alien.getPosY()[column]-2, alien.getPosX()[row], '*');
+                if (column == 1) {
+                    board.setElement(alien.getPosY()[column] - 2, alien.getPosX()[row], '*');
                 }
-                
             }
         }
     }
 
-    public void alienMovement(){
-        if(alienFlag == true && alien.getPosX()[3] <= 9){
+    public void alienMovement() {
+        if (alienFlag == trueFlag && alien.getPosX()[LIMIT_ROW - 1] <= SIZE_BOARD) {
             moveAlienRigth();
-            if(alien.getPosX()[3] == 9){
+            if (alien.getPosX()[LIMIT_ROW - 1] == SIZE_BOARD) {
                 moveAlienDown();
                 alienFlag = false;
             }
-        }else if (alienFlag == false || alien.getPosX()[0] == 0) {
+        } else if (alienFlag == falseFlag || alien.getPosX()[0] == 0) {
             moveAlienLeft();
-            if(alien.getPosX()[0] == 0){
+            if (alien.getPosX()[0] == 0) {
                 moveAlienDown();
                 alienFlag = true;
             }
         }
     }
 
-    public void gameOver(){
-        if(alien.getPosY()[1] == 8){
+    public void gameOver() {
+        if (alien.getPosY()[1] == LIMIT_ALIEN_DOWN) {
             System.exit(0);
         }
     }
@@ -95,11 +96,11 @@ public class Game {
         keyboardObserver.start();
         initializeAliens();
         while (true) {
-            // Does the observer have any key events?          
+            // Does the observer have any key events?
             //board.setElement(posX, posY, newContent);
-           //moveAlienLeft();
-           //moveAlienRigth();
-           alienMovement();
+            if (cont % LIMIT_ROW - 1 == 0) {
+                alienMovement();
+            }
             if (keyboardObserver.hasKeyEvents()) {
                 KeyEvent event = keyboardObserver.getEventFromTop();
                 // If "left arrow", then move the game piece to the left

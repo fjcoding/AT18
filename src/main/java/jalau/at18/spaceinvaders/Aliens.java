@@ -4,6 +4,8 @@ public class Aliens {
 
     private static final int[] POS_X_INITIAL = {0, 1, 2, 3};
     private static final int[] POS_Y_INITIAL = {0, 1};
+    private static final int ROW_ALIENS = 4;
+    private static final int COLUMN_ALIENS = 2;
     private int[] posY;
     private int[] posX;
 
@@ -26,20 +28,20 @@ public class Aliens {
         return posY;
     }
 
-    public void alienLeft(){
-        for(int row = 0; row < 4; row++){
-            posX[row] -=1;
+    public void alienLeft() {
+        for (int row = 0; row < ROW_ALIENS; row++) {
+            posX[row] -= 1;
         }
     }
-    public void alienRigth(){
-        for(int row = 0; row < 4; row++){
-            posX[row] +=1;
+    public void alienRigth() {
+        for (int row = 0; row < ROW_ALIENS; row++) {
+            posX[row] += 1;
         }
     }
 
-    public void alienDown(){
-        for (int column = 0; column < 2; column++){
-            posY[column] +=1;
+    public void alienDown() {
+        for (int column = 0; column < COLUMN_ALIENS; column++) {
+            posY[column] += 1;
         }
     }
 }

@@ -1,6 +1,9 @@
 package jalau.at18.battlecity;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -17,7 +20,11 @@ public class Stage {
         Element[][] matrix = new Element[MATRIX_SIZE][MATRIX_SIZE];
 
         try {
-            List<String> content = Files.readAllLines(Path.of(file));
+            URL resource = getClass().getClassLoader().getResource(file);
+            URI uri = null;
+            uri = resource.toURI();
+
+            List<String> content = Files.readAllLines(Path.of(uri));
             for (int rowIndex = 0; rowIndex < MATRIX_SIZE; rowIndex++) {
                 String rowContent = content.get(rowIndex);
                 String[] columns = rowContent.split(",");
@@ -61,6 +68,8 @@ public class Stage {
             return board;
 
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
         return null;

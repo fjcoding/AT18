@@ -1,6 +1,6 @@
 package jalau.at18.spaceinvaders;
 
-public class Aliens {
+public class Alien {
 
     private static final int[] POS_X_INITIAL = {0, 1, 2, 3};
     private static final int[] POS_Y_INITIAL = {0, 1};
@@ -9,7 +9,7 @@ public class Aliens {
     private int[] posY;
     private int[] posX;
 
-    public Aliens() {
+    public Alien() {
         posX = POS_X_INITIAL;
         posY = POS_Y_INITIAL;
     }

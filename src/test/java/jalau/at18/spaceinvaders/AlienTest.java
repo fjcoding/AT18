@@ -6,7 +6,7 @@ public class AlienTest {
     
     @Test
     public void shouldSendArrayPosX() {
-        Aliens alien = new Aliens();
+        Alien alien = new Alien();
         final int[] input = {4, 5, 6, 7};
         final int[] output = {4, 5, 6, 7};
         alien.setPosX(input);
@@ -15,7 +15,7 @@ public class AlienTest {
 
     @Test
     public void shouldSendArrayPosY() {
-        Aliens alien = new Aliens();
+        Alien alien = new Alien();
         final int[] input = {0, 1};
         final int[] output = {0, 1};
         alien.setPosY(input);
@@ -24,7 +24,7 @@ public class AlienTest {
 
     @Test
     public void shouldAlienMoveRight(){
-        Aliens aliens = new Aliens();
+        Alien aliens = new Alien();
         final int[] expecteds = {1, 2, 3, 4};
         aliens.alienRigth();
         assertArrayEquals(expecteds, aliens.getPosX());

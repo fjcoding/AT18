@@ -1,20 +1,29 @@
 package jalau.at18.battlecity;
 
 public class GameBattlecity extends Game {
+    private TankPlayer tankPlayer = new TankPlayer();
+    public static final int SIZE_ROW_POSITION = 4;
+
     public GameBattlecity() {
 
     }
 
     public void startGame() {
         Board board = createBoard();
-        TankPlayer tankPlayer = new TankPlayer();
         Element[][] elementsMatrix = board.getMatrix();
-        int[][] position = tankPlayer.initialPosition();
+        int[][] position = tankPlayer.getPosition();
         elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, position);
         showMatrix(board);
     }
     public void playGame() {
-
+        Board board = createBoard();
+        Input direction = new Input();
+        String input = direction.read();
+        int[][] newPosition = new int[SIZE_ROW_POSITION][2];
+        newPosition = tankPlayer.movements(input);
+        Element[][] elementsMatrix = board.getMatrix();
+        elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, newPosition);
+        showMatrix(board);
     }
     public void endGame() {
 

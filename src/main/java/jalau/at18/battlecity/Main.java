@@ -4,6 +4,10 @@ public class Main {
     public static void main(String[] arg) {
         Game game = new GameBattlecity();
         game.startGame();
+        while (true) {
+            game.playGame();
+        }
+        //showMatrix(board);
     }
 
     public void showMatrix(Board board) {

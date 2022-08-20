@@ -24,7 +24,7 @@ public class Main {
     }
 
     public static Board createBoard() {
-        Stage stage = new Stage("C:\\Users\\maria\\AT18\\src\\main\\java\\jalau\\at18\\battlecity\\stage1.csv");
+        Stage stage = new Stage("src\\main\\java\\jalau\\at18\\battlecity\\stage1.csv");
         Board board = stage.initBoard();
         return board;
     }

@@ -12,6 +12,7 @@ public class GameBattlecity extends Game {
         int[][] position = tankPlayer.initialPosition();
         elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, position);
         showMatrix(board);
+        tankPlayer.shoot();
     }
     public void playGame() {
 
@@ -20,7 +21,7 @@ public class GameBattlecity extends Game {
 
     }
     public static Board createBoard() {
-        String rute = "C:\\Users\\Hp\\Documents\\JalaUniversity\\Coding\\workspace\\AT18\\src\\main\\java\\jalau\\at18\\battlecity\\stage1.csv";
+        String rute = "src\\main\\java\\jalau\\at18\\battlecity\\stage1.csv";
         Stage stage = new Stage(rute);
         Board board = stage.initBoard();
         return board;

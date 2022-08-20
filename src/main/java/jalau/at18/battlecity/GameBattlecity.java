@@ -29,7 +29,7 @@ public class GameBattlecity extends Game {
 
     }
     public static Board createBoard() {
-        String rute = "C:\\Users\\RODRIGO\\AT18\\src\\main\\java\\jalau\\at18\\battlecity\\stage1.csv";
+        String rute = "stage1.csv";
         Stage stage = new Stage(rute);
         Board board = stage.initBoard();
         return board;

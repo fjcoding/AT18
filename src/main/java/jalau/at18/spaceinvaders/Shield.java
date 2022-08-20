@@ -2,7 +2,6 @@ package jalau.at18.spaceinvaders;
 
 public class Shield {
     private static final int MAX_COUNT_BLOCK = 10;
-    private static final int MAX_ROW_SIZE = 2;
     private static final int[] POSITON_X_BLOCK = {8, 7, 7, 7, 8, 8, 7, 7, 7, 8};
     private static final int[] POSITON_Y_BLOCK = {1, 1, 2, 3, 3, 6, 6, 7, 8, 8};
     private Block[] blocks;
@@ -28,6 +27,17 @@ public class Shield {
         return exist;
     }
 
+    public boolean impactBlock(int posX, int posY) {
+        boolean canImpact = false;
+        for (int iterator = 0; iterator < POSITON_X_BLOCK.length; iterator++) {
+            if (POSITON_X_BLOCK[iterator] == posX && POSITON_Y_BLOCK[iterator] == posY) {
+                blocks[iterator].impact();
+                canImpact = true;
+            }
+        }
+        return canImpact;
+    }
+
     public char getCharacter(int posX, int posY) {
         char blockCharater = '*';
         for (int iterator = 0; iterator < POSITON_X_BLOCK.length; iterator++) {
@@ -36,12 +46,5 @@ public class Shield {
             }
         }
         return blockCharater;
-    }
-
-    @Override
-    public String toString() {
-        String resp = "";
-
-        return resp;
     }
 }

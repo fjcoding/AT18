@@ -4,6 +4,9 @@ public class Main {
     public static void main(String[] arg) {
         Game game = new GameBattlecity();
         game.startGame();
+        while(true){
+            game.playGame();
+        }
         //showMatrix(board);
     }
 
@@ -23,10 +26,10 @@ public class Main {
 
     }
 
-    public static Board createBoard() {
-        Stage stage = new Stage("C:\\Users\\maria\\AT18\\src\\main\\java\\jalau\\at18\\battlecity\\stage1.csv");
+    /*public static Board createBoard() {
+        Stage stage = new Stage("C:\\Users\\RODRIGO\\AT18\\src\\main\\java\\jalau\\at18\\battlecity\\stage1.csv");
         Board board = stage.initBoard();
         return board;
-    }
+    }*/
 
 }

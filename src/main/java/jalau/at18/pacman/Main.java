@@ -5,33 +5,26 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Board tablero = new Board();
-        Pacman movepacman = new Pacman();
+        // Clases importadas
+        ConditionMovements newMovement = new ConditionMovements();
+        Ghost newMovementG = new Ghost();
         Board board = new Board();
+
+        // Ejecucion del programa
         System.out.println("Tablero mostrado");
         Scanner keyword = new Scanner(System.in);
-        char movements;
-        final int row = 1;
-        final int colums = 1;
+        final int rowPacman = 1;
+        final int columsPacman = 1;
+        final int rowGhost = 8;
+        final int columsGhost = 15;
         int score = 0;
-        board.getGameBoard()[row][colums] = "C";
+        board.getGameBoard()[rowPacman][columsPacman] = "C";
+        board.getGameBoard()[rowGhost][columsGhost] = "G";
         board.showBoard(board.getGameBoard());
         while (true) {
             System.out.println("Enter a move:");
-            movements = keyword.next().charAt(0);
-
-            if (movements == 'd') {
-                movepacman.moveUp(movements);
-            }
-            if (movements == 's') {
-                movepacman.moveUp(movements);
-            }
-            if (movements == 'a') {
-                movepacman.moveUp(movements);
-            }
-            if (movements == 'w') {
-                movepacman.moveUp(movements);
-            }
+            char movements = keyword.next().charAt(0);
+            newMovement.movement(movements);
         }
     }
 }

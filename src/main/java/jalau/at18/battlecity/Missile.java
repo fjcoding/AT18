@@ -25,16 +25,16 @@ public class Missile {
     public void missileDirection() {
         switch (pointingWhere) {
             case "UP":
-                moveMissileUp(missileBoard);
+                moveMissileUp();
                 break;
             case "DOWN":
-                moveMissileDown(missileBoard);
+                moveMissileDown();
                 break;
             case "LEFT":
-                moveMissileLeft(missileBoard);
+                moveMissileLeft();
                 break;
             case "RIGHT":
-                shootMissileRight(missileBoard);
+                shootMissileRight();
                 break;
             default:
                 break;
@@ -42,60 +42,70 @@ public class Missile {
 
     }
 
-    public Element[][] moveMissileUp(Element[][] board) {
-        row1 = row1 - 1;
-        row2 = row2 - 1;
-        putMissileOnBoard(row1, column1, row2, column2);
-        showBoard();
-        while (row1 > 0  && missileBoard[row1 - 1][column1] == empty && missileBoard[row2 - 1][column2] == empty) {
-            removeMissilefromBoard(row1, column1, row2, column2);
+    public int[][] moveMissileUp() {
+        if(row1 != 0){
             row1 = row1 - 1;
             row2 = row2 - 1;
             putMissileOnBoard(row1, column1, row2, column2);
-            showBoard();
+            //showBoard();
+            while (row1 > 0) {
+                removeMissilefromBoard(row1, column1, row2, column2);
+                row1 = row1 - 1;
+                row2 = row2 - 1;
+                putMissileOnBoard(row1, column1, row2, column2);
+            //showBoard();
         }
-        return missileBoard;
     }
-    public Element[][] moveMissileDown(Element[][] board) {
-        row1 = row1 + 1;
-        row2 = row2 + 1;
-        putMissileOnBoard(row1, column1, row2, column2);
-        showBoard();
-        while (row1 < BOARD_DIMENSION - 1 && missileBoard[row1 + 1][column1] == empty && missileBoard[row2 + 1][column2] == empty) {
-            removeMissilefromBoard(row1, column1, row2, column2);
+        int[][] newPos = {{row1,column1},{row2,column2}};
+        return newPos;
+    }
+    public int[][] moveMissileDown() {
+        if (row1 != BOARD_DIMENSION){
             row1 = row1 + 1;
             row2 = row2 + 1;
             putMissileOnBoard(row1, column1, row2, column2);
-            showBoard();
+            //showBoard();
+            while (row1 < BOARD_DIMENSION - 1 && missileBoard[row1 + 1][column1] == empty && missileBoard[row2 + 1][column2] == empty) {
+                removeMissilefromBoard(row1, column1, row2, column2);
+                row1 = row1 + 1;
+                row2 = row2 + 1;
+                putMissileOnBoard(row1, column1, row2, column2);
+                //showBoard();
+            }
         }
-        return missileBoard;
+        int[][] newPos = {{row1,column1},{row2,column2}};
+        return newPos;
     }
-    public Element[][] moveMissileLeft(Element[][] board) {
-        column1 = column1 - 1;
-        column2 = column2 - 1;
-        putMissileOnBoard(row1, column1, row2, column2);
-        showBoard();
-        while (column1 > 0 && missileBoard[row1][column1 - 1] == empty && missileBoard[row2][column2 - 1] == empty) {
+    public int[][] moveMissileLeft() {
+        if (column1 != 0){
             column1 = column1 - 1;
             column2 = column2 - 1;
             putMissileOnBoard(row1, column1, row2, column2);
-            showBoard();
+            //showBoard();
+            while (column1 > 0 ) {
+                column1 = column1 - 1;
+                column2 = column2 - 1;
+                putMissileOnBoard(row1, column1, row2, column2);
+                //showBoard();
+            }
         }
-        return missileBoard;
+        int[][] newPos = {{row1,column1},{row2,column2}};
+        return newPos;
     }
-    public Element[][] shootMissileRight(Element[][] board) {
+    public int[][] shootMissileRight() {
         column1 = column1 + 1;
         column2 = column2 + 1;
         putMissileOnBoard(row1, column1, row2, column2);
-        showBoard();
-        while (column1 < (BOARD_DIMENSION - 1) && board[row1][column1 + 1] == empty && board[row2][column2 + 1] == empty) {
+        //showBoard();
+        while (column1 < (BOARD_DIMENSION - 1) && missileBoard[row1][column1 + 1] == empty && missileBoard[row2][column2 + 1] == empty) {
             removeMissilefromBoard(row1, column1, row2, column2);
             column1 = column1 + 1;
             column2 = column2 + 1;
             putMissileOnBoard(row1, column1, row2, column2);
-            showBoard();
+            //showBoard();
         }
-        return missileBoard;
+        int[][] newPos = {{row1,column1},{row2,column2}};
+        return newPos;
     }
     public void showBoard() {
         for (int row = 0; row < BOARD_DIMENSION; row++) {

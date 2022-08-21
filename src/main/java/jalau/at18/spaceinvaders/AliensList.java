@@ -8,7 +8,6 @@ public class AliensList {
     private static final int SIZE_BOARD = 9;
     private Alien alien;
     private Board board;
-    private static final int FINAL_POSITION_ALIEN = 3;
 
     public AliensList(Board board) {
         alien = new Alien();
@@ -63,12 +62,5 @@ public class AliensList {
                 alienFlag = true;
             }
         }
-    }
-    public void reStart() {
-        int[] posXInitial = {0, 1, 2, FINAL_POSITION_ALIEN};
-        int[] posYInitial = {0, 1};
-        alien.setPosX(posXInitial);
-        alien.setPosY(posYInitial);
-
     }
 }

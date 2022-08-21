@@ -6,9 +6,9 @@ public class AliensList {
     private boolean falseFlag = false;
     private static final int LIMIT_ROW = 4;
     private static final int SIZE_BOARD = 9;
-
     private Alien alien;
     private Board board;
+    private static final int FINAL_POSITION_ALIEN = 3;
 
     public AliensList(Board board) {
         alien = new Alien();
@@ -19,7 +19,7 @@ public class AliensList {
         for (int row = LIMIT_ROW - 1; row >= 0; row--) {
             for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
-                System.out.println(board.toString());
+                //System.out.println(board.toString());
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row] - 1, '*');
             }
         }
@@ -30,7 +30,7 @@ public class AliensList {
         for (int row = 0; row < LIMIT_ROW; row++) {
             for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
-                System.out.println(board.toString());
+                //System.out.println(board.toString());
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row] + 1, '*');
             }
         }
@@ -41,7 +41,7 @@ public class AliensList {
         for (int row = 0; row < LIMIT_ROW; row++) {
             for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
-                System.out.println(board.toString());
+                //System.out.println(board.toString());
                 if (column == 1) {
                     board.setElement(alien.getPosY()[column] - 2, alien.getPosX()[row], '*');
                 }
@@ -63,5 +63,12 @@ public class AliensList {
                 alienFlag = true;
             }
         }
+    }
+    public void reStart() {
+        int[] posXInitial = {0, 1, 2, FINAL_POSITION_ALIEN};
+        int[] posYInitial = {0, 1};
+        alien.setPosX(posXInitial);
+        alien.setPosY(posYInitial);
+
     }
 }

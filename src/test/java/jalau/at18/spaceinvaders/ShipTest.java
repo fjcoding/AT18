@@ -7,8 +7,8 @@ public class ShipTest {
     @Test
     public void shouldUpdateLives() {
         Ship ship = new Ship();
-        ship.setLifes(5);
-        assertEquals(5, ship.getLifes());
+        ship.subtrasctLifes();
+        assertEquals(2, ship.getLifes());
     }
     @Test
     public void shouldChangePositionX() {

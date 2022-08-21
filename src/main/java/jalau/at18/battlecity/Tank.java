@@ -7,7 +7,7 @@ abstract class Tank {
     abstract int[][] moveDown(int[][] matrix);
     abstract int[][] moveRight(int[][] matrix);
     abstract int[][] moveLeft(int[][] matrix);
-    abstract void shoot();
+    abstract Element[][] shoot(Element[][] elementBoard);
 
     public static final int GRID_LENGHT = 26;
     public static final int POSITIONS_LENGTH = 4;

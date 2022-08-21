@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class EnemyTank extends Tank {
 
-    public String direction;
+    private String direction;
     public static final int GRID_LENGHT = 26;
     public static final int[][] INITIAL_POSITION_ONE = {{1, 1}, {1, 0}, {0, 1}, {0, 0}};
     public static final int[][] INITIAL_POSITION_TWO = {{1, 13}, {1, 12}, {0, 13}, {0, 12}};
@@ -13,8 +13,9 @@ public class EnemyTank extends Tank {
     //public static final int ENEMY_BACK = 11;
     public static final int INITIAL_POSITIONS = 3;
     public static final int POSITIONS_LENGTH = 4;
+    public static final int NUMBER_OF_DIRECTIONS = 4;
     private int enemyCount;
-    public int[][] enemyPosition;
+    private int[][] enemyPosition;
 
     public EnemyTank(int enemyCount) {
         this.enemyCount = enemyCount;
@@ -29,25 +30,25 @@ public class EnemyTank extends Tank {
     public void setDirection() {
         String[] directions = {"UP", "DOWN", "LEFT", "RIGHT"};
         Random random = new Random();
-        int upperBound = 4;
+        int upperBound = NUMBER_OF_DIRECTIONS;
         int randomDirection = random.nextInt(upperBound);
         direction = directions[randomDirection];
     }
     public void goStraight() {
-        if (direction == "UP"){
+        if (direction == "UP") {
             enemyPosition = arrangeUp(enemyPosition);
             enemyPosition = moveUp(enemyPosition);
         }
-        if (direction == "DOWN"){
+        if (direction == "DOWN") {
             enemyPosition = arrangeDown(enemyPosition);
             enemyPosition = moveDown(enemyPosition);
 
         }
-        if (direction == "LEFT"){
+        if (direction == "LEFT") {
             enemyPosition = arrangeLeft(enemyPosition);
             enemyPosition = moveLeft(enemyPosition);
         }
-        if (direction == "RIGHT"){
+        if (direction == "RIGHT") {
             enemyPosition = arrangeRight(enemyPosition);
             enemyPosition = moveRight(enemyPosition);
         }
@@ -81,7 +82,7 @@ public class EnemyTank extends Tank {
 
     @Override
     public int[][] moveDown(int[][] position) {
-        //int[][] newPosition = arrangeDown(position);
+        position = arrangeDown(position);
         direction = "DOWN";
         if (position[0][0] != GRID_LENGHT - 1) {
             for (int row = 0; row < POSITIONS_LENGTH; row++) {
@@ -93,7 +94,7 @@ public class EnemyTank extends Tank {
 
     @Override
     public int[][] moveLeft(int[][] position) {
-        //int[][] newPosition = arrangeLeft(position);
+        position = arrangeLeft(position);
         direction = "LEFT";
         if (position[0][1] != 0) {
             for (int row = 0; row < POSITIONS_LENGTH; row++) {
@@ -114,10 +115,11 @@ public class EnemyTank extends Tank {
         }
         return newPosition;
     }
+
     @Override
-    public void shoot() {
-       // Missile missil = new Missile(enemyPosition[0][0], enemyPosition[0][1], enemyPosition[1][0], enemyPosition[1][1], direction);
-        //missil.missileDirection();
+    public Element[][] shoot(Element[][] boardElements) {
+        Missile missil = new Missile(enemyPosition[0][0], enemyPosition[0][1], enemyPosition[1][0], enemyPosition[1][1], direction, boardElements);
+        return missil.missileDirection();
     }
 
     /*public int[][] searchTank(int[][] matrix) {

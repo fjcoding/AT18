@@ -38,6 +38,9 @@ public class TankPlayer extends Tank {
             case "d":
                 newPosition = moveRight(newPosition);
                 break;
+            case "x":
+                shoot();
+                break;
             default:
                 newPosition = newPosition;
                 break;
@@ -104,7 +107,7 @@ public class TankPlayer extends Tank {
 
     @Override
     public void shoot() {
-        Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], direction, moveMissileBoard);
+        Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1],"UP", moveMissileBoard);
         missil.missileDirection();
 
     }

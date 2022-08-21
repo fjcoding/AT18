@@ -14,7 +14,6 @@ public class GameBattlecity extends Game {
         int[][] position = tankPlayer.getPosition();
         elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, position);
         showMatrix(board);
-        tankPlayer.shoot();
     }
     public void playGame() {
         Board board = createBoard();

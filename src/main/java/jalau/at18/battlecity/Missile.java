@@ -48,7 +48,7 @@ public class Missile {
             row2 = row2 - 1;
             putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
-            while (row1 > 0) {
+            while (row1 > 0 && row2 > 0) {
                 removeMissilefromBoard(row1, column1, row2, column2);
                 row1 = row1 - 1;
                 row2 = row2 - 1;
@@ -81,12 +81,12 @@ public class Missile {
             column1 = column1 - 1;
             column2 = column2 - 1;
             putMissileOnBoard(row1, column1, row2, column2);
-            //showBoard();
+            showBoard();
             while (column1 > 0 ) {
                 column1 = column1 - 1;
                 column2 = column2 - 1;
                 putMissileOnBoard(row1, column1, row2, column2);
-                //showBoard();
+                showBoard();
             }
         }
         int[][] newPos = {{row1,column1},{row2,column2}};

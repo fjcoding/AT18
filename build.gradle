@@ -278,3 +278,9 @@ task runTeam4Game2048 (dependsOn: 'classes', type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
 }
 
+task runBattleCity (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.battlecity.Main'
+    standardInput=System.in
+    classpath = sourceSets.main.runtimeClasspath
+}
+

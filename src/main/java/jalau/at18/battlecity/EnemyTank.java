@@ -114,11 +114,10 @@ public class EnemyTank extends Tank {
         }
         return newPosition;
     }
-
     @Override
     public void shoot() {
-        Missile missil = new Missile(enemyPosition[0][0], enemyPosition[0][1], enemyPosition[1][0], enemyPosition[1][1], direction);
-        missil.missileDirection();
+       // Missile missil = new Missile(enemyPosition[0][0], enemyPosition[0][1], enemyPosition[1][0], enemyPosition[1][1], direction);
+        //missil.missileDirection();
     }
 
     /*public int[][] searchTank(int[][] matrix) {

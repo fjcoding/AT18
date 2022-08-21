@@ -49,4 +49,8 @@ public class Ship {
     public boolean getIsAlive() {
         return isAlive;
     }
+    public void reStartShip() {
+        posX = POS_X_INITIAL;
+        posY = POS_Y_INITIAL;
+    }
 }

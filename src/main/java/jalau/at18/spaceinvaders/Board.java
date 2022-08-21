@@ -46,7 +46,4 @@ public class Board {
     public int getMaxSize() {
         return MAX_SIZE;
     }
-    public void reStart() {
-        initialize();
-    }
 }

@@ -43,24 +43,24 @@ public class Missile {
     }
 
     public int[][] moveMissileUp() {
-        if(row1 != 0){
+        if (row1 != 0) {
             row1 = row1 - 1;
             row2 = row2 - 1;
             putMissileOnBoard(row1, column1, row2, column2);
-            //showBoard();
-            while (row1 > 0 && row2 > 0) {
+            showBoard();
+            while (row1 > 0) {
                 removeMissilefromBoard(row1, column1, row2, column2);
                 row1 = row1 - 1;
                 row2 = row2 - 1;
                 putMissileOnBoard(row1, column1, row2, column2);
-            //showBoard();
+                showBoard();
+            }
         }
-    }
-        int[][] newPos = {{row1,column1},{row2,column2}};
+        int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
     public int[][] moveMissileDown() {
-        if (row1 != BOARD_DIMENSION){
+        if (row1 != BOARD_DIMENSION) {
             row1 = row1 + 1;
             row2 = row2 + 1;
             putMissileOnBoard(row1, column1, row2, column2);
@@ -73,23 +73,23 @@ public class Missile {
                 //showBoard();
             }
         }
-        int[][] newPos = {{row1,column1},{row2,column2}};
+        int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
     public int[][] moveMissileLeft() {
-        if (column1 != 0){
+        if (column1 != 0) {
             column1 = column1 - 1;
             column2 = column2 - 1;
             putMissileOnBoard(row1, column1, row2, column2);
-            showBoard();
-            while (column1 > 0 ) {
+            //showBoard();
+            while (column1 > 0) {
                 column1 = column1 - 1;
                 column2 = column2 - 1;
                 putMissileOnBoard(row1, column1, row2, column2);
-                showBoard();
+                //showBoard();
             }
         }
-        int[][] newPos = {{row1,column1},{row2,column2}};
+        int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
     public int[][] shootMissileRight() {
@@ -104,7 +104,7 @@ public class Missile {
             putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
         }
-        int[][] newPos = {{row1,column1},{row2,column2}};
+        int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
     public void showBoard() {

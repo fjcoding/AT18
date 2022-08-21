@@ -7,6 +7,7 @@ public class TankPlayer extends Tank {
     public static final int SIZE_ROW_POSITION = 4;
     public static final int SIZE_MAX_BOARD = 26;
     private int[][] newPosition = new int[SIZE_ROW_POSITION][2];
+    private Element[][] moveMissileBoard;
 
     public TankPlayer() {
         this.newPosition = INITIAL_POSITION;
@@ -15,6 +16,7 @@ public class TankPlayer extends Tank {
     public Element[][] putTankOnBoard(Element[][] matrix, int[][] position) {
         TankTop tankTop = new TankTop();
         TankBack backTop = new TankBack();
+        moveMissileBoard = matrix;
         matrix[position[0][0]][position[0][1]] = tankTop;
         matrix[position[1][0]][position[1][1]] = tankTop;
         matrix[position[2][0]][position[2][1]] = backTop;
@@ -35,6 +37,9 @@ public class TankPlayer extends Tank {
                 break;
             case "d":
                 newPosition = moveRight(newPosition);
+                break;
+            case "x":
+                shoot();
                 break;
             default:
                 newPosition = newPosition;
@@ -102,7 +107,8 @@ public class TankPlayer extends Tank {
 
     @Override
     public void shoot() {
-        Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], direction);
+        Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], "UP", moveMissileBoard);
         missil.missileDirection();
+
     }
 }

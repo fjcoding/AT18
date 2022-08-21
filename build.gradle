@@ -40,6 +40,11 @@ jacocoTestReport {
 test.finalizedBy("checkstyleMain")
 test.finalizedBy("jacocoTestReport")
 
+task runBattleCity (dependsOn: 'classes', type: JavaExec) {
+    main = 'jalau.at18.battlecity.Main'
+    standardInput=System.in
+    classpath = sourceSets.main.runtimeClasspath
+}
 task runhighestlowestSergio (dependsOn: 'classes', type: JavaExec) {
     main = 'jalau.at18.katas.highestlowest.sergio.Main'
     classpath = sourceSets.main.runtimeClasspath

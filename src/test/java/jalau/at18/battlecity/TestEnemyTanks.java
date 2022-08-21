@@ -8,7 +8,7 @@ public class TestEnemyTanks {
     @Test
     public void functionShouldGiveInitialPosition() {
         EnemyTank enemyTank1 = new EnemyTank(20);
-        int[][] expected1 = {{1, 14}, {1, 13}, {0, 14}, {0, 13}};
+        int[][] expected1 = {{1, 13}, {1, 12}, {0, 13}, {0, 12}};
         assertEquals(expected1, enemyTank1.initialPosition());
         EnemyTank enemyTank2 = new EnemyTank(19);
         int[][] expected2 = {{1, 25}, {1, 24}, {0, 25}, {0, 24}};

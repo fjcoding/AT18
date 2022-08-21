@@ -13,17 +13,6 @@ public class TankPlayer extends Tank {
         this.newPosition = INITIAL_POSITION;
     }
 
-    public Element[][] putTankOnBoard(Element[][] matrix, int[][] position) {
-        TankTop tankTop = new TankTop();
-        TankBack backTop = new TankBack();
-        moveMissileBoard = matrix;
-        matrix[position[0][0]][position[0][1]] = tankTop;
-        matrix[position[1][0]][position[1][1]] = tankTop;
-        matrix[position[2][0]][position[2][1]] = backTop;
-        matrix[position[SIZE_ROW_POSITION - 1][0]][position[SIZE_ROW_POSITION - 1][1]] = backTop;
-
-        return matrix;
-    }
     public int[][] movements(String input) {
         switch (input) {
             case "w":
@@ -39,7 +28,7 @@ public class TankPlayer extends Tank {
                 newPosition = moveRight(newPosition);
                 break;
             case "x":
-                shoot();
+                shoot(moveMissileBoard);
                 break;
             default:
                 newPosition = newPosition;
@@ -48,6 +37,7 @@ public class TankPlayer extends Tank {
         return newPosition;
 
     }
+
     @Override
     public int[][] initialPosition() {
         return newPosition;
@@ -106,9 +96,8 @@ public class TankPlayer extends Tank {
     }
 
     @Override
-    public void shoot() {
-        Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], "UP", moveMissileBoard);
-        missil.missileDirection();
-
+    public Element[][] shoot(Element[][] board) {
+        Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], "UP", board);
+        return  missil.missileDirection();
     }
 }

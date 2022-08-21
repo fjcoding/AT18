@@ -36,8 +36,14 @@ public class GameBattlecity extends Game {
 
     }
     public void moveEnemy() {
-        for (int movementCount = 0; movementCount < 10; movementCount++) {
+        for (int movementCount = 0; movementCount < 15; movementCount++) {
             Element[][] elementsMatrix = board.getMatrix();
+            cleanPosition(elementsMatrix, enemyTank.getPosition());
+            printPosition(enemyTank.getPosition());
+            while (isTankCrash(enemyTank, elementsMatrix)) {
+                enemyTank.setDirection(); 
+                System.out.println(enemyTank.getDirection());
+            }
             enemyTank.goStraight();
             System.out.println(enemyTank.getDirection());
             elementsMatrix = enemyTank.putTankOnBoard(elementsMatrix, enemyTank.getPosition());
@@ -63,11 +69,68 @@ public class GameBattlecity extends Game {
         }
 
     }
+    public void cleanPosition(Element[][] elementsMatrix, int[][] position) {
+        Empty empty = new Empty();
+        elementsMatrix[position[0][0]][position[0][1]] = empty;
+        elementsMatrix[position[1][0]][position[1][1]] = empty;
+        elementsMatrix[position[2][0]][position[2][1]] = empty;
+        elementsMatrix[position[3][0]][position[3][1]] = empty;
+    }
     public static void wait(int seconds){
         try {
             Thread.sleep(seconds * 1000);
          } catch (Exception e) {
             System.out.println(e);
          }
+    }
+    public Boolean isTankCrash(EnemyTank tank, Element[][] boardMatrix){
+        Boolean isTankCrash = false;
+        int[][] position = tank.getPosition();
+        if (tank.getDirection() == "UP"){
+            if (position[0][0] != 0) {
+                if (boardMatrix[position[0][0]-1][position[0][1]].isBlockTank() || boardMatrix[position[1][0]-1][position[1][1]].isBlockTank()) {
+                    isTankCrash = true;
+                }
+            } else {
+                isTankCrash = true;
+            }
+        }
+        if (tank.getDirection() == "DOWN"){
+            if (position[0][0] != 25) {
+                if (boardMatrix[position[0][0]+1][position[0][1]].isBlockTank() || boardMatrix[position[1][0]+1][position[1][1]].isBlockTank()) {
+                    isTankCrash = true;
+                }
+            } else {
+                isTankCrash = true;
+            }
+        }
+        if (tank.getDirection() == "LEFT"){
+            if (position[0][1] != 0) {
+                if (boardMatrix[position[0][0]][position[0][1]-1].isBlockTank() || boardMatrix[position[1][0]][position[1][1]-1].isBlockTank()) {
+                    isTankCrash = true;
+                } else {
+                    isTankCrash = true;
+                }
+            }
+        }
+        if (tank.getDirection() == "RIGHT"){
+            if (position[1][1] != 25) {
+                if (boardMatrix[position[0][0]][position[0][1]+1].isBlockTank() || boardMatrix[position[1][0]][position[1][1]+1].isBlockTank()) {
+                    isTankCrash = true;
+                }
+            } else {
+                isTankCrash = true;
+            }
+        }
+        return isTankCrash;
+    }
+
+    public void printPosition(int[][] pos) {
+        for (int i = 0; i<4; i++) {
+            for (int j = 0; j <2; j++){
+                System.out.print(pos[i][j] + ", ");
+            }
+        }
+        System.out.println(")");
     }
 }

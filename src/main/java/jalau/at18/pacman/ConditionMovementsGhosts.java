@@ -12,18 +12,23 @@ public class ConditionMovementsGhosts {
         return this.letter;
     }
 
-    public void movement(char letter, String[][] array) {
+    public String[][] movement(char letter, String[][] array) {
         if (letter == 'w') {
-            movement.moveUpGhost(array);
+            String[][] arr = movement.moveUpGhost(array);
+            return arr;
         }
         if (letter == 's') {
-            movement.moveDownGhost(array);
+            String[][] arr = movement.moveDownGhost(array);
+            return arr;
         }
         if (letter == 'a') {
-            movement.moveLeftGhost(array);
+            String[][] arr = movement.moveLeftGhost(array);
+            return arr;
         }
         if (letter == 'd') {
-            movement.moveRightGhost(array);
+            String[][] arr = movement.moveRightGhost(array);
+            return arr;
         }
+        return array;
     }
 }

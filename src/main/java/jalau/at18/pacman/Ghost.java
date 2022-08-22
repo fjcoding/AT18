@@ -53,9 +53,10 @@ public class Ghost {
         }
     }
 
-    public void ghostMovement(String[][] array) {
+    public String[][] ghostMovement(String[][] array) {
         random = (int) (Math.random() * 4);
-        movements.movement(ghostMovements[random], array);
+        String[][] arr_ghost = movements.movement(ghostMovements[random], array);
+        return arr_ghost;
     }
 
 }

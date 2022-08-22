@@ -4,6 +4,7 @@ public class Game {
     private Ship ship;
     private Board board;
     private AliensList aliensList;
+    private Bullet bullet;
     private static final int DELAY = 600;
     private static final int LIMIT_ALIEN_DOWN = 8;
     private static final int SIZE_BOARD = 9;
@@ -15,6 +16,7 @@ public class Game {
         board = new Board();
         ship = new Ship();
         aliensList = new AliensList(board);
+        bullet = new Bullet(board);
     }
     public void move() throws InterruptedException {
         int cont = 0;
@@ -39,8 +41,12 @@ public class Game {
                         board.setElement(ship.getPosY(), ship.getPosX(), '^');
                         board.setElement(ship.getPosY(), ship.getPosX() - 1, '*');
                     } else if (event.getKeyCode() == KeyEvent.VK_SPACE) {
-
+                        bullet.setStatusBullet();
                         System.out.println("fire");
+                        bullet.createBullet(ship.getPosX());
+
+
+                    } else if (event.getKeyCode() == KeyEvent.VK_UP) {
                         ship.setIsDead();
                         ship.subtrasctLifes();
                         board.setElement(ship.getPosY(), ship.getPosX(), '*');
@@ -51,8 +57,17 @@ public class Game {
                 }
                 System.out.println(board.toString());
                 System.out.println("Lifes: " + ship.getLifes());
+                if (bullet.getPosY() >= 0 && bullet.getStatusBullet()) {
+                    bullet.moveUp();
+                } else if (bullet.getStatusBullet()) {
+                    bullet.destroyBullet();
+                    bullet.resetBullet();
+                    board.setElement(0, bullet.getPosX(), '*');
+                }
+
                 cont++;
                 Thread.sleep(DELAY);
+                //bullet.moveUp(ship.getPosX());
 
             }
             Thread.sleep(DELAY);

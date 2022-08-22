@@ -160,19 +160,6 @@ public class Board {
         }
 
         public static void position(String arr[][], int n, int m) {
-                /*
-                 * if (arr[n][m] == arr[1][27]) {
-                 * a1=1;
-                 * } else if (arr[n][m] == arr[5][6]) {
-                 * a2 = 1;
-                 * } else if (arr[n][m] == arr[17][13]) {
-                 * a3 = 1;
-                 * } else if (arr[n][m] == arr[23][1]) {
-                 * a4 = 1;
-                 * } else if (arr[n][m] == arr[23][27]) {
-                 * a5 = 1;
-                 * }
-                 */
                 if (arr[n][m] == arr[5][3]) {
                         a1 = 1;
                 } else if (arr[n][m] == arr[5][6]) {

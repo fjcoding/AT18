@@ -2,7 +2,7 @@ package jalau.at18.pacman;
 
 public class ConditionMovementsGhosts {
     private char letter;
-    MovementsPacman movement = new MovementsPacman();
+    private static final MovementsPacman MOVEMENT = new MovementsPacman();
 
     public void setLetter(char letter) {
         this.letter = letter;
@@ -14,16 +14,16 @@ public class ConditionMovementsGhosts {
 
     public void movement(char letter, String[][] array) {
         if (letter == 'w') {
-            movement.moveUpGhost(array);
+            MOVEMENT.moveUpGhost(array);
         }
         if (letter == 's') {
-            movement.moveDownGhost(array);
+            MOVEMENT.moveDownGhost(array);
         }
         if (letter == 'a') {
-            movement.moveLeftGhost(array);
+            MOVEMENT.moveLeftGhost(array);
         }
         if (letter == 'd') {
-            movement.moveRightGhost(array);
+            MOVEMENT.moveRightGhost(array);
         }
     }
 }

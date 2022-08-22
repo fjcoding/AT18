@@ -33,15 +33,23 @@ public class Alien {
             posX[row] -= 1;
         }
     }
+    public void alienDown() {
+        for (int column = 0; column < COLUMN_ALIENS; column++) {
+            posY[column] += 1;
+        }
+    }
+
     public void alienRigth() {
         for (int row = 0; row < ROW_ALIENS; row++) {
             posX[row] += 1;
         }
     }
 
-    public void alienDown() {
-        for (int column = 0; column < COLUMN_ALIENS; column++) {
-            posY[column] += 1;
+    /*public String toString() {
+        String res = "";
+        for (int i = 0; i < POS_X_INITIAL.length; i++) {
+            res += posX[i] + " ";
         }
-    }
+        return res;
+    }*/
 }

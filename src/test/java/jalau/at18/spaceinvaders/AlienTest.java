@@ -24,18 +24,28 @@ public class AlienTest {
 
     @Test
     public void shouldAlienMoveRight(){
-        Alien aliens = new Alien();
+        Alien alien = new Alien();
         final int[] expecteds = {1, 2, 3, 4};
-        aliens.alienRigth();
-        assertArrayEquals(expecteds, aliens.getPosX());
+        alien.alienRigth();
+        assertArrayEquals(expecteds, alien.getPosX());
     }
 
-    /*@Test
+    @Test
     public void shouldAlienMoveLeft(){
-        Aliens aliens = new Aliens();
-        final int[] expecteds = {-1, 0, 1, 2};
-        aliens.alienLeft();
-        assertArrayEquals(expecteds, aliens.getPosX());
-    }*/
+        Alien alien = new Alien();
+        final int[] expecteds = {5, 6, 7, 8};
+        final int[] input = {6, 7, 8, 9};
+        alien.setPosX(input);
+        alien.alienLeft();
+        assertArrayEquals(expecteds, alien.getPosX());
+    }
+
+    @Test
+    public void shouldAlienMoveDown(){
+        Alien alien = new Alien();
+        final int[] expecteds = {1, 2};
+        alien.alienDown();
+        assertArrayEquals(expecteds, alien.getPosY());
+    }
 
 }

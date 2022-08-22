@@ -4,10 +4,25 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class MovementsPacmanTest {
-    public static int X_BORDER = 25;
-    public static int Y_BORDER = 29;
-    public static int count_points_old = 0;
-    public static int count_points_new = 0;
+    private static final int FIRSTLIMIT = 277;
+    private static final int SECONDLIMIT = 278;
+    private static final int THIRDLIMIT = 279;
+    private static final int FOURTHLIMIT = 280;
+    private static final int FIFTHLIMIT = 281;
+    private static final int SIXTHLIMIT = 282;
+    private static final int SEVENTHLIMIT = 283;
+    private static final int EIGHTTHLIMIT = 284;
+    private static final int FIVE = 5;
+    private static final int SIX = 6;
+    private static final int SEVEN = 7;
+    private static final int EIGHT = 8;
+    private static final int NINE = 9;
+    private static final int TEN = 10;
+    private static final int FIFTY = 50;
+    private static int xBORDER = 25;
+    private static int yBORDER = 29;
+    private static int countPointsOld = 0;
+    private static int countPointsNew = 0;
     Board board = new Board();
     MovementsPacman movements = new MovementsPacman();
     MovementsPacman point = new MovementsPacman();
@@ -23,33 +38,33 @@ public class MovementsPacmanTest {
         String[][] move_arr = movements.moveDown();
         board.setGameBoard(move_arr);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < X_BORDER; rows++) {
-            for (int colums = 0; colums < Y_BORDER; colums++) {
+        for (int rows = 0; rows < xBORDER; rows++) {
+            for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
-                    count_points_old++;
+                    countPointsOld++;
                 }
                 if (new_arr[rows][colums] == "·") {
-                    count_points_new++;
+                    countPointsOld++;
                 }
             }
         }
-        if (count_points_new == 279) {
-            assertEquals(count_points_old - 10, count_points_new);
+        if (countPointsNew == THIRDLIMIT) {
+            assertEquals(countPointsOld - TEN, countPointsNew);
         }
-        if (count_points_new == 280) {
-            assertEquals(count_points_old - 9, count_points_new);
+        if (countPointsNew == FOURTHLIMIT) {
+            assertEquals(countPointsOld - NINE, countPointsNew);
         }
-        if (count_points_new == 281) {
-            assertEquals(count_points_old - 8, count_points_new);
+        if (countPointsNew == FIFTHLIMIT) {
+            assertEquals(countPointsOld - EIGHT, countPointsNew);
         }
-        if (count_points_new == 282) {
-            assertEquals(count_points_old - 7, count_points_new);
+        if (countPointsNew == SIXTHLIMIT) {
+            assertEquals(countPointsOld - SEVEN, countPointsNew);
         }
-        if (count_points_new == 283) {
-            assertEquals(count_points_old - 6, count_points_new);
+        if (countPointsNew == SEVENTHLIMIT) {
+            assertEquals(countPointsOld - SIX, countPointsNew);
         }
-        if (count_points_new == 284) {
-            assertEquals(count_points_old - 5, count_points_new);
+        if (countPointsNew == EIGHTTHLIMIT) {
+            assertEquals(countPointsOld - FIVE, countPointsNew);
         }
     }
 
@@ -60,33 +75,33 @@ public class MovementsPacmanTest {
         String[][] move_ghost = movements.moveDownGhost(arr);
         board.setGameBoard(move_ghost);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < X_BORDER; rows++) {
-            for (int colums = 0; colums < Y_BORDER; colums++) {
+        for (int rows = 0; rows < xBORDER; rows++) {
+            for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
-                    count_points_old++;
+                    countPointsOld++;
                 }
                 if (new_arr[rows][colums] == "·") {
-                    count_points_new++;
+                    countPointsNew++;
                 }
             }
         }
-        if (count_points_new == 277) {
-            assertEquals(count_points_old - 10, count_points_new);
+        if (countPointsNew == FIRSTLIMIT) {
+            assertEquals(countPointsOld - TEN, countPointsNew);
         }
-        if (count_points_new == 278) {
-            assertEquals(count_points_old - 9, count_points_new);
+        if (countPointsNew == SECONDLIMIT) {
+            assertEquals(countPointsOld - NINE, countPointsNew);
         }
-        if (count_points_new == 279) {
-            assertEquals(count_points_old - 8, count_points_new);
+        if (countPointsNew == THIRDLIMIT) {
+            assertEquals(countPointsOld - EIGHT, countPointsNew);
         }
-        if (count_points_new == 280) {
-            assertEquals(count_points_old - 7, count_points_new);
+        if (countPointsNew == FOURTHLIMIT) {
+            assertEquals(countPointsOld - SEVEN, countPointsNew);
         }
-        if (count_points_new == 281) {
-            assertEquals(count_points_old - 6, count_points_new);
+        if (countPointsNew == FIFTHLIMIT) {
+            assertEquals(countPointsOld - SIX, countPointsNew);
         }
-        if (count_points_new == 282) {
-            assertEquals(count_points_old - 5, count_points_new);
+        if (countPointsNew == SIXTHLIMIT) {
+            assertEquals(countPointsOld - FIVE, countPointsNew);
         }
     }
 
@@ -96,33 +111,33 @@ public class MovementsPacmanTest {
         String[][] move_arr = movements.moveLeft();
         board.setGameBoard(move_arr);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < X_BORDER; rows++) {
-            for (int colums = 0; colums < Y_BORDER; colums++) {
+        for (int rows = 0; rows < xBORDER; rows++) {
+            for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
-                    count_points_old++;
+                    countPointsOld++;
                 }
                 if (new_arr[rows][colums] == "·") {
-                    count_points_new++;
+                    countPointsNew++;
                 }
             }
         }
-        if (count_points_new == 279) {
-            assertEquals(count_points_old - 10, count_points_new);
+        if (countPointsNew == THIRDLIMIT) {
+            assertEquals(countPointsOld - TEN, countPointsNew);
         }
-        if (count_points_new == 280) {
-            assertEquals(count_points_old - 9, count_points_new);
+        if (countPointsNew == FOURTHLIMIT) {
+            assertEquals(countPointsOld - NINE, countPointsNew);
         }
-        if (count_points_new == 281) {
-            assertEquals(count_points_old - 8, count_points_new);
+        if (countPointsNew == FIFTHLIMIT) {
+            assertEquals(countPointsOld - EIGHT, countPointsNew);
         }
-        if (count_points_new == 282) {
-            assertEquals(count_points_old - 7, count_points_new);
+        if (countPointsNew == SIXTHLIMIT) {
+            assertEquals(countPointsOld - SEVEN, countPointsNew);
         }
-        if (count_points_new == 283) {
-            assertEquals(count_points_old - 6, count_points_new);
+        if (countPointsNew == SEVENTHLIMIT) {
+            assertEquals(countPointsOld - SIX, countPointsNew);
         }
-        if (count_points_new == 284) {
-            assertEquals(count_points_old - 5, count_points_new);
+        if (countPointsNew == EIGHTTHLIMIT) {
+            assertEquals(countPointsOld - FIVE, countPointsNew);
         }
     }
 
@@ -133,33 +148,33 @@ public class MovementsPacmanTest {
         String[][] move_ghost = movements.moveLeftGhost(arr);
         board.setGameBoard(move_ghost);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < X_BORDER; rows++) {
-            for (int colums = 0; colums < Y_BORDER; colums++) {
+        for (int rows = 0; rows < yBORDER; rows++) {
+            for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
-                    count_points_old++;
+                    countPointsOld++;
                 }
                 if (new_arr[rows][colums] == "·") {
-                    count_points_new++;
+                    countPointsNew++;
                 }
             }
         }
-        if (count_points_new == 277) {
-            assertEquals(count_points_old - 10, count_points_new);
+        if (countPointsNew == FIRSTLIMIT) {
+            assertEquals(countPointsOld - TEN, countPointsNew);
         }
-        if (count_points_new == 278) {
-            assertEquals(count_points_old - 9, count_points_new);
+        if (countPointsNew == SECONDLIMIT) {
+            assertEquals(countPointsOld - NINE, countPointsNew);
         }
-        if (count_points_new == 279) {
-            assertEquals(count_points_old - 8, count_points_new);
+        if (countPointsNew == THIRDLIMIT) {
+            assertEquals(countPointsOld - EIGHT, countPointsNew);
         }
-        if (count_points_new == 280) {
-            assertEquals(count_points_old - 7, count_points_new);
+        if (countPointsNew == FOURTHLIMIT) {
+            assertEquals(countPointsOld - SEVEN, countPointsNew);
         }
-        if (count_points_new == 281) {
-            assertEquals(count_points_old - 6, count_points_new);
+        if (countPointsNew == FIFTHLIMIT) {
+            assertEquals(countPointsOld - SIX, countPointsNew);
         }
-        if (count_points_new == 282) {
-            assertEquals(count_points_old - 5, count_points_new);
+        if (countPointsNew == SIXTHLIMIT) {
+            assertEquals(countPointsOld - FIVE, countPointsNew);
         }
     }
 
@@ -169,33 +184,33 @@ public class MovementsPacmanTest {
         String[][] move_arr = movements.moveRight();
         board.setGameBoard(move_arr);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < X_BORDER; rows++) {
-            for (int colums = 0; colums < Y_BORDER; colums++) {
+        for (int rows = 0; rows < xBORDER; rows++) {
+            for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
-                    count_points_old++;
+                    countPointsOld++;
                 }
                 if (new_arr[rows][colums] == "·") {
-                    count_points_new++;
+                    countPointsNew++;
                 }
             }
         }
-        if (count_points_new == 279) {
-            assertEquals(count_points_old - 10, count_points_new);
+        if (countPointsNew == THIRDLIMIT) {
+            assertEquals(countPointsOld - TEN, countPointsNew);
         }
-        if (count_points_new == 280) {
-            assertEquals(count_points_old - 9, count_points_new);
+        if (countPointsNew == FOURTHLIMIT) {
+            assertEquals(countPointsOld - NINE, countPointsNew);
         }
-        if (count_points_new == 281) {
-            assertEquals(count_points_old - 8, count_points_new);
+        if (countPointsNew == FIFTHLIMIT) {
+            assertEquals(countPointsOld - EIGHT, countPointsNew);
         }
-        if (count_points_new == 282) {
-            assertEquals(count_points_old - 7, count_points_new);
+        if (countPointsNew == SIXTHLIMIT) {
+            assertEquals(countPointsOld - SEVEN, countPointsNew);
         }
-        if (count_points_new == 283) {
-            assertEquals(count_points_old - 6, count_points_new);
+        if (countPointsNew == SEVENTHLIMIT) {
+            assertEquals(countPointsOld - SIX, countPointsNew);
         }
-        if (count_points_new == 284) {
-            assertEquals(count_points_old - 5, count_points_new);
+        if (countPointsNew == EIGHTTHLIMIT) {
+            assertEquals(countPointsOld - FIVE, countPointsNew);
         }
     }
 
@@ -206,33 +221,33 @@ public class MovementsPacmanTest {
         String[][] move_ghost = movements.moveRightGhost(arr);
         board.setGameBoard(move_ghost);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < X_BORDER; rows++) {
-            for (int colums = 0; colums < Y_BORDER; colums++) {
+        for (int rows = 0; rows < xBORDER; rows++) {
+            for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
-                    count_points_old++;
+                    countPointsOld++;
                 }
                 if (new_arr[rows][colums] == "·") {
-                    count_points_new++;
+                    countPointsNew++;
                 }
             }
         }
-        if (count_points_new == 277) {
-            assertEquals(count_points_old - 10, count_points_new);
+        if (countPointsNew == FIRSTLIMIT) {
+            assertEquals(countPointsOld - TEN, countPointsNew);
         }
-        if (count_points_new == 278) {
-            assertEquals(count_points_old - 9, count_points_new);
+        if (countPointsNew == SECONDLIMIT) {
+            assertEquals(countPointsOld - NINE, countPointsNew);
         }
-        if (count_points_new == 279) {
-            assertEquals(count_points_old - 8, count_points_new);
+        if (countPointsNew == THIRDLIMIT) {
+            assertEquals(countPointsOld - EIGHT, countPointsNew);
         }
-        if (count_points_new == 280) {
-            assertEquals(count_points_old - 7, count_points_new);
+        if (countPointsNew == FOURTHLIMIT) {
+            assertEquals(countPointsOld - SEVEN, countPointsNew);
         }
-        if (count_points_new == 281) {
-            assertEquals(count_points_old - 6, count_points_new);
+        if (countPointsNew == FIFTHLIMIT) {
+            assertEquals(countPointsOld - SIX, countPointsNew);
         }
-        if (count_points_new == 282) {
-            assertEquals(count_points_old - 5, count_points_new);
+        if (countPointsNew == SIXTHLIMIT) {
+            assertEquals(countPointsOld - FIVE, countPointsNew);
         }
     }
 
@@ -242,33 +257,33 @@ public class MovementsPacmanTest {
         String[][] move_arr = movements.moveUp();
         board.setGameBoard(move_arr);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < X_BORDER; rows++) {
-            for (int colums = 0; colums < Y_BORDER; colums++) {
+        for (int rows = 0; rows < xBORDER; rows++) {
+            for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
-                    count_points_old++;
+                    countPointsOld++;
                 }
                 if (new_arr[rows][colums] == "·") {
-                    count_points_new++;
+                    countPointsNew++;
                 }
             }
         }
-        if (count_points_new == 279) {
-            assertEquals(count_points_old - 10, count_points_new);
+        if (countPointsNew == THIRDLIMIT) {
+            assertEquals(countPointsOld - TEN, countPointsNew);
         }
-        if (count_points_new == 280) {
-            assertEquals(count_points_old - 9, count_points_new);
+        if (countPointsNew == FOURTHLIMIT) {
+            assertEquals(countPointsOld - NINE, countPointsNew);
         }
-        if (count_points_new == 281) {
-            assertEquals(count_points_old - 8, count_points_new);
+        if (countPointsNew == FIFTHLIMIT) {
+            assertEquals(countPointsOld - EIGHT, countPointsNew);
         }
-        if (count_points_new == 282) {
-            assertEquals(count_points_old - 7, count_points_new);
+        if (countPointsNew == SIXTHLIMIT) {
+            assertEquals(countPointsOld - SEVEN, countPointsNew);
         }
-        if (count_points_new == 283) {
-            assertEquals(count_points_old - 6, count_points_new);
+        if (countPointsNew == SEVENTHLIMIT) {
+            assertEquals(countPointsOld - SIX, countPointsNew);
         }
-        if (count_points_new == 284) {
-            assertEquals(count_points_old - 5, count_points_new);
+        if (countPointsNew == EIGHTTHLIMIT) {
+            assertEquals(countPointsOld - FIVE, countPointsNew);
         }
     }
 
@@ -279,33 +294,33 @@ public class MovementsPacmanTest {
         String[][] move_ghost = movements.moveUpGhost(arr);
         board.setGameBoard(move_ghost);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < X_BORDER; rows++) {
-            for (int colums = 0; colums < Y_BORDER; colums++) {
+        for (int rows = 0; rows < xBORDER; rows++) {
+            for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
-                    count_points_old++;
+                    countPointsOld++;
                 }
                 if (new_arr[rows][colums] == "·") {
-                    count_points_new++;
+                    countPointsNew++;
                 }
             }
         }
-        if (count_points_new == 277) {
-            assertEquals(count_points_old - 10, count_points_new);
+        if (countPointsNew == FIRSTLIMIT) {
+            assertEquals(countPointsOld - TEN, countPointsNew);
         }
-        if (count_points_new == 278) {
-            assertEquals(count_points_old - 9, count_points_new);
+        if (countPointsNew == SECONDLIMIT) {
+            assertEquals(countPointsOld - NINE, countPointsNew);
         }
-        if (count_points_new == 279) {
-            assertEquals(count_points_old - 8, count_points_new);
+        if (countPointsNew == THIRDLIMIT) {
+            assertEquals(countPointsOld - EIGHT, countPointsNew);
         }
-        if (count_points_new == 280) {
-            assertEquals(count_points_old - 7, count_points_new);
+        if (countPointsNew == FOURTHLIMIT) {
+            assertEquals(countPointsOld - SEVEN, countPointsNew);
         }
-        if (count_points_new == 281) {
-            assertEquals(count_points_old - 6, count_points_new);
+        if (countPointsNew == FIFTHLIMIT) {
+            assertEquals(countPointsOld - SIX, countPointsNew);
         }
-        if (count_points_new == 282) {
-            assertEquals(count_points_old - 5, count_points_new);
+        if (countPointsNew == SIXTHLIMIT) {
+            assertEquals(countPointsOld - FIVE, countPointsNew);
         }
     }
 
@@ -315,6 +330,6 @@ public class MovementsPacmanTest {
         String[][] move_arr = movements.moveRight();
         board.setGameBoard(move_arr);
         int points = point.showScore();
-        assertEquals(50, points);
+        assertEquals(FIFTY, points);
     }
 }

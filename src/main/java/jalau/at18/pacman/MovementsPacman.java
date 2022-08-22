@@ -1,6 +1,9 @@
 package jalau.at18.pacman;
 
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Random;
 
 public class MovementsPacman {
     private static int row = 1;
@@ -8,6 +11,8 @@ public class MovementsPacman {
     private static int rowGhost = 8;
     private static int columnGhost = 15;
     private static final int TIME = 200;
+    public static int contTimeToShowFruits = 0;
+    public static int score = 0;
     Board board = new Board();
     private String[][] arr = board.getGameBoard();
 
@@ -15,18 +20,35 @@ public class MovementsPacman {
         try {
             while (arr[row][column + 1] != "▒") {
                 column++;
+                board.position(arr, row, column);
+                timefruits(arr, row, column);
                 if (arr[row][column] == "·") {
                     arr[row][column - 1] = " ";
-                    // score += 10;
+                    score += 10;
+                }
+                if (arr[row][column] == "\033[34mO\u001B[0m") {
+                    arr[row][column - 1] = " ";
+                    score = score + 50;
+
+                } else if (arr[row][column] == "\033[35mX\u001B[0m")// X
+                {
+                    arr[row][column - 1] = " ";
+                    score = score + 100;
+                } else if (arr[row][column] == "\033[32mM\u001B[0m")// arr[n][m]=="M")
+                {
+                    arr[row][column - 1] = " ";
+                    score = score + 300;
                 } else {
                     arr[row][column - 1] = " ";
-                    // score = score + 0;
+                    score = score + 0;
                 }
-                arr[row][column] = "C";
+                arr[row][column] = "\033[33mC\u001B[0m";
+                // arr[row][column] = "C";
                 Thread.sleep(TIME);
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
-                board.showBoard(arr);
+                board.showBoard(arr, row, column);
+                contTimeToShowFruits += 1;
                 if ((arr[row + 1][column] == "·" || arr[row - 1][column] == "·") && arr[row][column - 1] != "▒") {
                     break;
                 }
@@ -39,7 +61,8 @@ public class MovementsPacman {
                     arr[row][column - 28] = " ";
                 } else if (column == 28) {
                     column = 0;
-                    arr[row][column] = "C";
+                    // arr[row][column] = "C";
+                    arr[row][column] = "\033[33mC\u001B[0m";
                     arr[row][column + 28] = " ";
                 }
             }
@@ -53,19 +76,33 @@ public class MovementsPacman {
         try {
             while (arr[row + 1][column] != "▒") {
                 row++;
+                board.position(arr, row, column);
+                timefruits(arr, row, column);
                 if (arr[row][column] == "·") {
                     arr[row - 1][column] = " ";
-                    // score += 10;
+                    score += 10;
+                }
+                if (arr[row][column] == "\033[34mO\u001B[0m")// arr[n][m] == "O")
+                {
+                    arr[row - 1][column] = " ";
+                    score = score + 50;
+                } else if (arr[row][column] == "\033[35mX\u001B[0m") {
+                    arr[row - 1][column] = " ";
+                    score = score + 100;
+                } else if (arr[row][column] == "\033[32mM\u001B[0m") {
+                    arr[row - 1][column] = " ";
+                    score = score + 300;
                 } else {
                     arr[row - 1][column] = " ";
-                    // score = score + 0;
+                    score = score + 0;
                 }
-
-                arr[row][column] = "C";
+                arr[row][column] = "\033[33mC\u001B[0m";
+                // arr[row][column] = "C";
                 Thread.sleep(TIME);
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
-                board.showBoard(arr);
+                board.showBoard(arr, row, column);
+                contTimeToShowFruits += 1;
                 if ((arr[row][column + 1] == "·" || arr[row][column - 1] == "·") && arr[row - 1][column] != "▒") {
                     break;
                 }
@@ -84,20 +121,35 @@ public class MovementsPacman {
         try {
             while (arr[row][column - 1] != "▒") {
                 column--;
+                board.position(arr, row, column);
+                timefruits(arr, row, column);
                 if (arr[row][column] == "·") {
                     arr[row][column + 1] = " ";
-                    // score += 10;
+                    score += 10;
+                }
+                if (arr[row][column] == "\033[34mO\u001B[0m")// (arr[n - 1][m]=="")
+                {
+                    arr[row][column + 1] = " ";
+                    score = score + 50;
+                } else if (arr[row][column] == "\033[35mX\u001B[0m") {
+                    arr[row][column + 1] = " ";
+                    score = score + 100;
+                } else if (arr[row][column] == "\033[32mM\u001B[0m") {
+                    arr[row][column + 1] = " ";
+                    score = score + 300;
                 } else {
                     arr[row][column + 1] = " ";
-                    // score = score + 0;
+                    score = score + 0;
                 }
-                arr[row][column] = "C";
+                arr[row][column] = "\033[33mC\u001B[0m";
+                // arr[row][column] = "C";
                 Thread.sleep(TIME);
 
                 System.out.print("\033[H\033[2J");
 
                 System.out.flush();
-                board.showBoard(arr);
+                board.showBoard(arr, row, column);
+                contTimeToShowFruits += 1;
                 if ((arr[row + 1][column] == "·" || arr[row - 1][column] == "·") && arr[row][column + 1] != "▒") {
                     break;
                 }
@@ -106,11 +158,13 @@ public class MovementsPacman {
                 }
                 if (column == 0) {
                     column = 28;
-                    arr[row][column] = "C";
+                    arr[row][column] = "\033[33mC\u001B[0m";
+                    // arr[row][column] = "C";
                     arr[row][column - 28] = " ";
                 } else if (column == 28) {
                     column = 0;
-                    arr[row][column] = "C";
+                    arr[row][column] = "\033[33mC\u001B[0m";
+                    // arr[row][column] = "C";
                     arr[row][column + 28] = " ";
                 }
             }
@@ -125,19 +179,34 @@ public class MovementsPacman {
         try {
             while (arr[row - 1][column] != "▒") {
                 row--;
+                board.position(arr, row, column);
+                timefruits(arr, row, column);
                 if (arr[row][column] == "·") {
                     arr[row + 1][column] = " ";
-                    // score += 10;
+                    score += 10;
+                }
+                if (arr[row][column] == "\033[34mO\u001B[0m")// (arr[n - 1][m]=="")
+                {
+                    arr[row + 1][column] = " ";
+                    score = score + 50;
+                } else if (arr[row][column] == "\033[35mX\u001B[0m") {
+                    arr[row + 1][column] = " ";
+                    score = score + 100;
+                } else if (arr[row][column] == "\033[32mM\u001B[0m") {
+                    arr[row + 1][column] = " ";
+                    score = score + 300;
                 } else {
                     arr[row + 1][column] = " ";
-                    // score = score + 0;
+                    score = score + 0;
                 }
-                arr[row][column] = "C";
+                arr[row][column] = "\033[33mC\u001B[0m";
+                // arr[row][column] = "C";
                 Thread.sleep(TIME);
                 System.out.print("\033[H\033[2J");
 
                 System.out.flush();
-                board.showBoard(arr);
+                board.showBoard(arr, row, column);
+                contTimeToShowFruits += 1;
                 if ((arr[row][column + 1] == "·" || arr[row][column - 1] == "·") && arr[row + 1][column] != "▒") {
                     break;
                 }
@@ -163,11 +232,12 @@ public class MovementsPacman {
                     arr[rowGhost][columnGhost - 1] = " ";
                     // score = score + 0;
                 }
-                arr[rowGhost][columnGhost] = "G";
+                arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
                 Thread.sleep(TIME);
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
-                board.showBoard(arr);
+                board.showBoard(arr, row, column);
+                contTimeToShowFruits += 1;
                 if ((arr[rowGhost + 1][columnGhost] == "·" || arr[rowGhost - 1][columnGhost] == "·")
                         && arr[rowGhost][columnGhost - 1] != "▒") {
                     break;
@@ -178,11 +248,11 @@ public class MovementsPacman {
                 }
                 if (columnGhost == 0) {
                     columnGhost = 28;
-                    arr[rowGhost][columnGhost] = "G";
+                    arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
                     arr[rowGhost][columnGhost - 28] = "·";
                 } else if (columnGhost == 28) {
                     columnGhost = 0;
-                    arr[rowGhost][columnGhost] = "G";
+                    arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
                     arr[rowGhost][columnGhost + 28] = "·";
                 }
             }
@@ -204,11 +274,11 @@ public class MovementsPacman {
                     // score = score + 0;
                 }
 
-                arr[rowGhost][columnGhost] = "G";
+                arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
                 Thread.sleep(TIME);
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
-                board.showBoard(arr);
+                board.showBoard(arr, row, column);
                 if ((arr[rowGhost][columnGhost + 1] == "·" || arr[rowGhost][columnGhost - 1] == "·")
                         && arr[rowGhost - 1][columnGhost] != "▒") {
                     break;
@@ -236,13 +306,13 @@ public class MovementsPacman {
                     arr[rowGhost][columnGhost + 1] = " ";
                     // score = score + 0;
                 }
-                arr[rowGhost][columnGhost] = "G";
+                arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
                 Thread.sleep(TIME);
 
                 System.out.print("\033[H\033[2J");
 
                 System.out.flush();
-                board.showBoard(arr);
+                board.showBoard(arr, row, column);
                 if ((arr[rowGhost + 1][columnGhost] == "·" || arr[rowGhost - 1][columnGhost] == "·")
                         && arr[rowGhost][columnGhost + 1] != "▒") {
                     break;
@@ -253,11 +323,13 @@ public class MovementsPacman {
                 }
                 if (columnGhost == 0) {
                     columnGhost = 28;
-                    arr[rowGhost][columnGhost] = "G";
+                    arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
                     arr[rowGhost][columnGhost - 28] = "·";
                 } else if (columnGhost == 28) {
                     columnGhost = 0;
-                    arr[rowGhost][columnGhost] = "C";
+
+                    arr[rowGhost][columnGhost] = "\033[33mC\u001B[0m";
+                    // arr[rowGhost][columnGhost] = "C";
                     arr[rowGhost][columnGhost + 28] = "·";
                 }
             }
@@ -279,12 +351,12 @@ public class MovementsPacman {
                     arr[rowGhost + 1][columnGhost] = " ";
                     // score = score + 0;
                 }
-                arr[rowGhost][columnGhost] = "G";
+                arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
                 Thread.sleep(TIME);
                 System.out.print("\033[H\033[2J");
 
                 System.out.flush();
-                board.showBoard(arr);
+                board.showBoard(arr, row, column);
                 if ((arr[rowGhost][columnGhost + 1] == "·" || arr[rowGhost][columnGhost - 1] == "·")
                         && arr[rowGhost + 1][columnGhost] != "▒") {
                     break;
@@ -299,6 +371,58 @@ public class MovementsPacman {
             ex.printStackTrace();
         }
         return arr;
+    }
+
+    public int showScore() {
+        int points = score;
+        return points;
+
+    }
+
+    public static void timefruits(String arr[][], int n, int m) {
+        int i1, i2, i3, i4;// frutas en color verde
+        if (contTimeToShowFruits >= 4 && contTimeToShowFruits <= 8) {// 4 recargas
+            String auxFruits1[][] = new String[25][29];
+            Random fruta = new Random();
+            Random fruta1 = new Random();
+            i1 = fruta.nextInt(auxFruits1.length);// 13
+            i2 = fruta1.nextInt(auxFruits1.length); // && arr[i1][i2] != arr[n][m]
+            if (arr[i1][i2] != "▒" && arr[i1][i2] != " " && arr[i1][i2] != "\033[34mO\u001B[0m") {
+                arr[i1][i2] = "\033[35mX\u001B[0m";
+
+            } else if (arr[i1][i2] == "▒" && arr[i1][i2] == " " && arr[i1][i2] == "\033[34mO\u001B[0m") {
+                String auxFruits2[][] = new String[25][29];
+                Random fruta2 = new Random();
+                Random fruta22 = new Random();
+                i3 = fruta2.nextInt(auxFruits2.length);// 13
+                i4 = fruta22.nextInt(auxFruits2.length);
+                // arr[i3][i4] = "\033[32mY\u001B[0m";
+                arr[i3][i4] = "\033[35mX\u001B[0m";
+            }
+        } else if (contTimeToShowFruits >= 10 && contTimeToShowFruits <= 14) {// 4 recargas
+            String auxFruits1[][] = new String[25][29];
+            Random fruta = new Random();
+            Random fruta1 = new Random();
+            i1 = fruta.nextInt(auxFruits1.length);// 13
+            i2 = fruta1.nextInt(auxFruits1.length); // 5
+
+            if (arr[i1][i2] != "▒" && arr[i1][i2] != " " && arr[i1][i2] != "\033[34mO\u001B[0m"
+                    && arr[i1][i2] != "\033[35mX\u001B[0m") {
+
+                arr[i1][i2] = "\033[32mM\u001B[0m";
+
+            } else if (arr[i1][i2] == "▒" && arr[i1][i2] == " " && arr[i1][i2] == "\033[34mO\u001B[0m"
+                    && arr[i1][i2] == "\033[35mX\u001B[0m") {
+                String auxFruits2[][] = new String[25][29];
+                Random fruta2 = new Random();
+                Random fruta22 = new Random();
+                i3 = fruta2.nextInt(auxFruits2.length);
+                i4 = fruta22.nextInt(auxFruits2.length);
+                // arr[i3][i4] = "\033[32mN\u001B[0m";
+                arr[i3][i4] = "\033[32mM\u001B[0m";
+            }
+        }
+
     }
 
 }

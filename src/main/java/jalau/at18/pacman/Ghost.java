@@ -1,7 +1,7 @@
 package jalau.at18.pacman;
 
 public class Ghost {
-    public static final String GHOST_CHAR = "G";
+    public static final String GHOST_CHAR = "\033[31mG\u001B[0m";
     public static final int INDEX_TRY = 5;
     public static final int GHOST_SLEEP_TIME = 1000;
     private boolean isBlue = false;

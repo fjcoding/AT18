@@ -1,4 +1,5 @@
 package jalau.at18.pacman;
+
 import java.util.Random;
 
 public class MovementsPacman {
@@ -226,7 +227,7 @@ public class MovementsPacman {
         return newboardarr;
     }
 
-    public String[][] moveRightGhost(String[][] arr) {
+    public String[][] moveRightGhost(String[][] newboardarr) {
         try {
             while (newboardarr[rowGhost][columnsGhost + 1] != "▒") {
                 columnsGhost++;

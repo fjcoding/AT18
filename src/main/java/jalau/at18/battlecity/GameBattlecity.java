@@ -98,40 +98,16 @@ public class GameBattlecity extends Game {
         Boolean isTankCrash = false;
         int[][] position = tank.getPosition();
         if (tank.getDirection() == "UP") {
-            if (position[0][0] != 0) {
-                if (boardMatrix[position[0][0] - 1][position[0][1]].isBlockTank() || boardMatrix[position[1][0] - 1][position[1][1]].isBlockTank()) {
-                    isTankCrash = true;
-                }
-            } else {
-                isTankCrash = true;
-            }
+            isTankCrash = enemyTank.isTankCrashUp(boardMatrix);
         }
         if (tank.getDirection() == "DOWN") {
-            if (position[0][0] < GRID_LENGHT) {
-                if (boardMatrix[position[0][0] + 1][position[0][1]].isBlockTank() || boardMatrix[position[1][0] + 1][position[1][1]].isBlockTank()) {
-                    isTankCrash = true;
-                }
-            } else {
-                isTankCrash = true;
-            }
+            isTankCrash = enemyTank.isTankCrashDown(boardMatrix);
         }
         if (tank.getDirection() == "LEFT") {
-            if (position[0][1] != 0) {
-                if (boardMatrix[position[0][0]][position[0][1] - 1].isBlockTank() || boardMatrix[position[1][0]][position[1][1] - 1].isBlockTank()) {
-                    isTankCrash = true;
-                } else {
-                    isTankCrash = true;
-                }
-            }
+            isTankCrash = enemyTank.isTankCrashLeft(boardMatrix);
         }
         if (tank.getDirection() == "RIGHT") {
-            if (position[1][1] < GRID_LENGHT) {
-                if (boardMatrix[position[0][0]][position[0][1] + 1].isBlockTank() || boardMatrix[position[1][0]][position[1][1] + 1].isBlockTank()) {
-                    isTankCrash = true;
-                }
-            } else {
-                isTankCrash = true;
-            }
+            isTankCrash = enemyTank.isTankCrashRight(boardMatrix);
         }
         return isTankCrash;
     }

@@ -112,4 +112,87 @@ public class TestEnemyTanks {
         int[][] expected4 = {{0, 13}, {1, 13}, {0, 12}, {1, 12}};
         assertEquals(expected4, enemyTank.getPosition());
     }
+
+    @Test
+    public void isTankCrashUp() {
+        Element[][] elementsMatrix = initElementsMatrix();
+        EnemyTank enemyTank = new EnemyTank(20);
+        int[][] position1 = {{1, 2}, {0, 2}, {1, 3}, {0, 3}};
+        enemyTank.setPosition(position1);
+        assertTrue(enemyTank.isTankCrashUp(elementsMatrix));
+        int[][] position2 = {{3, 4}, {2, 4}, {3, 5}, {2, 5}};
+        enemyTank.setPosition(position2);
+        assertFalse(enemyTank.isTankCrashUp(elementsMatrix));
+        int[][] position3 = {{4, 4}, {5, 4}, {4, 3}, {5, 3}};
+        enemyTank.setPosition(position3);
+        assertTrue(enemyTank.isTankCrashUp(elementsMatrix));
+        int[][] position4 = {{4, 2}, {5, 2}, {4, 1}, {5, 1}};
+        enemyTank.setPosition(position4);
+        assertTrue(enemyTank.isTankCrashUp(elementsMatrix));
+    }
+    @Test
+    public void isTankCrashDown() {
+        Element[][] elementsMatrix = initElementsMatrix();
+        EnemyTank enemyTank = new EnemyTank(20);
+        int[][] position1 = {{24, 3}, {24, 4}, {25, 3}, {25, 4}};
+        enemyTank.setPosition(position1);
+        assertTrue(enemyTank.isTankCrashDown(elementsMatrix));
+        int[][] position2 = {{4, 3}, {5, 3}, {4, 2}, {5, 2}};
+        enemyTank.setPosition(position2);
+        assertFalse(enemyTank.isTankCrashDown(elementsMatrix));
+        int[][] position3 = {{0, 1}, {0, 2}, {1, 1}, {1, 2}};
+        enemyTank.setPosition(position3);
+        assertTrue(enemyTank.isTankCrashDown(elementsMatrix));
+        int[][] position4 = {{1, 3}, {0, 3}, {1, 4}, {0, 4}};
+        enemyTank.setPosition(position4);
+        assertTrue(enemyTank.isTankCrashDown(elementsMatrix));
+    }
+    @Test
+    public void isTankCrashLeft() {
+        Element[][] elementsMatrix = initElementsMatrix();
+        EnemyTank enemyTank = new EnemyTank(20);
+        int[][] position1 = {{6, 1}, {7, 1}, {6, 0}, {7, 0}};
+        enemyTank.setPosition(position1);
+        assertTrue(enemyTank.isTankCrashLeft(elementsMatrix));
+        int[][] position2 = {{6, 4}, {6, 3}, {5, 4}, {5, 3}};
+        enemyTank.setPosition(position2);
+        assertFalse(enemyTank.isTankCrashLeft(elementsMatrix));
+        int[][] position3 = {{2, 4}, {1, 4}, {2, 5}, {1, 5}};
+        enemyTank.setPosition(position3);
+        assertTrue(enemyTank.isTankCrashLeft(elementsMatrix));
+        int[][] position4 = {{3, 5}, {4, 5}, {3, 4}, {4, 4}};
+        enemyTank.setPosition(position4);
+        assertTrue(enemyTank.isTankCrashLeft(elementsMatrix));
+    }
+    @Test
+    public void isTankCrashRight() {
+        Element[][] elementsMatrix = initElementsMatrix();
+        EnemyTank enemyTank = new EnemyTank(20);
+        int[][] position1 = {{6, 24}, {6, 25}, {7, 24}, {7, 25}};
+        enemyTank.setPosition(position1);
+        assertTrue(enemyTank.isTankCrashRight(elementsMatrix));
+        int[][] position2 = {{6, 4}, {6, 3}, {5, 4}, {5, 3}};
+        enemyTank.setPosition(position2);
+        assertFalse(enemyTank.isTankCrashRight(elementsMatrix));
+        int[][] position3 = {{3, 1}, {4, 1}, {3, 0}, {4, 0}};
+        enemyTank.setPosition(position3);
+        assertTrue(enemyTank.isTankCrashRight(elementsMatrix));
+        int[][] position4 = {{2, 0}, {1, 0}, {2, 1}, {1, 1}};
+        enemyTank.setPosition(position4);
+        assertTrue(enemyTank.isTankCrashRight(elementsMatrix));
+    }
+
+    public Element[][] initElementsMatrix() {
+        Element[][] elementsMatrix = new Element[26][26];
+        for (int row = 0; row < 26; row++) {
+            for (int column = 0; column < 26; column++) {
+                elementsMatrix[row][column] = new Empty(); 
+            }
+        }
+        elementsMatrix[2][2] = new Brick();
+        elementsMatrix[2][3] = new Brick();
+        elementsMatrix[3][2] = new Brick();
+        elementsMatrix[3][3] = new Brick();
+        return elementsMatrix;
+    }
 }

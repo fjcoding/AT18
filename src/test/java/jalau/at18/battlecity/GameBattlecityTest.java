@@ -65,12 +65,12 @@ public GameBattlecityTest(){
     //     boolean result = gameBattlecity.isTankCrash(tank, boardMatrix);
     //     assertEquals(true, result);
     // }
-
+ /* 
     @Test    
     public void tankCrashShouldThrow_NullPointerException() {      
         gameBattlecity.startGame();
         EnemyTank tank = new EnemyTank(1);
-        tank.setDirection();
+        tank.setDirection(tank.randomDirection());
         int[][] illegalPosition = {{23,23}, {23,22}, {23,24}, {21,21} };
         tank.moveDown(illegalPosition);
         Element[][] boardMatrix = gameBattlecity.getBoard().getMatrix();
@@ -83,7 +83,7 @@ public GameBattlecityTest(){
         }
         assertEquals(true, result);
     }
-
+*/
     // @Test
     // public void startGameShouldPositionPlayerCorrectly() { 
         

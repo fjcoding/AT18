@@ -12,6 +12,7 @@ public class Missile {
     private Element[][] missileBoard;
     private Missiles shotMissiles = new Missiles();
     private Empty empty = new Empty();
+    private MissileCollision missileCollision = new MissileCollision();
 
     public Missile(int xCoordinate1, int yCoordinate1, int xCoordinate2, int yCoordinate2, String direction, Element[][] missBoard) {
         missileBoard = missBoard;
@@ -52,6 +53,9 @@ public class Missile {
                 removeMissilefromBoard(row1, column1, row2, column2);
                 row1 = row1 - 1;
                 row2 = row2 - 1;
+                if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
+                    break;
+                }
                 putMissileOnBoard(row1, column1, row2, column2);
                 //showBoard();
             }
@@ -59,7 +63,9 @@ public class Missile {
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
+
     public int[][] moveMissileDown() {
+
         if (row1 != BOARD_DIMENSION) {
             row1 = row1 + 1;
             row2 = row2 + 1;
@@ -69,6 +75,9 @@ public class Missile {
                 removeMissilefromBoard(row1, column1, row2, column2);
                 row1 = row1 + 1;
                 row2 = row2 + 1;
+                if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
+                    break;
+                }
                 putMissileOnBoard(row1, column1, row2, column2);
                 //showBoard();
             }
@@ -76,6 +85,7 @@ public class Missile {
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
+
     public int[][] moveMissileLeft() {
         if (column1 != 0) {
             column1 = column1 - 1;
@@ -85,6 +95,9 @@ public class Missile {
             while (column1 > 0) {
                 column1 = column1 - 1;
                 column2 = column2 - 1;
+                if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
+                    break;
+                }
                 putMissileOnBoard(row1, column1, row2, column2);
                 //showBoard();
             }
@@ -92,6 +105,7 @@ public class Missile {
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
+
     public int[][] shootMissileRight() {
         column1 = column1 + 1;
         column2 = column2 + 1;
@@ -101,12 +115,16 @@ public class Missile {
             removeMissilefromBoard(row1, column1, row2, column2);
             column1 = column1 + 1;
             column2 = column2 + 1;
+            if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
+                break;
+            }
             putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
         }
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
+
     public void showBoard() {
         for (int row = 0; row < BOARD_DIMENSION; row++) {
             for (int column = 0; column < BOARD_DIMENSION; column++) {

@@ -4,25 +4,25 @@ public class ConditionMovementsGhosts {
     private char letter;
     private static final MovementsPacman MOVEMENT = new MovementsPacman();
 
-    public void setLetter(char letter) {
-        this.letter = letter;
+    public void setLetter(char character) {
+        this.letter = character;
     }
 
     public char getLetter() {
         return this.letter;
     }
 
-    public void movement(char letter, String[][] array) {
-        if (letter == 'w') {
+    public void movement(char character, String[][] array) {
+        if (character == 'w') {
             MOVEMENT.moveUpGhost(array);
         }
-        if (letter == 's') {
+        if (character == 's') {
             MOVEMENT.moveDownGhost(array);
         }
-        if (letter == 'a') {
+        if (character == 'a') {
             MOVEMENT.moveLeftGhost(array);
         }
-        if (letter == 'd') {
+        if (character == 'd') {
             MOVEMENT.moveRightGhost(array);
         }
     }

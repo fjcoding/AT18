@@ -41,5 +41,9 @@ public class Element {
     public String getImage() {
         return image;
     }
+
+    public int getLive() {
+        return live;
+    }
 }
 

@@ -13,6 +13,16 @@ public class GameBattlecity extends Game {
     private EnemyTank enemyTank = new EnemyTank(enemyCount);
     private Board board;
 
+    public TankPlayer getTankPlayer() {
+        return tankPlayer;
+    }
+    public EnemyTank getEnemyTank() {
+        return enemyTank;
+    }
+    public Board getBoard() {
+        return board;
+    }
+
     public GameBattlecity() {
 
     }

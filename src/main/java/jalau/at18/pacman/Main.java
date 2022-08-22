@@ -17,7 +17,7 @@ public class Main {
         board.showBoard(board.getGameBoard(), rowPacman, columsPacman);
         while (true) {
             System.out.println("                                                      SCORE: " + point.showScore());
-            System.out.println("Enter a move:");
+            System.out.println("Enter a move: ");
             char movements = keyword.next().charAt(0);
             newMovement.movement(movements);
         }

@@ -11,12 +11,6 @@ public class ShipTest {
         assertEquals(2, ship.getLifes());
     }
     @Test
-    public void shouldChangePositionX() {
-        Ship ship = new Ship();
-        ship.setPosX(5);
-        assertEquals(5, ship.getPosX());
-    }
-    @Test
     public void shouldMoveLeft() {
         Ship ship = new Ship();
         ship.moveLeft();
@@ -39,28 +33,27 @@ public class ShipTest {
     public void itShouldReturnStatusOfLifes() {
         Ship ship = new Ship();
         assertEquals(true, ship.getIsAlive());
-
     }
     @Test
-    public void itShouldChangeStatusToDeathOfShip() {
+    public void getIsAliveShipNoHaveLifes() {
         Ship ship = new Ship();
-        ship.setIsDead();
+        ship.subtrasctLifes();
+        ship.subtrasctLifes();
+        ship.subtrasctLifes();
         assertEquals(false, ship.getIsAlive());
-
     }
     @Test
-    public void itShouldChangeStatusToLiveOfShip() {
+    public void getIsAliveShipHaveLifes() {
         Ship ship = new Ship();
-        ship.setIsDead();
-        ship.setIsAlive();
+        ship.subtrasctLifes();
+        ship.subtrasctLifes();
         assertEquals(true, ship.getIsAlive());
-
     }
     @Test
     public void itShouldRestartPosition() {
         Ship ship = new Ship();
         ship.moveRight();
-        ship.reStartShip();
+        ship.reStartPosition();
         assertEquals(9,ship.getPosY());
         assertEquals(4,ship.getPosX());
 

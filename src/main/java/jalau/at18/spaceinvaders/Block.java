@@ -6,6 +6,7 @@ public class Block {
     private static final int TWO_DURABILITY = 2;
     private static final int UNICODE_CHAR = 126;
     private int duration;
+
     public Block() {
         duration = MAX_DURABILITY;
     }

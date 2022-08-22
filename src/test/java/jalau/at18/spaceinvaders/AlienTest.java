@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class AlienTest {
-    
+
     @Test
     public void shouldSendArrayPosX() {
         Alien alien = new Alien();

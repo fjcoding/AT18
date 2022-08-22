@@ -13,9 +13,11 @@ public class Alien {
         posX = POS_X_INITIAL;
         posY = POS_Y_INITIAL;
     }
+
     public void setPosX(int[] newAlienPosition) {
         posX = newAlienPosition;
     }
+
     public void setPosY(int[] newAlienPosition) {
         posY = newAlienPosition;
     }
@@ -33,6 +35,7 @@ public class Alien {
             posX[row] -= 1;
         }
     }
+
     public void alienDown() {
         for (int column = 0; column < COLUMN_ALIENS; column++) {
             posY[column] += 1;

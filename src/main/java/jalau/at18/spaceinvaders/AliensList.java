@@ -13,12 +13,13 @@ public class AliensList {
         alien = new Alien();
         this.board = board;
     }
+
     public void moveAlienRigth() {
         alien.alienRigth();
         for (int row = LIMIT_ROW - 1; row >= 0; row--) {
             for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
-                //System.out.println(board.toString());
+                // System.out.println(board.toString());
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row] - 1, '*');
             }
         }
@@ -29,7 +30,7 @@ public class AliensList {
         for (int row = 0; row < LIMIT_ROW; row++) {
             for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
-                //System.out.println(board.toString());
+                // System.out.println(board.toString());
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row] + 1, '*');
             }
         }
@@ -40,7 +41,7 @@ public class AliensList {
         for (int row = 0; row < LIMIT_ROW; row++) {
             for (int column = 0; column < 2; column++) {
                 board.setElement(alien.getPosY()[column], alien.getPosX()[row], '%');
-                //System.out.println(board.toString());
+                // System.out.println(board.toString());
                 if (column == 1) {
                     board.setElement(alien.getPosY()[column] - 2, alien.getPosX()[row], '*');
                 }

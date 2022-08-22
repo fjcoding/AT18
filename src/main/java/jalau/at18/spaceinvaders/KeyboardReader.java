@@ -1,4 +1,5 @@
 package jalau.at18.spaceinvaders;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -13,6 +14,7 @@ public class KeyboardReader extends Thread {
     private static final int SIZE = 400;
     private JFrame frame;
     private Queue<KeyEvent> keyEvents = new ArrayBlockingQueue<KeyEvent>(SIZE_STRING);
+
     @Override
     public void run() {
         frame = new JFrame("KeyPress Tester");
@@ -39,7 +41,6 @@ public class KeyboardReader extends Thread {
             }
         });
 
-
         frame.addKeyListener(new KeyListener() {
 
             public void keyTyped(KeyEvent e) {
@@ -56,7 +57,6 @@ public class KeyboardReader extends Thread {
         });
     }
 
-
     public boolean hasKeyEvents() {
         return !keyEvents.isEmpty();
     }
@@ -65,5 +65,3 @@ public class KeyboardReader extends Thread {
         return keyEvents.poll();
     }
 }
-
-

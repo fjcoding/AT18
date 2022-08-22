@@ -4,6 +4,7 @@ public class Board {
     private static final int MAX_SIZE = 10;
     private char[][] matrix;
     private Shield shield;
+
     public Board() {
         matrix = new char[MAX_SIZE][MAX_SIZE];
         shield = new Shield();
@@ -21,6 +22,7 @@ public class Board {
             }
         }
     }
+
     @Override
     public String toString() {
         String showBoard = "";
@@ -40,9 +42,14 @@ public class Board {
         matrix[posX][posY] = newContent;
     }
 
+    public int getElement(int posX, int posY) {
+        return matrix[posX][posY];
+    }
+
     public char[][] getMatrix() {
         return matrix;
     }
+
     public int getMaxSize() {
         return MAX_SIZE;
     }

@@ -1,5 +1,7 @@
 package jalau.at18.spaceinvaders;
+
 import java.awt.event.KeyEvent;
+
 public class Game {
     private Ship ship;
     private Board board;
@@ -18,6 +20,7 @@ public class Game {
         aliensList = new AliensList(board);
         bullet = new Bullet(board);
     }
+
     public void move() throws InterruptedException {
         int cont = 0;
         KeyboardReader keyboardObserver = new KeyboardReader();
@@ -30,6 +33,7 @@ public class Game {
                 if (cont % DELAY_ALIENS_MOVEMENT == 0) {
                     aliensList.alienMovement();
                 }
+                bullet.moveUp();
                 if (keyboardObserver.hasKeyEvents()) {
                     KeyEvent event = keyboardObserver.getEventFromTop();
                     if (event.getKeyCode() == KeyEvent.VK_LEFT && ship.getPosX() > 0) {
@@ -41,10 +45,9 @@ public class Game {
                         board.setElement(ship.getPosY(), ship.getPosX(), '^');
                         board.setElement(ship.getPosY(), ship.getPosX() - 1, '*');
                     } else if (event.getKeyCode() == KeyEvent.VK_SPACE) {
-                        bullet.setStatusBullet();
-                        System.out.println("fire");
+                        // bullet.setStatusBullet();
+                        System.out.println("fire!");
                         bullet.createBullet(ship.getPosX());
-
 
                     } else if (event.getKeyCode() == KeyEvent.VK_UP) {
                         ship.setIsDead();
@@ -53,21 +56,22 @@ public class Game {
                         System.out.println("Died");
                         ship.reStartShip();
                     }
-
                 }
+
                 System.out.println(board.toString());
                 System.out.println("Lifes: " + ship.getLifes());
-                if (bullet.getPosY() >= 0 && bullet.getStatusBullet()) {
-                    bullet.moveUp();
-                } else if (bullet.getStatusBullet()) {
-                    bullet.destroyBullet();
-                    bullet.resetBullet();
-                    board.setElement(0, bullet.getPosX(), '*');
-                }
-
+                /*
+                 * if (bullet.getPosY() >= 0 /* && bullet.getStatusBullet() ) {
+                 * bullet.moveUp();
+                 * } else if (bullet.getStatusBullet()) {
+                 * bullet.destroyBullet();
+                 * bullet.resetBullet();
+                 * board.setElement(0, bullet.getPosX(), '*');
+                 * }
+                 */
                 cont++;
                 Thread.sleep(DELAY);
-                //bullet.moveUp(ship.getPosX());
+                // bullet.moveUp(ship.getPosX());
 
             }
             Thread.sleep(DELAY);
@@ -84,6 +88,7 @@ public class Game {
     public int getPosYShip() {
         return ship.getPosY();
     }
+
     public int getLifes() {
         return ship.getLifes();
     }

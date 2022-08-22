@@ -1,37 +1,26 @@
 package jalau.at18.pacman;
-
-//import jalau.at18.pacman.Dani.Board;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Board tablero = new Board();
-        Pacman movepacman = new Pacman();
+        ConditionMovements newMovement = new ConditionMovements();
         Board board = new Board();
+        MovementsPacman point = new MovementsPacman();
         System.out.println("Tablero mostrado");
         Scanner keyword = new Scanner(System.in);
-        char movements;
-        final int row = 1;
-        final int colums = 1;
-        int score = 0;
-        board.getGameBoard()[row][colums] = "C";
-        board.showBoard(board.getGameBoard());
+        final int rowPacman = 1;
+        final int columsPacman = 1;
+        final int rowGhost = 8;
+        final int columsGhost = 15;
+        board.getGameBoard()[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
+        board.getGameBoard()[rowGhost][columsGhost] = "\033[31mG\u001B[0m";
+        board.showBoard(board.getGameBoard(), rowPacman, columsPacman);
         while (true) {
-            System.out.println("Enter a move:");
-            movements = keyword.next().charAt(0);
-
-            if (movements == 'd') {
-                movepacman.moveUp(movements);
-            }
-            if (movements == 's') {
-                movepacman.moveUp(movements);
-            }
-            if (movements == 'a') {
-                movepacman.moveUp(movements);
-            }
-            if (movements == 'w') {
-                movepacman.moveUp(movements);
-            }
+            System.out.println("                                                      SCORE: " + point.showScore());
+            System.out.println("Enter a move: ");
+            char movements = keyword.next().charAt(0);
+            newMovement.movement(movements);
         }
+
     }
 }

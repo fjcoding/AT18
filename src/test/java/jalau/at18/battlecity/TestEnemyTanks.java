@@ -40,7 +40,6 @@ public class TestEnemyTanks {
         assertEquals(expected2, enemyTank1.moveDown(input2));
     }
 
-
     @Test
     public void functionShouldMoveLeft() {
         EnemyTank enemyTank1 = new EnemyTank(20);
@@ -61,5 +60,56 @@ public class TestEnemyTanks {
         int[][] input2 = {{2, 24}, {2, 25}, {3, 24}, {3, 25}};
         int[][] expected2 = {{2, 25}, {3, 25}, {2, 24}, {3, 24}};
         assertEquals(expected2, enemyTank1.moveRight(input2));
+    }
+
+    @Test
+    public void functionShouldGiveDirection() {
+        EnemyTank enemyTank1 = new EnemyTank(20);
+        int[][] initialPosition = enemyTank1.initialPosition();
+        String expected1 = "DOWN";
+        assertEquals(expected1, enemyTank1.getDirection());
+    }
+
+    @Test
+    public void functionShouldGivePosition() {
+        EnemyTank enemyTank1 = new EnemyTank(20);
+        int[][] initialPosition = enemyTank1.initialPosition();
+        assertEquals(initialPosition, enemyTank1.getPosition());
+        EnemyTank enemyTank2 = new EnemyTank(19);
+        int[][] initialPosition2 = enemyTank2.initialPosition();
+        int[][] expected2 = {{1, 25}, {1, 24}, {0, 25}, {0, 24}};
+        assertEquals(expected2, enemyTank2.getPosition());
+    }
+
+    @Test
+    public void functionShouldGiveRandomDirection() {
+        EnemyTank enemyTank1 = new EnemyTank(20);
+        enemyTank1.setDirection(enemyTank1.randomDirection());
+        String direction = enemyTank1.getDirection();
+        String expected1 = "DOWN";
+        String expected2 = "UP";
+        String expected3 = "LEFT";
+        String expected4 = "RIGHT";
+        assertTrue(direction == expected1 || direction == expected2 || direction == expected3 || direction == expected4);
+    }
+    @Test
+    public void functionShouldGoStraight() {
+        EnemyTank enemyTank = new EnemyTank(20);
+        int[][] position = enemyTank.initialPosition();
+        int[][] expected1 = {{2, 13}, {2, 12}, {1, 13}, {1, 12}};
+        enemyTank.goStraight();
+        assertEquals(expected1, enemyTank.getPosition());
+        enemyTank.setDirection("UP");
+        enemyTank.goStraight();
+        int[][] expected2 = {{0, 12}, {0, 13}, {1, 12}, {1, 13}};
+        assertEquals(expected2, enemyTank.getPosition());
+        enemyTank.setDirection("LEFT");
+        enemyTank.goStraight();
+        int[][] expected3 = {{1, 11}, {0, 11}, {1, 12}, {0, 12}};
+        assertEquals(expected3, enemyTank.getPosition());
+        enemyTank.setDirection("RIGHT");
+        enemyTank.goStraight();
+        int[][] expected4 = {{0, 13}, {1, 13}, {0, 12}, {1, 12}};
+        assertEquals(expected4, enemyTank.getPosition());
     }
 }

@@ -47,7 +47,7 @@ public class GameBattlecity extends Game {
             cleanPosition(elementsMatrix, enemyTank.getPosition());
             //printPosition(enemyTank.getPosition());
             while (isTankCrash(enemyTank, elementsMatrix)) {
-                enemyTank.setDirection();
+                enemyTank.setDirection(enemyTank.randomDirection());
                 System.out.println(enemyTank.getDirection());
             }
             if (movementCount % ENEMY_SHOOT == 0) {
@@ -60,7 +60,7 @@ public class GameBattlecity extends Game {
             showMatrix(board);
             wait(1);
         }
-        enemyTank.setDirection();
+        enemyTank.setDirection(enemyTank.randomDirection());
     }
     public static Board createBoard() {
         String rute = "stage1.csv";
@@ -68,17 +68,17 @@ public class GameBattlecity extends Game {
         Board board = stage.initBoard();
         return board;
     }
+
     public static void showMatrix(Board board) {
         Element[][] matrix = board.getMatrix();
-
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
                 System.out.print(matrix[row][column].getImage() + " ");
             }
             System.out.println();
         }
-
     }
+
     public void cleanPosition(Element[][] elementsMatrix, int[][] position) {
         Empty empty = new Empty();
         elementsMatrix[position[0][0]][position[0][1]] = empty;
@@ -86,6 +86,7 @@ public class GameBattlecity extends Game {
         elementsMatrix[position[2][0]][position[2][1]] = empty;
         elementsMatrix[position[SIZE_ROW_POSITION - 1][0]][position[SIZE_ROW_POSITION - 1][1]] = empty;
     }
+
     public static void wait(int seconds) {
         try {
             Thread.sleep(seconds * MILLISECONDS);

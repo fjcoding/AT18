@@ -27,13 +27,18 @@ public class EnemyTank extends Tank {
     public String getDirection() {
         return direction;
     }
-    public void setDirection() {
+    public void setDirection(String newDirection) {
+        direction = newDirection;
+    }
+
+    public String randomDirection() {
         String[] directions = {"UP", "DOWN", "LEFT", "RIGHT"};
         Random random = new Random();
         int upperBound = NUMBER_OF_DIRECTIONS;
         int randomDirection = random.nextInt(upperBound);
-        direction = directions[randomDirection];
+        return directions[randomDirection];
     }
+
     public void goStraight() {
         if (direction == "UP") {
             enemyPosition = arrangeUp(enemyPosition);
@@ -122,16 +127,4 @@ public class EnemyTank extends Tank {
         return missil.missileDirection();
     }
 
-    /*public int[][] searchTank(int[][] matrix) {
-        int[][] position = new int[2][2];
-        /*for (int row = 0; row < 4 ; row++) {
-            for (int column = 0; column < 2 ; column++) {
-                if (matrix[row][column] == ENEMY_FRONT || matrix[row][column] == ENEMY_BACK) {
-                    position[][0] = row;
-                    position[][1] = column;
-                }
-            }
-        }
-        return position;
-    }*/
 }

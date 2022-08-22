@@ -45,11 +45,11 @@ public class Alien {
         }
     }
 
-    public String toString(){
+    /*public String toString() {
         String res = "";
         for (int i = 0; i < POS_X_INITIAL.length; i++) {
             res += posX[i] + " ";
         }
         return res;
-    }
+    }*/
 }

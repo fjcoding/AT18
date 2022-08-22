@@ -48,14 +48,4 @@ public class AlienTest {
         assertArrayEquals(expecteds, alien.getPosY());
     }
 
-    @Test
-    public void doubleMovement() {
-        Alien alien = new Alien();
-        final int[] expecteds = {0,1,2,3};
-        alien.alienRigth();
-        alien.alienLeft();
-        System.out.println(alien.toString());
-        assertArrayEquals(expecteds, alien.getPosX());
-    }
-
 }

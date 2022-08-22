@@ -6,7 +6,6 @@ public class AliensList {
     private boolean falseFlag = false;
     private static final int LIMIT_ROW = 4;
     private static final int SIZE_BOARD = 9;
-
     private Alien alien;
     private Board board;
 

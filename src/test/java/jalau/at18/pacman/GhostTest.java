@@ -15,7 +15,7 @@ public class GhostTest {
     char r;
 
     @Test
-    public void testMovement() {
+    public void testGhostMovement() {
         arr[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
         arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
         String[][] moveGhost = movements.ghostMovement(arr);

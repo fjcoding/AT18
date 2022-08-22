@@ -2,8 +2,8 @@ package jalau.at18.spaceinvaders;
 
 public class Ship {
     private static final int MAX_LIFES = 3;
-    private static final int POS_Y_INITIAL = 9;
-    private static final int POS_X_INITIAL = 4;
+    private static final int POS_Y_INITIAL = 4;
+    private static final int POS_X_INITIAL = 9;
     private int lifes;
     private int posX;
     private int posY;

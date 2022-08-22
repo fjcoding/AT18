@@ -21,40 +21,40 @@ public class Game {
         KeyboardReader keyboardObserver = new KeyboardReader();
         keyboardObserver.start();
         while (ship.getIsAlive()) {
-            board.setElement(ship.getPosY(), ship.getPosX(), '^');
+            board.setElement(ship.getPosX(), ship.getPosY(), '^');
             System.out.println(board.toString());
             if (cont % DELAY_ALIENS_MOVEMENT == 0) {
                 aliensList.alienMovement();
             }
             if (keyboardObserver.hasKeyEvents()) {
                 KeyEvent event = keyboardObserver.getEventFromTop();
-                if (event.getKeyCode() == KeyEvent.VK_LEFT && ship.getPosX() > 0) {
+                if (event.getKeyCode() == KeyEvent.VK_LEFT && ship.getPosY() > 0) {
                     ship.moveLeft();
-                    board.setElement(ship.getPosY(), ship.getPosX(), '^');
-                    board.setElement(ship.getPosY(), ship.getPosX() + 1, '*');
-                } else if (event.getKeyCode() == KeyEvent.VK_RIGHT && ship.getPosX() < SIZE_BOARD) {
+                    board.setElement(ship.getPosX(), ship.getPosY(), '^');
+                    board.setElement(ship.getPosX(), ship.getPosY() + 1, '*');
+                } else if (event.getKeyCode() == KeyEvent.VK_RIGHT && ship.getPosY() < SIZE_BOARD) {
                     ship.moveRight();
-                    board.setElement(ship.getPosY(), ship.getPosX(), '^');
-                    board.setElement(ship.getPosY(), ship.getPosX() - 1, '*');
+                    board.setElement(ship.getPosX(), ship.getPosY(), '^');
+                    board.setElement(ship.getPosX(), ship.getPosY() - 1, '*');
                 } else if (event.getKeyCode() == KeyEvent.VK_SPACE) {
                     bullet.setStatusBullet();
                     System.out.println("fire");
-                    bullet.createBullet(ship.getPosX());
+                    bullet.createBullet(ship.getPosY());
                 } else if (event.getKeyCode() == KeyEvent.VK_UP) {
                     ship.subtrasctLifes();
-                    board.setElement(ship.getPosY(), ship.getPosX(), '*');
+                    board.setElement(ship.getPosX(), ship.getPosY(), '*');
                     System.out.println("Died");
                     ship.reStartPosition();
                 }
             }
             System.out.println(board.toString());
             System.out.println("Lifes: " + ship.getLifes());
-            if (bullet.getPosY() >= 0 && bullet.getStatusBullet()) {
+            if (bullet.getPosX() >= 0 && bullet.getStatusBullet()) {
                 bullet.moveUp();
             } else if (bullet.getStatusBullet()) {
                 bullet.destroyBullet();
                 bullet.resetBullet();
-                board.setElement(0, bullet.getPosX(), '*');
+                board.setElement(0, bullet.getPosY(), '*');
             }
             cont++;
             Thread.sleep(DELAY);

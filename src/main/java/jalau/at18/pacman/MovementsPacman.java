@@ -1,8 +1,4 @@
 package jalau.at18.pacman;
-
-//import java.util.Scanner;
-//import java.util.Timer;
-//import java.util.TimerTask;
 import java.util.Random;
 
 public class MovementsPacman {
@@ -33,7 +29,6 @@ public class MovementsPacman {
         try {
             while (newboardarr[row][column + 1] != "▒") {
                 column++;
-                board.position(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row][column - 1] = " ";
@@ -54,7 +49,6 @@ public class MovementsPacman {
                     score = score + 0;
                 }
                 newboardarr[row][column] = "\033[33mC\u001B[0m";
-                // newboardarr[row][column] = "C";
                 Thread.sleep(TIME);
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
@@ -89,7 +83,6 @@ public class MovementsPacman {
         try {
             while (newboardarr[row + 1][column] != "▒") {
                 row++;
-                board.position(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row - 1][column] = " ";
@@ -109,7 +102,6 @@ public class MovementsPacman {
                     score = score + 0;
                 }
                 newboardarr[row][column] = "\033[33mC\u001B[0m";
-                // newboardarr[row][column] = "C";
                 Thread.sleep(TIME);
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
@@ -134,7 +126,6 @@ public class MovementsPacman {
         try {
             while (newboardarr[row][column - 1] != "▒") {
                 column--;
-                board.position(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row][column + 1] = " ";
@@ -193,7 +184,6 @@ public class MovementsPacman {
         try {
             while (newboardarr[row - 1][column] != "▒") {
                 row--;
-                board.position(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row + 1][column] = " ";

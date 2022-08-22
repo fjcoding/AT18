@@ -89,14 +89,15 @@ public class Board {
     }
 
     public String[][] setGameBoard(String[][] newBoard) {
-        return this.gameBoard = newBoard;
+        this.gameBoard = newBoard;
+        return this.gameBoard;
     }
 
     public String[][] getGameBoard() {
         return this.gameBoard;
     }
 
-    public void timeBalls(String arr[][], int n, int m) {
+    public void timeBalls(String[][] arr, int n, int m) {
         position(arr, n, m);
         Timer timerr = new Timer();
         TimerTask task = new TimerTask() {
@@ -169,7 +170,7 @@ public class Board {
         };
         timerr.schedule(task, DELAY, PERIODD);
     }
-    public static void position(String arr[][], int n, int m) {
+    public static void position(String[][] arr, int n, int m) {
         //1  25 |  5  11| 17 11  |23  3|  23 25
         if (arr[n][m] == arr[eat1][POSITION25]) {
             energizer1 = eat1;

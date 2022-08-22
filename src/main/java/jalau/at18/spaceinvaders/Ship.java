@@ -8,6 +8,7 @@ public class Ship {
     private int posX;
     private int posY;
     private boolean isAlive;
+
     public Ship() {
         lifes = MAX_LIFES;
         posX = POS_X_INITIAL;
@@ -15,6 +16,7 @@ public class Ship {
         isAlive = true;
 
     }
+
     public void subtrasctLifes() {
         lifes -= 1;
     }
@@ -34,21 +36,27 @@ public class Ship {
     public int getPosY() {
         return posY;
     }
+
     public void moveLeft() {
         posX -= 1;
     }
+
     public void moveRight() {
         posX += 1;
     }
+
     public void setIsDead() {
         isAlive = false;
     }
+
     public void setIsAlive() {
         isAlive = true;
     }
+
     public boolean getIsAlive() {
         return isAlive;
     }
+
     public void reStartShip() {
         posX = POS_X_INITIAL;
         posY = POS_Y_INITIAL;

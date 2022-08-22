@@ -7,6 +7,3 @@ public class Main {
         game.move();
     }
 }
-
-
-

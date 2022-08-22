@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class AlienTest {
-    
+
     @Test
     public void shouldSendArrayPosX() {
         Alien alien = new Alien();
@@ -23,7 +23,7 @@ public class AlienTest {
     }
 
     @Test
-    public void shouldAlienMoveRight(){
+    public void shouldAlienMoveRight() {
         Alien aliens = new Alien();
         final int[] expecteds = {1, 2, 3, 4};
         aliens.alienRigth();

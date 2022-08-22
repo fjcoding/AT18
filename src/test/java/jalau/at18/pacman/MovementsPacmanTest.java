@@ -23,12 +23,12 @@ public class MovementsPacmanTest {
     private static int yBORDER = 29;
     private static int countPointsOld = 0;
     private static int countPointsNew = 0;
-    Board board = new Board();
-    MovementsPacman movements = new MovementsPacman();
-    MovementsPacman point = new MovementsPacman();
+    private Board board = new Board();
+    private MovementsPacman movements = new MovementsPacman();
+    private MovementsPacman point = new MovementsPacman();
     private String[][] arr = board.getGameBoard();
-    final int rowPacman = 1;
-    final int columsPacman = 1;
+    private final int rowPacman = 1;
+    private final int columsPacman = 1;
     private static int rowGhost = 8;
     private static int columnGhost = 15;
 
@@ -148,7 +148,7 @@ public class MovementsPacmanTest {
         String[][] move_ghost = movements.moveLeftGhost(arr);
         board.setGameBoard(move_ghost);
         String[][] new_arr = board.getGameBoard();
-        for (int rows = 0; rows < yBORDER; rows++) {
+        for (int rows = 0; rows < xBORDER; rows++) {
             for (int colums = 0; colums < yBORDER; colums++) {
                 if (arr[rows][colums] == "·") {
                     countPointsOld++;

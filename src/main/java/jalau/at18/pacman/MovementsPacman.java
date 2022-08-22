@@ -275,7 +275,7 @@ public class MovementsPacman {
         return newboardarr;
     }
 
-    public String[][] moveDownGhost(String[][] arr) {
+    public String[][] moveDownGhost(String[][] newboardarr) {
         try {
             while (newboardarr[rowGhost + 1][columnsGhost] != "▒") {
                 rowGhost++;
@@ -307,7 +307,7 @@ public class MovementsPacman {
         return newboardarr;
     }
 
-    public String[][] moveLeftGhost(String[][] arr) {
+    public String[][] moveLeftGhost(String[][] newboardarr) {
         try {
             while (newboardarr[rowGhost][columnsGhost - 1] != "▒") {
                 columnsGhost--;
@@ -351,7 +351,7 @@ public class MovementsPacman {
         return newboardarr;
     }
 
-    public String[][] moveUpGhost(String[][] arr) {
+    public String[][] moveUpGhost(String[][] newboardarr) {
         try {
             while (newboardarr[rowGhost - 1][columnsGhost] != "▒") {
                 rowGhost--;

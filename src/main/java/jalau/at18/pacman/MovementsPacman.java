@@ -20,11 +20,11 @@ public class MovementsPacman {
         try {
             while (arr[row][column + 1] != "▒") {
                 column++;
-                board.position(arr,row,column);
+                //board.position(arr,row,column);
                     timefruits(arr,row,column);
                 if (arr[row][column] == "·") {
                     arr[row][column - 1] = " ";
-                     score += 10;
+                    score += 10;
                 } 
                 if (arr[row][column] == "\033[34mO\u001B[0m")
                 {
@@ -79,7 +79,7 @@ public class MovementsPacman {
         try {
             while (arr[row + 1][column] != "▒") {
                 row++;
-                board.position(arr,row,column);
+                //board.position(arr,row,column);
                     timefruits(arr,row,column);
                 if (arr[row][column] == "·") {
                     arr[row - 1][column] = " ";
@@ -118,7 +118,6 @@ public class MovementsPacman {
             }
         } catch (InterruptedException ex) {
             ex.printStackTrace();
-
         }
         return arr;
     }
@@ -127,11 +126,11 @@ public class MovementsPacman {
         try {
             while (arr[row][column - 1] != "▒") {
                 column--;
-                board.position(arr,row,column);
+                //board.position(arr,row,column);
                     timefruits(arr,row,column);
                 if (arr[row][column] == "·") {
                     arr[row][column + 1] = " ";
-                     score += 10;
+                    score += 10;
                 } if(arr[row][column] == "\033[34mO\u001B[0m" )//(arr[n - 1][m]=="")
                 {
                         arr[row][column + 1] = " ";
@@ -187,7 +186,7 @@ public class MovementsPacman {
         try {
             while (arr[row - 1][column] != "▒") {
                 row--;
-                board.position(arr,row,column);
+                //board.position(arr,row,column);
                     timefruits(arr,row,column);
                 if (arr[row][column] == "·") {
                     arr[row + 1][column] = " ";
@@ -386,7 +385,6 @@ public class MovementsPacman {
     public int showScore() {
         int points = score;
         return points;
-
     }
 
 

@@ -22,7 +22,7 @@ public class Pacman {
             try {
                 while (arr[row][column + 1] != "▒") {
                     column++;
-                    board.position(arr,row,column);
+                    //board.position(arr,row,column);
                    // timefruits(arr,row,column);
                     if (arr[row][column] == "·") {
                         arr[row][column - 1] = " ";
@@ -65,7 +65,7 @@ public class Pacman {
             try {
                 while (arr[row + 1][column] != "▒") {
                     row++;
-                    board.position(arr,row,column);
+                   // board.position(arr,row,column);
                     //timefruits(arr,row,column);
                     if (arr[row][column] == "·") {
                         arr[row - 1][column] = " ";
@@ -105,7 +105,7 @@ public class Pacman {
             try {
                 while (arr[row][column - 1] != "▒") {
                     column--;
-                    board.position(arr,row,column);
+                    //board.position(arr,row,column);
                     //timefruits(arr,row,column);
                     if (arr[row][column] == "·") {
                         arr[row][column + 1] = " ";
@@ -137,7 +137,7 @@ public class Pacman {
             try {
                 while (arr[row - 1][column] != "▒") {
                     row--;
-                    board.position(arr,row,column);
+                    //board.position(arr,row,column);
                    // timefruits(arr,row,column);
                     if (arr[row][column] == "·") {
                         arr[row + 1][column] = " ";

@@ -6,8 +6,8 @@ public class Board {
     public static final int INITIAL_PACMAN_POSITION = 1;
     public static final int INITIAL_DOTS_NUMBER = 290;
     public static final int DOT_POINTS = 10;
-    public static final int INITIAL_GHOST_XPOSITION = 8;
-    public static final int INITIAL_GHOST_YPOSITION = 5;
+    public static final int INITIAL_GHOST_XPOSITION = 12;
+    public static final int INITIAL_GHOST_YPOSITION = 11;
 
     private String[][] gameBoard = {
         {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
@@ -28,15 +28,15 @@ public class Board {
          "·", "·", "▒", "·", "·", "·", "·", "·", "·", "▒"},
         {"▒", "▒", "▒", "▒", "▒", "▒", "·", "▒", "▒", "▒", "▒", "▒", "▒", "·", "▒", "·", "▒", "▒", "▒",
          "▒", "▒", "▒", "·", "▒", "▒", "▒", "▒", "▒", "▒"},
-        {" ", " ", " ", " ", " ", "▒", "·", "▒", "·", "·", "·", "·", "·", "·", "i", "·", "·", "·", "·",
+        {" ", " ", " ", " ", " ", "▒", "·", "▒", "·", "·", "·", "·", "·", "·", " ", "·", "·", "·", "·",
          "·", "·", "▒", "·", "▒", " ", " ", " ", " ", " "},
-        {" ", " ", " ", " ", " ", "▒", "·", "▒", "·", "▒", "▒", "▒", "▒", "▒", "2", "▒", "▒", "▒", "▒",
+        {" ", " ", " ", " ", " ", "▒", "·", "▒", "·", "▒", "▒", "▒", "▒", "▒", " ", "▒", "▒", "▒", "▒",
          "▒", "·", "▒", "·", "▒", " ", " ", " ", " ", " "},
-        {"▒", "▒", "▒", "▒", "▒", "▒", "·", "▒", "·", "▒", " ", " ", " ", " ", "2", " ", " ", " ", " ",
+        {"▒", "▒", "▒", "▒", "▒", "▒", "·", "▒", "·", "▒", " ", " ", " ", " ", " ", " ", " ", " ", " ",
          "▒", "·", "▒", "·", "▒", "▒", "▒", "▒", "▒", "▒"},
-        {"·", "·", "·", "·", "·", "·", "·", "·", "·", "▒", " ", " ", " ", " ", "2", " ", " ", " ", " ",
+        {"·", "·", "·", "·", "·", "·", "·", "·", "·", "▒", " ", " ", " ", " ", " ", " ", " ", " ", " ",
          "▒", "·", "·", "·", "·", "·", "·", "·", "·", "·"},
-        {"▒", "▒", "▒", "▒", "▒", "▒", "·", "▒", "·", "▒", " ", " ", " ", " ", "2", " ", " ", " ", " ",
+        {"▒", "▒", "▒", "▒", "▒", "▒", "·", "▒", "·", "▒", " ", " ", " ", " ", " ", " ", " ", " ", " ",
          "▒", "·", "▒", "·", "▒", "▒", "▒", "▒", "▒", "▒"},
         {" ", " ", " ", " ", " ", "▒", "·", "▒", "·", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
          "▒", "·", "▒", "·", "▒", " ", " ", " ", " ", " "},
@@ -106,7 +106,7 @@ public class Board {
     }
     public String[][] addGhost(Ghost ghost, String[][] boardWhereAdd) {
         boardWhereAdd = this.gameBoard;
-        boardWhereAdd[INITIAL_PACMAN_POSITION][INITIAL_PACMAN_POSITION] = ghost.getRepresentation();
+        boardWhereAdd[INITIAL_GHOST_XPOSITION][INITIAL_GHOST_YPOSITION] = ghost.getRepresentation();
         setGameBoard(boardWhereAdd);
         return getGameBoard();
     }

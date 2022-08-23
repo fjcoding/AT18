@@ -34,6 +34,9 @@ public class Moves {
                         "PLease type a correct direction. Directions: [up, down, left, right] = [w, s, a, d]. if you want to exit type 'q'");
         }
     }
+    public String getDirection() {
+        return this.direction;
+    }
 
     public void movements(char a) {
         Board board = new Board();

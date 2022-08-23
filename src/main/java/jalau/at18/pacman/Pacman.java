@@ -5,9 +5,27 @@ public class Pacman {
     private static int column = 1;
     private static final int TIME = 200;
     private String representation = "C";
+    private int xPosition;
+    private int yPosition;
+
+    public Pacman(int intialXPosition, int intialYPosition) {
+        this.xPosition = intialXPosition;
+        this.yPosition = intialYPosition;
+    }
 
 
-
+    public void setXposition(int newXPosition) {
+        this.xPosition = newXPosition;
+    }
+    public int getXposition() {
+        return this.xPosition;
+    }
+    public void setYposition(int newYPosition) {
+        this.yPosition = newYPosition;
+    }
+    public int getYposition() {
+        return this.yPosition;
+    }
     public void setRepresentation(String representationToSet) {
         this.representation = representationToSet;
     }

@@ -4,22 +4,33 @@ public class Ghost {
     public static final String GHOST_CHAR = "G";
     public static final int INDEX_TRY = 5;
     public static final int GHOST_SLEEP_TIME = 1000;
+    
     private boolean isBlue = false;
     private String ghostRepresentation = GHOST_CHAR;
-    private int[] position;
+    private int xPosition;
+    private int yPosition;
 
-
+    public Ghost(int intialXPosition, int intialYPosition) {
+        this.xPosition = intialXPosition;
+        this.yPosition = intialYPosition;
+    }
+    public void setXposition(int newXPosition) {
+        this.xPosition = newXPosition;
+    }
+    public int getXposition() {
+        return this.xPosition;
+    }
+    public void setYposition(int newYPosition) {
+        this.yPosition = newYPosition;
+    }
+    public int getYposition() {
+        return this.yPosition;
+    }
     public void setIsBlue(Boolean blue) {
         this.isBlue = blue;
     }
     public boolean getIsBlue() {
         return this.isBlue;
-    }
-    public void setPosition(int[] ghostPosition) {
-        this.position = ghostPosition;
-    }
-    public int[] getPosition() {
-        return this.position;
     }
     public String getRepresentation() {
         return this.ghostRepresentation;

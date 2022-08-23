@@ -21,4 +21,16 @@ public class Position {
     public void moveUp() {
         xPos--;
     }
+
+    public void moveDown() {
+        xPos++;
+    }
+
+    public void moveLeft() {
+        yPos--;
+    }
+
+    public void moveRight() {
+        yPos++;
+    }
 }

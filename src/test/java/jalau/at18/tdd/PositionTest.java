@@ -23,4 +23,34 @@ public class PositionTest {
         assertEquals(expectedX, position.getX());
         assertEquals(expectedY, position.getY());
     }
+
+    @Test
+    public void positionShouldBeAbleToMoveDown() {
+        Position position = new Position(2, 3);
+        position.moveDown();
+        int expectedX = 3;
+        int expectedY = 3;
+        assertEquals(expectedX, position.getX());
+        assertEquals(expectedY, position.getY());
+    }
+
+    @Test
+    public void positionShouldBeAbleToMoveLeft() {
+        Position position = new Position(2, 3);
+        position.moveLeft();
+        int expectedX = 2;
+        int expectedY = 2;
+        assertEquals(expectedX, position.getX());
+        assertEquals(expectedY, position.getY());
+    }
+
+    @Test
+    public void positionShouldBeAbleToMoveRight() {
+        Position position = new Position(2, 3);
+        position.moveRight();
+        int expectedX = 2;
+        int expectedY = 4;
+        assertEquals(expectedX, position.getX());
+        assertEquals(expectedY, position.getY());
+    }
 }

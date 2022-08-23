@@ -2,22 +2,22 @@ package jalau.at18.battlecity;
 
 public class Tank {
 
-    public String direction;
+    protected String direction;
     public static final int GRID_LENGHT = 26;
     public static final int POSITIONS_LENGTH = 4;
     public static final int SIZE_ROW_POSITION = 4;
-    public int[][] position;
+    protected int[][] position;
 
-    public Element[][] putTankOnBoard(Element[][] matrix, int[][] position) {
+    public Element[][] putTankOnBoard(Element[][] matrix, int[][] newPosition) {
         TankTop tankTop = new TankTop();
         TankBack backTop = new TankBack();
-        matrix[position[0][0]][position[0][1]] = tankTop;
-        matrix[position[1][0]][position[1][1]] = tankTop;
-        matrix[position[2][0]][position[2][1]] = backTop;
-        matrix[position[POSITIONS_LENGTH - 1][0]][position[POSITIONS_LENGTH - 1][1]] = backTop;
-
+        matrix[newPosition[0][0]][newPosition[0][1]] = tankTop;
+        matrix[newPosition[1][0]][newPosition[1][1]] = tankTop;
+        matrix[newPosition[2][0]][newPosition[2][1]] = backTop;
+        matrix[newPosition[POSITIONS_LENGTH - 1][0]][newPosition[POSITIONS_LENGTH - 1][1]] = backTop;
         return matrix;
     }
+
     public int[][] getPosition() {
         return position;
     }
@@ -31,13 +31,13 @@ public class Tank {
     public void setPosition(int[][] newPosition) {
         position = newPosition;
     }
-    
+
     public Element[][] shoot(Element[][] boardElements) {
         Missile missil = new Missile(position[0][0], position[0][1], position[1][0], position[1][1], direction, boardElements);
         return missil.missileDirection();
     }
-    public int[][] moveUp(int[][] position) {
-        int[][] newPosition = arrangeUp(position);
+    public int[][] moveUp(int[][] newPosition) {
+        newPosition = arrangeUp(newPosition);
         direction = "UP";
         if (newPosition[0][0] != 0) {
             for (int row = 0; row < POSITIONS_LENGTH; row++) {
@@ -47,8 +47,8 @@ public class Tank {
         return newPosition;
     }
 
-    public int[][] moveDown(int[][] position) {
-        int[][] newPosition = arrangeDown(position);
+    public int[][] moveDown(int[][] newPosition) {
+        newPosition = arrangeDown(newPosition);
         direction = "DOWN";
         if (newPosition[0][0] != GRID_LENGHT - 1) {
             for (int row = 0; row < POSITIONS_LENGTH; row++) {
@@ -58,8 +58,8 @@ public class Tank {
         return newPosition;
     }
 
-    public int[][] moveLeft(int[][] position) {
-        int[][] newPosition = arrangeLeft(position);
+    public int[][] moveLeft(int[][] newPosition) {
+        newPosition = arrangeLeft(newPosition);
         direction = "LEFT";
         if (newPosition[0][1] != 0) {
             for (int row = 0; row < POSITIONS_LENGTH; row++) {
@@ -69,8 +69,8 @@ public class Tank {
         return newPosition;
     }
 
-    public int[][] moveRight(int[][] position) {
-        int[][] newPosition = arrangeRight(position);
+    public int[][] moveRight(int[][] newPosition) {
+        newPosition = arrangeRight(newPosition);
         direction = "RIGHT";
         if (newPosition[0][1] != GRID_LENGHT - 1) {
             for (int row = 0; row < POSITIONS_LENGTH; row++) {
@@ -80,8 +80,8 @@ public class Tank {
         return newPosition;
     }
 
-    public int[][] arrangeUp(int[][] position) {
-        int[][] minMaxValues = findMinMaxValues(position);
+    public int[][] arrangeUp(int[][] newPosition) {
+        int[][] minMaxValues = findMinMaxValues(newPosition);
         int minRow = minMaxValues[0][0];
         int maxRow = minMaxValues[1][0];
         int minColumn = minMaxValues[0][1];
@@ -90,8 +90,8 @@ public class Tank {
         return arrangePosition;
     }
 
-    public int[][] arrangeDown(int[][] position) {
-        int[][] minMaxValues = findMinMaxValues(position);
+    public int[][] arrangeDown(int[][] newPosition) {
+        int[][] minMaxValues = findMinMaxValues(newPosition);
         int minRow = minMaxValues[0][0];
         int maxRow = minMaxValues[1][0];
         int minColumn = minMaxValues[0][1];
@@ -100,8 +100,8 @@ public class Tank {
         return arrangePosition;
     }
 
-    public int[][] arrangeLeft(int[][] position) {
-        int[][] minMaxValues = findMinMaxValues(position);
+    public int[][] arrangeLeft(int[][] newPosition) {
+        int[][] minMaxValues = findMinMaxValues(newPosition);
         int minRow = minMaxValues[0][0];
         int maxRow = minMaxValues[1][0];
         int minColumn = minMaxValues[0][1];
@@ -110,8 +110,8 @@ public class Tank {
         return arrangePosition;
     }
 
-    public int[][] arrangeRight(int[][] position) {
-        int[][] minMaxValues = findMinMaxValues(position);
+    public int[][] arrangeRight(int[][] newPosition) {
+        int[][] minMaxValues = findMinMaxValues(newPosition);
         int minRow = minMaxValues[0][0];
         int maxRow = minMaxValues[1][0];
         int minColumn = minMaxValues[0][1];
@@ -120,23 +120,23 @@ public class Tank {
         return arrangePosition;
     }
 
-    public int[][] findMinMaxValues(int[][] position) {
+    public int[][] findMinMaxValues(int[][] newPosition) {
         int minRow = GRID_LENGHT;
         int maxRow = -1;
         int minColumn = GRID_LENGHT;
         int maxColumn = -1;
         for (int row = 0; row < POSITIONS_LENGTH; row++) {
-            if (position[row][0] > maxRow) {
-                maxRow = position[row][0];
+            if (newPosition[row][0] > maxRow) {
+                maxRow = newPosition[row][0];
             }
-            if (position[row][0] < minRow) {
-                minRow = position[row][0];
+            if (newPosition[row][0] < minRow) {
+                minRow = newPosition[row][0];
             }
-            if (position[row][1] > maxColumn) {
-                maxColumn = position[row][1];
+            if (newPosition[row][1] > maxColumn) {
+                maxColumn = newPosition[row][1];
             }
-            if (position[row][1] < minColumn) {
-                minColumn = position[row][1];
+            if (newPosition[row][1] < minColumn) {
+                minColumn = newPosition[row][1];
             }
         }
         int[][] minMaxValues = {{minRow, minColumn}, {maxRow, maxColumn}};

@@ -1,17 +1,12 @@
 package jalau.at18.battlecity;
 
-abstract class Tank {
+public class Tank {
 
-    abstract int[][] initialPosition();
-    abstract int[][] moveUp(int[][] matrix);
-    abstract int[][] moveDown(int[][] matrix);
-    abstract int[][] moveRight(int[][] matrix);
-    abstract int[][] moveLeft(int[][] matrix);
-    abstract Element[][] shoot(Element[][] elementBoard);
-
+    public String direction;
     public static final int GRID_LENGHT = 26;
     public static final int POSITIONS_LENGTH = 4;
     public static final int SIZE_ROW_POSITION = 4;
+    public int[][] position;
 
     public Element[][] putTankOnBoard(Element[][] matrix, int[][] position) {
         TankTop tankTop = new TankTop();
@@ -23,6 +18,68 @@ abstract class Tank {
 
         return matrix;
     }
+    public int[][] getPosition() {
+        return position;
+    }
+    public String getDirection() {
+        return direction;
+    }
+    public void setDirection(String newDirection) {
+        direction = newDirection;
+    }
+
+    public void setPosition(int[][] newPosition) {
+        position = newPosition;
+    }
+    
+    public Element[][] shoot(Element[][] boardElements) {
+        Missile missil = new Missile(position[0][0], position[0][1], position[1][0], position[1][1], direction, boardElements);
+        return missil.missileDirection();
+    }
+    public int[][] moveUp(int[][] position) {
+        int[][] newPosition = arrangeUp(position);
+        direction = "UP";
+        if (newPosition[0][0] != 0) {
+            for (int row = 0; row < POSITIONS_LENGTH; row++) {
+                newPosition[row][0] = newPosition[row][0] - 1;
+            }
+        }
+        return newPosition;
+    }
+
+    public int[][] moveDown(int[][] position) {
+        int[][] newPosition = arrangeDown(position);
+        direction = "DOWN";
+        if (newPosition[0][0] != GRID_LENGHT - 1) {
+            for (int row = 0; row < POSITIONS_LENGTH; row++) {
+                newPosition[row][0] = newPosition[row][0] + 1;
+            }
+        }
+        return newPosition;
+    }
+
+    public int[][] moveLeft(int[][] position) {
+        int[][] newPosition = arrangeLeft(position);
+        direction = "LEFT";
+        if (newPosition[0][1] != 0) {
+            for (int row = 0; row < POSITIONS_LENGTH; row++) {
+                newPosition[row][1] = newPosition[row][1] - 1;
+            }
+        }
+        return newPosition;
+    }
+
+    public int[][] moveRight(int[][] position) {
+        int[][] newPosition = arrangeRight(position);
+        direction = "RIGHT";
+        if (newPosition[0][1] != GRID_LENGHT - 1) {
+            for (int row = 0; row < POSITIONS_LENGTH; row++) {
+                newPosition[row][1] = newPosition[row][1] + 1;
+            }
+        }
+        return newPosition;
+    }
+
     public int[][] arrangeUp(int[][] position) {
         int[][] minMaxValues = findMinMaxValues(position);
         int minRow = minMaxValues[0][0];
@@ -84,5 +141,84 @@ abstract class Tank {
         }
         int[][] minMaxValues = {{minRow, minColumn}, {maxRow, maxColumn}};
         return minMaxValues;
+    }
+
+    public Boolean isTankCrash(Element[][] boardMatrix) {
+        Boolean isTankCrash = false;
+        //int[][] position = tank.getPosition();
+        if (direction == "UP") {
+            isTankCrash = isTankCrashUp(boardMatrix);
+        }
+        if (direction == "DOWN") {
+            isTankCrash = isTankCrashDown(boardMatrix);
+        }
+        if (direction == "LEFT") {
+            isTankCrash = isTankCrashLeft(boardMatrix);
+        }
+        if (direction == "RIGHT") {
+            isTankCrash = isTankCrashRight(boardMatrix);
+        }
+        return isTankCrash;
+    }
+
+    public Boolean isTankCrashUp(Element[][] boardMatrix) {
+        Boolean isTankCrashUp = false;
+        //int[][] position = enemyTank.getPosition();
+        position = arrangeUp(position);
+        if (position[0][0] == 0) {
+            isTankCrashUp = true;
+        } else {
+            Boolean elementUp1 = boardMatrix[position[0][0] - 1][position[0][1]].isBlockTank();
+            Boolean elementUp2 = boardMatrix[position[1][0] - 1][position[1][1]].isBlockTank();
+            if (elementUp1 || elementUp2) {
+                isTankCrashUp = true;
+            }
+        }
+        return isTankCrashUp;
+    }
+    public Boolean isTankCrashDown(Element[][] boardMatrix) {
+        Boolean isTankCrashDown = false;
+        //int[][] position = enemyTank.getPosition();
+        position = arrangeDown(position);
+        if (position[0][0] == GRID_LENGHT - 1) {
+            isTankCrashDown = true;
+        } else {
+            Boolean elementDown1 = boardMatrix[position[0][0] + 1][position[0][1]].isBlockTank();
+            Boolean elementDown2 = boardMatrix[position[1][0] + 1][position[1][1]].isBlockTank();
+            if (elementDown1 || elementDown2) {
+                isTankCrashDown = true;
+            }
+        }
+        return isTankCrashDown;
+    }
+    public Boolean isTankCrashLeft(Element[][] boardMatrix) {
+        Boolean isTankCrashLeft = false;
+        //int[][] position = enemyTank.getPosition();
+        position = arrangeLeft(position);
+        if (position[0][1] == 0) {
+            isTankCrashLeft = true;
+        } else {
+            Boolean elementLeft1 = boardMatrix[position[0][0]][position[0][1] - 1].isBlockTank();
+            Boolean elementLeft2 = boardMatrix[position[1][0]][position[1][1] - 1].isBlockTank();
+            if (elementLeft1 || elementLeft2) {
+                isTankCrashLeft = true;
+            }
+        }
+        return isTankCrashLeft;
+    }
+    public Boolean isTankCrashRight(Element[][] boardMatrix) {
+        Boolean isTankCrashRight = false;
+        //int[][] position = enemyTank.getPosition();
+        position = arrangeRight(position);
+        if (position[0][1] == GRID_LENGHT - 1) {
+            isTankCrashRight = true;
+        } else {
+            Boolean elementRight1 = boardMatrix[position[0][0]][position[0][1] + 1].isBlockTank();
+            Boolean elementRight2 = boardMatrix[position[1][0]][position[1][1] + 1].isBlockTank();
+            if (elementRight1 || elementRight2) {
+                isTankCrashRight = true;
+            }
+        }
+        return isTankCrashRight;
     }
 }

@@ -55,8 +55,7 @@ public class GameBattlecity extends Game {
         for (int movementCount = 0; movementCount < ENEMY_MOVEMENTS; movementCount++) {
             Element[][] elementsMatrix = board.getMatrix();
             cleanPosition(elementsMatrix, enemyTank.getPosition());
-            //printPosition(enemyTank.getPosition());
-            while (isTankCrash(enemyTank, elementsMatrix)) {
+            while (enemyTank.isTankCrash(elementsMatrix)) {
                 enemyTank.setDirection(enemyTank.randomDirection());
                 System.out.println(enemyTank.getDirection());
             }
@@ -103,22 +102,5 @@ public class GameBattlecity extends Game {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-    public Boolean isTankCrash(EnemyTank tank, Element[][] boardMatrix) {
-        Boolean isTankCrash = false;
-        int[][] position = tank.getPosition();
-        if (tank.getDirection() == "UP") {
-            isTankCrash = enemyTank.isTankCrashUp(boardMatrix);
-        }
-        if (tank.getDirection() == "DOWN") {
-            isTankCrash = enemyTank.isTankCrashDown(boardMatrix);
-        }
-        if (tank.getDirection() == "LEFT") {
-            isTankCrash = enemyTank.isTankCrashLeft(boardMatrix);
-        }
-        if (tank.getDirection() == "RIGHT") {
-            isTankCrash = enemyTank.isTankCrashRight(boardMatrix);
-        }
-        return isTankCrash;
     }
 }

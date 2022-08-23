@@ -38,7 +38,6 @@ public class TankPlayer extends Tank {
 
     }
 
-    @Override
     public int[][] initialPosition() {
         return newPosition;
     }
@@ -95,7 +94,6 @@ public class TankPlayer extends Tank {
         return newPosition;
     }
 
-    @Override
     public Element[][] shoot(Element[][] board) {
         Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], "UP", board);
         return  missil.missileDirection();

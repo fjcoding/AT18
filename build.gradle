@@ -17,6 +17,7 @@ test {
     }
     filter {
         includeTestsMatching "jalau.at18.battlecity.*"
+        includeTestsMatching "jalau.at18.tdd.*"
     }
 }
 

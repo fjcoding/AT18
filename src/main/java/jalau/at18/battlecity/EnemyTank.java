@@ -21,10 +21,6 @@ public class EnemyTank extends Tank {
         this.enemyCount = enemyCount;
     }
 
-    public Element[][] shoot(Element[][] boardElements) {
-        Missile missil = new Missile(position[0][0], position[0][1], position[1][0], position[1][1], direction, boardElements);
-        return missil.missileDirection();
-    }
     public String randomDirection() {
         String[] directions = {"UP", "DOWN", "LEFT", "RIGHT"};
         Random random = new Random();

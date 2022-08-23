@@ -17,4 +17,8 @@ public class Position {
     public int getY() {
         return yPos;
     }
+
+    public void moveUp() {
+        xPos--;
+    }
 }

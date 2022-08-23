@@ -13,4 +13,14 @@ public class PositionTest {
         assertEquals(expectedX, position.getX());
         assertEquals(expectedY, position.getY());
     }
+
+    @Test
+    public void positionShouldBeAbleToMoveUp() {
+        Position position = new Position(2, 3);
+        position.moveUp();
+        int expectedX = 1;
+        int expectedY = 3;
+        assertEquals(expectedX, position.getX());
+        assertEquals(expectedY, position.getY());
+    }
 }

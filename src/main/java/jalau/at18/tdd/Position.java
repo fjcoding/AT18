@@ -18,19 +18,8 @@ public class Position {
         return yPos;
     }
 
-    public void moveUp() {
-        xPos--;
-    }
-
-    public void moveDown() {
-        xPos++;
-    }
-
-    public void moveLeft() {
-        yPos--;
-    }
-
-    public void moveRight() {
-        yPos++;
+    public void move(Direction direction) {
+        xPos += direction.getModifierX();
+        yPos += direction.getModifierY();
     }
 }

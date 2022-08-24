@@ -1,34 +1,38 @@
 package jalau.at18.pacman;
 
+import java.util.List;
+
 public class ConditionMovements {
     private char letter;
-    MovementsPacman movement = new MovementsPacman();
-    Ghost movementGhost = new Ghost();
+    private static final MovementsPacman MOVEMENT = new MovementsPacman();
+    private static final Ghost MOVEMENT_GHOST = new Ghost();
+    private List<Object> listGhost;
 
-    public void setLetter(char letter) {
-        this.letter = letter;
+    public void setLetter(char character) {
+        this.letter = character;
     }
 
     public char getLetter() {
         return this.letter;
     }
 
-    public void movement(char letter) {
-        if (letter == 'w') {
-            String[][] arr = movement.moveUp();
-            movementGhost.ghostMovement(arr);
+    public List<Object> movement(char character, int rowGhost, int columnsGhost) {
+        if (character == 'w') {
+            String[][] arr = MOVEMENT.moveUp();
+            listGhost = MOVEMENT_GHOST.ghostMovement(arr, rowGhost, columnsGhost);
         }
-        if (letter == 's') {
-            String[][] arr = movement.moveDown();
-            movementGhost.ghostMovement(arr);
+        if (character == 's') {
+            String[][] arr = MOVEMENT.moveDown();
+            listGhost = MOVEMENT_GHOST.ghostMovement(arr, rowGhost, columnsGhost);
         }
-        if (letter == 'a') {
-            String[][] arr = movement.moveLeft();
-            movementGhost.ghostMovement(arr);
+        if (character == 'a') {
+            String[][] arr = MOVEMENT.moveLeft();
+            listGhost = MOVEMENT_GHOST.ghostMovement(arr, rowGhost, columnsGhost);
         }
-        if (letter == 'd') {
-            String[][] arr = movement.moveRight();
-            movementGhost.ghostMovement(arr);
+        if (character == 'd') {
+            String[][] arr = MOVEMENT.moveRight();
+            listGhost = MOVEMENT_GHOST.ghostMovement(arr, rowGhost, columnsGhost);
         }
+        return listGhost;
     }
 }

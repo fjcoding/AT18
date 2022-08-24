@@ -30,11 +30,17 @@ public class Bullet {
         for (int index = 0; index < MATRIX_LENGHT; index++) {
             for (int jindex = 0; jindex <= MATRIX_LENGHT; jindex++) {
                 if (board.getElement(index, jindex) == '|') {
-                    if (index == 0) {
-                        board.setElement(index, jindex, '*');
+                    if (index > 0) {
+                        if (board.getElement(index - 1, jindex) == '*' || board.getElement(index - 1, jindex) == '#'|| board.getElement(index - 1, jindex) == 'X') {
+                            board.setElement(index - 1, jindex, '|');
+                            board.setElement(index, jindex, '*');
+                        } else if (board.getElement(index - 1, jindex) == '%') {
+                            board.setElement(index - 1, jindex, 'X');
+                            board.setElement(index, jindex, '*');
+                            // Kill alien
+                        }
                     } else {
-                        board.setElement(index - 1, jindex, '|');
-                        board.setElement(index, jindex, '*');
+                        board.setElement(index, jindex, '*'); // exception whe bullet is in top border 
                     }
                 }
             }

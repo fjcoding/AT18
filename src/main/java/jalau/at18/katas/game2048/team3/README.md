@@ -1,1 +1,0 @@
-2048 solution for team 3 goes in this folder!

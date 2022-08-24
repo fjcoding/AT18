@@ -2,16 +2,21 @@ package jalau.at18.spaceinvaders;
 
 public class Ship {
     private static final int MAX_LIFES = 3;
-    private static final int POS_Y_INITIAL = 4;
-    private static final int POS_X_INITIAL = 9;
+    private static final int POS_ROW_INITIAL = 9;
+    private static final int POS_COL_INITIAL = 4;
     private int lifes;
-    private int posX;
-    private int posY;
+    private Position position;
+    private ShipBullet bullet;
+
     public Ship() {
         lifes = MAX_LIFES;
-        posX = POS_X_INITIAL;
-        posY = POS_Y_INITIAL;
+        position = new Position(POS_ROW_INITIAL, POS_COL_INITIAL);
     }
+
+    public void shoot(Board board){
+        
+    }
+
     public void subtrasctLifes() {
         lifes -= 1;
     }
@@ -21,24 +26,27 @@ public class Ship {
     }
 
     public int getPosX() {
-        return posX;
+        return position.getPosX();
     }
 
     public int getPosY() {
-        return posY;
+        return position.getPosY();
     }
+
     public void moveLeft() {
-        posX -= 1;
+        position.moveLeft();
     }
+
     public void moveRight() {
-        posX += 1;
+        position.moveRigth();
     }
+
     public boolean getIsAlive() {
         int zero = 0;
         return lifes > zero;
     }
+
     public void reStartPosition() {
-        posX = POS_X_INITIAL;
-        posY = POS_Y_INITIAL;
+        position = new Position(POS_ROW_INITIAL, POS_COL_INITIAL);
     }
 }

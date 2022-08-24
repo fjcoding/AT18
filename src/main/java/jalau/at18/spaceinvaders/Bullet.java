@@ -1,52 +1,29 @@
 package jalau.at18.spaceinvaders;
 
-public class Bullet {
-    private static final int INITIAL_POSY = 8;
-    private static final int INITIAL_POSX = 4;
-    private int posX;
-    private int posY;
-    private boolean statusBullet;
-    private Board board;
+public abstract class Bullet {
+    protected Position position;
+    private boolean stillAlive;
 
-    public Bullet(Board board) {
-        //board = new Board();
-        posX = INITIAL_POSX;
-        posY = INITIAL_POSY;
-        statusBullet = false;
-        this.board = board;
+    public Bullet(int posX, int posY) {
+        position = new Position(posX, posY);
+        stillAlive = true;
     }
 
     public int getPosX() {
-        return posX;
+        return position.getPosX();
     }
 
     public int getPosY() {
-        return posY;
+        return position.getPosY();
     }
 
-    public void moveUp() {
-        board.setElement(posY, posX, '|');
-        board.setElement(posY + 1, posX, '*');
-        posY--;
+    public void impact(){
+        stillAlive = false;
+    }
 
-    }
-    public void destroyBullet() {
-        statusBullet = false;
-    }
-    public void createBullet(int posXShip) {
-        posX = posXShip;
-
-
-    }
-    public void resetBullet() {
-        posY = INITIAL_POSY;
-    }
-    public void setStatusBullet() {
-        statusBullet = true;
-
-    }
     public boolean getStatusBullet() {
-        return statusBullet;
+        return stillAlive;
     }
 
+    public abstract void move(Board board);
 }

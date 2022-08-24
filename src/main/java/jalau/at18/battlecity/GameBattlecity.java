@@ -39,17 +39,22 @@ public class GameBattlecity extends Game {
         showMatrix(board);
     }
     public void playGame() {
-        //Board board = createBoard();
-        //Input direction = new Input();
-        //String input = direction.read();
-        //int[][] newPosition = new int[SIZE_ROW_POSITION][2];
-        //newPosition = tankPlayer.movements(input);
-        //Element[][] elementsMatrix = board.getMatrix();
-        //elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, newPosition);
-        moveEnemy();
+
+        showMatrix(board);
+        movePlayer();    
+        //moveEnemy();
     }
     public void endGame() {
 
+    }
+    public void movePlayer() {
+        Input direction = new Input();
+        String input = direction.read();
+        Element[][] elementsMatrix = board.getMatrix();
+        //int[][] newPosition = new int[SIZE_ROW_POSITION][2];
+        cleanPosition(elementsMatrix, tankPlayer.getPosition());
+        int[][] newPosition = tankPlayer.movements(input);
+        elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, newPosition);
     }
     public void moveEnemy() {
         for (int movementCount = 0; movementCount < ENEMY_MOVEMENTS; movementCount++) {
@@ -57,16 +62,16 @@ public class GameBattlecity extends Game {
             cleanPosition(elementsMatrix, enemyTank.getPosition());
             while (enemyTank.isTankCrash(elementsMatrix)) {
                 enemyTank.setDirection(enemyTank.randomDirection());
-                System.out.println(enemyTank.getDirection());
+                //System.out.println(enemyTank.getDirection());
             }
-            if (movementCount % ENEMY_SHOOT == 0) {
+            /*if (movementCount % ENEMY_SHOOT == 0) {
                 elementsMatrix = enemyTank.shoot(elementsMatrix);
-                System.out.println("Shoot");
-            }
+                //System.out.println("Shoot");
+            } */
             enemyTank.goStraight();
-            System.out.println(enemyTank.getDirection());
+            //System.out.println(enemyTank.getDirection());
             elementsMatrix = enemyTank.putTankOnBoard(elementsMatrix, enemyTank.getPosition());
-            showMatrix(board);
+            //showMatrix(board);
             wait(1);
         }
         enemyTank.setDirection(enemyTank.randomDirection());

@@ -1,7 +1,5 @@
 package jalau.at18.pacman;
-import java.util.Timer;
-import java.util.TimerTask;
-// import java.util.Random;
+
 public class Board {
     public static final int X_BORDER = 25;
     public static final int Y_BORDER = 29;
@@ -95,6 +93,4 @@ public class Board {
     public String[][] getGameBoard() {
         return this.gameBoard;
     }
-
-   
 }

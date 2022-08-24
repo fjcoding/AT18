@@ -75,7 +75,6 @@ public class Board {
         for (int rows = 0; rows < X_BORDER; rows++) {
             for (int colums = 0; colums < Y_BORDER; colums++) {
                 System.out.print(boardToShow[rows][colums] + "");
-                timeBalls(boardToShow, n, m);
             }
             System.out.println();
         }
@@ -89,7 +88,6 @@ public class Board {
     public String[][] getGameBoard() {
         return this.gameBoard;
     }
-
     public void timeBalls(String[][] arr, int n, int m) {
         // position(arr, n, m);
         if (energizer1 == eat1) {

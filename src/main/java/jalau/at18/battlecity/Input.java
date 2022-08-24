@@ -1,19 +1,22 @@
 package jalau.at18.battlecity;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-import java.util.Scanner;
-
-public class Input {
-    private Scanner scan;
-
-    public Input() {
-        this.scan = new Scanner(System.in);
-    }
-
-    public String read() {
-        return scan.nextLine();
-    }
-
-    public void finish() {
-        scan.close();
-    }
+public class Input implements KeyListener {
+    String input ="";
+	//Proceso1 array = new Proceso1();
+	@Override
+	public void keyTyped(KeyEvent e)
+	{
+		input = String.valueOf(e.getKeyChar());
+		System.out.println(input);
+	}
+	@Override
+	public void keyPressed(KeyEvent e)
+	{
+	}
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+	}
 }

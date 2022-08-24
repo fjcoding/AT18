@@ -59,20 +59,18 @@ public class Missile {
                 putMissileOnBoard(row1, column1, row2, column2);
                 //showBoard();
             }
-            removeMissilefromBoard(row1, column1, row2, column2);
         }
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
 
-    public int[][] moveMissileDown(int BOARD_DIMENSION) {
-
-        if (row1 < BOARD_DIMENSION -1) {
+    public int[][] moveMissileDown(int boardDimension) {
+        if (row1 < boardDimension - 1) {
             row1 = row1 + 1;
             row2 = row2 + 1;
             putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
-            while (row1 < BOARD_DIMENSION - 1) {
+            while (row1 < boardDimension - 1) {
                 removeMissilefromBoard(row1, column1, row2, column2);
                 row1 = row1 + 1;
                 row2 = row2 + 1;
@@ -82,7 +80,6 @@ public class Missile {
                 putMissileOnBoard(row1, column1, row2, column2);
                 //showBoard();
             }
-            removeMissilefromBoard(row1, column1, row2, column2);
         }
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
@@ -104,19 +101,18 @@ public class Missile {
                 putMissileOnBoard(row1, column1, row2, column2);
                 //showBoard();
             }
-            removeMissilefromBoard(row1, column1, row2, column2);
         }
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
 
-    public int[][] moveMissileRight(int BOARD_DIMENSION) {
-        if (column1 < BOARD_DIMENSION -1){
+    public int[][] moveMissileRight(int boardDimension) {
+        if (column1 < boardDimension - 1) {
             column1 = column1 + 1;
             column2 = column2 + 1;
             putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
-            while (column1 < (BOARD_DIMENSION - 1)) {
+            while (column1 < (boardDimension - 1)) {
                 removeMissilefromBoard(row1, column1, row2, column2);
                 column1 = column1 + 1;
                 column2 = column2 + 1;

@@ -1,7 +1,7 @@
 package jalau.at18.battlecity;
 
 public class Board {
-    private final Element[][] matrix;
+    protected Element[][] matrix;
 
     public Board(Element[][] matrix) {
         this.matrix = matrix;
@@ -9,5 +9,8 @@ public class Board {
 
     public Element[][] getMatrix() {
         return matrix;
+    }
+    public void setMatrix(Element[][] matrix){
+        this.matrix= matrix;
     }
 }

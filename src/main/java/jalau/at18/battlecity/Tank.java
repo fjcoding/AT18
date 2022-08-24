@@ -221,4 +221,11 @@ public class Tank {
         }
         return isTankCrashRight;
     }
+    public void cleanPosition(Element[][] elementsMatrix, int[][] cleanedPosition) {
+        Empty empty = new Empty();
+        elementsMatrix[cleanedPosition[0][0]][cleanedPosition[0][1]] = empty;
+        elementsMatrix[cleanedPosition[1][0]][cleanedPosition[1][1]] = empty;
+        elementsMatrix[cleanedPosition[2][0]][cleanedPosition[2][1]] = empty;
+        elementsMatrix[cleanedPosition[SIZE_ROW_POSITION - 1][0]][cleanedPosition[SIZE_ROW_POSITION - 1][1]] = empty;
+    }
 }

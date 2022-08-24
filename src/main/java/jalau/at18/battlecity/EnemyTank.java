@@ -14,11 +14,37 @@ public class EnemyTank extends Tank {
     public static final int INITIAL_POSITIONS = 3;
     public static final int POSITIONS_LENGTH = 4;
     public static final int NUMBER_OF_DIRECTIONS = 4;
+    public static final int ENEMY_MOVEMENTS = 15;
     private int enemyCount;
+    private int movementCount = 0;
+    public static final int ENEMY_SHOOT = 3;
     //public int[][] enemyPosition;
 
     public EnemyTank(int enemyCount) {
         this.enemyCount = enemyCount;
+    }
+
+    public void moveEnemy(Element[][] elementsMatrix) {
+        cleanPosition(elementsMatrix, getPosition());
+        while (isTankCrash(elementsMatrix)) {
+            setDirection(randomDirection());
+        }
+        if (movementCount % ENEMY_SHOOT == 0) {
+            elementsMatrix = shoot(elementsMatrix);
+            System.out.println("Shoot");
+        }
+        /*if (isTankCrash(elementsMatrix)) {
+            setDirection(randomDirection());
+        } else {
+            goStraight();
+        }*/
+        goStraight();
+        elementsMatrix = putTankOnBoard(elementsMatrix, getPosition());
+        movementCount++;
+        if (movementCount == ENEMY_MOVEMENTS) {
+            setDirection(randomDirection());
+            movementCount = 0;
+        }
     }
 
     public String randomDirection() {
@@ -37,7 +63,6 @@ public class EnemyTank extends Tank {
         if (direction == "DOWN") {
             position = arrangeDown(position);
             position = moveDown(position);
-
         }
         if (direction == "LEFT") {
             position = arrangeLeft(position);
@@ -59,7 +84,8 @@ public class EnemyTank extends Tank {
         if (enemyCount % INITIAL_POSITIONS == 0) {
             position = INITIAL_POSITION_ONE;
         }
-        direction = "DOWN";
+        direction = randomDirection();
         return position;
     }
+
 }

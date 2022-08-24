@@ -3,8 +3,7 @@ package jalau.at18.battlecity;
 public class GameBattlecity extends Game {
     public static final int ENEMYS_PER_STAGE = 20;
     public static final int SIZE_ROW_POSITION = 4;
-    public static final int ENEMY_MOVEMENTS = 15;
-    public static final int ENEMY_SHOOT = 3;
+
     public static final int GRID_LENGHT = 26;
     public static final int MILLISECONDS = 1000;
 
@@ -39,10 +38,12 @@ public class GameBattlecity extends Game {
         showMatrix(board);
     }
     public void playGame() {
-
+        Element[][] elementsMatrix = board.getMatrix();
+        //showMatrix(board);
+        //movePlayer();
+        enemyTank.moveEnemy(elementsMatrix);
         showMatrix(board);
-        movePlayer();    
-        //moveEnemy();
+        wait(1);
     }
     public void endGame() {
 
@@ -52,29 +53,9 @@ public class GameBattlecity extends Game {
         String input = direction.read();
         Element[][] elementsMatrix = board.getMatrix();
         //int[][] newPosition = new int[SIZE_ROW_POSITION][2];
-        cleanPosition(elementsMatrix, tankPlayer.getPosition());
+        tankPlayer.cleanPosition(elementsMatrix, tankPlayer.getPosition());
         int[][] newPosition = tankPlayer.movements(input);
         elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, newPosition);
-    }
-    public void moveEnemy() {
-        for (int movementCount = 0; movementCount < ENEMY_MOVEMENTS; movementCount++) {
-            Element[][] elementsMatrix = board.getMatrix();
-            cleanPosition(elementsMatrix, enemyTank.getPosition());
-            while (enemyTank.isTankCrash(elementsMatrix)) {
-                enemyTank.setDirection(enemyTank.randomDirection());
-                //System.out.println(enemyTank.getDirection());
-            }
-            /*if (movementCount % ENEMY_SHOOT == 0) {
-                elementsMatrix = enemyTank.shoot(elementsMatrix);
-                //System.out.println("Shoot");
-            } */
-            enemyTank.goStraight();
-            //System.out.println(enemyTank.getDirection());
-            elementsMatrix = enemyTank.putTankOnBoard(elementsMatrix, enemyTank.getPosition());
-            //showMatrix(board);
-            wait(1);
-        }
-        enemyTank.setDirection(enemyTank.randomDirection());
     }
     public static Board createBoard() {
         String rute = "stage1.csv";
@@ -91,14 +72,6 @@ public class GameBattlecity extends Game {
             }
             System.out.println();
         }
-    }
-
-    public void cleanPosition(Element[][] elementsMatrix, int[][] position) {
-        Empty empty = new Empty();
-        elementsMatrix[position[0][0]][position[0][1]] = empty;
-        elementsMatrix[position[1][0]][position[1][1]] = empty;
-        elementsMatrix[position[2][0]][position[2][1]] = empty;
-        elementsMatrix[position[SIZE_ROW_POSITION - 1][0]][position[SIZE_ROW_POSITION - 1][1]] = empty;
     }
 
     public static void wait(int seconds) {

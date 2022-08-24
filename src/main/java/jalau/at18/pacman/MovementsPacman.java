@@ -16,13 +16,28 @@ public class MovementsPacman {
     public static final int POWERBALL = 50;
     public static final int FRUIT1 = 100;
     public static final int FRUIT2 = 300;
-    public static final int RECHARGE1 = 4;
-    public static final int RECHARGE2 = 8;
-    public static final int RECHARGE3 = 10;
-    public static final int RECHARGE4 = 14;
+    public static final int RECHARGE4 = 4;
+    public static final int RECHARGE8 = 8;
+    public static final int RECHARGE10 = 10;
+    public static final int RECHARGE14 = 14;
     public static final int ROWX = 25;
     public static final int COLUMY = 29;
     public static final int SPACES = 28;
+    private static int energizer1 = 0;
+    private static int energizer2 = 0;
+    private static int energizer3 = 0;
+    private static int energizer4 = 0;
+    private static int energizer5 = 0;
+    private static int eat1 = 1;
+    private static int eat2 = 2;
+    public static final String FIRST = "\033[34mO\u001B[0m";
+    private static final int POSITION5 = 5;
+    private static final int POSITION25 = 25;
+    private static final int POSITION3 = 3;
+    private static final int POSITION23 = 23;
+    private static final int POSITION11 = 11;
+    private static final int POSITION17 = 17;
+
     private Board board = new Board();
     private String[][] newboardarr = board.getGameBoard();
 
@@ -30,6 +45,8 @@ public class MovementsPacman {
         try {
             while (newboardarr[row][column + 1] != "▒") {
                 column++;
+                position(newboardarr, row, column);
+                balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row][column - 1] = " ";
@@ -84,6 +101,8 @@ public class MovementsPacman {
         try {
             while (newboardarr[row + 1][column] != "▒") {
                 row++;
+                position(newboardarr, row, column);
+                balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row - 1][column] = " ";
@@ -127,6 +146,8 @@ public class MovementsPacman {
         try {
             while (newboardarr[row][column - 1] != "▒") {
                 column--;
+                position(newboardarr, row, column);
+                balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row][column + 1] = " ";
@@ -185,6 +206,8 @@ public class MovementsPacman {
         try {
             while (newboardarr[row - 1][column] != "▒") {
                 row--;
+                position(newboardarr, row, column);
+                balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row + 1][column] = " ";
@@ -379,12 +402,61 @@ public class MovementsPacman {
         return points;
     }
 
+    public static void balls(String[][] arr, int n, int m) {
+        position(arr, n, m);
+        if (energizer1 == eat1) {
+            energizer1 = eat2;
+        } else if (energizer1 == 0) {
+            arr[eat1][POSITION25] = FIRST;
+        }
+
+        if (energizer2 == eat1) {
+            energizer2 = eat2;
+        } else if (energizer2 == 0) {
+            arr[POSITION5][POSITION11] = FIRST;
+        }
+
+        if (energizer3 == eat1) {
+            energizer3 = eat2;
+        } else if (energizer3 == 0) {
+            arr[POSITION17][POSITION11] = FIRST;
+        }
+
+        if (energizer4 == eat1) {
+            energizer4 = eat2;
+        } else if (energizer4 == 0) {
+            arr[POSITION23][POSITION3] = FIRST;
+        }
+
+        if (energizer5 == eat1) {
+            energizer5 = eat2;
+        } else if (energizer5 == 0) {
+            arr[POSITION23][POSITION25] = FIRST;
+        }
+
+    }
+    public static void position(String[][] arr, int n, int m) {
+        //1  25 |  5  11| 17 11  |23  3|  23 25
+        if (arr[n][m] == arr[eat1][POSITION25]) {
+            energizer1 = eat1;
+        } else if (arr[n][m] == arr[POSITION5][POSITION11]) {
+            energizer2 = eat1;
+        } else if (arr[n][m] == arr[POSITION17][POSITION11]) {
+            energizer3 = eat1;
+        } else if (arr[n][m] == arr[POSITION23][POSITION3]) {
+            energizer4 = eat1;
+        } else if (arr[n][m] == arr[POSITION23][POSITION25]) {
+            energizer5 = eat1;
+        }
+    }
+
+
     public static void timefruits(String[][] newboardarr, int n, int m) {
         int row1;
         int colum2;
         int row3;
         int colum4; // frutas en color verde
-        if (contTimeToShowFruits >= RECHARGE1 && contTimeToShowFruits <= RECHARGE2) { // 4 recargas
+        if (contTimeToShowFruits >= RECHARGE4 && contTimeToShowFruits <= RECHARGE8) { // 4 recargas
             String[][] auxFruits1 = new String[ROWX][COLUMY];
             Random fruta = new Random();
             Random fruta1 = new Random();
@@ -402,7 +474,7 @@ public class MovementsPacman {
                 colum4 = fruta22.nextInt(auxFruits2.length);
                 newboardarr[row3][colum4] = "\033[35mX\u001B[0m";
             }
-        } else if (contTimeToShowFruits >= RECHARGE3 && contTimeToShowFruits <= RECHARGE4) { // 4 recargas
+        } else if (contTimeToShowFruits >= RECHARGE10 && contTimeToShowFruits <= RECHARGE14) { // 4 recargas
             String[][] auxFruits1 = new String[ROWX][COLUMY];
             Random fruta = new Random();
             Random fruta1 = new Random();

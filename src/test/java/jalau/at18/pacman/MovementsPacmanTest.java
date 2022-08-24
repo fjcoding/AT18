@@ -2,6 +2,7 @@ package jalau.at18.pacman;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.List;
 
 public class MovementsPacmanTest {
     private static final int FIRSTLIMIT = 277;
@@ -72,8 +73,8 @@ public class MovementsPacmanTest {
     public void testMoveDownGhost() {
         board.getGameBoard()[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
         board.getGameBoard()[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
-        String[][] move_ghost = movements.moveDownGhost(arr);
-        board.setGameBoard(move_ghost);
+        List<Object> move_ghost = movements.moveDownGhost(arr, rowGhost, columnGhost);
+        board.setGameBoard((String[][]) move_ghost.get(0));
         String[][] new_arr = board.getGameBoard();
         for (int rows = 0; rows < xBORDER; rows++) {
             for (int colums = 0; colums < yBORDER; colums++) {
@@ -145,8 +146,8 @@ public class MovementsPacmanTest {
     public void testMoveLeftGhost() {
         board.getGameBoard()[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
         board.getGameBoard()[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
-        String[][] move_ghost = movements.moveLeftGhost(arr);
-        board.setGameBoard(move_ghost);
+        List<Object> move_ghost = movements.moveLeftGhost(arr, rowGhost, columnGhost);
+        board.setGameBoard((String[][]) move_ghost.get(0));
         String[][] new_arr = board.getGameBoard();
         for (int rows = 0; rows < xBORDER; rows++) {
             for (int colums = 0; colums < yBORDER; colums++) {
@@ -218,8 +219,8 @@ public class MovementsPacmanTest {
     public void testMoveRightGhost() {
         board.getGameBoard()[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
         board.getGameBoard()[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
-        String[][] move_ghost = movements.moveRightGhost(arr);
-        board.setGameBoard(move_ghost);
+        List<Object> move_ghost = movements.moveRightGhost(arr, rowGhost, columnGhost);
+        board.setGameBoard((String[][]) move_ghost.get(0));
         String[][] new_arr = board.getGameBoard();
         for (int rows = 0; rows < xBORDER; rows++) {
             for (int colums = 0; colums < yBORDER; colums++) {
@@ -291,8 +292,8 @@ public class MovementsPacmanTest {
     public void testMoveUpGhost() {
         board.getGameBoard()[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
         board.getGameBoard()[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
-        String[][] move_ghost = movements.moveUpGhost(arr);
-        board.setGameBoard(move_ghost);
+        List<Object> move_ghost = movements.moveUpGhost(arr, rowGhost, columnGhost);
+        board.setGameBoard((String[][]) move_ghost.get(0));
         String[][] new_arr = board.getGameBoard();
         for (int rows = 0; rows < xBORDER; rows++) {
             for (int colums = 0; colums < yBORDER; colums++) {

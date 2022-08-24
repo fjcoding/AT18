@@ -1,8 +1,11 @@
 package jalau.at18.pacman;
 
+import java.util.List;
+
 public class ConditionMovementsGhosts {
     private char letter;
     private static final MovementsPacman MOVEMENT = new MovementsPacman();
+    private List<Object> listMovements;
 
     public void setLetter(char character) {
         this.letter = character;
@@ -12,18 +15,19 @@ public class ConditionMovementsGhosts {
         return this.letter;
     }
 
-    public void movement(char character, String[][] array) {
+    public List<Object> movement(char character, String[][] array, int rowGhost, int columnsGhost) {
         if (character == 'w') {
-            MOVEMENT.moveUpGhost(array);
+            listMovements = MOVEMENT.moveUpGhost(array, rowGhost, columnsGhost);
         }
         if (character == 's') {
-            MOVEMENT.moveDownGhost(array);
+            listMovements = MOVEMENT.moveDownGhost(array, rowGhost, columnsGhost);
         }
         if (character == 'a') {
-            MOVEMENT.moveLeftGhost(array);
+            listMovements = MOVEMENT.moveLeftGhost(array, rowGhost, columnsGhost);
         }
         if (character == 'd') {
-            MOVEMENT.moveRightGhost(array);
+            listMovements = MOVEMENT.moveRightGhost(array, rowGhost, columnsGhost);
         }
+        return listMovements;
     }
 }

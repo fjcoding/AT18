@@ -1,11 +1,18 @@
 package jalau.at18.pacman;
+
 import java.util.Random;
+import java.util.Arrays;
+import java.util.List;
 
 public class MovementsPacman {
-    private static final int EIGHT = 8;
-    private static final int FIFTEEN = 15;
-    private static int rowGhost = EIGHT;
-    private static int columnsGhost = FIFTEEN;
+    private int rowGhostInitial1;
+    private int columnsGhostIntial1;
+    private int rowGhostInitial2;
+    private int columnsGhostIntial2;
+    private int rowGhostInitial3;
+    private int columnsGhostIntial3;
+    private int rowGhostInitial4;
+    private int columnsGhostIntial4;
     private static int row = 1;
     private static int column = 1;
     private static final int TIME = 200;
@@ -39,6 +46,80 @@ public class MovementsPacman {
 
     private Board board = new Board();
     private String[][] newboardarr = board.getGameBoard();
+
+    public void setRowGhost1(int rowForGhost) {
+        this.rowGhostInitial1 = rowForGhost;
+    }
+
+    public int getRowGhost1() {
+        return this.rowGhostInitial1;
+    }
+
+    public void setColumnGhost1(int columnForGhost) {
+        this.columnsGhostIntial1 = columnForGhost;
+    }
+
+    public int getColumnGhost1() {
+        return this.columnsGhostIntial1;
+    }
+
+    public void setRowGhost2(int rowForGhost) {
+        this.rowGhostInitial2 = rowForGhost;
+    }
+
+    public int getRowGhost2() {
+        return this.rowGhostInitial2;
+    }
+
+    public void setColumnGhost2(int columnForGhost) {
+        this.columnsGhostIntial2 = columnForGhost;
+    }
+
+    public int getColumnGhost2() {
+        return this.columnsGhostIntial2;
+    }
+
+    public void setRowGhost3(int rowForGhost) {
+        this.rowGhostInitial3 = rowForGhost;
+    }
+
+    public int getRowGhost3() {
+        return this.rowGhostInitial3;
+    }
+
+    public void setColumnGhost3(int columnForGhost) {
+        this.columnsGhostIntial3 = columnForGhost;
+    }
+
+    public int getColumnGhost3() {
+        return this.columnsGhostIntial3;
+    }
+
+    public void setRowGhost4(int rowForGhost) {
+        this.rowGhostInitial4 = rowForGhost;
+    }
+
+    public int getRowGhost4() {
+        return this.rowGhostInitial4;
+    }
+
+    public void setColumnGhost4(int columnForGhost) {
+        this.columnsGhostIntial4 = columnForGhost;
+    }
+
+    public int getColumnGhost4() {
+        return this.columnsGhostIntial4;
+    }
+
+    public int getNewColumn(int obtainColumn) {
+        int newColumn = obtainColumn;
+        return newColumn;
+    }
+
+    public int getNewRow(int obtainRow) {
+        int newRow = obtainRow;
+        return newRow;
+    }
 
     public String[][] moveRight() {
         try {
@@ -249,8 +330,9 @@ public class MovementsPacman {
         return newboardarr;
     }
 
-    public String[][] moveRightGhost(String[][] arr) {
+    public List<Object> moveRightGhost(String[][] newboardarr, int rowGhost, int columnsGhost) {
         try {
+
             while (newboardarr[rowGhost][columnsGhost + 1] != "▒") {
                 columnsGhost++;
                 if (newboardarr[rowGhost][columnsGhost] == "·") {
@@ -285,10 +367,12 @@ public class MovementsPacman {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        return newboardarr;
+        int newRowGhost = getNewRow(rowGhost);
+        int newColumnGhost = getNewColumn(columnsGhost);
+        return Arrays.asList(newboardarr, newRowGhost, newColumnGhost);
     }
 
-    public String[][] moveDownGhost(String[][] newboardarr) {
+    public List<Object> moveDownGhost(String[][] newboardarr, int rowGhost, int columnsGhost) {
         try {
             while (newboardarr[rowGhost + 1][columnsGhost] != "▒") {
                 rowGhost++;
@@ -317,10 +401,12 @@ public class MovementsPacman {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        return newboardarr;
+        int newRowGhost = getNewRow(rowGhost);
+        int newColumnGhost = getNewColumn(columnsGhost);
+        return Arrays.asList(newboardarr, newRowGhost, newColumnGhost);
     }
 
-    public String[][] moveLeftGhost(String[][] newboardarr) {
+    public List<Object> moveLeftGhost(String[][] newboardarr, int rowGhost, int columnsGhost) {
         try {
             while (newboardarr[rowGhost][columnsGhost - 1] != "▒") {
                 columnsGhost--;
@@ -361,10 +447,12 @@ public class MovementsPacman {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        return newboardarr;
+        int newRowGhost = getNewRow(rowGhost);
+        int newColumnGhost = getNewColumn(columnsGhost);
+        return Arrays.asList(newboardarr, newRowGhost, newColumnGhost);
     }
 
-    public String[][] moveUpGhost(String[][] newboardarr) {
+    public List<Object> moveUpGhost(String[][] newboardarr, int rowGhost, int columnsGhost) {
         try {
             while (newboardarr[rowGhost - 1][columnsGhost] != "▒") {
                 rowGhost--;
@@ -393,7 +481,9 @@ public class MovementsPacman {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        return newboardarr;
+        int newRowGhost = getNewRow(rowGhost);
+        int newColumnGhost = getNewColumn(columnsGhost);
+        return Arrays.asList(newboardarr, newRowGhost, newColumnGhost);
     }
 
     public int showScore() {

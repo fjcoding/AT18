@@ -9,6 +9,7 @@ public class Main {
         Board board = new Board();
         Ghost movementGhost = new Ghost();
         MovementsPacman point = new MovementsPacman();
+        LivesWInsandLoses generalPacman = new LivesWInsandLoses();
         System.out.println("Tablero mostrado");
         Scanner keyword = new Scanner(System.in);
         final int rowPacman = 1;
@@ -35,7 +36,8 @@ public class Main {
         board.getGameBoard()[rowGhost3][columsGhost3] = "\033[31mG\u001B[0m";
         board.getGameBoard()[rowGhost4][columsGhost4] = "\033[31mG\u001B[0m";
         board.showBoard(board.getGameBoard(), rowPacman, columsPacman);
-        System.out.println("                                                      SCORE: " + point.showScore());
+        System.out.println("                                     LIVES: " + point.showLives()
+                + "                                                      SCORE: " + point.showScore());
         System.out.println("Enter a move: ");
         char movements = keyword.next().charAt(0);
         point.setRowGhost1(rowGhost1);
@@ -53,7 +55,8 @@ public class Main {
         point.setRowGhost1((int) arr.get(1));
         point.setColumnGhost1((int) arr.get(2));
         while (true) {
-            System.out.println("                                                      SCORE: " + point.showScore());
+            System.out.println("                                     LIVES: " + point.showLives()
+                    + "                                                      SCORE: " + point.showScore());
             System.out.println("Enter a move: ");
             char movementsFollow = keyword.next().charAt(0);
             arrGhost = newMovement.movement(movementsFollow, point.getRowGhost1(), point.getColumnGhost1());
@@ -71,6 +74,12 @@ public class Main {
                     point.getColumnGhost4());
             point.setRowGhost4((int) arrGhost4.get(1));
             point.setColumnGhost4((int) arrGhost4.get(2));
+            if (generalPacman.LostALive(point.showLives())) {
+                break;
+            }
+            if (generalPacman.isWinner((String[][]) arrGhost3.get(0), point.getRowGhost4(), point.getColumnGhost4())) {
+                break;
+            }
         }
     }
 }

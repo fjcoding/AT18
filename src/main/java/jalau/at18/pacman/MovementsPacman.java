@@ -15,6 +15,7 @@ public class MovementsPacman {
     private int columnsGhostIntial4;
     private static int row = 1;
     private static int column = 1;
+    private static int lives = 3;
     private static final int TIME = 200;
     private static int contTimeToShowFruits = 0;
     private static int score = 0;
@@ -46,6 +47,7 @@ public class MovementsPacman {
 
     private Board board = new Board();
     private String[][] newboardarr = board.getGameBoard();
+    private LivesWInsandLoses generalPacman = new LivesWInsandLoses();
 
     public void setRowGhost1(int rowForGhost) {
         this.rowGhostInitial1 = rowForGhost;
@@ -132,6 +134,23 @@ public class MovementsPacman {
                     newboardarr[row][column - 1] = " ";
                     score += SCOREBALL;
                 }
+                if (newboardarr[row][column] == "\033[31mG\u001B[0m") {
+                    // Pacman loses a live
+                    newboardarr[row][column - 1] = " ";
+                    row = 1;
+                    column = 1;
+                    lives--;
+                    if (generalPacman.LostALive(lives)) {
+                        break;
+                    }
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
+                    Thread.sleep(TIME);
+                    System.out.print("\033[H\033[2J");
+
+                    System.out.flush();
+                    board.showBoard(newboardarr, row, column);
+                    break;
+                }
                 if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
                     newboardarr[row][column - 1] = " ";
                     score = score + POWERBALL;
@@ -188,6 +207,23 @@ public class MovementsPacman {
                     newboardarr[row - 1][column] = " ";
                     score += SCOREBALL;
                 }
+                if (newboardarr[row][column] == "\033[31mG\u001B[0m") {
+                    // Pacman loses a live
+                    newboardarr[row - 1][column] = " ";
+                    row = 1;
+                    column = 1;
+                    lives--;
+                    if (generalPacman.LostALive(lives)) {
+                        break;
+                    }
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
+                    Thread.sleep(TIME);
+                    System.out.print("\033[H\033[2J");
+
+                    System.out.flush();
+                    board.showBoard(newboardarr, row, column);
+                    break;
+                }
                 if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
                     newboardarr[row - 1][column] = " ";
                     score = score + POWERBALL;
@@ -232,6 +268,23 @@ public class MovementsPacman {
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row][column + 1] = " ";
                     score += SCOREBALL;
+                }
+                if (newboardarr[row][column] == "\033[31mG\u001B[0m") {
+                    // Pacman loses a live
+                    newboardarr[row][column + 1] = " ";
+                    row = 1;
+                    column = 1;
+                    lives--;
+                    if (generalPacman.LostALive(lives)) {
+                        break;
+                    }
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
+                    Thread.sleep(TIME);
+                    System.out.print("\033[H\033[2J");
+
+                    System.out.flush();
+                    board.showBoard(newboardarr, row, column);
+                    break;
                 }
                 if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
                     newboardarr[row][column + 1] = " ";
@@ -292,6 +345,23 @@ public class MovementsPacman {
                 if (newboardarr[row][column] == "·") {
                     newboardarr[row + 1][column] = " ";
                     score += SCOREBALL;
+                }
+                if (newboardarr[row][column] == "\033[31mG\u001B[0m") {
+                    // Pacman loses a live
+                    newboardarr[row + 1][column] = " ";
+                    row = 1;
+                    column = 1;
+                    lives--;
+                    if (generalPacman.LostALive(lives)) {
+                        break;
+                    }
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
+                    Thread.sleep(TIME);
+                    System.out.print("\033[H\033[2J");
+
+                    System.out.flush();
+                    board.showBoard(newboardarr, row, column);
+                    break;
                 }
                 if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
                     newboardarr[row + 1][column] = " ";
@@ -491,6 +561,11 @@ public class MovementsPacman {
         return points;
     }
 
+    public int showLives() {
+        int totaLives = lives;
+        return totaLives;
+    }
+
     public static void balls(String[][] arr, int n, int m) {
         position(arr, n, m);
         if (energizer1 == eat1) {
@@ -524,8 +599,9 @@ public class MovementsPacman {
         }
 
     }
+
     public static void position(String[][] arr, int n, int m) {
-        //1  25 |  5  11| 17 11  |23  3|  23 25
+        // 1 25 | 5 11| 17 11 |23 3| 23 25
         if (arr[n][m] == arr[eat1][POSITION25]) {
             energizer1 = eat1;
         } else if (arr[n][m] == arr[POSITION5][POSITION11]) {
@@ -538,7 +614,6 @@ public class MovementsPacman {
             energizer5 = eat1;
         }
     }
-
 
     public static void timefruits(String[][] newboardarr, int n, int m) {
         int row1;

@@ -10,7 +10,7 @@ public class Board {
     public Element[][] getMatrix() {
         return matrix;
     }
-    public void setMatrix(Element[][] matrix){
-        this.matrix= matrix;
+    public void setMatrix(Element[][] newMatrix) {
+        this.matrix = newMatrix;
     }
 }

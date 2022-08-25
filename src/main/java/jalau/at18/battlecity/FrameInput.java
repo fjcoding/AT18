@@ -1,16 +1,18 @@
 package jalau.at18.battlecity;
+
 import java.awt.Frame;
+
 public class FrameInput {
-    Frame f;
+    private Frame frame;
 
-	public FrameInput () {
-		this.f = new Frame("Input");
-		f.setSize(0, 0);
-		f.setVisible(true);
-	}
+    public FrameInput() {
+        this.frame = new Frame("Input");
+        frame.setSize(0, 0);
+        frame.setVisible(true);
+    }
 
-	public void addKey(Input k) {
-		f.addKeyListener(k);
-	}
+    public void addKey(Input k) {
+        frame.addKeyListener(k);
+    }
 
 }

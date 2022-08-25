@@ -10,13 +10,6 @@ public class BoardTest {
     public static int count_points_old = 0;
     public static int count_points_new = 0;
     Board board = new Board();
-    MovementsPacman movements = new MovementsPacman();
-    MovementsPacman point = new MovementsPacman();
-    private String[][] arr = board.getGameBoard();
-    final int rowPacman = 1;
-    final int columsPacman = 1;
-    private static int rowGhost = 8;
-    private static int columnGhost = 15;
 
     @Test
     public void testGetDots() {
@@ -29,6 +22,22 @@ public class BoardTest {
         int expectedDots = board.INITIAL_DOTS_NUMBER - REST_DOTS;
         board.restDots();
         assertEquals(expectedDots, board.getDots() );
+    }
+    @Test
+    public void testGetScore() {
+       
+    }
+    @Test
+    public void testAddElement() {
+      
+    }
+    @Test
+    public void testGetGameBoard() {
+        
+    }
+    @Test
+    public void testSetGameBoard() {
+       
     }
 
 

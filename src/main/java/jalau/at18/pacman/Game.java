@@ -25,7 +25,7 @@ public class Game {
     public void runGame() {
         Move move;
         initGame();
-        while (!(isWinner(board.getDots()) || isGameOver())) {
+        while (!(isWinner(board.getDots()) || isGameOver(pacman, ghost1))) {
             System.out.print(board.getDots());
             System.out.println("Enter a move:");
             /*/////////////////////////////////////
@@ -47,9 +47,9 @@ public class Game {
         }
     }
 
-    public boolean isGameOver() {
-        return pacman.getXposition() == ghost1.getXPosition() &&
-                pacman.getYposition() == ghost1.getYPosition() ? true : false;
+    public boolean isGameOver(Pacman pacman, Ghost ghost) {
+        return pacman.getXposition() == ghost.getXPosition() &&
+                pacman.getYposition() == ghost.getYPosition() ? true : false;
     }
 
     public boolean isWinner(int dots) {

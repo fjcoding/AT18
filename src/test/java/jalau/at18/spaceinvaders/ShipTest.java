@@ -72,4 +72,37 @@ public class ShipTest {
         ship.subtrasctLifes();
         assertEquals(2, ship.getLifes());
     }
+    @Test
+    public void itShouldShoot() {
+        Board board = new Board();
+        Ship ship = new Ship();
+        ship.shoot(board);
+        assertEquals(true, ship.isThereBullets());
+
+    }
+    @Test
+    public void itShouldKnowIfThereAreBullets() {
+        Ship ship = new Ship();
+        assertEquals(false, ship.isThereBullets());
+    }
+    @Test
+    public void itShouldMoveBullets() {
+        Board board = new Board();
+        Ship ship = new Ship();
+        ship.shoot(board);
+        ship.moveBullets(board);
+        char[][] expected = { { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '#', '#', '#', '*', '*', '#', '#', '#', '*' },
+                { '*', '#', '*', '#', '|', '*', '#', '*', '#', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' } };
+        assertArrayEquals(expected, board.getMatrix());
+
+    }
+
 }

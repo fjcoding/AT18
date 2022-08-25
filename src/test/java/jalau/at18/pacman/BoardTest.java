@@ -81,7 +81,7 @@ public class BoardTest {
         {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
             "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒"}
 };
-    assertEquals(expectedGameBoard, board.addElement(pacman.getRepresentation(), POSITION_TO_TESTS, POSITION_TO_TESTS));
+    assertEquals(expectedGameBoard, board.addElement(pacman.getRepresentation(), 1, POSITION_TO_TESTS));
     }
     @Test
     public void testGetGameBoard() {

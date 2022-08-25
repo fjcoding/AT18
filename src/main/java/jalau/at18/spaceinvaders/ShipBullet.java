@@ -19,7 +19,7 @@ public class ShipBullet extends Bullet {
             representation = '*';
         } else {
             if (board.existShield(position.getPosX(), position.getPosY())) {
-                board.impactShould(position.getPosX(), position.getPosY());
+                board.impactShield(position.getPosX(), position.getPosY());
                 representation = '*';
             } else {
                 board.setElement(position.getPosX(), position.getPosY(), representation);

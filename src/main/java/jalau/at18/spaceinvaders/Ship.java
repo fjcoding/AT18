@@ -1,28 +1,25 @@
 package jalau.at18.spaceinvaders;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ship {
     private static final int MAX_LIFES = 3;
-    private static final int POS_Y_INITIAL = 9;
-    private static final int POS_X_INITIAL = 4;
+    private static final int POS_ROW_INITIAL = 9;
+    private static final int POS_COL_INITIAL = 4;
+    private static final int ZERO = 0;
     private int lifes;
-    private int posX;
-    private int posY;
-    private boolean isAlive;
+    private Position position;
+    private List<ShipBullet> bullets;
 
     public Ship() {
         lifes = MAX_LIFES;
-        posX = POS_X_INITIAL;
-        posY = POS_Y_INITIAL;
-        isAlive = true;
-
+        position = new Position(POS_ROW_INITIAL, POS_COL_INITIAL);
+        bullets = new ArrayList<>();
     }
 
     public void subtrasctLifes() {
         lifes -= 1;
-    }
-
-    public void setPosX(int newPosition) {
-        posX = newPosition;
     }
 
     public int getLifes() {
@@ -30,35 +27,45 @@ public class Ship {
     }
 
     public int getPosX() {
-        return posX;
+        return position.getPosX();
     }
 
     public int getPosY() {
-        return posY;
+        return position.getPosY();
     }
 
     public void moveLeft() {
-        posX -= 1;
+        position.moveLeft();
     }
 
     public void moveRight() {
-        posX += 1;
-    }
-
-    public void setIsDead() {
-        isAlive = false;
-    }
-
-    public void setIsAlive() {
-        isAlive = true;
+        position.moveRigth();
     }
 
     public boolean getIsAlive() {
-        return isAlive;
+        return lifes > ZERO;
     }
 
-    public void reStartShip() {
-        posX = POS_X_INITIAL;
-        posY = POS_Y_INITIAL;
+    public void reStartPosition() {
+        position = new Position(POS_ROW_INITIAL, POS_COL_INITIAL);
+    }
+
+    public void shoot(Board board) {
+        ShipBullet bullet = new ShipBullet(position.getPosX(), position.getPosY());
+        bullets.add(bullet);
+    }
+
+    public void moveBullets(Board board) {
+        for (int iterator = ZERO; iterator < bullets.size(); iterator++) {
+            ShipBullet bullet = bullets.remove(iterator);
+            bullet.move(board);
+            if (bullet.getRepresentation() != '*') {
+                bullets.add(bullet);
+            }
+        }
+    }
+
+    public boolean isThereBullets() {
+        return bullets.size() > ZERO;
     }
 }

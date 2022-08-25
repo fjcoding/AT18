@@ -16,7 +16,7 @@ public class Block {
     }
 
     public char getCharacter() {
-        char res = '*';
+        char res = '-';
         if (duration == MAX_DURABILITY) {
             res = '#';
         }
@@ -25,9 +25,6 @@ public class Block {
         }
         if (duration == TWO_DURABILITY) {
             res = UNICODE_CHAR;
-        }
-        if (duration == TWO_DURABILITY - 1) {
-            res = '-';
         }
         return res;
     }

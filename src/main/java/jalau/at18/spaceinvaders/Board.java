@@ -12,30 +12,15 @@ public class Board {
     }
 
     private void initialize() {
-        for (int col = 0; col < matrix.length; col++) {
-            for (int row = 0; row < matrix.length; row++) {
-                if (shield.existBlockInPosition(col, row)) {
-                    matrix[col][row] = shield.getCharacter(col, row);
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix.length; col++) {
+                if (shield.existBlockInPosition(row, col)) {
+                    matrix[row][col] = shield.getCharacterOfBlock(row, col);
                 } else {
-                    matrix[col][row] = '*';
+                    matrix[row][col] = '*';
                 }
             }
         }
-    }
-
-    @Override
-    public String toString() {
-        String showBoard = "";
-        showBoard += "-----------------------" + "\n";
-        for (int row = 0; row < matrix.length; row++) {
-            showBoard += "| ";
-            for (int column = 0; column < matrix.length; column++) {
-                showBoard += matrix[row][column] + " ";
-            }
-            showBoard += "|" + "\n";
-        }
-        showBoard += "-----------------------" + "\n";
-        return showBoard;
     }
 
     public void setElement(int posX, int posY, char newContent) {
@@ -52,5 +37,33 @@ public class Board {
 
     public int getMaxSize() {
         return MAX_SIZE;
+    }
+
+    public void clearPosition(int posX, int posY) {
+        matrix[posX][posY] = '*';
+    }
+
+    public boolean existShield(int posX, int posY) {
+        return shield.existBlockInPosition(posX, posY);
+    }
+
+    public void impactShield(int posX, int posY) {
+        char charPos = shield.impactBlock(posX, posY);
+        setElement(posX, posY, charPos);
+    }
+
+    @Override
+    public String toString() {
+        String showBoard = "";
+        showBoard += "-----------------------" + "\n";
+        for (int row = 0; row < matrix.length; row++) {
+            showBoard += "| ";
+            for (int col = 0; col < matrix.length; col++) {
+                showBoard += matrix[row][col] + " ";
+            }
+            showBoard += "|" + "\n";
+        }
+        showBoard += "-----------------------" + "\n";
+        return showBoard;
     }
 }

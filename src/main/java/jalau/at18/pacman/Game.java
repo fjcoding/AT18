@@ -29,7 +29,11 @@ public class Game {
             System.out.print(board.getDots());
             System.out.println("Enter a move:");
             /*/////////////////////////////////////
+               fruits 
+               lives
+               score
             bluce inf
+
                move pacman = x,y ->7
                move ghost = x,y ->5
      

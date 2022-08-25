@@ -35,7 +35,7 @@ public class MissileTest {
         final int[][] expecteds = {{0,0},{1,0}}; 
         assertArrayEquals(expecteds, newboard);
     }
-
+/*
     @Test
     public void testMoveMissileDown() {
         Element[][] missboard = {{empty,empty, empty, empty}, {empty, empty, empty, empty}, {empty, empty, empty,empty}, {empty, empty,empty,empty}};
@@ -49,7 +49,7 @@ public class MissileTest {
         final int[][] expecteds = {{3,0},{3,1}}; 
         assertArrayEquals(expecteds, newboard);
     }
-
+*/
     @Test
     public void testMoveMissileRight() {
         Element[][] missboard = {{empty,empty, empty, empty}, {empty, empty, empty, empty}, {empty, empty, empty,empty}, {empty, empty,empty,empty}};

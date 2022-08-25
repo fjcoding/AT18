@@ -7,6 +7,7 @@ public class Tank {
     public static final int POSITIONS_LENGTH = 4;
     public static final int SIZE_ROW_POSITION = 4;
     protected int[][] position;
+    private Missile missil;
 
     public Element[][] putTankOnBoard(Element[][] matrix, int[][] newPosition) {
         TankTop tankTop = new TankTop();
@@ -33,8 +34,14 @@ public class Tank {
     }
 
     public Element[][] shoot(Element[][] boardElements) {
-        Missile missil = new Missile(position[0][0], position[0][1], position[1][0], position[1][1], direction, boardElements);
-        return missil.missileDirection();
+        if (missil == null) {
+            missil = new Missile(position[0][0], position[0][1], position[1][0], position[1][1], direction, boardElements);
+        }
+        Element[][] elements = missil.missileDirection();
+        if (missil.isDestroyMissile()) {
+            missil = null;
+        }
+        return elements;
     }
     public int[][] moveUp(int[][] newPosition) {
         newPosition = arrangeUp(newPosition);

@@ -3,6 +3,7 @@ package jalau.at18.battlecity;
 public class Missile {
 
     private static final int BOARD_DIMENSION = 26;
+    public static final int MISSILE_MOVEMENTS = 3;
     private String pointingWhere;
     //private static final int[][] BOARD = new int[BOARD_DIMENSION][BOARD_DIMENSION];
     private int row1;
@@ -13,6 +14,8 @@ public class Missile {
     private static Missiles shotMissiles = new Missiles();
     private static Empty empty = new Empty();
     private MissileCollision missileCollision = new MissileCollision();
+    private boolean firstTime = false;
+    private boolean destroyMissile = false;
 
     public Missile(int xCoordinate1, int yCoordinate1, int xCoordinate2, int yCoordinate2, String direction, Element[][] missBoard) {
         missileBoard = missBoard;
@@ -65,22 +68,21 @@ public class Missile {
     }
 
     public int[][] moveMissileDown(int boardDimension) {
-        if (row1 < boardDimension - 1) {
+        for (int count = 0; count < MISSILE_MOVEMENTS; count++) {
+            if (firstTime) {
+                firstTime = false;
+            } else {
+                removeMissilefromBoard(row1, column1, row2, column2);
+            }
             row1 = row1 + 1;
             row2 = row2 + 1;
-            putMissileOnBoard(row1, column1, row2, column2);
-            //showBoard();
-            while (row1 < boardDimension - 1) {
-                removeMissilefromBoard(row1, column1, row2, column2);
-                row1 = row1 + 1;
-                row2 = row2 + 1;
-                if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
-                    break;
-                }
-                putMissileOnBoard(row1, column1, row2, column2);
-                //showBoard();
+            if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2) || row1 == boardDimension - 1) {
+                destroyMissile = true;
+                break;
             }
+            putMissileOnBoard(row1, column1, row2, column2);
         }
+
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
@@ -148,6 +150,10 @@ public class Missile {
         missileBoard[rowM1][columnM1] = empty;
         missileBoard[rowM2][columnM2] = empty;
         return missileBoard;
+    }
+
+    public boolean isDestroyMissile() {
+        return destroyMissile;
     }
 
 }

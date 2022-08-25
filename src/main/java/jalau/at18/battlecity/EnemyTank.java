@@ -29,10 +29,10 @@ public class EnemyTank extends Tank {
         while (isTankCrash(elementsMatrix)) {
             setDirection(randomDirection());
         }
-        if (movementCount % ENEMY_SHOOT == 0) {
-            elementsMatrix = shoot(elementsMatrix);
+//        if (movementCount % ENEMY_SHOOT == 0) {
+        elementsMatrix = shoot(elementsMatrix);
             //System.out.println("Shoot");
-        }
+//        }
         /*if (isTankCrash(elementsMatrix)) {
             setDirection(randomDirection());
         } else {
@@ -53,7 +53,8 @@ public class EnemyTank extends Tank {
         Random random = new Random();
         int upperBound = NUMBER_OF_DIRECTIONS;
         int randomDirection = random.nextInt(upperBound);
-        return directions[randomDirection];
+        //return directions[randomDirection];
+        return "DOWN"; // por ahora se prueba uno solo el down
     }
 
     public void goStraight() {

@@ -43,7 +43,7 @@ public class MissileCollisionTest {
         assertEquals(ElementType.EMPTY, matrix[missile2Row][missile2Column].getType());
 
     }
-
+    /*
     @Test(expected = RuntimeException.class)
     public void missileHitTankPlayer() {
         TankTop tankTop1 = new TankTop();
@@ -62,6 +62,6 @@ public class MissileCollisionTest {
         assertEquals(ElementType.EMPTY, matrix[missile2Row][missile2Column].getType());
 
     }
-
+   */
 
 }

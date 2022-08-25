@@ -42,14 +42,17 @@ public class GameBattlecity extends Game {
     public void playGame() {
         MoveEnemy enemy = new MoveEnemy(board, enemyTank);
         MoveTankPlayer player = new MoveTankPlayer(board, tankPlayer);
-        Element[][] elementsMatrix = board.getMatrix();
+        //Element[][] elementsMatrix = board.getMatrix();
         //showMatrix(board);
         //movePlayer();
         //enemyTank.moveEnemy(elementsMatrix);
         enemy.start();
         player.start();
-        showMatrix(board);
-        wait(1);
+        while(true){
+            showMatrix(board);
+            wait(1);
+        }
+
     }
     public void endGame() {
 

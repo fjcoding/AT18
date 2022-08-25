@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] arg) {
         Game game = new GameBattlecity();
         game.startGame();
-        while (true) {
+        //while (true) {
             game.playGame();
-        }
+        //}
         //showMatrix(board);
     }
 

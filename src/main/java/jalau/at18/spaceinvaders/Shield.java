@@ -37,7 +37,7 @@ public class Shield {
     }
 
     public char impactBlock(int posX, int posY) {
-        char charImpact = ' ';
+        char charImpact = '*';
         for (int iterator = 0; iterator < posXBlock.size(); iterator++) {
             if (posXBlock.get(iterator) == posX && posYBlock.get(iterator) == posY) {
                 if (blocks.get(iterator).getCharacter() == '-') {

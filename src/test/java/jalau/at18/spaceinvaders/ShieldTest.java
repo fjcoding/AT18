@@ -42,4 +42,27 @@ public class ShieldTest {
         assertEquals((char) 126, shield.impactBlock(8, 1));
         assertEquals((char) 126, shield.getCharacterOfBlock(8, 1));
     }
+
+    @Test
+    public void impactBlockOnce() {
+        Shield shield = new Shield();
+        assertEquals('=', shield.impactBlock(8, 1));
+    }
+
+    @Test
+    public void impactBlockTwice() {
+        Shield shield = new Shield();
+        assertEquals('=', shield.impactBlock(8, 1));
+        assertEquals((char) 126, shield.impactBlock(8, 1));
+    }
+
+    @Test
+    public void impactBlock4Times() {
+        Shield shield = new Shield();
+        assertEquals('=', shield.impactBlock(8, 1));
+        assertEquals((char) 126, shield.impactBlock(8, 1));
+        assertEquals('-', shield.impactBlock(8, 1));
+        assertEquals('*', shield.impactBlock(8, 1));
+        assertEquals(false, shield.existBlockInPosition(8, 1));
+    }
 }

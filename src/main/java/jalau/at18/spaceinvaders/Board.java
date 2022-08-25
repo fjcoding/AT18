@@ -47,7 +47,7 @@ public class Board {
         return shield.existBlockInPosition(posX, posY);
     }
 
-    public void impactShould(int posX, int posY) {
+    public void impactShield(int posX, int posY) {
         char charPos = shield.impactBlock(posX, posY);
         setElement(posX, posY, charPos);
     }

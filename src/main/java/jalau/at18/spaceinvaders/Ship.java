@@ -52,7 +52,6 @@ public class Ship {
 
     public void shoot(Board board) {
         ShipBullet bullet = new ShipBullet(position.getPosX(), position.getPosY());
-        bullet.move(board);
         bullets.add(bullet);
     }
 
@@ -60,7 +59,7 @@ public class Ship {
         for (int iterator = ZERO; iterator < bullets.size(); iterator++) {
             ShipBullet bullet = bullets.remove(iterator);
             bullet.move(board);
-            if (bullet.getRepresentation() != ' ') {
+            if (bullet.getRepresentation() != '*') {
                 bullets.add(bullet);
             }
         }

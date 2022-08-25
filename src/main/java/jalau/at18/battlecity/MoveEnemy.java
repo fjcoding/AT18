@@ -13,14 +13,17 @@ public class MoveEnemy extends Thread {
 
     @Override
     public void run() {
-        Element[][] matrix = board.getMatrix();
-        matrix = enemyTank.moveEnemy(matrix);
-        board.setMatrix(matrix);
-        try {
-            MoveEnemy.sleep(TIME);
-        } catch (InterruptedException e) {
-            System.out.print(e);
+        while (true) {
+            Element[][] matrix = board.getMatrix();
+            matrix = enemyTank.moveEnemy(matrix);
+            board.setMatrix(matrix);
+            try {
+                MoveEnemy.sleep(TIME);
+            } catch (InterruptedException e) {
+                System.out.print(e);
+            }
         }
+
 
     }
 }

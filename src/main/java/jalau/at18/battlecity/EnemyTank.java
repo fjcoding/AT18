@@ -19,10 +19,11 @@ public class EnemyTank extends Tank {
     private int movementCount = 0;
     private Boolean thereAreMissile = false;
     public static final int ENEMY_SHOOT = 3;
-    public Missile missile = new Missile();
+    private Missile missile = new Missile();
     //public int[][] enemyPosition;
 
     public EnemyTank(int enemyCount) {
+        missile.setDirection(direction);
         this.enemyCount = enemyCount;
         missile.setPosition(0, 0, 0, 0);
     }
@@ -33,31 +34,41 @@ public class EnemyTank extends Tank {
             setDirection(randomDirection());
         }
         if (movementCount % ENEMY_SHOOT == 0 && !thereAreMissile) {
-            missile.setPosition(position[0][0], position[0][1], position[1][0], position[1][1]);
             missile.setDirection(direction);
+            missile.setPosition(position[0][0], position[0][1], position[1][0], position[1][1]);
             thereAreMissile = true;
             missile.setBoard(elementsMatrix);
-            System.out.println(position[0][0]+ ". " + position[0][1]);
+            //System.out.println(position[0][0]+ ". " + position[0][1]);
         }
         /*if (isTankCrash(elementsMatrix)) {
             setDirection(randomDirection());
         } else {
             goStraight();
         }*/
+        elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
+        //System.out.println("There is a Missile: " + thereAreMissile);
         if (thereAreMissile) {
-            elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
-            missile.missileDirection();
-            if (missile.isMissilCrash()) {
-                //missile.missileDirection();
+            //missile.missileDirection();
+            if (!missile.getIsCollition()) {
+                //System.out.println("No collition");
+                if (missile.isMissilCrash()) {
+                    //System.out.println("Missile crash");
+                    //missile.missileDirection();
+                    thereAreMissile = false;
+                    elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
+                } else {
+
+                    missile.missileDirection();
+                    elementsMatrix = missile.putMissileOnBoard(elementsMatrix, missile.getPosition());
+                }
+            } else {
+                //System.out.println("Collition");
                 thereAreMissile = false;
+                missile.setIsCollition(false);
                 elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
             }
-            else {
-                missile.missileDirection();
-                elementsMatrix = missile.putMissileOnBoard(elementsMatrix, missile.getPosition());
-            }
-            //System.out.println(missile.getPosition()[0][0] + ", " + missile.getPosition()[0][1]);
         }
+        //System.out.println(missile.getPosition()[0][0] + ", " + missile.getPosition()[0][1]);
         goStraight();
         elementsMatrix = putTankOnBoard(elementsMatrix, getPosition());
         movementCount++;

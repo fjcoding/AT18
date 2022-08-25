@@ -58,7 +58,20 @@ public class ShipBulletTest {
                 { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' } };
         assertArrayEquals(expected, board.getMatrix());
     }
+    @Test
+    public void itShouldReturnPosXBullet(){
 
+        ShipBullet shipbullet = new ShipBullet(9, 4);
+        assertEquals(9, shipbullet.getPosX());
+
+    }
+    @Test
+    public void itShouldReturnStatusBullet(){
+        ShipBullet shipbullet = new ShipBullet(9, 4);
+        shipbullet.impact();
+        assertEquals(false, shipbullet.getStatusBullet());
+
+    }
 
 
 

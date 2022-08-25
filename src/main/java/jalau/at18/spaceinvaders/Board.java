@@ -42,7 +42,7 @@ public class Board {
         matrix[posX][posY] = newContent;
     }
 
-    public int getElement(int posX, int posY) {
+    public char getElement(int posX, int posY) {
         return matrix[posX][posY];
     }
 

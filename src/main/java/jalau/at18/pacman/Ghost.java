@@ -6,6 +6,7 @@ public class Ghost {
     public static final int INDEX_TRY = 5;
     public static final int FOUR_MOVEMENTS = 4;
     public static final int GHOST_SLEEP_TIME = 1000;
+    public static final String GHOST_REPRESENTATION = "G";
     private static final char[] GHOST_MOVEMENTS = {'w', 'a', 's', 'd'};
     private static final ConditionMovementsGhosts MOVEMENTS = new ConditionMovementsGhosts();
     private int random;
@@ -13,24 +14,34 @@ public class Ghost {
     private int yPosition;
     private String representation;
 
-    public void setXposition(int newXPosition) {
-        this.xPosition = newXPosition;
+    
+
+
+    public int getXPosition() {
+        return xPosition;
     }
-    public int getXposition() {
-        return this.xPosition;
+    public void setXPosition(int xPosition) {
+        this.xPosition = xPosition;
     }
-    public void setYposition(int newYPosition) {
-        this.yPosition = newYPosition;
+    public int getYPosition() {
+        return yPosition;
     }
-    public int getYposition() {
-        return this.yPosition;
-    }
-    public void setRepresentation(String representationToSet) {
-        this.representation = representationToSet;
+    public void setYPosition(int yPosition) {
+        this.yPosition = yPosition;
     }
     public String getRepresentation() {
-        return this.representation;
+        return representation;
     }
+    public void setRepresentation(String representation) {
+        this.representation = representation;
+    }
+    
+
+    public Ghost() {
+
+        this.representation = GHOST_REPRESENTATION;
+    }
+
 
 
     public List<Object> ghostMovement(String[][] array, int rowGhost, int columnsGhost) {

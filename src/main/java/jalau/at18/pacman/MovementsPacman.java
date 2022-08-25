@@ -128,30 +128,18 @@ public class MovementsPacman {
                 position(newboardarr, row, column);
                 balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
-                if (newboardarr[row][column] == "·") {
-                    newboardarr[row][column - 1] = " ";
-                    score += SCOREBALL;
-                }
-                if (newboardarr[row][column] == blueColor('O')) {
-                    newboardarr[row][column - 1] = " ";
-                    score = score + POWERBALL;
 
-                } else if (newboardarr[row][column] == pinkColor('X')) {
-                    newboardarr[row][column - 1] = " ";
-                    score = score + FRUIT1;
-                } else if (newboardarr[row][column] == greenColor('M')) {
-                    newboardarr[row][column - 1] = " ";
-                    score = score + FRUIT2;
-                } else {
-                    newboardarr[row][column - 1] = " ";
-                    score = score + 0;
-                }
+                // --------------- New Function Score -------------------
+                updateScore(newboardarr[row][column]);
+                newboardarr[row][column - 1] = " ";
+                // --------------- New Function Score -------------------
+
                 newboardarr[row][column] = yellowColor('C');
                 Thread.sleep(TIME);
                 flushScreen();
-               
+
                 board.showBoard(newboardarr);
-                
+
                 contTimeToShowFruits += 1;
                 if ((newboardarr[row + 1][column] == "·" || newboardarr[row - 1][column] == "·")
                         && newboardarr[row][column - 1] != "▒") {
@@ -185,23 +173,12 @@ public class MovementsPacman {
                 position(newboardarr, row, column);
                 balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
-                if (newboardarr[row][column] == "·") {
-                    newboardarr[row - 1][column] = " ";
-                    score += SCOREBALL;
-                }
-                if (newboardarr[row][column] == blueColor('O')) {
-                    newboardarr[row - 1][column] = " ";
-                    score = score + POWERBALL;
-                } else if (newboardarr[row][column] == pinkColor('X')) {
-                    newboardarr[row - 1][column] = " ";
-                    score = score + FRUIT1;
-                } else if (newboardarr[row][column] == greenColor('M')) {
-                    newboardarr[row - 1][column] = " ";
-                    score = score + FRUIT2;
-                } else {
-                    newboardarr[row - 1][column] = " ";
-                    score = score + 0;
-                }
+
+                // --------------- New Function Score -------------------
+                updateScore(newboardarr[row][column]);
+                newboardarr[row - 1][column] = " ";
+                // --------------- New Function Score -------------------
+
                 newboardarr[row][column] = yellowColor('C');
                 Thread.sleep(TIME);
                 flushScreen();
@@ -229,29 +206,18 @@ public class MovementsPacman {
                 position(newboardarr, row, column);
                 balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
-                if (newboardarr[row][column] == "·") {
-                    newboardarr[row][column + 1] = " ";
-                    score += SCOREBALL;
-                }
-                if (newboardarr[row][column] == blueColor('O')) {
-                    newboardarr[row][column + 1] = " ";
-                    score = score + POWERBALL;
-                } else if (newboardarr[row][column] == pinkColor('X')) {
-                    newboardarr[row][column + 1] = " ";
-                    score = score + FRUIT1;
-                } else if (newboardarr[row][column] == greenColor('M')) {
-                    newboardarr[row][column + 1] = " ";
-                    score = score + FRUIT2;
-                } else {
-                    newboardarr[row][column + 1] = " ";
-                    score = score + 0;
-                }
+
+                // --------------- New Function Score -------------------
+                updateScore(newboardarr[row][column]);
+                newboardarr[row][column + 1] = " ";
+                // --------------- New Function Score -------------------
+
                 newboardarr[row][column] = yellowColor('C');
                 // newboardarr[row][column] = "C";
                 Thread.sleep(TIME);
 
                 flushScreen();
-                
+
                 board.showBoard(newboardarr);
                 contTimeToShowFruits += 1;
                 if ((newboardarr[row + 1][column] == "·" || newboardarr[row - 1][column] == "·")
@@ -290,24 +256,10 @@ public class MovementsPacman {
                 timefruits(newboardarr, row, column);
 
                 // --------------- New Function Score -------------------
-                if (newboardarr[row][column] == "·") {
-                    newboardarr[row + 1][column] = " ";
-                    score += SCOREBALL;
-                }
-                if (newboardarr[row][column] == blueColor('O')) {
-                    newboardarr[row + 1][column] = " ";
-                    score = score + POWERBALL;
-                } else if (newboardarr[row][column] == pinkColor('X')) {
-                    newboardarr[row + 1][column] = " ";
-                    score = score + FRUIT1;
-                } else if (newboardarr[row][column] == greenColor('M')) {
-                    newboardarr[row + 1][column] = " ";
-                    score = score + FRUIT2;
-                } else {
-                    newboardarr[row + 1][column] = " ";
-                    score = score + 0;
-                }
+                updateScore(newboardarr[row + 1][column]);
+                newboardarr[row + 1][column] = " ";
                 // --------------- New Function Score -------------------
+
                 newboardarr[row][column] = yellowColor('C');
                 // newboardarr[row][column] = "C";
                 Thread.sleep(TIME);
@@ -341,11 +293,11 @@ public class MovementsPacman {
                     newboardarr[rowGhost][columnsGhost - 1] = " ";
                 }
                 newboardarr[rowGhost][columnsGhost] = redColor('G');
-               
+
                 Thread.sleep(TIME);
                 flushScreen();
                 board.showBoard(newboardarr);
-              
+
                 contTimeToShowFruits += 1;
                 if ((newboardarr[rowGhost + 1][columnsGhost] == "·" || newboardarr[rowGhost - 1][columnsGhost] == "·")
                         && newboardarr[rowGhost][columnsGhost - 1] != "▒") {
@@ -489,14 +441,12 @@ public class MovementsPacman {
 
     public static void balls(String[][] arr, int n, int m) {
         position(arr, n, m);
-        
+
         if (energizer1 == eat1) {
-            energizer1 = eat2;  // <---------- Why ?
+            energizer1 = eat2; // <---------- Why ?
         } else if (energizer1 == 0) {
             arr[eat1][POSITION25] = FIRST;
         }
-
-
 
         if (energizer2 == eat1) {
             energizer2 = eat2;
@@ -511,7 +461,7 @@ public class MovementsPacman {
         }
 
         if (energizer4 == eat1) {
-            energizer4 = eat2; 
+            energizer4 = eat2;
         } else if (energizer4 == 0) {
             arr[POSITION23][POSITION3] = FIRST;
         }
@@ -523,8 +473,9 @@ public class MovementsPacman {
         }
 
     }
+
     public static void position(String[][] arr, int n, int m) {
-        //1  25 |  5  11| 17 11  |23  3|  23 25
+        // 1 25 | 5 11| 17 11 |23 3| 23 25
         if (arr[n][m] == arr[eat1][POSITION25]) {
             energizer1 = eat1;
         } else if (arr[n][m] == arr[POSITION5][POSITION11]) {
@@ -538,30 +489,29 @@ public class MovementsPacman {
         }
     }
 
-
     public static void timefruits(String[][] newboardarr, int n, int m) {
         int row1;
         int colum2;
         int row3;
         int colum4; // frutas en color verde
         if (contTimeToShowFruits >= RECHARGE4 && contTimeToShowFruits <= RECHARGE8) { // 4 recargas
-            
+
             String[][] auxFruits1 = new String[ROWX][COLUMY];// <---------- Length ?
-            
-            //Random fruta1 
+
+            // Random fruta1
             row1 = getRandom(auxFruits1); // 13
             colum2 = getRandom(auxFruits1); // 13
-           
+
             if (newboardarr[row1][colum2] != "▒" && newboardarr[row1][colum2] != " "
                     && newboardarr[row1][colum2] != blueColor('O')) {
 
-                        newboardarr[row1][colum2] = pinkColor('X');
+                newboardarr[row1][colum2] = pinkColor('X');
             } else if (newboardarr[row1][colum2] == "▒" && newboardarr[row1][colum2] == " "
                     && newboardarr[row1][colum2] == blueColor('O')) {
-               
+
                 String[][] auxFruits2 = new String[ROWX][COLUMY];
-               
-               //Random fruta2
+
+                // Random fruta2
                 row3 = getRandom(auxFruits2); // 13
                 colum4 = getRandom(auxFruits2); // 13
 
@@ -569,7 +519,7 @@ public class MovementsPacman {
             }
         } else if (contTimeToShowFruits >= RECHARGE10 && contTimeToShowFruits <= RECHARGE14) { // 4 recargas
             String[][] auxFruits1 = new String[ROWX][COLUMY];
-            //Random fruta1 
+            // Random fruta1
             row1 = getRandom(auxFruits1); // 13
             colum2 = getRandom(auxFruits1); // 5
 
@@ -582,7 +532,7 @@ public class MovementsPacman {
                     && newboardarr[row1][colum2] == pinkColor('X')) {
 
                 String[][] auxFruits2 = new String[ROWX][COLUMY];
-            //Random fruta2
+                // Random fruta2
                 row3 = getRandom(auxFruits2);
                 colum4 = getRandom(auxFruits2);
 
@@ -590,35 +540,40 @@ public class MovementsPacman {
             }
         }
     }
-//    ->>>>>>>>>>>>>>>>>>>>>> New Functions <<<<<<<<<<<<<<<<<<<<<<<<<-
+
+    // ->>>>>>>>>>>>>>>>>>>>>> New Functions <<<<<<<<<<<<<<<<<<<<<<<<<-
     public void flushScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
-    public static int getRandom(String[][] auxFruit){
+    public static int getRandom(String[][] auxFruit) {
         Random fruit = new Random();
-        int number= fruit.nextInt(auxFruit.length);
+        int number = fruit.nextInt(auxFruit.length);
         return number;
     }
-    
-    public static String pinkColor(char character){
-        return "\033[35m"+character+"\u001B[0m";
+
+    public static String pinkColor(char character) {
+        return "\033[35m" + character + "\u001B[0m";
     }
-    public static String blueColor(char character){
-        return "\033[34m"+character+"\u001B[0m";
+
+    public static String blueColor(char character) {
+        return "\033[34m" + character + "\u001B[0m";
     }
-    public static String greenColor(char character){
-        return "\033[32m"+character+"\u001B[0m";
+
+    public static String greenColor(char character) {
+        return "\033[32m" + character + "\u001B[0m";
     }
-    public static String yellowColor(char character){
-        return "\033[33m"+character+"\u001B[0m";
+
+    public static String yellowColor(char character) {
+        return "\033[33m" + character + "\u001B[0m";
     }
-    public static String redColor(char character){
-        return "\033[31m"+character+"\u001B[0m";
+
+    public static String redColor(char character) {
+        return "\033[31m" + character + "\u001B[0m";
     }
-    
-    public void updateScore(String value) {
+
+    public static void updateScore(String value) {
         if (value == "·") {
             score += SCOREBALL;
         }
@@ -635,28 +590,25 @@ public class MovementsPacman {
             score += 0;
         }
 
-        newboardarr[row + 1][column] = " ";
     }
-     // --------------- New Function Score -------------------
-                // if (newboardarr[row][column] == "·") {
-                //     newboardarr[row + 1][column] = " ";
-                //     score += SCOREBALL;
-                // }
-                // if (newboardarr[row][column] == blueColor('O')) {
-                //     newboardarr[row + 1][column] = " ";
-                //     score = score + POWERBALL;
-                // } else if (newboardarr[row][column] == pinkColor('X')) {
-                //     newboardarr[row + 1][column] = " ";
-                //     score = score + FRUIT1;
-                // } else if (newboardarr[row][column] == greenColor('M')) {
-                //     newboardarr[row + 1][column] = " ";
-                //     score = score + FRUIT2;
-                // } else {
-                //     newboardarr[row + 1][column] = " ";
-                //     score = score + 0;
-                // }
-                // --------------- New Function Score -------------------
-
-
+    // --------------- New Function Score -------------------
+    // if (newboardarr[row][column] == "·") {
+    // newboardarr[row + 1][column] = " ";
+    // score += SCOREBALL;
+    // }
+    // if (newboardarr[row][column] == blueColor('O')) {
+    // newboardarr[row + 1][column] = " ";
+    // score = score + POWERBALL;
+    // } else if (newboardarr[row][column] == pinkColor('X')) {
+    // newboardarr[row + 1][column] = " ";
+    // score = score + FRUIT1;
+    // } else if (newboardarr[row][column] == greenColor('M')) {
+    // newboardarr[row + 1][column] = " ";
+    // score = score + FRUIT2;
+    // } else {
+    // newboardarr[row + 1][column] = " ";
+    // score = score + 0;
+    // }
+    // --------------- New Function Score -------------------
 
 }

@@ -13,7 +13,7 @@ public class Board {
     private static int eat1 = 1;
     private static int eat2 = 2;
     public static final int INITIAL_DOTS_NUMBER = 290;
-    public static final int DOT_POINTS = 10;
+    public static final int DOT_POINTS = 1;
     private static final int POSITION5 = 5;
     private static final int POSITION25 = 25;
     private static final int POSITION3 = 3;

@@ -79,4 +79,38 @@ public class BoardTest {
         Board board = new Board();
         assertEquals(10, board.getMaxSize());
     }
+
+    @Test
+    public void existShield() {
+        Board board = new Board();
+        assertEquals(true, board.existShield(8, 1));
+    }
+
+    @Test
+    public void impactShield() {
+        Board board = new Board();
+        board.impactShield(8, 1);
+        board.impactShield(8, 1);
+        board.impactShield(8, 1);
+        assertEquals(true, board.existShield(8, 1));
+        assertEquals('-', board.getElement(8, 1));
+    }
+
+    @Test
+    public void clearPosition() {
+        Board board = new Board();
+        board.setElement(2, 2, '&');
+        board.clearPosition(2, 2);
+        char[][] expected = { { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' },
+                { '*', '#', '#', '#', '*', '*', '#', '#', '#', '*' },
+                { '*', '#', '*', '#', '*', '*', '#', '*', '#', '*' },
+                { '*', '*', '*', '*', '*', '*', '*', '*', '*', '*' } };
+        assertArrayEquals(expected, board.getMatrix());
+    }
 }

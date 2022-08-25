@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class AliensListTest {
 
-    @Test
+    /*@Test
     public void shouldAlienListMoveRigth(){
         Board board = new Board();
         AliensList aliensList = new AliensList(board);
@@ -79,7 +79,7 @@ public class AliensListTest {
         AliensList aliensList = new AliensList(board);
         aliensList.alienMovement();
         
-    }
+    }*/
 
 }
 

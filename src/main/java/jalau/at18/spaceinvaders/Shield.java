@@ -1,50 +1,67 @@
 package jalau.at18.spaceinvaders;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Shield {
     private static final int MAX_COUNT_BLOCK = 10;
-    private static final int[] POSITON_X_BLOCK = {8, 7, 7, 7, 8, 8, 7, 7, 7, 8};
-    private static final int[] POSITON_Y_BLOCK = {1, 1, 2, 3, 3, 6, 6, 7, 8, 8};
-    private Block[] blocks;
+    private static final int[] INITIAL_POSITION_X = {8, 7, 7, 7, 8, 8, 7, 7, 7, 8};
+    private static final int[] INITIAL_POSITION_Y = {1, 1, 2, 3, 3, 6, 6, 7, 8, 8};
+    private List<Integer> posXBlock;
+    private List<Integer> posYBlock;
+    private List<Block> blocks;
 
     public Shield() {
-        blocks = new Block[MAX_COUNT_BLOCK];
-        addBlocks();
+        blocks = new ArrayList<>();
+        posXBlock = new ArrayList<>();
+        posYBlock = new ArrayList<>();
+        fillBlocks();
     }
 
-    private void addBlocks() {
+    private void fillBlocks() {
         for (int iterator = 0; iterator < MAX_COUNT_BLOCK; iterator++) {
-            blocks[iterator] = new Block();
+            blocks.add(new Block());
+            posXBlock.add(INITIAL_POSITION_X[iterator]);
+            posYBlock.add(INITIAL_POSITION_Y[iterator]);
         }
     }
 
     public boolean existBlockInPosition(int posX, int posY) {
         boolean exist = false;
-        for (int iterator = 0; iterator < POSITON_X_BLOCK.length; iterator++) {
-            if (POSITON_X_BLOCK[iterator] == posX && POSITON_Y_BLOCK[iterator] == posY) {
+        for (int iterator = 0; iterator < posXBlock.size(); iterator++) {
+            if (posXBlock.get(iterator) == posX && posYBlock.get(iterator) == posY) {
                 exist = true;
             }
         }
         return exist;
     }
 
-    public boolean impactBlock(int posX, int posY) {
-        boolean canImpact = false;
-        for (int iterator = 0; iterator < POSITON_X_BLOCK.length; iterator++) {
-            if (POSITON_X_BLOCK[iterator] == posX && POSITON_Y_BLOCK[iterator] == posY) {
-                blocks[iterator].impact();
-                canImpact = true;
+    public char impactBlock(int posX, int posY) {
+        char charImpact = '*';
+        for (int iterator = 0; iterator < posXBlock.size(); iterator++) {
+            if (posXBlock.get(iterator) == posX && posYBlock.get(iterator) == posY) {
+                if (blocks.get(iterator).getCharacter() == '-') {
+                    posXBlock.remove(iterator);
+                    posYBlock.remove(iterator);
+                    blocks.remove(iterator);
+                } else {
+                    Block block = blocks.remove(iterator);
+                    block.impact();
+                    blocks.add(iterator, block);
+                    charImpact = blocks.get(iterator).getCharacter();
+                }
             }
         }
-        return canImpact;
+        return charImpact;
     }
 
-    public char getCharacter(int posX, int posY) {
-        char blockCharater = '*';
-        for (int iterator = 0; iterator < POSITON_X_BLOCK.length; iterator++) {
-            if (POSITON_X_BLOCK[iterator] == posX && POSITON_Y_BLOCK[iterator] == posY) {
-                blockCharater = blocks[iterator].getCharacter();
+    public char getCharacterOfBlock(int posX, int posY) {
+        char value = '*';
+        for (int iterator = 0; iterator < posXBlock.size(); iterator++) {
+            if (posXBlock.get(iterator) == posX && posYBlock.get(iterator) == posY) {
+                value = blocks.get(iterator).getCharacter();
             }
         }
-        return blockCharater;
+        return value;
     }
 }

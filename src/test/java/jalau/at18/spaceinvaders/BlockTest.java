@@ -33,14 +33,4 @@ public class BlockTest {
         block.impact();
         assertEquals('-', block.getCharacter());
     }
-
-    @Test
-    public void has0durability() {
-        Block block = new Block();
-        block.impact();
-        block.impact();
-        block.impact();
-        block.impact();
-        assertEquals('*', block.getCharacter());
-    }
 }

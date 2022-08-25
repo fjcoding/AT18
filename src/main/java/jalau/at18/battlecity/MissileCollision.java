@@ -24,8 +24,9 @@ public class MissileCollision {
                 if (element1.getLive() == 0) {
                     matrix[row1][column1] = empty;
                     matrix[row2][column2] = empty;
-                    System.out.println("############## Game over ##############");
-                    System.exit(0);
+                    //System.out.println("############## Game over ##############");
+                    //System.exit(0);
+                    throw new RuntimeException("The game finished");
                 }
             }
             return true;

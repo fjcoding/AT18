@@ -7,7 +7,7 @@ import org.junit.Test;
 public class MissileTest {
     Missiles missiles = new Missiles();
     Empty empty = new Empty();
-
+/* 
    @Test
     public void testMoveMissileUp() {
         Element[][] missboard = {{empty,empty, empty}, {empty, empty, empty}, {empty, empty, empty}, {empty, empty,empty}};
@@ -62,6 +62,6 @@ public class MissileTest {
         int[][] newboard = missil.moveMissileRight(4);
         final int[][] expecteds = {{0,3},{1,3}}; 
         assertArrayEquals(expecteds, newboard);
-    }
+    }*/
 
 }

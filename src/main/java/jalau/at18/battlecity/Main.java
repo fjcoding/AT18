@@ -12,7 +12,6 @@ public class Main {
 
     public void showMatrix(Board board) {
         Element[][] matrix = board.getMatrix();
-
         for (int row = 0; row < matrix.length; row++) {
             for (int column = 0; column < matrix.length; column++) {
                 System.out.print(matrix[row][column].getImage());

@@ -14,72 +14,91 @@ public class Missile {
     private static Empty empty = new Empty();
     private MissileCollision missileCollision = new MissileCollision();
 
-    public Missile(int xCoordinate1, int yCoordinate1, int xCoordinate2, int yCoordinate2, String direction, Element[][] missBoard) {
-        missileBoard = missBoard;
-        this.row1 = xCoordinate1;
-        this.column1 = yCoordinate1;
-        this.row2 = xCoordinate2;
-        this.column2 = yCoordinate2;
-        pointingWhere = direction;
-    }
+    public Missile() {
 
-    public Element[][] missileDirection() {
+    }
+    public void setPosition(int row1, int column1, int row2, int column2) {
+        this.row1 = row1;
+        this.column1 = column1;
+        this.row2 = row2;
+        this.column2 = column2;
+    }
+    public void setDirection(String direction) {
+        this.pointingWhere = direction;
+    }
+    public int[][] getPosition() {
+        int[][] position = {{row1, column1}, {row2, column2}};
+        return position;
+    }
+    public void setBoard(Element[][] board) {
+        missileBoard = board;
+    }
+    public boolean isMissilCrash() {
+        Boolean isCrash = false;
+        if (pointingWhere == "UP" && row1 == 0) {
+            isCrash = true;
+        }
+        if (pointingWhere == "DOWN" && row1 == BOARD_DIMENSION -1) {
+            isCrash = true;
+        }
+        if (pointingWhere == "LEFT" && column1 == 0) {
+            isCrash = true;
+        }
+        if (pointingWhere == "RIGHT" && column1 == BOARD_DIMENSION -1) {
+            isCrash = true;
+        }
+        return isCrash;
+    }
+    /*public Element[][] moveMissile(Element[][] elementsMatrix) {
+        //removeMissilefromBoard(row1, column1, row2, column2);
+        missileDirection();
+        elementsMatrix = putMissileOnBoard(row1, column1, row2, column2);
+        return elementsMatrix;
+    }*/
+
+    public void missileDirection() {
         switch (pointingWhere) {
             case "UP":
                 moveMissileUp();
                 break;
             case "DOWN":
-                moveMissileDown(BOARD_DIMENSION);
+                moveMissileDown();
                 break;
             case "LEFT":
                 moveMissileLeft();
                 break;
             case "RIGHT":
-                moveMissileRight(BOARD_DIMENSION);
+                moveMissileRight();
                 break;
             default:
                 break;
         }
-        return missileBoard;
+        //return missileBoard;
     }
 
     public int[][] moveMissileUp() {
         if (row1 != 0) {
             row1 = row1 - 1;
             row2 = row2 - 1;
-            putMissileOnBoard(row1, column1, row2, column2);
+            //putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
-            while (row1 > 0) {
-                removeMissilefromBoard(row1, column1, row2, column2);
-                row1 = row1 - 1;
-                row2 = row2 - 1;
-                if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
-                    break;
-                }
-                putMissileOnBoard(row1, column1, row2, column2);
-                //showBoard();
-            }
+            /*if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
+                throw new RuntimeException("Collition");
+            }*/
         }
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
 
-    public int[][] moveMissileDown(int boardDimension) {
-        if (row1 < boardDimension - 1) {
+    public int[][] moveMissileDown() {
+        if (row1 < BOARD_DIMENSION -1) {
             row1 = row1 + 1;
             row2 = row2 + 1;
-            putMissileOnBoard(row1, column1, row2, column2);
+            //putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
-            while (row1 < boardDimension - 1) {
-                removeMissilefromBoard(row1, column1, row2, column2);
-                row1 = row1 + 1;
-                row2 = row2 + 1;
-                if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
-                    break;
-                }
-                putMissileOnBoard(row1, column1, row2, column2);
-                //showBoard();
-            }
+            /*if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
+                throw new RuntimeException("Collition");
+            }*/
         }
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
@@ -89,40 +108,25 @@ public class Missile {
         if (column1 != 0) {
             column1 = column1 - 1;
             column2 = column2 - 1;
-            putMissileOnBoard(row1, column1, row2, column2);
+            //putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
-            while (column1 > 0) {
-                removeMissilefromBoard(row1, column1, row2, column2);
-                column1 = column1 - 1;
-                column2 = column2 - 1;
-                if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
-                    break;
-                }
-                putMissileOnBoard(row1, column1, row2, column2);
-                //showBoard();
-            }
+            /*if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
+                throw new RuntimeException("Collition");
+            }*/
         }
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
     }
 
-    public int[][] moveMissileRight(int boardDimension) {
-        if (column1 < boardDimension - 1) {
+    public int[][] moveMissileRight() {
+        if (column1 < BOARD_DIMENSION -1) {
             column1 = column1 + 1;
             column2 = column2 + 1;
-            putMissileOnBoard(row1, column1, row2, column2);
+            //putMissileOnBoard(row1, column1, row2, column2);
             //showBoard();
-            while (column1 < (boardDimension - 1)) {
-                removeMissilefromBoard(row1, column1, row2, column2);
-                column1 = column1 + 1;
-                column2 = column2 + 1;
-                if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
-                    break;
-                }
-                putMissileOnBoard(row1, column1, row2, column2);
-                //showBoard();
-            }
-            removeMissilefromBoard(row1, column1, row2, column2);
+            /*if (missileCollision.isElementHit(missileBoard, row1, column1, row2, column2)) {
+                throw new RuntimeException("Collition");
+            }*/
         }
         int[][] newPos = {{row1, column1}, {row2, column2}};
         return newPos;
@@ -138,15 +142,15 @@ public class Missile {
         System.out.println();
     }*/
 
-    public static Element[][] putMissileOnBoard(int rowM1, int columnM1, int rowM2, int columnM2) {
-        missileBoard[rowM1][columnM1] = shotMissiles;
-        missileBoard[rowM2][columnM2] = shotMissiles;
+    public Element[][] putMissileOnBoard(Element[][] missileBoard, int[][] missilePosition) {
+        missileBoard[missilePosition[0][0]][missilePosition[0][1]] = shotMissiles;
+        missileBoard[missilePosition[1][0]][missilePosition[1][1]] = shotMissiles;
         return missileBoard;
     }
 
-    public static Element[][] removeMissilefromBoard(int rowM1, int columnM1, int rowM2, int columnM2) {
-        missileBoard[rowM1][columnM1] = empty;
-        missileBoard[rowM2][columnM2] = empty;
+    public Element[][] removeMissilefromBoard(Element[][] missileBoard, int[][] missilePosition) {
+        missileBoard[missilePosition[0][0]][missilePosition[0][1]] = empty;
+        missileBoard[missilePosition[1][0]][missilePosition[1][1]] = empty;
         return missileBoard;
     }
 

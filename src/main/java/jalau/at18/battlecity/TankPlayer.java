@@ -27,9 +27,9 @@ public class TankPlayer extends Tank {
             case "d":
                 newPosition = moveRight(newPosition);
                 break;
-            case "x":
+            /*case "x":
                 shoot(moveMissileBoard);
-                break;
+                break;*/
             default:
                 newPosition = newPosition;
                 break;
@@ -94,8 +94,8 @@ public class TankPlayer extends Tank {
         return newPosition;
     }
 
-    public Element[][] shoot(Element[][] board) {
+    /*public Element[][] shoot(Element[][] board) {
         Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], "UP", board);
         return  missil.missileDirection();
-    }
+    }*/
 }

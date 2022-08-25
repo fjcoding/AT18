@@ -9,7 +9,20 @@ public class ShipBullet extends Bullet{
 
     @Override
     public void move(Board board) {
+        board.setElement(position.getPosX(), position.getPosY(), ' ');
         position.moveUp();
-        board.setElement(position.getPosX(), position.getPosY(), representation);
+        if(board.getElement(position.getPosX(), getPosY()) == '%') {
+            System.out.println(" es alien ");
+        }else {
+            if(board.existShield(position.getPosX(),position.getPosY())) {
+                board.impactShould(position.getPosX(),position.getPosY());
+            }else{
+                board.setElement(position.getPosX(), position.getPosY(), representation);
+            }
+        }
+    }
+
+    public char getRepresentation() {
+        return representation;
     }
 }

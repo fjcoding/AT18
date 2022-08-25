@@ -14,7 +14,12 @@ public class Ship {
     }
 
     public void shoot(Board board){
-        
+        bullet = new ShipBullet(position.getPosX() - 1, position.getPosY());
+        board.setElement(bullet.getPosX(), bullet.getPosY(), bullet.getRepresentation());
+    }
+
+    public void moveBullets(Board board) {
+        bullet.move(board);
     }
 
     public void subtrasctLifes() {

@@ -39,6 +39,17 @@ public class Board {
         return MAX_SIZE;
     }
 
+    public boolean existShield(int posX, int posY) {
+        return shield.existBlockInPosition(posX, posY);
+    }
+
+    public void impactShould(int posX, int posY) {
+        char charPos = shield.impactBlock(posX, posY);
+        if(charPos != ' ') {
+            setElement(posX, posY, charPos);
+        }
+    }
+
     @Override
     public String toString() {
         String showBoard = "";

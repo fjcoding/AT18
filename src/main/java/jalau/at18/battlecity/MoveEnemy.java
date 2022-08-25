@@ -13,7 +13,7 @@ public class MoveEnemy extends Thread {
 
     @Override
     public void run() {
-        while(true){
+        while (true) {
             Element[][] matrix = board.getMatrix();
             matrix = enemyTank.moveEnemy(matrix);
             board.setMatrix(matrix);

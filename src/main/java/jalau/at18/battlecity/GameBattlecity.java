@@ -48,7 +48,7 @@ public class GameBattlecity extends Game {
         //enemyTank.moveEnemy(elementsMatrix);
         enemy.start();
         player.start();
-        while(true){
+        while (true) {
             showMatrix(board);
             wait(1);
         }

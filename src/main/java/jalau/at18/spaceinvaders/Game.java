@@ -30,14 +30,15 @@ public class Game {
             System.out.println(board.toString());
 
             while (ship.getIsAlive()) {
-                if (cont % DELAY_ALIENS_MOVEMENT == 0) {
-                    aliensList.alienMovement();
-                }
+                //if (cont % DELAY_ALIENS_MOVEMENT == 0) {
+                aliensList.alienMovement();
+                //}
                 bullet.moveUp();
                 if (keyboardObserver.hasKeyEvents()) {
                     KeyEvent event = keyboardObserver.getEventFromTop();
                     if (event.getKeyCode() == KeyEvent.VK_LEFT && ship.getPosX() > 0) {
                         ship.moveLeft();
+                        aliensList.matarAlgo();
                         board.setElement(ship.getPosY(), ship.getPosX(), '^');
                         board.setElement(ship.getPosY(), ship.getPosX() + 1, '*');
                     } else if (event.getKeyCode() == KeyEvent.VK_RIGHT && ship.getPosX() < SIZE_BOARD) {

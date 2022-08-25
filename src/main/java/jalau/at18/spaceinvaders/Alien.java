@@ -1,58 +1,64 @@
 package jalau.at18.spaceinvaders;
 
-public class Alien {
+import java.util.ArrayList;
 
-    private static final int[] POS_X_INITIAL = {0, 1, 2, 3};
-    private static final int[] POS_Y_INITIAL = {0, 1};
-    private static final int ROW_ALIENS = 4;
-    private static final int COLUMN_ALIENS = 2;
-    private int[] posY;
-    private int[] posX;
+public class Alien {
+    private final ArrayList<Integer> alienFirstRow1 = new ArrayList<Integer>();
+    private final ArrayList<Integer> alienFirstRow2 = new ArrayList<Integer>();
+    private final ArrayList<Integer> alienSecondRow1 = new ArrayList<Integer>();
+    private final ArrayList<Integer> alienSecondRow2 = new ArrayList<Integer>();
+    private final int lastAlien = 3;
 
     public Alien() {
-        posX = POS_X_INITIAL;
-        posY = POS_Y_INITIAL;
+        alienFirstRow1.add(0);
+        alienFirstRow1.add(0);
+        alienFirstRow1.add(0);
+        alienFirstRow1.add(0);
+        alienFirstRow2.add(0);
+        alienFirstRow2.add(1);
+        alienFirstRow2.add(2);
+        alienFirstRow2.add(lastAlien);
+        alienSecondRow1.add(1);
+        alienSecondRow1.add(1);
+        alienSecondRow1.add(1);
+        alienSecondRow1.add(1);
+        alienSecondRow2.add(0);
+        alienSecondRow2.add(1);
+        alienSecondRow2.add(2);
+        alienSecondRow2.add(lastAlien);
     }
 
-    public void setPosX(int[] newAlienPosition) {
-        posX = newAlienPosition;
+    public ArrayList<Integer> getFirstRowList1() {
+        return alienFirstRow1;
     }
-
-    public void setPosY(int[] newAlienPosition) {
-        posY = newAlienPosition;
+    public ArrayList<Integer> getFirstRowList2() {
+        return alienFirstRow2;
     }
-
-    public int[] getPosX() {
-        return posX;
+    public ArrayList<Integer> getSecondRowList1() {
+        return alienSecondRow1;
     }
-
-    public int[] getPosY() {
-        return posY;
+    public ArrayList<Integer> getSecondRowList2() {
+        return alienSecondRow2;
     }
 
     public void alienLeft() {
-        for (int row = 0; row < ROW_ALIENS; row++) {
-            posX[row] -= 1;
+        for (int row = 0; row < alienFirstRow2.size(); row++) {
+            alienFirstRow2.set(row, alienFirstRow2.get(row) - 1);
+            alienSecondRow2.set(row, alienSecondRow2.get(row) - 1);
         }
     }
 
     public void alienDown() {
-        for (int column = 0; column < COLUMN_ALIENS; column++) {
-            posY[column] += 1;
+        for (int row = 0; row < alienFirstRow1.size(); row++) {
+            alienFirstRow1.set(row, alienFirstRow1.get(row) + 1);
+            alienSecondRow1.set(row, alienSecondRow1.get(row) + 1);
         }
     }
 
     public void alienRigth() {
-        for (int row = 0; row < ROW_ALIENS; row++) {
-            posX[row] += 1;
+        for (int row = 0; row < alienFirstRow2.size(); row++) {
+            alienFirstRow2.set(row, alienFirstRow2.get(row) + 1);
+            alienSecondRow2.set(row, alienSecondRow2.get(row) + 1);
         }
     }
-
-    /*public String toString() {
-        String res = "";
-        for (int i = 0; i < POS_X_INITIAL.length; i++) {
-            res += posX[i] + " ";
-        }
-        return res;
-    }*/
 }

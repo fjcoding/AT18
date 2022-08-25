@@ -1,5 +1,6 @@
 package jalau.at18.battlecity;
 
+
 public class GameBattlecity extends Game {
     public static final int ENEMYS_PER_STAGE = 20;
     public static final int SIZE_ROW_POSITION = 4;
@@ -11,6 +12,7 @@ public class GameBattlecity extends Game {
     private TankPlayer tankPlayer = new TankPlayer();
     private EnemyTank enemyTank = new EnemyTank(enemyCount);
     private Board board;
+
 
     public TankPlayer getTankPlayer() {
         return tankPlayer;
@@ -38,17 +40,21 @@ public class GameBattlecity extends Game {
         showMatrix(board);
     }
     public void playGame() {
+        MoveEnemy enemy = new MoveEnemy(board, enemyTank);
+        MoveTankPlayer player = new MoveTankPlayer(board, tankPlayer);
         Element[][] elementsMatrix = board.getMatrix();
         //showMatrix(board);
         //movePlayer();
-        enemyTank.moveEnemy(elementsMatrix);
+        //enemyTank.moveEnemy(elementsMatrix);
+        enemy.start();
+        player.start();
         showMatrix(board);
         wait(1);
     }
     public void endGame() {
 
     }
-    public void movePlayer() {
+    /*public void movePlayer() {
         Input direction = new Input();
         String input = direction.read();
         Element[][] elementsMatrix = board.getMatrix();
@@ -56,7 +62,7 @@ public class GameBattlecity extends Game {
         tankPlayer.cleanPosition(elementsMatrix, tankPlayer.getPosition());
         int[][] newPosition = tankPlayer.movements(input);
         elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, newPosition);
-    }
+    }*/
     public static Board createBoard() {
         String rute = "stage1.csv";
         Stage stage = new Stage(rute);

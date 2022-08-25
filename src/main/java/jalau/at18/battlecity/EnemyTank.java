@@ -24,14 +24,14 @@ public class EnemyTank extends Tank {
         this.enemyCount = enemyCount;
     }
 
-    public void moveEnemy(Element[][] elementsMatrix) {
+    public Element[][] moveEnemy(Element[][] elementsMatrix) {
         cleanPosition(elementsMatrix, getPosition());
         while (isTankCrash(elementsMatrix)) {
             setDirection(randomDirection());
         }
         if (movementCount % ENEMY_SHOOT == 0) {
             elementsMatrix = shoot(elementsMatrix);
-            System.out.println("Shoot");
+            //System.out.println("Shoot");
         }
         /*if (isTankCrash(elementsMatrix)) {
             setDirection(randomDirection());
@@ -45,6 +45,7 @@ public class EnemyTank extends Tank {
             setDirection(randomDirection());
             movementCount = 0;
         }
+        return elementsMatrix;
     }
 
     public String randomDirection() {

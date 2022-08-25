@@ -108,7 +108,7 @@ public class Missile {
     }
 
     public int[][] moveMissileUp() {
-        if (row1 != 0) {
+        if (row1 > 0) {
             row1 = row1 - 1;
             row2 = row2 - 1;
             isCollition = false;
@@ -123,7 +123,7 @@ public class Missile {
     }
 
     public int[][] moveMissileDown() {
-        if (row1 != BOARD_DIMENSION - 1) {
+        if (row1 < BOARD_DIMENSION - 1) {
             row1 = row1 + 1;
             row2 = row2 + 1;
             isCollition = false;
@@ -138,7 +138,7 @@ public class Missile {
     }
 
     public int[][] moveMissileLeft() {
-        if (column1 != 0) {
+        if (column1 > 0) {
             column1 = column1 - 1;
             column2 = column2 - 1;
             isCollition = false;
@@ -153,7 +153,7 @@ public class Missile {
     }
 
     public int[][] moveMissileRight() {
-        if (column1 != BOARD_DIMENSION - 1) {
+        if (column1 < BOARD_DIMENSION - 1) {
             column1 = column1 + 1;
             column2 = column2 + 1;
             isCollition = false;

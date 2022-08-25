@@ -4,7 +4,7 @@ public class MoveEnemy extends Thread {
     private String letter = "";
     private EnemyTank enemyTank;
     private Board board;
-    private static final int TIME = 1000;
+    private static final int TIME = 500;
 
     public MoveEnemy(Board board, EnemyTank enemyTank) {
         this.board = board;

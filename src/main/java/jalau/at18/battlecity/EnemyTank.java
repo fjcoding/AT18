@@ -4,23 +4,20 @@ import java.util.Random;
 
 public class EnemyTank extends Tank {
 
-    //public String direction;
     public static final int GRID_LENGHT = 26;
     public static final int[][] INITIAL_POSITION_ONE = {{1, 1}, {1, 0}, {0, 1}, {0, 0}};
     public static final int[][] INITIAL_POSITION_TWO = {{1, 13}, {1, 12}, {0, 13}, {0, 12}};
     public static final int[][] INITIAL_POSITION_THREE = {{1, 25}, {1, 24}, {0, 25}, {0, 24}};
-    //public static final int ENEMY_FRONT = 10;
-    //public static final int ENEMY_BACK = 11;
     public static final int INITIAL_POSITIONS = 3;
     public static final int POSITIONS_LENGTH = 4;
     public static final int NUMBER_OF_DIRECTIONS = 4;
     public static final int ENEMY_MOVEMENTS = 15;
     private int enemyCount;
     private int movementCount = 0;
+    private int screenCount = 0;
     private Boolean thereAreMissile = false;
     public static final int ENEMY_SHOOT = 3;
     private Missile missile = new Missile();
-    //public int[][] enemyPosition;
 
     public EnemyTank(int enemyCount) {
         missile.setDirection(direction);
@@ -57,7 +54,6 @@ public class EnemyTank extends Tank {
                     thereAreMissile = false;
                     elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
                 } else {
-
                     missile.missileDirection();
                     elementsMatrix = missile.putMissileOnBoard(elementsMatrix, missile.getPosition());
                 }
@@ -68,10 +64,12 @@ public class EnemyTank extends Tank {
                 elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
             }
         }
-        //System.out.println(missile.getPosition()[0][0] + ", " + missile.getPosition()[0][1]);
-        goStraight();
+        if (screenCount % 2 == 0) {
+            goStraight();
+            movementCount++;
+        }
+        screenCount++;
         elementsMatrix = putTankOnBoard(elementsMatrix, getPosition());
-        movementCount++;
         if (movementCount == ENEMY_MOVEMENTS) {
             setDirection(randomDirection());
             movementCount = 0;

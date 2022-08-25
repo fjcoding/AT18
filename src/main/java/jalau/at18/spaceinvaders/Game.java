@@ -21,16 +21,15 @@ public class Game {
         keyboardObserver = new KeyboardReader();
         keyboardObserver.start();
     }
-
     public void move() throws InterruptedException {
         int cont = 0;
         int code = 0;
         while (ship.getLifes() > 0) {
             board.setElement(ship.getPosX(), ship.getPosY(), '^');
-            System.out.println("");
             if (cont % DELAY_ALIENS_MOVEMENT == 0) {
                 aliensList.alienMovement();
             }
+            //bullet.moveUp();
             if (keyboardObserver.hasKeyEvents()) {
                 KeyEvent event = keyboardObserver.getEventFromTop();
                 code = event.getKeyCode();
@@ -47,8 +46,8 @@ public class Game {
         System.out.println("Game Over");
         System.exit(0);
     }
-
     public void runGame(int code) throws InterruptedException {
+
         switch (code) {
             case CODE_RIGHT_KEY: //Right
                 if (ship.getPosY() < SIZE_BOARD) {
@@ -82,4 +81,16 @@ public class Game {
                 break;
         }
     }
+    public int getPosXShip() {
+        return ship.getPosX();
+    }
+
+    public int getPosYShip() {
+        return ship.getPosY();
+    }
+
+    public int getLifes() {
+        return ship.getLifes();
+    }
+
 }

@@ -1,1 +1,0 @@
-2048 solution for team 4 goes in this folder!

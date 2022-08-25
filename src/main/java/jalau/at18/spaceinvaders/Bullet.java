@@ -10,7 +10,6 @@ public class Bullet {
     private Board board;
 
     public Bullet(Board board) {
-        // board = new Board();
         posX = INITIAL_POSX;
         posY = INITIAL_POSY;
         statusBullet = false;
@@ -26,31 +25,54 @@ public class Bullet {
     }
 
     public void moveUp() {
-
         for (int index = 0; index < MATRIX_LENGHT; index++) {
             for (int jindex = 0; jindex <= MATRIX_LENGHT; jindex++) {
-                if (board.getElement(index, jindex) == '|') {
-                    if (index == 0) {
-                        board.setElement(index, jindex, '*');
-                    } else {
-                        board.setElement(index - 1, jindex, '|');
-                        board.setElement(index, jindex, '*');
-                    }
+                char centerchar = board.getElement(index, jindex);
+                if (centerchar == '|') {
+                    bulletMethod(index, jindex);
+                } else if (centerchar == 'X') {
+                    destroyBullet(index, jindex);
                 }
             }
         }
-        // board.setElement(posY, posX, '|');
-        // board.setElement(posY + 1, posX, '*');
-        // posY--;
     }
 
     public void createBullet(int posXShip) {
         posX = posXShip;
-        board.setElement(posY, posX, '|');
+        if (board.getElement(posY, posX) == '#') {
+            board.setElement(posY, posX, 'X');
+
+        } else {
+            board.setElement(posY, posX, '|');
+        }
     }
 
-    public void destroyBullet() {
-        statusBullet = false;
+    public void bulletMethod(int index, int jindex) {
+        if (index > 0) {
+            char upchar = board.getElement(index - 1, jindex);
+            if (upchar == '*' || upchar == 'X') {
+                travelBullet(index - 1, jindex);
+                destroyBullet(index, jindex);
+            } else if (upchar == '#' || upchar == '%') {
+                makeExplosion(index - 1, jindex);
+                destroyBullet(index, jindex);
+                //kill alien method, get a boolean[] of aliens all true and if a bullet impacts the make them false one by one
+            }
+        } else {
+            destroyBullet(index, jindex); // exception when bullet is in top border
+        }
+    }
+
+    public void destroyBullet(int posXd, int posYd) {
+        board.setElement(posXd, posYd, '*');
+    }
+
+    public void makeExplosion(int posXm, int posYm) {
+        board.setElement(posXm, posYm, 'X');
+    }
+
+    public void travelBullet(int posXt, int posYt) {
+        board.setElement(posXt, posYt, '|');
     }
 
     public void resetBullet() {

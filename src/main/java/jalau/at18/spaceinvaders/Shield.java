@@ -40,12 +40,11 @@ public class Shield {
         char charImpact = ' ';
         for (int iterator = 0; iterator < posXBlock.size(); iterator++) {
             if (posXBlock.get(iterator) == posX && posYBlock.get(iterator) == posY) {
-                if(blocks.get(iterator).getCharacter() == '-') {
+                if (blocks.get(iterator).getCharacter() == '-') {
                     posXBlock.remove(iterator);
                     posYBlock.remove(iterator);
                     blocks.remove(iterator);
-                }
-                else{
+                } else {
                     Block block = blocks.remove(iterator);
                     block.impact();
                     blocks.add(iterator, block);
@@ -56,10 +55,12 @@ public class Shield {
         return charImpact;
     }
 
-    public char getCharacter(int posX, int posY) {
-        char value = ' ';
+    public char getCharacterOfBlock(int posX, int posY) {
+        char value = '*';
         for (int iterator = 0; iterator < posXBlock.size(); iterator++) {
-            value = blocks.get(iterator).getCharacter();
+            if (posXBlock.get(iterator) == posX && posYBlock.get(iterator) == posY) {
+                value = blocks.get(iterator).getCharacter();
+            }
         }
         return value;
     }

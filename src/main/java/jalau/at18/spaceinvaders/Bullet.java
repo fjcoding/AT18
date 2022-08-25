@@ -17,7 +17,7 @@ public abstract class Bullet {
         return position.getPosY();
     }
 
-    public void impact(){
+    public void impact() {
         stillAlive = false;
     }
 

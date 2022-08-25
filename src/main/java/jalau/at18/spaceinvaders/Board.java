@@ -15,7 +15,7 @@ public class Board {
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix.length; col++) {
                 if (shield.existBlockInPosition(row, col)) {
-                    matrix[row][col] = shield.getCharacter(row, col);
+                    matrix[row][col] = shield.getCharacterOfBlock(row, col);
                 } else {
                     matrix[row][col] = '*';
                 }
@@ -39,15 +39,17 @@ public class Board {
         return MAX_SIZE;
     }
 
+    public void clearPosition(int posX, int posY) {
+        matrix[posX][posY] = '*';
+    }
+
     public boolean existShield(int posX, int posY) {
         return shield.existBlockInPosition(posX, posY);
     }
 
     public void impactShould(int posX, int posY) {
         char charPos = shield.impactBlock(posX, posY);
-        if(charPos != ' ') {
-            setElement(posX, posY, charPos);
-        }
+        setElement(posX, posY, charPos);
     }
 
     @Override

@@ -47,6 +47,14 @@ public class MissileCollision {
                     score.incrementScore();
                 }
             }
+            if (element2.getType() == ElementType.TANKTOPENEMY || element2.getType() == ElementType.TANKBACKENEMY) {
+                element1.reduceLive(1);
+                if (element1.getLive() == 0) {
+                    matrix[row1][column1] = empty;
+                    matrix[row2][column2] = empty;
+                    score.incrementScore();
+                }
+            }
 
             if (element1.getType() == ElementType.TANKTOP || element1.getType() == ElementType.TANKBACK) {
                 element1.reduceLive(1);

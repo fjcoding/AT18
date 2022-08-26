@@ -19,6 +19,10 @@ public class EnemyTank extends Tank {
     public static final int ENEMY_SHOOT = 3;
     private Missile missile = new Missile();
 
+    public int getCountEnemy(){
+        return enemyCount;
+    }
+
     public EnemyTank(int enemyCount) {
         missile.setDirection(direction);
         this.enemyCount = enemyCount;

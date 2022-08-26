@@ -6,13 +6,13 @@ public class GameBattlecity extends Game {
     public static final int SIZE_ROW_POSITION = 4;
 
     public static final int GRID_LENGHT = 26;
-    public static final int MILLISECONDS = 500;
+    public static final int MILLISECONDS = 1000;
 
     private int enemyCount = ENEMYS_PER_STAGE;
     private TankPlayer tankPlayer = new TankPlayer();
     private EnemyTank enemyTank1 = new EnemyTank(enemyCount);
     private EnemyTank enemyTank2 = new EnemyTank(enemyCount - 1);
-    private EnemyTank enemyTank3 = new EnemyTank(enemyCount);
+    private EnemyTank enemyTank3 = new EnemyTank(enemyCount - 2);
     private Board board;
 
     public TankPlayer getTankPlayer() {
@@ -35,14 +35,18 @@ public class GameBattlecity extends Game {
         //EnemyTank enemyTank = new EnemyTank(enemyCount);
         Element[][] elementsMatrix = board.getMatrix();
         int[][] positionPlayer = tankPlayer.initialPosition();
-        int[][] positionEnemy = enemyTank1.initialPosition();
+        int[][] positionEnemy1 = enemyTank1.initialPosition();
+        int[][] positionEnemy2 = enemyTank2.initialPosition();
+        int[][] positionEnemy3 = enemyTank3.initialPosition();
         elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, positionPlayer);
-        elementsMatrix = enemyTank1.putTankOnBoard(elementsMatrix, positionEnemy);
+        elementsMatrix = enemyTank1.putTankOnBoard(elementsMatrix, positionEnemy1);
+        //elementsMatrix = enemyTank2.putTankOnBoard(elementsMatrix, positionEnemy2);
         showMatrix(board);
     }
     public void playGame() {
         MoveEnemy enemy1 = new MoveEnemy(board, enemyTank1);
         MoveEnemy enemy2 = new MoveEnemy(board, enemyTank2);
+        MoveEnemy enemy3 = new MoveEnemy(board, enemyTank3);
         MoveTankPlayer player = new MoveTankPlayer(board, tankPlayer);
         //Element[][] elementsMatrix = board.getMatrix();
         //showMatrix(board);
@@ -50,13 +54,11 @@ public class GameBattlecity extends Game {
         //enemyTank.moveEnemy(elementsMatrix);
         enemy1.start();
         player.start();
+        enemy2.start();
+        enemy3.start();
         while (true) {
             showMatrix(board);
             wait(1);
-            if (enemyCount == 4){
-                enemy2.start();
-            }
-            enemyCount++;
         }
 
     }
@@ -66,7 +68,7 @@ public class GameBattlecity extends Game {
     /*public void movePlayer() {
         Input direction = new Input();
         String input = direction.read();
-        Element[][] elementsMatrix = board.getMatrix();
+        Element[][] elementsMatrix = board.getMatrix();w
         //int[][] newPosition = new int[SIZE_ROW_POSITION][2];
         tankPlayer.cleanPosition(elementsMatrix, tankPlayer.getPosition());
         int[][] newPosition = tankPlayer.movements(input);

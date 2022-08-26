@@ -1,6 +1,7 @@
 package jalau.at18.battlecity;
 
 public class Score {
+    private static final int POINTS_FOR_ENEMY_DEFEATED = 10;
 
     protected int score;
 
@@ -9,7 +10,7 @@ public class Score {
     }
 
     public void incrementScore() {
-        score += 1;
+        score += POINTS_FOR_ENEMY_DEFEATED;
     }
 
     public int getScore() {

@@ -1,6 +1,8 @@
 package jalau.at18.battlecity;
 
 import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.ElementType;
+
 
 public class GameBattlecity extends Game {
     public static final int ENEMYS_PER_STAGE = 20;

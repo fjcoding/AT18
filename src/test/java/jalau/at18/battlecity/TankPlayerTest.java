@@ -2,6 +2,8 @@ package jalau.at18.battlecity;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.Empty;
 
 public class TankPlayerTest {
     public static final int[][] POSITION_MOVE_UP = {{24, 9}, {24, 10}, {25, 9}, {25, 10}};

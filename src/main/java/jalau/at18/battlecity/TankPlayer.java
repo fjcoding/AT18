@@ -39,7 +39,7 @@ public class TankPlayer extends Tank {
 
     }
     public Element[][] movePlayer(Element[][] elementsMatrix, String input) {
-        shootTank = new ShootTank(position,direction,elementsMatrix);
+        shootTank = new ShootTank(position, direction, elementsMatrix);
         cleanPosition(elementsMatrix, getPosition());
         position = movements(input);
         elementsMatrix = putTankOnBoard(elementsMatrix, position);

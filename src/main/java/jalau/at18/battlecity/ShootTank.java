@@ -1,14 +1,14 @@
 package jalau.at18.battlecity;
 
 public class ShootTank extends Thread {
-    Missile missile = new Missile();
+    private Missile missile = new Missile();
     private int[][] position;
     private String direction;
     private Element[][] matrix;
     private boolean exitThread;
     private static final int TIME = 500;
 
-    public ShootTank(int [][] position, String direction, Element[][] matrix) {
+    public ShootTank(int[][] position, String direction, Element[][] matrix) {
         this.position = position;
         this.direction = direction;
         this.matrix = matrix;
@@ -19,8 +19,8 @@ public class ShootTank extends Thread {
     }
 
     @Override
-    public void run(){
-        while(!exitThread){
+    public void run() {
+        while (!exitThread) {
             missile.removeMissilefromBoard(matrix, missile.getPosition());
             if (!missile.getIsCollition()) {
                 //System.out.println("No collition");

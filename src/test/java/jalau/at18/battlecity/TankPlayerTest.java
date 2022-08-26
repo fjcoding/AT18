@@ -14,49 +14,6 @@ public class TankPlayerTest {
     public static final int[][] POSITION_FINAL_RIGHT = {{13, 25}, {14, 25}, {13, 25}, {14, 25}};
 
     @Test
-    public void moveUpTest() {
-        TankPlayer tankPlayer = new TankPlayer();
-        int[][] newMatrix = tankPlayer.moveUp(POSITION_MOVE_UP);
-        int[][] newMatrix2 = tankPlayer.moveUp(POSITION_FINAL_UP);
-        final int[][] expectedMatrix = {{23, 9}, {23, 10}, {24, 9}, {24, 10}};
-        assertArrayEquals(expectedMatrix, newMatrix);
-        assertArrayEquals(POSITION_FINAL_UP, newMatrix2);
-
-    }
-
-    @Test
-    public void moveDownTest() {
-        TankPlayer tankPlayer = new TankPlayer();
-        int[][] newMatrix = tankPlayer.moveDown(POSITION_MOVE_DOWN);
-        int[][] newMatrix2 = tankPlayer.moveDown(POSITION_FINAL_DOWN);
-        final int[][] expectedMatrix = {{9, 17}, {9, 16}, {8, 17}, {8, 16}};
-        assertArrayEquals(expectedMatrix, newMatrix);
-        assertArrayEquals(POSITION_FINAL_DOWN, newMatrix2);
-
-    }
-
-    @Test
-    public void moveRightTest() {
-        TankPlayer tankPlayer = new TankPlayer();
-        int[][] newMatrix = tankPlayer.moveRight(POSITION_MOVE_RIGHT);
-        int[][] newMatrix2 = tankPlayer.moveRight(POSITION_FINAL_RIGHT);
-        final int[][] expectedMatrix = {{13, 19}, {14, 19}, {13, 18}, {14, 18}};
-        assertArrayEquals(expectedMatrix, newMatrix);
-        assertArrayEquals(POSITION_FINAL_RIGHT, newMatrix2);
-
-    }
-
-    @Test
-    public void moveLeftTest() {
-        TankPlayer tankPlayer = new TankPlayer();
-        int[][] newMatrix = tankPlayer.moveLeft(POSITION_MOVE_LEFT);
-        int[][] newMatrix2 = tankPlayer.moveLeft(POSITION_FINAL_LEFT);
-        final int[][] expectedMatrix = {{18, 19}, {17, 19}, {18, 20}, {17, 20}};
-        assertArrayEquals(expectedMatrix, newMatrix);
-        assertArrayEquals(POSITION_FINAL_LEFT, newMatrix2);
-
-    }
-    @Test
     public void movementUpInputTest() {
         TankPlayer tankPlayer = new TankPlayer();
         tankPlayer.setPosition(POSITION_MOVE_UP);
@@ -95,6 +52,70 @@ public class TankPlayerTest {
         int[][] newMatrix = tankPlayer.movements("h");
         final int[][] expectedMatrix = POSITION_MOVE_UP;
         assertArrayEquals(expectedMatrix, newMatrix);
+    }
+    @Test
+    public void arrangeUpTankTest() {
+        TankPlayer tankPlayer = new TankPlayer();
+        tankPlayer.setPosition(POSITION_MOVE_DOWN);
+        Element[][] newMatrix = tankPlayer.arrageTank(initElementsMatrix(), "w");
+        int[][] position = tankPlayer.getPosition();
+        final int[][] expectedPosition = {{7, 16}, {7, 17}, {8, 16}, {8, 17}};
+        assertArrayEquals(position, expectedPosition);
+    }
+    @Test
+    public void arrangeDownTankTest() {
+        TankPlayer tankPlayer = new TankPlayer();
+        tankPlayer.setPosition(POSITION_MOVE_DOWN);
+        Element[][] newMatrix = tankPlayer.arrageTank(initElementsMatrix(), "s");
+        int[][] position = tankPlayer.getPosition();
+        final int[][] expectedPosition = POSITION_MOVE_DOWN;
+        assertArrayEquals(position, expectedPosition);
+    }
+    @Test
+    public void arrangeLeftTankTest() {
+        TankPlayer tankPlayer = new TankPlayer();
+        tankPlayer.setPosition(POSITION_MOVE_LEFT);
+        Element[][] newMatrix = tankPlayer.arrageTank(initElementsMatrix(), "a");
+        int[][] position = tankPlayer.getPosition();
+        final int[][] expectedPosition = POSITION_MOVE_LEFT;
+        assertArrayEquals(position, expectedPosition);
+    }
+    @Test
+    public void arrangeRightTankTest() {
+        TankPlayer tankPlayer = new TankPlayer();
+        tankPlayer.setPosition(POSITION_MOVE_RIGHT);
+        Element[][] newMatrix = tankPlayer.arrageTank(initElementsMatrix(), "d");
+        int[][] position = tankPlayer.getPosition();
+        final int[][] expectedPosition = POSITION_MOVE_RIGHT;
+        assertArrayEquals(position, expectedPosition);
+    }
+    @Test
+    public void notArrangeTankTest() {
+        TankPlayer tankPlayer = new TankPlayer();
+        tankPlayer.setPosition(POSITION_MOVE_RIGHT);
+        Element[][] newMatrix = tankPlayer.arrageTank(initElementsMatrix(), "h");
+        int[][] position = tankPlayer.getPosition();
+        final int[][] expectedPosition = POSITION_MOVE_RIGHT;
+        assertArrayEquals(position, expectedPosition);
+    }
+    @Test
+    public void movePlayerTest() {
+        TankPlayer tankPlayer = new TankPlayer();
+        tankPlayer.setPosition(POSITION_MOVE_RIGHT);
+        Element[][] newMatrix = tankPlayer.movePlayer(initElementsMatrix(), "d");
+        int[][] position = tankPlayer.getPosition();
+        final int[][] expectedPosition = {{13, 19}, {14, 19}, {13, 18}, {14, 18}};
+        assertArrayEquals(position, expectedPosition);
+    }
+
+    public Element[][] initElementsMatrix() {
+        Element[][] elementsMatrix = new Element[26][26];
+        for (int row = 0; row < 26; row++) {
+            for (int column = 0; column < 26; column++) {
+                elementsMatrix[row][column] = new Empty();
+            }
+        }
+        return elementsMatrix;
     }
 
 

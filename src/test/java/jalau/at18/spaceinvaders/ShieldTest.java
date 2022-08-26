@@ -16,12 +16,6 @@ public class ShieldTest {
         assertEquals(false, shield.existBlockInPosition(9, 1));
     }
 
-    /*@Test
-    public void getCharacterWithoutBlock() {
-        Shield shield = new Shield();
-        assertEquals('*', shield.getCharacterOfBlock(9, 1));
-    }*/
-
     @Test
     public void getCharacterHasBlockFullDurability() {
         Shield shield = new Shield();

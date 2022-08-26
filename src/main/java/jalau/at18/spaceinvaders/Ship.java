@@ -55,10 +55,6 @@ public class Ship {
         bullets.add(bullet);
     }
 
-    public void alienImpact() {
-
-    }
-
     public void moveBullets(Board board) {
         for (int iterator = ZERO; iterator < bullets.size(); iterator++) {
             ShipBullet bullet = bullets.remove(iterator);

@@ -333,4 +333,22 @@ public class MovementsPacmanTest {
         int points = point.showScore();
         assertEquals(FIFTY, points);
     }
+
+    @Test
+    public void testRepositionRight() {
+        board.getGameBoard()[rowPacman + 9][columsPacman + 24] = "C";
+        String[][] move_arr = movements.moveRight();
+        board.setGameBoard(move_arr);
+        String[][] newArr = movements.repositionRight(move_arr, rowPacman + 9, columsPacman + 24, 'C');
+        assertEquals(move_arr[rowPacman + 9][columsPacman - 1], newArr[rowPacman + 9][columsPacman - 1]);
+    }
+
+    @Test
+    public void testRepositionLeft() {
+        board.getGameBoard()[rowPacman + 9][columsPacman - 1] = "C";
+        String[][] move_arr = movements.moveLeft();
+        board.setGameBoard(move_arr);
+        String[][] newArr = movements.repositionLeft(move_arr, rowPacman + 9, columsPacman - 1, 'C');
+        assertEquals(move_arr[rowPacman + 9][columsPacman + 27], newArr[rowPacman + 9][columsPacman + 27]);
+    }
 }

@@ -52,7 +52,6 @@ public class MovementsPacman {
 
     private Board board = new Board();
     private String[][] newboardarr = board.getGameBoard();
-    private LivesWInsandLoses generalPacman = new LivesWInsandLoses();
 
     public void setRowGhost1(int rowForGhost) {
         this.rowGhostInitial1 = rowForGhost;
@@ -142,18 +141,18 @@ public class MovementsPacman {
                 newboardarr[row][column - 1] = " ";
                 // --------------- New Function Score -------------------
 
-                if (newboardarr[row][column] == redColor('G')) {
+                if (newboardarr[row][column] == "\033[31mG\u001B[0m") {
                     newboardarr[row][column - 1] = " ";
                     row = 1;
                     column = 1;
                     lives = lives - 1;
-                    newboardarr[row][column] = yellowColor('C');
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
                     Thread.sleep(TIME);
                     flushScreen();
                     board.showBoard(newboardarr);
                     break;
                 }
-                newboardarr[row][column] = yellowColor('C');
+                newboardarr[row][column] = "\033[33mC\u001B[0m";
                 Thread.sleep(TIME);
                 flushScreen();
 
@@ -194,18 +193,18 @@ public class MovementsPacman {
                 updateScore(newboardarr[row][column]);
                 newboardarr[row - 1][column] = " ";
                 // --------------- New Function Score -------------------
-                if (newboardarr[row][column] == redColor('G')) {
+                if (newboardarr[row][column] == "\033[31mG\u001B[0m") {
                     newboardarr[row - 1][column] = " ";
                     row = 1;
                     column = 1;
                     lives = lives - 1;
-                    newboardarr[row][column] = yellowColor('C');
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
                     Thread.sleep(TIME);
                     flushScreen();
                     board.showBoard(newboardarr);
                     break;
                 }
-                newboardarr[row][column] = yellowColor('C');
+                newboardarr[row][column] = "\033[33mC\u001B[0m";
                 Thread.sleep(TIME);
                 flushScreen();
                 board.showBoard(newboardarr);
@@ -235,18 +234,18 @@ public class MovementsPacman {
                 updateScore(newboardarr[row][column]);
                 newboardarr[row][column + 1] = " ";
                 // --------------- New Function Score -------------------
-                if (newboardarr[row][column] == redColor('G')) {
+                if (newboardarr[row][column] == "\033[31mG\u001B[0m") {
                     newboardarr[row][column + 1] = " ";
                     row = 1;
                     column = 1;
                     lives = lives - 1;
-                    newboardarr[row][column] = yellowColor('C');
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
                     Thread.sleep(TIME);
                     flushScreen();
                     board.showBoard(newboardarr);
                     break;
                 }
-                newboardarr[row][column] = yellowColor('C');
+                newboardarr[row][column] = "\033[33mC\u001B[0m";
                 // newboardarr[row][column] = "C";
                 Thread.sleep(TIME);
 
@@ -286,18 +285,18 @@ public class MovementsPacman {
                 updateScore(newboardarr[row + 1][column]);
                 newboardarr[row + 1][column] = " ";
                 // --------------- New Function Score -------------------
-                if (newboardarr[row][column] == redColor('G')) {
+                if (newboardarr[row][column] == "\033[31mG\u001B[0m") {
                     newboardarr[row + 1][column] = " ";
                     row = 1;
                     column = 1;
                     lives = lives - 1;
-                    newboardarr[row][column] = yellowColor('C');
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
                     Thread.sleep(TIME);
                     flushScreen();
                     board.showBoard(newboardarr);
                     break;
                 }
-                newboardarr[row][column] = yellowColor('C');
+                newboardarr[row][column] = "\033[33mC\u001B[0m";
                 // newboardarr[row][column] = "C";
                 Thread.sleep(TIME);
                 flushScreen();
@@ -325,19 +324,20 @@ public class MovementsPacman {
 
                 newboardarr[rowGhost][columnsGhost - 1] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
 
-                if (newboardarr[rowGhost][columnsGhost] == yellowColor('C')) {
-                    newboardarr[rowGhost][columnsGhost - 1] = " ";
+                if (newboardarr[rowGhost][columnsGhost] == "\033[33mC\u001B[0m") {
+                    newboardarr[rowGhost][columnsGhost] = " ";
                     row = 1;
                     column = 1;
                     lives = lives - 1;
-                    newboardarr[row][column] = yellowColor('C');
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
+                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
                     Thread.sleep(TIME);
                     flushScreen();
                     board.showBoard(newboardarr);
                     break;
                 }
 
-                newboardarr[rowGhost][columnsGhost] = redColor('G');
+                newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
 
                 Thread.sleep(TIME);
                 flushScreen();
@@ -352,7 +352,7 @@ public class MovementsPacman {
                 ////////////////////////////////////////////////////////////
                 if (columnsGhost == SPACES) {
                     columnsGhost = 0;
-                    newboardarr[rowGhost][columnsGhost] = redColor('G');
+                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
                     newboardarr[rowGhost][columnsGhost + SPACES] = "·";
                 }
                 ////////////////////////////////////////////////////////////
@@ -374,17 +374,20 @@ public class MovementsPacman {
 
                 newboardarr[rowGhost - 1][columnsGhost] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
 
-                if (newboardarr[rowGhost][columnsGhost] == yellowColor('C')) {
-                    newboardarr[rowGhost - 1][columnsGhost] = " ";
-                    if (pacmanLostALive(newboardarr, rowGhost, columnsGhost)) {
-                        Thread.sleep(TIME);
-                        flushScreen();
-                        board.showBoard(newboardarr);
-                        break;
-                    }
+                if (newboardarr[rowGhost][columnsGhost] == "\033[33mC\u001B[0m") {
+                    newboardarr[rowGhost][columnsGhost] = " ";
+                    row = 1;
+                    column = 1;
+                    lives = lives - 1;
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
+                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
+                    Thread.sleep(TIME);
+                    flushScreen();
+                    board.showBoard(newboardarr);
+                    break;
                 }
 
-                newboardarr[rowGhost][columnsGhost] = redColor('G');
+                newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
                 Thread.sleep(TIME);
                 flushScreen();
                 board.showBoard(newboardarr);
@@ -406,18 +409,20 @@ public class MovementsPacman {
         try {
             while (newboardarr[rowGhost][columnsGhost - 1] != "▒") {
                 columnsGhost--;
-
                 newboardarr[rowGhost][columnsGhost + 1] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
-                if (newboardarr[rowGhost][columnsGhost] == yellowColor('C')) {
-                    newboardarr[rowGhost][columnsGhost + 1] = " ";
-                    if (pacmanLostALive(newboardarr, rowGhost, columnsGhost)) {
-                        Thread.sleep(TIME);
-                        flushScreen();
-                        board.showBoard(newboardarr);
-                        break;
-                    }
+                if (newboardarr[rowGhost][columnsGhost] == "\033[33mC\u001B[0m") {
+                    newboardarr[rowGhost][columnsGhost] = " ";
+                    row = 1;
+                    column = 1;
+                    lives = lives - 1;
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
+                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
+                    Thread.sleep(TIME);
+                    flushScreen();
+                    board.showBoard(newboardarr);
+                    break;
                 }
-                newboardarr[rowGhost][columnsGhost] = redColor('G');
+                newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
 
                 Thread.sleep(TIME);
 
@@ -450,14 +455,17 @@ public class MovementsPacman {
                 rowGhost--;
 
                 newboardarr[rowGhost + 1][columnsGhost] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
-                if (newboardarr[rowGhost][columnsGhost] == yellowColor('C')) {
-                    newboardarr[rowGhost + 1][columnsGhost] = " ";
-                    if (pacmanLostALive(newboardarr, rowGhost, columnsGhost)) {
-                        Thread.sleep(TIME);
-                        flushScreen();
-                        board.showBoard(newboardarr);
-                        break;
-                    }
+                if (newboardarr[rowGhost][columnsGhost] == "\033[33mC\u001B[0m") {
+                    newboardarr[rowGhost][columnsGhost] = " ";
+                    row = 1;
+                    column = 1;
+                    lives = lives - 1;
+                    newboardarr[row][column] = "\033[33mC\u001B[0m";
+                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
+                    Thread.sleep(TIME);
+                    flushScreen();
+                    board.showBoard(newboardarr);
+                    break;
                 }
                 newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
                 Thread.sleep(TIME);

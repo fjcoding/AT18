@@ -60,14 +60,17 @@ public class Main {
             arrGhost = newMovement.movement(movementsFollow, point.getRowGhost1(), point.getColumnGhost1());
             point.setRowGhost1((int) arrGhost.get(1));
             point.setColumnGhost1((int) arrGhost.get(2));
+
             arrGhost2 = movementGhost.ghostMovement((String[][]) arrGhost.get(0), point.getRowGhost2(),
                     point.getColumnGhost2());
             point.setRowGhost2((int) arrGhost2.get(1));
             point.setColumnGhost2((int) arrGhost2.get(2));
+
             arrGhost3 = movementGhost.ghostMovement((String[][]) arrGhost2.get(0), point.getRowGhost3(),
                     point.getColumnGhost3());
             point.setRowGhost3((int) arrGhost3.get(1));
             point.setColumnGhost3((int) arrGhost3.get(2));
+            
             arrGhost4 = movementGhost.ghostMovement((String[][]) arrGhost3.get(0), point.getRowGhost4(),
                     point.getColumnGhost4());
             point.setRowGhost4((int) arrGhost4.get(1));

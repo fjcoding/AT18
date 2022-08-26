@@ -264,12 +264,11 @@ public class MovementsPacman {
         try {
 
             while (newboardarr[rowGhost][columnsGhost + 1] != "▒") {
+
                 columnsGhost++;
-                if (newboardarr[rowGhost][columnsGhost] == "·") {
-                    newboardarr[rowGhost][columnsGhost - 1] = "·";
-                } else {
-                    newboardarr[rowGhost][columnsGhost - 1] = " ";
-                }
+
+                newboardarr[rowGhost][columnsGhost - 1] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
+
                 newboardarr[rowGhost][columnsGhost] = redColor('G');
 
                 Thread.sleep(TIME);
@@ -299,15 +298,11 @@ public class MovementsPacman {
 
     public List<Object> moveDownGhost(String[][] newboardarr, int rowGhost, int columnsGhost) {
         try {
+
             while (newboardarr[rowGhost + 1][columnsGhost] != "▒") {
                 rowGhost++;
-                if (newboardarr[rowGhost][columnsGhost] == "·") {
-                    newboardarr[rowGhost - 1][columnsGhost] = "·";
-                    // score += 10;
-                } else {
-                    newboardarr[rowGhost - 1][columnsGhost] = " ";
-                    // score = score + 0;
-                }
+
+                newboardarr[rowGhost - 1][columnsGhost] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
 
                 newboardarr[rowGhost][columnsGhost] = redColor('G');
                 Thread.sleep(TIME);
@@ -331,14 +326,10 @@ public class MovementsPacman {
         try {
             while (newboardarr[rowGhost][columnsGhost - 1] != "▒") {
                 columnsGhost--;
-                if (newboardarr[rowGhost][columnsGhost] == "·") {
-                    newboardarr[rowGhost][columnsGhost + 1] = "·";
-                    // score += 10;
-                } else {
-                    newboardarr[rowGhost][columnsGhost + 1] = " ";
-                    // score = score + 0;
-                }
+
+                newboardarr[rowGhost][columnsGhost + 1] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
                 newboardarr[rowGhost][columnsGhost] = redColor('G');
+
                 Thread.sleep(TIME);
 
                 flushScreen();
@@ -366,13 +357,9 @@ public class MovementsPacman {
         try {
             while (newboardarr[rowGhost - 1][columnsGhost] != "▒") {
                 rowGhost--;
-                if (newboardarr[rowGhost][columnsGhost] == "·") {
-                    newboardarr[rowGhost + 1][columnsGhost] = "·";
-                    // score += 10;
-                } else {
-                    newboardarr[rowGhost + 1][columnsGhost] = " ";
-                    // score = score + 0;
-                }
+
+                newboardarr[rowGhost + 1][columnsGhost] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
+
                 newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
                 Thread.sleep(TIME);
                 flushScreen();

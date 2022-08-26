@@ -51,7 +51,6 @@ public class MissileCollision {
                 if (element1.getLive() == 0 || element2.getLive() == 0) {
                     matrix[row1][column1] = empty;
                     matrix[row2][column2] = empty;
-                    
                 }
             }
 

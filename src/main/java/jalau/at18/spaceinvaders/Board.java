@@ -4,10 +4,18 @@ public class Board {
     private static final int MAX_SIZE = 10;
     private char[][] matrix;
     private Shield shield;
+    private Alien alien;
+    private boolean shipAlive = true;
+    private int score;
+    private final int alivePosX = 8;
+    private final int alivePosY = 9;
+    private final int incrementScore = 10;
 
     public Board() {
         matrix = new char[MAX_SIZE][MAX_SIZE];
         shield = new Shield();
+        alien = new Alien();
+        score = 0;
         initialize();
     }
 
@@ -16,8 +24,10 @@ public class Board {
             for (int col = 0; col < matrix.length; col++) {
                 if (shield.existBlockInPosition(row, col)) {
                     matrix[row][col] = shield.getCharacterOfBlock(row, col);
+                } else if (alien.exist(row, col)) {
+                    matrix[row][col] = alien.getSimbol();
                 } else {
-                    matrix[row][col] = '*';
+                    matrix[row][col] = ' ';
                 }
             }
         }
@@ -40,7 +50,7 @@ public class Board {
     }
 
     public void clearPosition(int posX, int posY) {
-        matrix[posX][posY] = '*';
+        matrix[posX][posY] = ' ';
     }
 
     public boolean existShield(int posX, int posY) {
@@ -50,6 +60,43 @@ public class Board {
     public void impactShield(int posX, int posY) {
         char charPos = shield.impactBlock(posX, posY);
         setElement(posX, posY, charPos);
+    }
+    private void changesAlienPositions() {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix.length; col++) {
+                if (alien.exist(row, col)) {
+                    matrix[row][col] = alien.getSimbol();
+                }
+            }
+        }
+    }
+
+    private void clearMatrix() {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix.length; col++) {
+                if (matrix[row][col] == alien.getSimbol()) {
+                    matrix[row][col] = ' ';
+                }
+            }
+        }
+    }
+
+    public boolean isAlive() {
+        if (alien.exist(alivePosX, alivePosY)) {
+            shipAlive = false;
+        }
+        return shipAlive;
+    }
+
+    public void moveAliens() {
+        alien.alienMovement();
+        clearMatrix();
+        changesAlienPositions();
+    }
+
+    public boolean existAlien(int posX, int posY) {
+
+        return alien.exist(posX, posY);
     }
 
     @Override
@@ -65,5 +112,14 @@ public class Board {
         }
         showBoard += "-----------------------" + "\n";
         return showBoard;
+    }
+
+    public void alienImpact(int posX, int posY) {
+        score += incrementScore;
+        alien.impact(posX, posY);
+    }
+
+    public int getScore() {
+        return score;
     }
 }

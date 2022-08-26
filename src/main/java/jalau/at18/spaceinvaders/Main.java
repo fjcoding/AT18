@@ -7,5 +7,6 @@ public class Main {
         //System.out.println(board.toString());
         Game game = new Game();
         game.move();
+
     }
 }

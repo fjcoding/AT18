@@ -37,23 +37,23 @@ public class GameBattlecityTest {
         assertEquals(ElementType.TANKBACK, boardMatrix[25][9].getType());
     }
 
-    @Test
-    public void startGameShouldEnemyTank_Top_Correctly() {
-        gameBattlecity.startGame();
-        // {1, 13}, {1, 12}, {0, 13}, {0, 12}
-        Element[][] boardMatrix = gameBattlecity.getBoard().getMatrix();
-        assertEquals(ElementType.TANKTOPENEMY, boardMatrix[1][13].getType());
-        assertEquals(ElementType.TANKTOPENEMY, boardMatrix[1][12].getType());
-    }
+    // @Test
+    // public void startGameShouldEnemyTank_Top_Correctly() {
+    // gameBattlecity.startGame();
+    // // {1, 13}, {1, 12}, {0, 13}, {0, 12}
+    // Element[][] boardMatrix = gameBattlecity.getBoard().getMatrix();
+    // assertEquals(ElementType.TANKTOPENEMY, boardMatrix[1][13].getType());
+    // assertEquals(ElementType.TANKTOPENEMY, boardMatrix[1][12].getType());
+    // }
 
-    @Test
-    public void startGameShouldEnemyTank_Back_Correctly() {
-        gameBattlecity.startGame();
-        // {1, 13}, {1, 12}, {0, 13}, {0, 12}
-        Element[][] boardMatrix = gameBattlecity.getBoard().getMatrix();
-        assertEquals(ElementType.TANKBACKENEMY, boardMatrix[0][13].getType());
-        assertEquals(ElementType.TANKBACKENEMY, boardMatrix[0][12].getType());
-    }
+    // @Test
+    // public void startGameShouldEnemyTank_Back_Correctly() {
+    // gameBattlecity.startGame();
+    // // {1, 13}, {1, 12}, {0, 13}, {0, 12}
+    // Element[][] boardMatrix = gameBattlecity.getBoard().getMatrix();
+    // assertEquals(ElementType.TANKBACKENEMY, boardMatrix[0][13].getType());
+    // assertEquals(ElementType.TANKBACKENEMY, boardMatrix[0][12].getType());
+    // }
 
     // @Test
     // public void tankCrashShouldReturn_True() {

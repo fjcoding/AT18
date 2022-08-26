@@ -28,6 +28,14 @@ public class GameTest {
       assertEquals(2, game.getLifes());
       //assertEquals(9, game.getPosYShip());
       }
+      @Test
+      public void shouldShootedTheShip() throws InterruptedException {
+      Game game = new Game();
+      game.runGame(32);
+
+      assertEquals(true,game.getStatusBullet());
+      //assertEquals(9, game.getPosYShip());
+      }
 
 
     /*

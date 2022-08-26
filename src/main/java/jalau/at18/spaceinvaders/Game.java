@@ -91,5 +91,8 @@ public class Game {
     public int getLifes() {
         return ship.getLifes();
     }
+    public boolean getStatusBullet() {
+        return ship.isThereBullets();
+    }
 
 }

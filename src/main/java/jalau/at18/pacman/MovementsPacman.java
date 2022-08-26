@@ -649,6 +649,8 @@ public class MovementsPacman {
         switch (totallives) {
             case TWO:
                 System.out.println("\033[32m█\u001B[0m \033[32m█\u001B[0m");
+=======
+                System.out.println("\033[32m█\u001B[0m \033[32m█\u001B[0m ");
                 break;
             case ONE:
                 System.out.println("\033[32m█\u001B[0m");

@@ -8,7 +8,7 @@ public class TankPlayer extends Tank {
     public static final int SIZE_MAX_BOARD = 26;
     //private int[][] newPosition = new int[SIZE_ROW_POSITION][2];
     private Element[][] moveMissileBoard;
-
+    private ShootTank shootTank;
     public TankPlayer() {
         this.position = INITIAL_POSITION;
     }
@@ -27,9 +27,10 @@ public class TankPlayer extends Tank {
             case "d":
                 position = moveRight(position);
                 break;
-            /*case "x":
-                shoot(moveMissileBoard);
-                break;*/
+            case "x":
+                shootTank.start();
+
+                break;
             default:
                 position = position;
                 break;
@@ -38,6 +39,7 @@ public class TankPlayer extends Tank {
 
     }
     public Element[][] movePlayer(Element[][] elementsMatrix, String input) {
+        shootTank = new ShootTank(position, direction, elementsMatrix);
         cleanPosition(elementsMatrix, getPosition());
         position = movements(input);
         elementsMatrix = putTankOnBoard(elementsMatrix, position);

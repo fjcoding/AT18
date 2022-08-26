@@ -6,7 +6,7 @@ public class GameBattlecity extends Game {
     public static final int SIZE_ROW_POSITION = 4;
 
     public static final int GRID_LENGHT = 26;
-    public static final int MILLISECONDS = 1000;
+    public static final int MILLISECONDS = 500;
 
     private int enemyCount = ENEMYS_PER_STAGE;
     private TankPlayer tankPlayer = new TankPlayer();

@@ -22,8 +22,10 @@ public class MovementsPacman {
     private static int column = 1;
     private static int lives = 2;
     private static final int TIME = 200;
+    private static final int TOTALPOINTS = 200;
     private static int contTimeToShowFruits = 0;
     private static int score = 0;
+    private static int winning = 0;
     public static final int SCOREBALL = 10;
     public static final int POWERBALL = 50;
     public static final int FRUIT1 = 100;
@@ -626,6 +628,8 @@ public class MovementsPacman {
     public static void updateScore(String value) {
         if (value == "·") {
             score += SCOREBALL;
+            // wining
+            winning += 1;
         }
         if (value == blueColor('O')) {
             score += POWERBALL;
@@ -639,6 +643,18 @@ public class MovementsPacman {
         if (value == " ") {
             score += 0;
         }
+    }
+
+    public int showWining() {
+        int pointsfinal = winning;
+        return pointsfinal;
+    }
+
+    public Boolean isWinner(int points) {
+        if (points > TOTALPOINTS) {
+            return true;
+        }
+        return false;
     }
 
     public static boolean breakMovesX(String[][] newboardarr, int rowB, int columnB) {

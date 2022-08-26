@@ -19,11 +19,11 @@ public class Input implements KeyListener {
         input = String.valueOf(e.getKeyChar());
         Element[][] matrix = board.getMatrix();
         matrix = tankPlayer.arrageTank(matrix, input);
-        if(!tankPlayer.isTankCrash(matrix)){
+        if (!tankPlayer.isTankCrash(matrix)) {
             matrix = tankPlayer.movePlayer(matrix, input);
-        } else{
+        } else {
             matrix = tankPlayer.arrageTank(matrix, input);
-            System.out. println("Desbloqueado");
+            System.out.println("Desbloqueado");
         }
         System.out.println(tankPlayer.isTankCrash(matrix));
 

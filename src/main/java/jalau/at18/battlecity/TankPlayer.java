@@ -55,7 +55,7 @@ public class TankPlayer extends Tank {
         return position;
     }
 
-    public Element[][] arrageTank(Element[][] matrix, String input){
+    public Element[][] arrageTank(Element[][] matrix, String input) {
         cleanPosition(matrix, getPosition());
         //position = getPosition();
         switch (input) {

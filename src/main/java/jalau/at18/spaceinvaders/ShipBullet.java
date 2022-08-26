@@ -17,12 +17,15 @@ public class ShipBullet extends Bullet {
         if (board.existAlien(position.getPosX(), position.getPosY())) {
             board.alienImpact(position.getPosX(), position.getPosY());
             representation = ' ';
+            
         } else {
             if (board.existShield(position.getPosX(), position.getPosY())) {
                 board.impactShield(position.getPosX(), position.getPosY());
                 representation = ' ';
             } else {
-                board.setElement(position.getPosX(), position.getPosY(), representation);
+                if (position.getPosX() > 0) {
+                    board.setElement(position.getPosX(), position.getPosY(), representation);
+                }
             }
         }
         isInit = false;

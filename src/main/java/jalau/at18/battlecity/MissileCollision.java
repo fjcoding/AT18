@@ -16,18 +16,28 @@ public class MissileCollision {
                 if (element1.getLive() == 0) {
                     matrix[row1][column1] = empty;
                     matrix[row2][column2] = empty;
-                    System.out.println("Brick was destroyed, hs not live");
+                    System.out.println("Brick was destroyed, has not live");
                 }
             }
+            if (element1.getType() == ElementType.MISSILES) {
+                System.out.println("Missile hit Missile");
+                matrix[row1][column1] = empty;
+                matrix[row2][column2] = empty;
+                System.out.println("Missile was destroyed");
+            }
+
             if (element1.getType() == ElementType.TANKTOP || element1.getType() == ElementType.TANKBACK) {
                 element1.reduceLive(1);
                 if (element1.getLive() == 0) {
                     matrix[row1][column1] = empty;
                     matrix[row2][column2] = empty;
-                    //System.out.println("############## Game over ##############");
-                    //System.exit(0);
-                    throw new RuntimeException("The game finished");
+                    System.out.println("############## Game over ##############");
+                    System.exit(0);
                 }
+            }
+            if (element1.getType() == ElementType.EAGLE) {
+                System.out.println("############## Game over ##############");
+                System.exit(0);
             }
             return true;
         }

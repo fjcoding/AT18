@@ -22,7 +22,7 @@ public class EnemyTank extends Tank {
     public static final int ENEMY_SHOOT = 3;
     private Missile missile = new Missile();
 
-    public int getCountEnemy(){
+    public int getCountEnemy() {
         return enemyCount;
     }
     // public int[][] enemyPosition;

@@ -7,6 +7,8 @@ public class MoveEnemy extends Thread {
     private static final int TIME = 500;
     private static final int TIME2 = 12000;
     private static final int TIME3 = 24000;
+    private static final int SECOND_ENEMY = 19;
+    private static final int THIRD_ENEMY = 18;
 
     public MoveEnemy(Board board, EnemyTank enemyTank) {
         this.board = board;
@@ -14,14 +16,14 @@ public class MoveEnemy extends Thread {
     }
     @Override
     public void run() {
-        if (enemyTank.getCountEnemy() == 19) {
+        if (enemyTank.getCountEnemy() == SECOND_ENEMY) {
             try {
                 MoveEnemy.sleep(TIME2);
             } catch (InterruptedException e) {
                 System.out.print(e);
             }
         }
-        if (enemyTank.getCountEnemy() == 18) {
+        if (enemyTank.getCountEnemy() == THIRD_ENEMY) {
             try {
                 MoveEnemy.sleep(TIME3);
             } catch (InterruptedException e) {

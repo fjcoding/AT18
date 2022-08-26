@@ -14,5 +14,6 @@ public class MoveTankPlayer extends Thread {
     public void run() {
         Input reader = new Input(board, tankPlayer);
         frame.addKey(reader);
+
     }
 }

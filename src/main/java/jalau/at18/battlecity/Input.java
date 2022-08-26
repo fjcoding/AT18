@@ -23,9 +23,7 @@ public class Input implements KeyListener {
             matrix = tankPlayer.movePlayer(matrix, input);
         } else {
             matrix = tankPlayer.arrageTank(matrix, input);
-            System.out.println("Desbloqueado");
         }
-        System.out.println(tankPlayer.isTankCrash(matrix));
 
     }
 
@@ -35,5 +33,18 @@ public class Input implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        /*input = String.valueOf(e.getKeyChar());
+        int con=0;
+
+            while(con<10){
+                System.out.println("asdasd");
+                con++;
+            }
+            try {
+                MoveTankPlayer.sleep(1000);
+            } catch (InterruptedException a) {
+                System.out.print(a);
+            }*/
+
     }
 }

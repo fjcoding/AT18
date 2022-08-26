@@ -7,6 +7,7 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'com.github.stefanbirkner:system-rules:1.19.0'
     testImplementation 'junit:junit:4.12'
 }
 

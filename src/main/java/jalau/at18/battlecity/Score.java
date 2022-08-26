@@ -9,7 +9,7 @@ public class Score {
     }
 
     public void incrementScore() {
-        score += 100;
+        score += 1;
     }
 
     public int getScore() {

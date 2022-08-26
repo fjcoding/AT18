@@ -2,7 +2,7 @@ package jalau.at18.battlecity;
 
 public class MissileCollision {
     private Empty empty = new Empty();
-    Score score = new Score();
+    protected Score score = new Score();
 
     public boolean isElementHit(Element[][] matrix, int row1, int column1, int row2, int column2) {
 

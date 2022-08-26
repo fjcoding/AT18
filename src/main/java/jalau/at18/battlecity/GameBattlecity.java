@@ -11,7 +11,7 @@ public class GameBattlecity extends Game {
     private TankPlayer tankPlayer = new TankPlayer();
     private EnemyTank enemyTank = new EnemyTank(enemyCount);
     private Board board;
-    Score score = new Score();
+    protected Score score = new Score();
 
     public TankPlayer getTankPlayer() {
         return tankPlayer;

@@ -40,11 +40,11 @@ public class Main {
                 List<Object> arrGhost3;
                 List<Object> arrGhost4;
                 System.out.println("******Bienvenido al juego******");
-                board.getGameBoard()[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
-                board.getGameBoard()[rowGhost1][columsGhost1] = "\033[31mG\u001B[0m";
-                board.getGameBoard()[rowGhost2][columsGhost2] = "\033[31mG\u001B[0m";
-                board.getGameBoard()[rowGhost3][columsGhost3] = "\033[31mG\u001B[0m";
-                board.getGameBoard()[rowGhost4][columsGhost4] = "\033[31mG\u001B[0m";
+                board.getGameBoard()[rowPacman][columsPacman] = point.yellowColor('C');
+                board.getGameBoard()[rowGhost1][columsGhost1] = point.redColor('G');
+                board.getGameBoard()[rowGhost2][columsGhost2] = point.redColor('G');
+                board.getGameBoard()[rowGhost3][columsGhost3] = point.redColor('G');
+                board.getGameBoard()[rowGhost4][columsGhost4] = point.redColor('G');
                 board.showBoard(board.getGameBoard());
                 System.out.println("                                                      SCORE: " + point.showScore());
                 System.out.println(" LIVES: " + point.gameOver());

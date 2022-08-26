@@ -167,7 +167,9 @@ public class MovementsPacman {
                 ///////////////////////////////////////////////////////////////////////////////////////////
 
                 if (column == SPACES) {
-                    newboardarr = repositionRight(newboardarr, row, column, 'C');
+                    column = 0;
+                    newboardarr[row][column] = yellowColor('C');
+                    newboardarr[row][column + SPACES] = " ";
                 }
                 ////////////////////////////////////////////////////////////
 
@@ -348,8 +350,10 @@ public class MovementsPacman {
                     break;
                 }
                 ////////////////////////////////////////////////////////////
-                if (column == SPACES) {
-                    newboardarr = repositionRight(newboardarr, row, column, 'G');
+                if (columnsGhost == SPACES) {
+                    columnsGhost = 0;
+                    newboardarr[rowGhost][columnsGhost] = redColor('G');
+                    newboardarr[rowGhost][columnsGhost + SPACES] = "·";
                 }
                 ////////////////////////////////////////////////////////////
 
@@ -424,8 +428,10 @@ public class MovementsPacman {
                     break;
                 }
                 ////////////////////////////////////////////////////////////
-                if (column == 0) {
-                    newboardarr = repositionLeft(newboardarr, row, column, 'G');
+                if (columnsGhost == 0) {
+                    columnsGhost = SPACES;
+                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
+                    newboardarr[rowGhost][columnsGhost - SPACES] = "·";
                 }
                 ////////////////////////////////////////////////////////////
 

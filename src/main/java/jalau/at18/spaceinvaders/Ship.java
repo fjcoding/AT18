@@ -63,7 +63,7 @@ public class Ship {
         for (int iterator = ZERO; iterator < bullets.size(); iterator++) {
             ShipBullet bullet = bullets.remove(iterator);
             bullet.move(board);
-            if (bullet.getRepresentation() != '*') {
+            if (bullet.getRepresentation() != ' ') {
                 bullets.add(bullet);
             }
         }

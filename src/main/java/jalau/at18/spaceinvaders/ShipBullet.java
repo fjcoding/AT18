@@ -16,11 +16,11 @@ public class ShipBullet extends Bullet {
         position.moveUp();
         if (board.existAlien(position.getPosX(), position.getPosY())) {
             board.alienImpact(position.getPosX(), position.getPosY());
-            representation = '*';
+            representation = ' ';
         } else {
             if (board.existShield(position.getPosX(), position.getPosY())) {
                 board.impactShield(position.getPosX(), position.getPosY());
-                representation = '*';
+                representation = ' ';
             } else {
                 board.setElement(position.getPosX(), position.getPosY(), representation);
             }

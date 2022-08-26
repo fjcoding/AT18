@@ -41,6 +41,7 @@ public class Game {
             if (ship.isThereBullets()) {
                 ship.moveBullets(board);
             }
+            System.out.println("Score: " + board.getScore());
             Thread.sleep(DELAY);
         }
         System.out.println("Game Over");
@@ -53,7 +54,7 @@ public class Game {
                 if (ship.getPosY() < SIZE_BOARD) {
                     ship.moveRight();
                     board.setElement(ship.getPosX(), ship.getPosY(), '^');
-                    board.setElement(ship.getPosX(), ship.getPosY() - 1, '*');
+                    board.setElement(ship.getPosX(), ship.getPosY() - 1, ' ');
                     System.out.println("derecha");
                 }
                 break;
@@ -61,16 +62,16 @@ public class Game {
                 if (ship.getPosY() > 0) {
                     ship.moveLeft();
                     board.setElement(ship.getPosX(), ship.getPosY(), '^');
-                    board.setElement(ship.getPosX(), ship.getPosY() + 1, '*');
+                    board.setElement(ship.getPosX(), ship.getPosY() + 1, ' ');
                 }
                 break;
             case CODE_UP_KEY:    // up
                 ship.subtrasctLifes();
-                board.setElement(ship.getPosX(), ship.getPosY(), '*');
+                board.setElement(ship.getPosX(), ship.getPosY(), ' ');
                 System.out.println("Died");
                 ship.reStartPosition();
                 board.setElement(ship.getPosX(), ship.getPosY(), '^');
-                board.setElement(ship.getPosX(), ship.getPosY(), '*');
+                board.setElement(ship.getPosX(), ship.getPosY(), ' ');
                 //System.out.println(board.toString());
                 break;
             case CODE_SPACE_KEY:    //space

@@ -24,7 +24,7 @@ public class Board {
                 } else if (alien.exist(row, col)) {
                     matrix[row][col] = alien.getSimbol();
                 } else {
-                    matrix[row][col] = '*';
+                    matrix[row][col] = ' ';
                 }
             }
         }
@@ -47,7 +47,7 @@ public class Board {
     }
 
     public void clearPosition(int posX, int posY) {
-        matrix[posX][posY] = '*';
+        matrix[posX][posY] = ' ';
     }
 
     public boolean existShield(int posX, int posY) {
@@ -72,7 +72,7 @@ public class Board {
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix.length; col++) {
                 if (matrix[row][col] == alien.getSimbol()) {
-                    matrix[row][col] = '*';
+                    matrix[row][col] = ' ';
                 }
             }
         }

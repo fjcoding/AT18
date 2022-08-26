@@ -37,7 +37,12 @@ public class TankPlayer extends Tank {
         return newPosition;
 
     }
-
+    public Element[][] movePlayer(Element[][] elementsMatrix, String input) {
+        cleanPosition(elementsMatrix, getPosition());
+        position = movements(input);
+        elementsMatrix = putTankOnBoard(elementsMatrix, position);
+        return elementsMatrix;
+    }
     public int[][] initialPosition() {
         return newPosition;
     }
@@ -50,52 +55,36 @@ public class TankPlayer extends Tank {
         return newPosition;
     }
 
-    @Override
-    public int[][] moveUp(int[][] position) {
-        newPosition = arrangeUp(position);
-        if (newPosition[0][0] != 0) {
-            for (int row = 0; row < SIZE_ROW_POSITION; row++) {
-                newPosition[row][0] = newPosition[row][0] - 1;
-            }
+    public Element[][] arrageTank(Element[][] matrix, String input){
+        cleanPosition(matrix, getPosition());
+        //position = getPosition();
+        switch (input) {
+            case "w":
+                newPosition = arrangeUp(newPosition);
+                setDirection("UP");
+                break;
+            case "s":
+                newPosition = arrangeDown(newPosition);
+                setDirection("DOWN");
+                break;
+            case "a":
+                newPosition = arrangeLeft(newPosition);
+                setDirection("LEFT");
+                break;
+            case "d":
+                newPosition = arrangeRight(newPosition);
+                setDirection("RIGHT");
+                break;
+            /*case "x":
+                shoot(moveMissileBoard);
+                break;*/
+            default:
+                newPosition = newPosition;
+                break;
         }
-        return newPosition;
+        matrix = putTankOnBoard(matrix, newPosition);
+        return matrix;
     }
 
-    @Override
-    public int[][] moveDown(int[][] position) {
-        newPosition = arrangeDown(position);
-        if (newPosition[0][0] != SIZE_MAX_BOARD - 1) {
-            for (int row = 0; row < SIZE_ROW_POSITION; row++) {
-                newPosition[row][0] = newPosition[row][0] + 1;
-            }
-        }
-        return newPosition;
-    }
 
-    @Override
-    public int[][] moveRight(int[][] position) {
-        newPosition = arrangeRight(position);
-        if (newPosition[0][1] != SIZE_MAX_BOARD - 1) {
-            for (int row = 0; row < SIZE_ROW_POSITION; row++) {
-                newPosition[row][1] = newPosition[row][1] + 1;
-            }
-        }
-        return newPosition;
-    }
-
-    @Override
-    public int[][] moveLeft(int[][] position) {
-        newPosition = arrangeLeft(position);
-        if (newPosition[0][1] != 0) {
-            for (int row = 0; row < SIZE_ROW_POSITION; row++) {
-                newPosition[row][1] = newPosition[row][1] - 1;
-            }
-        }
-        return newPosition;
-    }
-
-    /*public Element[][] shoot(Element[][] board) {
-        Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], "UP", board);
-        return  missil.missileDirection();
-    }*/
 }

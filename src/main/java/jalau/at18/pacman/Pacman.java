@@ -15,8 +15,8 @@ public class Pacman {
     }
 
 
-    public void setXposition(int newXPosition) {
-        this.xPosition = newXPosition;
+    public void setXposition(int xPosition) {
+        this.xPosition = xPosition;
     }
     public int getXposition() {
         return this.xPosition;
@@ -33,5 +33,4 @@ public class Pacman {
     public String getRepresentation() {
         return this.representation;
     }
-    
 }

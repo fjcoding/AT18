@@ -18,16 +18,16 @@ public class Ghost {
         return xPosition;
     }
 
-    public void setXPosition(int xPosition) {
-        this.xPosition = xPosition;
+    public void setXPosition(int xPositionToSet) {
+        this.xPosition = xPositionToSet;
     }
 
     public int getYPosition() {
         return yPosition;
     }
 
-    public void setYPosition(int yPosition) {
-        this.yPosition = yPosition;
+    public void setYPosition(int yPositionToSet) {
+        this.yPosition = yPositionToSet;
     }
 
     public String getRepresentation() {

@@ -1,10 +1,9 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.*;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
-
-import java.io.EOFException;
 
 import static org.junit.Assert.*;
 

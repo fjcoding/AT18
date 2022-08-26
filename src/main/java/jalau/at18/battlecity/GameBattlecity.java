@@ -1,5 +1,7 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+
 public class GameBattlecity extends Game {
     public static final int ENEMYS_PER_STAGE = 20;
     public static final int SIZE_ROW_POSITION = 4;

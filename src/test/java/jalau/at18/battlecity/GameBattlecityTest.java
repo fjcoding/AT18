@@ -3,6 +3,8 @@ package jalau.at18.battlecity;
 import static org.junit.Assert.*;
 import static org.junit.Assume.assumeNoException;
 
+import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.ElementType;
 import org.junit.Test;
 
 public class GameBattlecityTest {

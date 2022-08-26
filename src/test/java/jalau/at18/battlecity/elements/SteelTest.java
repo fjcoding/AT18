@@ -1,5 +1,6 @@
-package jalau.at18.battlecity;
+package jalau.at18.battlecity.elements;
 
+import jalau.at18.battlecity.elements.Steel;
 import org.junit.*;
 
 import static org.junit.Assert.*;

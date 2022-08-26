@@ -1,4 +1,4 @@
-package jalau.at18.battlecity;
+package jalau.at18.battlecity.elements;
 
 public class Eagle extends Element {
     public static final String ANSI_BLUE = "\033[34m";

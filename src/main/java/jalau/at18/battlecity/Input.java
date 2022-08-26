@@ -1,5 +1,7 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

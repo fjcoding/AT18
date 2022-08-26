@@ -41,6 +41,9 @@ public class Element {
     public String getImage() {
         return image;
     }
+    public void setImage(String newImage) {
+        image = newImage;
+    }
 
     public int getLive() {
         return live;

@@ -1,10 +1,13 @@
 package jalau.at18.battlecity;
 
 import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.ElementType;
+
 
 public class GameBattlecity extends Game {
     public static final int ENEMYS_PER_STAGE = 20;
     public static final int SIZE_ROW_POSITION = 4;
+    public static final int NUMBER_OF_ENEMYS = 3;
 
     public static final int GRID_LENGHT = 26;
     public static final int MILLISECONDS = 500;
@@ -15,6 +18,8 @@ public class GameBattlecity extends Game {
     private EnemyTank enemyTank2 = new EnemyTank(enemyCount - 1);
     private EnemyTank enemyTank3 = new EnemyTank(enemyCount - 2);
     private Board board;
+    protected boolean win = false;
+    private int countDefectedEnemy = 0;
     protected Score score = new Score();
 
     public TankPlayer getTankPlayer() {
@@ -54,18 +59,59 @@ public class GameBattlecity extends Game {
         player.start();
         enemy2.start();
         enemy3.start();
-        while (true) {
+        while (countDefectedEnemy < NUMBER_OF_ENEMYS) {
+            int[][] enemyPosition1 = enemyTank1.getPosition();
+            if (!thereAreEnemyTank(enemyPosition1)) {
+                if (enemy1.getIsEnemyCreated()) {
+                    enemy1.stopThread();
+                    score.incrementScore();
+                    countDefectedEnemy++;
+                    enemy1.setIsEnemyCreated(false);
+                }
+            }
+            int[][] enemyPosition2 = enemyTank2.getPosition();
+            if (!thereAreEnemyTank(enemyPosition2)) {
+                if (enemy2.getIsEnemyCreated()) {
+                    enemy2.stopThread();
+                    score.incrementScore();
+                    countDefectedEnemy++;
+                    enemy2.setIsEnemyCreated(false);
+                }
+            }
+            int[][] enemyPosition3 = enemyTank3.getPosition();
+            if (!thereAreEnemyTank(enemyPosition3)) {
+                if (enemy3.getIsEnemyCreated()) {
+                    enemy3.stopThread();
+                    score.incrementScore();
+                    countDefectedEnemy++;
+                    enemy3.setIsEnemyCreated(false);
+                }
+            }
             showMatrix(board);
-            // score.showScore();
+            score.showScore();
             wait(1);
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            //System.out.print("\033[H\033[2J");
+            //System.out.flush();
         }
+        System.out.print("You Win !!!");
+        System.exit(0);
+    }
 
+    public boolean thereAreEnemyTank(int[][] position) {
+        Element[][] matrix = board.getMatrix();
+        boolean thereAreEnemyTank = true;
+        ElementType condition1 = matrix[position[0][0]][position[0][1]].getType();
+        ElementType condition2 = matrix[position[1][0]][position[1][1]].getType();
+        ElementType condition3 = matrix[position[2][0]][position[0][1]].getType();
+        ElementType condition4 = matrix[position[NUMBER_OF_ENEMYS][0]][position[NUMBER_OF_ENEMYS][1]].getType();
+        ElementType empty = ElementType.EMPTY;
+        if (condition1 == empty || condition2 == empty || condition3 == empty || condition4 == empty) {
+            thereAreEnemyTank = false;
+        }
+        return thereAreEnemyTank;
     }
 
     public void endGame() {
-
     }
     public static Board createBoard() {
         String rute = "stage1.csv";

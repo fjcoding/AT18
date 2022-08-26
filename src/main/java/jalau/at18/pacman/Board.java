@@ -72,13 +72,6 @@ public class Board {
             {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
                 "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒"}
     };
-    private int dots;
-    private int score;
-    public Board() {
-        this.dots = INITIAL_DOTS_NUMBER;
-        this.score = 0;
-    }
-
     public void showBoard(String[][] boardToShow) {
         for (int rows = 0; rows < X_BORDER; rows++) {
             for (int colums = 0; colums < Y_BORDER; colums++) {
@@ -87,19 +80,6 @@ public class Board {
             System.out.println();
         }
     }
-    public int getDots() {
-        return this.dots;
-    }
-    public void restDots() {
-        this.dots -= 1;
-        setScore(getScore() + DOT_POINTS);
-    }
-    public int getScore() {
-        return this.score;
-    }
-    public void setScore(int points) {
-        this.score = points;
-    }
     public String[][] setGameBoard(String[][] newBoard) {
         this.gameBoard = newBoard;
         return this.gameBoard;
@@ -107,10 +87,6 @@ public class Board {
 
     public String[][] getGameBoard() {
         return this.gameBoard;
-    }
-    public String[][] addElement(String elementRepresentation, int xPosition, int yPosition) {
-        this.gameBoard[xPosition][yPosition] = elementRepresentation;
-        return getGameBoard();
     }
     public void timeBalls(String[][] arr, int n, int m) {
         // position(arr, n, m);
@@ -142,21 +118,6 @@ public class Board {
             energizer5 = eat2;
         } else if (energizer5 == 0) {
             arr[POSITION23][POSITION25] = FIRST;
-        }
-    }
-
-    public static void position(String[][] arr, int n, int m) {
-        // 1 25 | 5 11| 17 11 |23 3| 23 25
-        if (arr[n][m] == arr[eat1][POSITION25]) {
-            energizer1 = eat1;
-        } else if (arr[n][m] == arr[POSITION5][POSITION11]) {
-            energizer2 = eat1;
-        } else if (arr[n][m] == arr[POSITION17][POSITION11]) {
-            energizer3 = eat1;
-        } else if (arr[n][m] == arr[POSITION23][POSITION3]) {
-            energizer4 = eat1;
-        } else if (arr[n][m] == arr[POSITION23][POSITION25]) {
-            energizer5 = eat1;
         }
     }
 }

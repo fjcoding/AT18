@@ -2,100 +2,89 @@ package jalau.at18.battlecity;
 
 public class TankPlayer extends Tank {
 
-    private String direction;
+    //private String direction;
     public static final int[][] INITIAL_POSITION = {{24, 8}, {24, 9}, {25, 8}, {25, 9}};
     public static final int SIZE_ROW_POSITION = 4;
     public static final int SIZE_MAX_BOARD = 26;
-    private int[][] newPosition = new int[SIZE_ROW_POSITION][2];
+    //private int[][] newPosition = new int[SIZE_ROW_POSITION][2];
     private Element[][] moveMissileBoard;
 
     public TankPlayer() {
-        this.newPosition = INITIAL_POSITION;
+        this.position = INITIAL_POSITION;
     }
 
     public int[][] movements(String input) {
         switch (input) {
             case "w":
-                newPosition = moveUp(newPosition);
+                position = moveUp(position);
                 break;
             case "s":
-                newPosition = moveDown(newPosition);
+                position = moveDown(position);
                 break;
             case "a":
-                newPosition = moveLeft(newPosition);
+                position = moveLeft(position);
                 break;
             case "d":
-                newPosition = moveRight(newPosition);
+                position = moveRight(position);
                 break;
             /*case "x":
                 shoot(moveMissileBoard);
                 break;*/
             default:
-                newPosition = newPosition;
+                position = position;
                 break;
         }
-        return newPosition;
+        return position;
 
     }
-
+    public Element[][] movePlayer(Element[][] elementsMatrix, String input) {
+        cleanPosition(elementsMatrix, getPosition());
+        position = movements(input);
+        elementsMatrix = putTankOnBoard(elementsMatrix, position);
+        return elementsMatrix;
+    }
     public int[][] initialPosition() {
-        return newPosition;
+        return position;
     }
 
     public void setPosition(int[][] position) {
-        this.newPosition = position;
+        this.position = position;
 
     }
     public int[][] getPosition() {
-        return newPosition;
+        return position;
     }
 
-    @Override
-    public int[][] moveUp(int[][] position) {
-        newPosition = arrangeUp(position);
-        if (newPosition[0][0] != 0) {
-            for (int row = 0; row < SIZE_ROW_POSITION; row++) {
-                newPosition[row][0] = newPosition[row][0] - 1;
-            }
+    public Element[][] arrageTank(Element[][] matrix, String input) {
+        cleanPosition(matrix, getPosition());
+        //position = getPosition();
+        switch (input) {
+            case "w":
+                position = arrangeUp(position);
+                setDirection("UP");
+                break;
+            case "s":
+                position = arrangeDown(position);
+                setDirection("DOWN");
+                break;
+            case "a":
+                position = arrangeLeft(position);
+                setDirection("LEFT");
+                break;
+            case "d":
+                position = arrangeRight(position);
+                setDirection("RIGHT");
+                break;
+            /*case "x":
+                shoot(moveMissileBoard);
+                break;*/
+            default:
+                position = position;
+                break;
         }
-        return newPosition;
+        matrix = putTankOnBoard(matrix, position);
+        return matrix;
     }
 
-    @Override
-    public int[][] moveDown(int[][] position) {
-        newPosition = arrangeDown(position);
-        if (newPosition[0][0] != SIZE_MAX_BOARD - 1) {
-            for (int row = 0; row < SIZE_ROW_POSITION; row++) {
-                newPosition[row][0] = newPosition[row][0] + 1;
-            }
-        }
-        return newPosition;
-    }
 
-    @Override
-    public int[][] moveRight(int[][] position) {
-        newPosition = arrangeRight(position);
-        if (newPosition[0][1] != SIZE_MAX_BOARD - 1) {
-            for (int row = 0; row < SIZE_ROW_POSITION; row++) {
-                newPosition[row][1] = newPosition[row][1] + 1;
-            }
-        }
-        return newPosition;
-    }
-
-    @Override
-    public int[][] moveLeft(int[][] position) {
-        newPosition = arrangeLeft(position);
-        if (newPosition[0][1] != 0) {
-            for (int row = 0; row < SIZE_ROW_POSITION; row++) {
-                newPosition[row][1] = newPosition[row][1] - 1;
-            }
-        }
-        return newPosition;
-    }
-
-    /*public Element[][] shoot(Element[][] board) {
-        Missile missil = new Missile(newPosition[0][0], newPosition[0][1], newPosition[1][0], newPosition[1][1], "UP", board);
-        return  missil.missileDirection();
-    }*/
 }

@@ -3,18 +3,9 @@ package jalau.at18.pacman;
 import java.util.List;
 
 public class ConditionMovements {
-    private char letter;
     private static final MovementsPacman MOVEMENT = new MovementsPacman();
     private static final Ghost MOVEMENT_GHOST = new Ghost();
     private List<Object> listGhost;
-
-    public void setLetter(char character) {
-        this.letter = character;
-    }
-
-    public char getLetter() {
-        return this.letter;
-    }
 
     public List<Object> movement(char character, int rowGhost, int columnsGhost) {
         if (character == 'w') {

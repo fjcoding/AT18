@@ -88,11 +88,11 @@ public class Alien {
     }
 
     public void alienMovement() {
-        int MAX_SIZE_A = alienFirstCol.size() - 1;
-        int MAX_SIZE_D = alienSecondCol.size() - 1;
-        if (alienFlag  && alienFirstCol.get(MAX_SIZE_A) < SIZE_BOARD && alienSecondCol.get(MAX_SIZE_D) < SIZE_BOARD) {
+        int maxSizeA = alienFirstCol.size() - 1;
+        int maxSizeD = alienSecondCol.size() - 1;
+        if (alienFlag  && alienFirstCol.get(maxSizeA) < SIZE_BOARD && alienSecondCol.get(maxSizeD) < SIZE_BOARD) {
             alienRigth();
-        } else if (alienFlag && (alienFirstCol.get(MAX_SIZE_A) == SIZE_BOARD || alienSecondCol.get(MAX_SIZE_D) == SIZE_BOARD)) {
+        } else if (alienFlag && (alienFirstCol.get(maxSizeA) == SIZE_BOARD || alienSecondCol.get(maxSizeD) == SIZE_BOARD)) {
             alienFlag = false;
             alienDown();
         } else if (!alienFlag && alienFirstCol.get(0) > 0 && alienSecondCol.get(0) > 0) {
@@ -106,34 +106,33 @@ public class Alien {
     public void impact(int posX, int posY) {
         if (isOnFirstRow(posX, posY)) {
             deleteFirstRow(posX, posY);
-        }
-        else {
+        } else {
             deleteSecondRow(posX, posY);
         }
     }
 
-    public void deleteFirstRow(int posX,int posY) {
-        for (int i = 0; i < alienFirstRow.size(); i++) {
-            if (alienFirstRow.get(i) == posX && alienFirstCol.get(i) == posY) {
-                alienFirstRow.remove(i);
-                alienFirstCol.remove(i);
+    public void deleteFirstRow(int posX, int posY) {
+        for (int index = 0; index < alienFirstRow.size(); index++) {
+            if (alienFirstRow.get(index) == posX && alienFirstCol.get(index) == posY) {
+                alienFirstRow.remove(index);
+                alienFirstCol.remove(index);
                 break;
             }
         }
     }
 
-    public void deleteSecondRow(int posX,int posY) {
-        for (int i = 0; i < alienSecondRow.size(); i++) {
-            if (alienSecondRow.get(i) == posX && alienSecondCol.get(i) == posY) {
-                alienSecondRow.remove(i);
-                alienSecondCol.remove(i);
+    public void deleteSecondRow(int posX, int posY) {
+        for (int index = 0; index < alienSecondRow.size(); index++) {
+            if (alienSecondRow.get(index) == posX && alienSecondCol.get(index) == posY) {
+                alienSecondRow.remove(index);
+                alienSecondCol.remove(index);
                 break;
             }
         }
     }
 
 
-    public boolean isOnFirstRow(int posX, int posY){
+    public boolean isOnFirstRow(int posX, int posY) {
         boolean existOnTheFirstRow = false;
         for (int index = 0; index < alienFirstRow.size(); index++) {
             if (alienFirstRow.get(index) == posX && alienFirstCol.get(index) == posY) {
@@ -142,8 +141,8 @@ public class Alien {
         }
         return existOnTheFirstRow;
     }
-    
-    public boolean isOnSecondRow(int posX, int posY){
+
+    public boolean isOnSecondRow(int posX, int posY) {
         boolean existOnTheSecondRow = false;
         for (int index = 0; index < alienSecondRow.size(); index++) {
             if (alienSecondRow.get(index) == posX && alienSecondCol.get(index) == posY) {

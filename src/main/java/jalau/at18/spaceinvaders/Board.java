@@ -7,6 +7,9 @@ public class Board {
     private Alien alien;
     private boolean shipAlive = true;
     private int score;
+    private final int alivePosX = 8;
+    private final int alivePosY = 9;
+    private final int incrementScore = 10;
 
     public Board() {
         matrix = new char[MAX_SIZE][MAX_SIZE];
@@ -79,14 +82,13 @@ public class Board {
     }
 
     public boolean isAlive() {
-        if (alien.exist(8, 9)) {
+        if (alien.exist(alivePosX, alivePosY)) {
             shipAlive = false;
         }
         return shipAlive;
     }
 
     public void moveAliens() {
-        //aliensList.alienMovement();
         alien.alienMovement();
         clearMatrix();
         changesAlienPositions();
@@ -113,7 +115,7 @@ public class Board {
     }
 
     public void alienImpact(int posX, int posY) {
-        score += 10;
+        score += incrementScore;
         alien.impact(posX, posY);
     }
 

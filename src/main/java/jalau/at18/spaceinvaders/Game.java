@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 public class Game {
     private Ship ship;
     private Board board;
-    //private AliensList aliensList;
     private static final int DELAY = 600;
     private static final int SIZE_BOARD = 9;
     private static final int DELAY_ALIENS_MOVEMENT = 3;
@@ -17,7 +16,6 @@ public class Game {
     public Game() {
         board = new Board();
         ship = new Ship();
-        //aliensList = new AliensList();
         keyboardObserver = new KeyboardReader();
         keyboardObserver.start();
     }

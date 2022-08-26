@@ -10,7 +10,6 @@ public class MoveEnemy extends Thread {
         this.board = board;
         this.enemyTank = enemyTank;
     }
-
     @Override
     public void run() {
         while (true) {

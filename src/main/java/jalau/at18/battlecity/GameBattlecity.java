@@ -6,11 +6,13 @@ public class GameBattlecity extends Game {
     public static final int SIZE_ROW_POSITION = 4;
 
     public static final int GRID_LENGHT = 26;
-    public static final int MILLISECONDS = 500;
+    public static final int MILLISECONDS = 1000;
 
     private int enemyCount = ENEMYS_PER_STAGE;
     private TankPlayer tankPlayer = new TankPlayer();
-    private EnemyTank enemyTank = new EnemyTank(enemyCount);
+    private EnemyTank enemyTank1 = new EnemyTank(enemyCount);
+    private EnemyTank enemyTank2 = new EnemyTank(enemyCount);
+    private EnemyTank enemyTank3 = new EnemyTank(enemyCount);
     private Board board;
 
 
@@ -18,7 +20,7 @@ public class GameBattlecity extends Game {
         return tankPlayer;
     }
     public EnemyTank getEnemyTank() {
-        return enemyTank;
+        return enemyTank1;
     }
     public Board getBoard() {
         return board;
@@ -34,19 +36,19 @@ public class GameBattlecity extends Game {
         //EnemyTank enemyTank = new EnemyTank(enemyCount);
         Element[][] elementsMatrix = board.getMatrix();
         int[][] positionPlayer = tankPlayer.initialPosition();
-        int[][] positionEnemy = enemyTank.initialPosition();
+        int[][] positionEnemy = enemyTank1.initialPosition();
         elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, positionPlayer);
-        elementsMatrix = enemyTank.putTankOnBoard(elementsMatrix, positionEnemy);
+        elementsMatrix = enemyTank1.putTankOnBoard(elementsMatrix, positionEnemy);
         showMatrix(board);
     }
     public void playGame() {
-        MoveEnemy enemy = new MoveEnemy(board, enemyTank);
+        MoveEnemy enemy1 = new MoveEnemy(board, enemyTank1);
         MoveTankPlayer player = new MoveTankPlayer(board, tankPlayer);
         //Element[][] elementsMatrix = board.getMatrix();
         //showMatrix(board);
         //movePlayer();
         //enemyTank.moveEnemy(elementsMatrix);
-        enemy.start();
+        enemy1.start();
         player.start();
         while (true) {
             showMatrix(board);

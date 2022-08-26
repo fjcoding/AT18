@@ -35,15 +35,8 @@ public class EnemyTank extends Tank {
             missile.setPosition(position[0][0], position[0][1], position[1][0], position[1][1]);
             thereAreMissile = true;
             missile.setBoard(elementsMatrix);
-            //System.out.println(position[0][0]+ ". " + position[0][1]);
         }
-        /*if (isTankCrash(elementsMatrix)) {
-            setDirection(randomDirection());
-        } else {
-            goStraight();
-        }*/
         elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
-        //System.out.println("There is a Missile: " + thereAreMissile);
         if (thereAreMissile) {
             //missile.missileDirection();
             if (!missile.getIsCollition()) {

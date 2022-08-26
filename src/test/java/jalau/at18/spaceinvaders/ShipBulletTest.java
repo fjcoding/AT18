@@ -20,24 +20,6 @@ public class ShipBulletTest {
                 { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' } };
         assertArrayEquals(expected, board.getMatrix());
     }
-   /*  @Test
-    public void itShouldMoveBulletAndDestroyShield() {
-
-        Board board = new Board();
-        ShipBullet shipbullet = new ShipBullet(9, 4);
-        shipbullet.move(board);
-        char[][] expected = { { '%', '%', '%', '%', ' ', ' ', ' ', ' ', ' ', ' ' },
-                { '%', '%', '%', '%', ' ', ' ', ' ', ' ', ' ', ' ' },
-                { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-                { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-                { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-                { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-                { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-                { ' ', '#', '#', '#', ' ', ' ', '#', '#', '#', ' ' },
-                { ' ', '#', ' ', '#', '|', ' ', '#', ' ', '#', ' ' },
-                { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' } };
-        assertArrayEquals(expected, board.getMatrix());
-    }*/
     @Test
     public void itShouldMoveBulletAndCleanBoard() {
 

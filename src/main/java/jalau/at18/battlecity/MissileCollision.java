@@ -32,11 +32,11 @@ public class MissileCollision {
                     //System.out.println("Brick was destroyed, has not live");
                 }
             }
-            if (element1.getType() == ElementType.MISSILES) {
-                System.out.println("Missile hit Missile");
+            if (element1.getType() == ElementType.MISSILES || element2.getType() == ElementType.MISSILES) {
+                //System.out.println("Missile hit Missile");
                 matrix[row1][column1] = empty;
                 matrix[row2][column2] = empty;
-                System.out.println("Missile was destroyed");
+                //System.out.println("Missile was destroyed");
             }
 
             if (element1.getType() == ElementType.TANKTOPENEMY || element1.getType() == ElementType.TANKBACKENEMY) {

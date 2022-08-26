@@ -56,10 +56,35 @@ public class GameBattlecity extends Game {
             showMatrix(board);
             // score.showScore();
             wait(1);
+            int[][] enemyPosition1 = enemyTank1.getPosition();
+            if (!thereAreEnemyTank(enemyPosition1)) {
+                enemy1.stopThread();
+            }
+            int[][] enemyPosition2 = enemyTank2.getPosition();
+            if (!thereAreEnemyTank(enemyPosition2)) {
+                enemy2.stopThread();
+            }
+            int[][] enemyPosition3 = enemyTank3.getPosition();
+            if (!thereAreEnemyTank(enemyPosition3)) {
+                enemy3.stopThread();
+            }
             System.out.print("\033[H\033[2J");
             System.out.flush();
         }
 
+    }
+
+    public boolean thereAreEnemyTank(int[][] position) {
+        Element[][] matrix = board.getMatrix();
+        boolean thereAreEnemyTank = true;
+        ElementType condition1 = matrix[position[0][0]][position[0][1]].getType();
+        ElementType condition2 = matrix[position[1][0]][position[1][1]].getType();
+        ElementType condition3 = matrix[position[2][0]][position[0][1]].getType();
+        ElementType condition4 = matrix[position[3][0]][position[3][1]].getType();
+        if (condition1 == ElementType.EMPTY || condition2 == ElementType.EMPTY || condition3 == ElementType.EMPTY || condition4 == ElementType.EMPTY) {
+            thereAreEnemyTank = false;
+        }
+        return thereAreEnemyTank;
     }
 
     public void endGame() {

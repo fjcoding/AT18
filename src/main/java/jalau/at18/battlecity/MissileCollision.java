@@ -40,7 +40,7 @@ public class MissileCollision {
             }
 
             if (element1.getType() == ElementType.TANKTOPENEMY || element1.getType() == ElementType.TANKBACKENEMY) {
-                element1.reduceLive(1);
+                //element1.reduceLive(1);
                 if (element1.getLive() == 0) {
                     matrix[row1][column1] = empty;
                     matrix[row2][column2] = empty;
@@ -48,8 +48,8 @@ public class MissileCollision {
                 }
             }
             if (element2.getType() == ElementType.TANKTOPENEMY || element2.getType() == ElementType.TANKBACKENEMY) {
-                element1.reduceLive(1);
-                if (element1.getLive() == 0) {
+                //element2.reduceLive(1);
+                if (element2.getLive() == 0) {
                     matrix[row1][column1] = empty;
                     matrix[row2][column2] = empty;
                     score.incrementScore();

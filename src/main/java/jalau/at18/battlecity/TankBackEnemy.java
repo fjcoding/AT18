@@ -1,7 +1,7 @@
 package jalau.at18.battlecity;
 
 public class TankBackEnemy extends Element {
-    private static final int LIVE = 1;
+    private static final int LIVE = 0;
     public static final String ANSI_GREEN = "\033[32m";
     public static final String ANSI_RESET = "\u001B[0m";
 

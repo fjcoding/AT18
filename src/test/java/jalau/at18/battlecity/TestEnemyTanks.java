@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import jalau.at18.battlecity.elements.Brick;
 import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.ElementType;
 import jalau.at18.battlecity.elements.Empty;
 import org.junit.Test;
 
@@ -186,6 +187,56 @@ public class TestEnemyTanks {
         int[][] position4 = {{2, 0}, {1, 0}, {2, 1}, {1, 1}};
         enemyTank.setPosition(position4);
         assertTrue(enemyTank.isTankCrashRight(elementsMatrix));
+    }
+    @Test
+    public void shouldPutMissilOnBoard() {
+        Element[][] elementsMatrix = initElementsMatrix();
+        EnemyTank enemyTank = new EnemyTank(20);
+        int[][] position1 = {{3, 7}, {2, 7}, {3, 8}, {2, 8}};
+        enemyTank.setPosition(position1);
+        enemyTank.setDirection("LEFT");
+        enemyTank.setMovementCount(3);
+        enemyTank.moveEnemy(elementsMatrix);
+        boolean condition1 = elementsMatrix[3][5].getType() == ElementType.MISSILES; 
+        assertTrue(condition1);
+    }
+    @Test
+    public void shouldNotPutMissilOnBoard() {
+        Element[][] elementsMatrix = initElementsMatrix();
+        EnemyTank enemyTank = new EnemyTank(20);
+        int[][] position1 = {{3, 7}, {2, 7}, {3, 8}, {2, 8}};
+        enemyTank.setPosition(position1);
+        enemyTank.setDirection("LEFT");
+        enemyTank.setMovementCount(1);
+        enemyTank.moveEnemy(elementsMatrix);
+        boolean condition1 = elementsMatrix[3][5].getType() == ElementType.MISSILES; 
+        assertFalse(condition1);
+    }
+
+    @Test
+    public void shouldChangeDirection() {
+        Element[][] elementsMatrix = initElementsMatrix();
+        EnemyTank enemyTank = new EnemyTank(20);
+        int[][] position1 = {{3, 4}, {2, 4}, {3, 5}, {2, 5}};
+        enemyTank.setPosition(position1);
+        enemyTank.setDirection("LEFT");
+        enemyTank.moveEnemy(elementsMatrix);
+        String newDirection = enemyTank.getDirection();
+        boolean condition1 = newDirection == "LEFT"; 
+        assertFalse(condition1);
+    }
+    @Test
+    public void shouldChangeDirectionAgain() {
+        Element[][] elementsMatrix = initElementsMatrix();
+        EnemyTank enemyTank2 = new EnemyTank(20);
+        int[][] position1 = {{3, 8}, {2, 8}, {3, 9}, {2, 9}};
+        enemyTank2.setPosition(position1);
+        enemyTank2.setDirection("LEFT");
+        enemyTank2.setMovementCount(14);
+        enemyTank2.moveEnemy(elementsMatrix);
+        String newDirection2 = enemyTank2.getDirection();
+        boolean condition2 = newDirection2 == "LEFT"; 
+        assertFalse(condition2);
     }
 
     public Element[][] initElementsMatrix() {

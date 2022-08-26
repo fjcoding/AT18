@@ -22,12 +22,15 @@ public class EnemyTank extends Tank {
     private int enemyCount;
     private int movementCount = 0;
     private int screenCount = 0;
-    private Boolean thereAreMissile = false;
+    private Boolean thereAreMissile;
     public static final int ENEMY_SHOOT = 3;
     private Missile missile = new Missile();
 
     public int getCountEnemy() {
         return enemyCount;
+    }
+    public void setMovementCount(int newMovementCount) {
+        movementCount = newMovementCount;
     }
     // public int[][] enemyPosition;
 
@@ -45,6 +48,7 @@ public class EnemyTank extends Tank {
         missile.setDirection(direction);
         this.enemyCount = enemyCount;
         missile.setPosition(0, 0, 0, 0);
+        thereAreMissile = false;
     }
 
     public Element[][] moveEnemy(Element[][] elementsMatrix) {
@@ -59,14 +63,9 @@ public class EnemyTank extends Tank {
             missile.setBoard(elementsMatrix);
         }
         elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
-        // System.out.println("There is a Missile: " + thereAreMissile);
         if (thereAreMissile) {
-            // missile.missileDirection();
             if (!missile.getIsCollition()) {
-                // System.out.println("No collition");
                 if (missile.isMissilCrash()) {
-                    // System.out.println("Missile crash");
-                    // missile.missileDirection();
                     thereAreMissile = false;
                     elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
                 } else {
@@ -74,7 +73,6 @@ public class EnemyTank extends Tank {
                     elementsMatrix = missile.putMissileOnBoard(elementsMatrix, missile.getPosition());
                 }
             } else {
-                // System.out.println("Collition");
                 thereAreMissile = false;
                 missile.setIsCollition(false);
                 elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());

@@ -1,4 +1,4 @@
-package jalau.at18.battlecity;
+package jalau.at18.battlecity.elements;
 
 public class TankTop extends Element {
     private static final int LIVE = 1;

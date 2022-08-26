@@ -1,6 +1,8 @@
-package jalau.at18.battlecity;
+package jalau.at18.battlecity.elements;
 
 import static org.junit.Assert.*;
+
+import jalau.at18.battlecity.EnemyTank;
 import org.junit.Test;
 
 public class TankTest {

@@ -2,6 +2,8 @@ package jalau.at18.battlecity;
 
 import static org.junit.Assert.assertArrayEquals;
 
+import jalau.at18.battlecity.elements.Empty;
+import jalau.at18.battlecity.elements.Missiles;
 import org.junit.Test;
 
 public class MissileTest {

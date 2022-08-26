@@ -1,5 +1,7 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+
 public class Main {
     public static void main(String[] arg) {
         Game game = new GameBattlecity();

@@ -1,5 +1,9 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.TankBack;
+import jalau.at18.battlecity.elements.TankTop;
+
 public class TankPlayer extends Tank {
 
     // private String direction;

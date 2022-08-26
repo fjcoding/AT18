@@ -1,5 +1,9 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.TankBackEnemy;
+import jalau.at18.battlecity.elements.TankTopEnemy;
+
 import java.util.Random;
 
 public class EnemyTank extends Tank {

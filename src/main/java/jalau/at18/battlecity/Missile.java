@@ -2,6 +2,10 @@ package jalau.at18.battlecity;
 
 //import java.io.LineNumberInputStream;
 
+import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.Empty;
+import jalau.at18.battlecity.elements.Missiles;
+
 public class Missile {
 
     private static final int BOARD_DIMENSION = 26;

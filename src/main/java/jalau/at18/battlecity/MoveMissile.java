@@ -1,5 +1,7 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+
 public class MoveMissile extends Thread {
     private String letter = "";
     private Missile missile;

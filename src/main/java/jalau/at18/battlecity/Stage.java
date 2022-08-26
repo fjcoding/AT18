@@ -1,5 +1,7 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.*;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;

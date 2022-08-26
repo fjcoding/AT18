@@ -18,6 +18,7 @@ public class Input implements KeyListener {
     public void keyTyped(KeyEvent e) {
         input = String.valueOf(e.getKeyChar());
         Element[][] matrix = board.getMatrix();
+        matrix = tankPlayer.arrageTank(matrix, input);
         if(!tankPlayer.isTankCrash(matrix)){
             matrix = tankPlayer.movePlayer(matrix, input);
         } else{

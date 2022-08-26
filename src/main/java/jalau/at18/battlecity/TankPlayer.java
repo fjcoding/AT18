@@ -2,39 +2,39 @@ package jalau.at18.battlecity;
 
 public class TankPlayer extends Tank {
 
-    private String direction;
+    //private String direction;
     public static final int[][] INITIAL_POSITION = {{24, 8}, {24, 9}, {25, 8}, {25, 9}};
     public static final int SIZE_ROW_POSITION = 4;
     public static final int SIZE_MAX_BOARD = 26;
-    private int[][] newPosition = new int[SIZE_ROW_POSITION][2];
+    //private int[][] newPosition = new int[SIZE_ROW_POSITION][2];
     private Element[][] moveMissileBoard;
 
     public TankPlayer() {
-        this.newPosition = INITIAL_POSITION;
+        this.position = INITIAL_POSITION;
     }
 
     public int[][] movements(String input) {
         switch (input) {
             case "w":
-                newPosition = moveUp(newPosition);
+                position = moveUp(position);
                 break;
             case "s":
-                newPosition = moveDown(newPosition);
+                position = moveDown(position);
                 break;
             case "a":
-                newPosition = moveLeft(newPosition);
+                position = moveLeft(position);
                 break;
             case "d":
-                newPosition = moveRight(newPosition);
+                position = moveRight(position);
                 break;
             /*case "x":
                 shoot(moveMissileBoard);
                 break;*/
             default:
-                newPosition = newPosition;
+                position = position;
                 break;
         }
-        return newPosition;
+        return position;
 
     }
     public Element[][] movePlayer(Element[][] elementsMatrix, String input) {
@@ -44,15 +44,15 @@ public class TankPlayer extends Tank {
         return elementsMatrix;
     }
     public int[][] initialPosition() {
-        return newPosition;
+        return position;
     }
 
     public void setPosition(int[][] position) {
-        this.newPosition = position;
+        this.position = position;
 
     }
     public int[][] getPosition() {
-        return newPosition;
+        return position;
     }
 
     public Element[][] arrageTank(Element[][] matrix, String input){
@@ -60,29 +60,29 @@ public class TankPlayer extends Tank {
         //position = getPosition();
         switch (input) {
             case "w":
-                newPosition = arrangeUp(newPosition);
+                position = arrangeUp(position);
                 setDirection("UP");
                 break;
             case "s":
-                newPosition = arrangeDown(newPosition);
+                position = arrangeDown(position);
                 setDirection("DOWN");
                 break;
             case "a":
-                newPosition = arrangeLeft(newPosition);
+                position = arrangeLeft(position);
                 setDirection("LEFT");
                 break;
             case "d":
-                newPosition = arrangeRight(newPosition);
+                position = arrangeRight(position);
                 setDirection("RIGHT");
                 break;
             /*case "x":
                 shoot(moveMissileBoard);
                 break;*/
             default:
-                newPosition = newPosition;
+                position = position;
                 break;
         }
-        matrix = putTankOnBoard(matrix, newPosition);
+        matrix = putTankOnBoard(matrix, position);
         return matrix;
     }
 

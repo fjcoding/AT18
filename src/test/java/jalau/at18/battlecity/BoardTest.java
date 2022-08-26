@@ -3,6 +3,7 @@ package jalau.at18.battlecity;
 import static org.junit.Assert.*;
 import static org.junit.Assume.assumeNoException;
 
+import jalau.at18.battlecity.elements.Element;
 import org.junit.Test;
 
 public class BoardTest {

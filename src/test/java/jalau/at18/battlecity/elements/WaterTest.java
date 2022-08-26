@@ -1,7 +1,7 @@
-package jalau.at18.battlecity;
+package jalau.at18.battlecity.elements;
 
+import jalau.at18.battlecity.elements.Water;
 import org.junit.Test;
-import org.junit.Assert.*;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

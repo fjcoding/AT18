@@ -1,5 +1,7 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+
 public class MoveEnemy extends Thread {
     private String letter = "";
     private EnemyTank enemyTank;

@@ -1,5 +1,8 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.Empty;
+
 public class Tank {
 
     protected String direction;

@@ -1,4 +1,4 @@
-package jalau.at18.battlecity;
+package jalau.at18.battlecity.elements;
 
 public class Empty extends Element {
     public Empty() {

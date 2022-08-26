@@ -1,4 +1,4 @@
-package jalau.at18.battlecity;
+package jalau.at18.battlecity.elements;
 
 public enum ElementType {
     EMPTY(0), MISSILES(1), TANKTOP(10), TANKBACK(11), BRICK(3), STEEL(4), BUSHES(5), ICE(6), WATER(7), EAGLE(

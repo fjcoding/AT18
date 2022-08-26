@@ -1,5 +1,9 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.ElementType;
+import jalau.at18.battlecity.elements.Empty;
+
 public class MissileCollision {
     private Empty empty = new Empty();
     protected Score score = new Score();

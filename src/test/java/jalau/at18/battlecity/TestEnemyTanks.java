@@ -1,6 +1,10 @@
 package jalau.at18.battlecity;
 
 import static org.junit.Assert.*;
+
+import jalau.at18.battlecity.elements.Brick;
+import jalau.at18.battlecity.elements.Element;
+import jalau.at18.battlecity.elements.Empty;
 import org.junit.Test;
 
 public class TestEnemyTanks {
@@ -188,7 +192,7 @@ public class TestEnemyTanks {
         Element[][] elementsMatrix = new Element[26][26];
         for (int row = 0; row < 26; row++) {
             for (int column = 0; column < 26; column++) {
-                elementsMatrix[row][column] = new Empty(); 
+                elementsMatrix[row][column] = new Empty();
             }
         }
         elementsMatrix[2][2] = new Brick();

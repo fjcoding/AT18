@@ -1,5 +1,7 @@
 package jalau.at18.battlecity;
 
+import jalau.at18.battlecity.elements.Element;
+
 public class ShootTank extends Thread {
     private Missile missile = new Missile();
     private int[][] position;

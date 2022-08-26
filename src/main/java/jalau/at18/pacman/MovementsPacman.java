@@ -593,7 +593,6 @@ public class MovementsPacman {
         }
     }
 
-    // ->>>>>>>>>>>>>>>>>>>>>> New Functions <<<<<<<<<<<<<<<<<<<<<<<<<-
     public void flushScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -709,10 +708,10 @@ public class MovementsPacman {
         int totallives = lives;
         switch (totallives) {
             case TWO:
-                System.out.println("@ @ ");
+                System.out.println("\033[32m█\u001B[0m \033[32m█\u001B[0m ");
                 break;
             case ONE:
-                System.out.println("@ ");
+                System.out.println("\033[32m█\u001B[0m");
                 break;
             case ZERO:
                 System.out.println(" ");

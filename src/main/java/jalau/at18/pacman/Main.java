@@ -2,7 +2,9 @@ package jalau.at18.pacman;
 
 import java.util.Scanner;
 import java.util.List;
-
+import java.io.IOException;
+import java.io.File;
+import javax.sound.sampled.*;;
 public class Main {
     public static final int INITIAL_PACMAN_POSITION = 1;
     public static final int INITIAL_GHOST1_XPOSITION = 11;
@@ -13,13 +15,20 @@ public class Main {
     public static final int INITIAL_GHOST3_YPOSITION = 15;
     public static final int INITIAL_GHOST4_XPOSITION = 14;
     public static final int INITIAL_GHOST4_YPOSITION = 15;
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException  {
         ConditionMovements newMovement = new ConditionMovements();
         Board board = new Board();
         Ghost movementGhost = new Ghost();
         MovementsPacman point = new MovementsPacman();
         Scanner keyword = new Scanner(System.in);
+
+        File file = new File("src/main/java/jalau/at18/pacman/M1987.wav");
+        AudioInputStream audioo = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioo);
+        clip.start();
+        char movementsFollow = 'm';
+
         final int rowPacman = 1;
         final int columsPacman = 1;
         final int rowGhost1 = 9;
@@ -38,18 +47,24 @@ public class Main {
         List<Object> arrGhost2;
         List<Object> arrGhost3;
         List<Object> arrGhost4;
-        System.out.println("******Bienvenido al juego******");
+        System.out.println("*****************************************************************");
+        System.out.println("   ");
+        System.out.println("                     Welcome to the game Pac-Man                 ");
+        System.out.println("   ");
+        System.out.println("          W = up    s = down     a = left     d = right          ");
+        System.out.println("   ");
         board.getGameBoard()[rowPacman][columsPacman] = point.yellowColor('C');
         board.getGameBoard()[rowGhost1][columsGhost1] = point.redColor('G');
         board.getGameBoard()[rowGhost2][columsGhost2] = point.redColor('G');
         board.getGameBoard()[rowGhost3][columsGhost3] = point.redColor('G');
         board.getGameBoard()[rowGhost4][columsGhost4] = point.redColor('G');
         board.showBoard(board.getGameBoard());
-        System.out.println("                                                      SCORE: " + point.showScore());
+        System.out.println("                                                      SCORE:  s" + point.showScore());
         System.out.println("                                                      POINTS: "
                                 + point.showWining());
         System.out.println(" LIVES: " + point.gameOver());
         System.out.println("Enter a move: ");
+           // respon = keyword.next().charAt(0);
         char movements = keyword.next().charAt(0);
         point.setRowGhost1(rowGhost1);
         point.setColumnGhost1(columsGhost1);
@@ -68,14 +83,12 @@ public class Main {
                                 point.getColumnGhost4());
         point.setRowGhost1((int) arr.get(1));
         point.setColumnGhost1((int) arr.get(2));
+        //&& movementsFollow != 'b';
         while (true) {
-            System.out.println("                                                      SCORE: "
-                                        + point.showScore());
-            System.out.println("                                                      POINTS: "
-                                        + point.showWining());
-            System.out.println(" LIVES: " + point.gameOver());
+            System.out.println("                                                      SCORE: " + point.showScore());
             System.out.println("Enter a move: ");
-            char movementsFollow = keyword.next().charAt(0);
+           // respon = keyword.next().charAt(0);
+            movementsFollow = keyword.next().charAt(0);
             arrGhost = newMovement.movement(movementsFollow, point.getRowGhost1(), point.getColumnGhost1());
             point.setRowGhost1((int) arrGhost.get(1));
             point.setColumnGhost1((int) arrGhost.get(2));

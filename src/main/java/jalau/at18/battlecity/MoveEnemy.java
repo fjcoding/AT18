@@ -7,6 +7,7 @@ public class MoveEnemy extends Thread {
     private static final int TIME = 500;
     private static final int TIME2 = 12000;
     private static final int TIME3 = 24000;
+    private static final int FIRST_ENEMY = 20;
     private static final int SECOND_ENEMY = 19;
     private static final int THIRD_ENEMY = 18;
     private boolean exitThread;
@@ -14,13 +15,17 @@ public class MoveEnemy extends Thread {
     public MoveEnemy(Board board, EnemyTank enemyTank) {
         this.board = board;
         this.enemyTank = enemyTank;
-        exitThread = false;
+        exitThread = true;
     }
     @Override
     public void run() {
+        if (enemyTank.getCountEnemy() == FIRST_ENEMY) {
+            exitThread = false;
+        }
         if (enemyTank.getCountEnemy() == SECOND_ENEMY) {
             try {
                 MoveEnemy.sleep(TIME2);
+                exitThread = false;
             } catch (InterruptedException e) {
                 System.out.print(e);
             }
@@ -28,6 +33,7 @@ public class MoveEnemy extends Thread {
         if (enemyTank.getCountEnemy() == THIRD_ENEMY) {
             try {
                 MoveEnemy.sleep(TIME3);
+                exitThread = false;
             } catch (InterruptedException e) {
                 System.out.print(e);
             }
@@ -48,7 +54,9 @@ public class MoveEnemy extends Thread {
     public void stopThread() {
         Element[][] matrix = board.getMatrix();
         enemyTank.cleanPosition(matrix, enemyTank.getPosition());
-
+        if (!exitThread){
+            exitThread = true;
+        }
         exitThread = true;
     }
 }

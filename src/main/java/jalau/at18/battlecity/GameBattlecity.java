@@ -55,8 +55,7 @@ public class GameBattlecity extends Game {
         while (true) {
             showMatrix(board);
             // score.showScore();
-            wait(1);
-            int[][] enemyPosition1 = enemyTank1.getPosition();
+            /*int[][] enemyPosition1 = enemyTank1.getPosition();
             if (!thereAreEnemyTank(enemyPosition1)) {
                 enemy1.stopThread();
             }
@@ -67,11 +66,11 @@ public class GameBattlecity extends Game {
             int[][] enemyPosition3 = enemyTank3.getPosition();
             if (!thereAreEnemyTank(enemyPosition3)) {
                 enemy3.stopThread();
-            }
+            }*/
+            wait(1);
             System.out.print("\033[H\033[2J");
             System.out.flush();
         }
-
     }
 
     public boolean thereAreEnemyTank(int[][] position) {

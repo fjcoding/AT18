@@ -21,26 +21,26 @@ public class Missile {
     }
     public void setPosition(int newRow1, int newColumn1, int newRow2, int newColumn2) {
         if (pointingWhere == "UP" && row1 != 0) {
-            this.row1 = newRow1 - 2;
-            this.row2 = newRow2 - 2;
+            this.row1 = newRow1 - 1;
+            this.row2 = newRow2 - 1;
             this.column1 = newColumn1;
             this.column2 = newColumn2;
         }
         if (pointingWhere == "DOWN" && row1 != BOARD_DIMENSION - 1) {
-            this.row1 = newRow1 + 2;
-            this.row2 = newRow2 + 2;
+            this.row1 = newRow1 + 1;
+            this.row2 = newRow2 + 1;
             this.column1 = newColumn1;
             this.column2 = newColumn2;
         }
         if (pointingWhere == "LEFT" && column1 != 0) {
-            this.column1 = newColumn1 - 2;
-            this.column2 = newColumn2 - 2;
+            this.column1 = newColumn1 - 1;
+            this.column2 = newColumn2 - 1;
             this.row1 = newRow1;
             this.row2 = newRow2;
         }
         if (pointingWhere == "RIGHT" && column1 != BOARD_DIMENSION - 1) {
-            this.column1 = newColumn1 + 2;
-            this.column2 = newColumn2 + 2;
+            this.column1 = newColumn1 + 1;
+            this.column2 = newColumn2 + 1;
             this.row1 = newRow1;
             this.row2 = newRow2;
         }

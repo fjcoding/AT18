@@ -13,6 +13,7 @@ public class MovementsPacman {
     private int columnsGhostIntial3;
     private int rowGhostInitial4;
     private int columnsGhostIntial4;
+    private static int counter1 = 0;
     private static int row = 1;
     private static int column = 1;
     private static int lives = 3;
@@ -366,6 +367,8 @@ public class MovementsPacman {
                 if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
                     newboardarr[row + 1][column] = " ";
                     score = score + POWERBALL;
+                    break;
+
                 } else if (newboardarr[row][column] == "\033[35mX\u001B[0m") {
                     newboardarr[row + 1][column] = " ";
                     score = score + FRUIT1;

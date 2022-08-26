@@ -49,7 +49,7 @@ public class ShootTank extends Thread {
 
     }
 
-    public void stopThread(){
+    public void stopThread() {
         exitThread = true;
     }
 

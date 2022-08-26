@@ -33,7 +33,6 @@ public class MissileCollision {
                     matrix[row1][column1] = empty;
                     matrix[row2][column2] = empty;
                     score.incrementScore();
-                    System.out.println(score);
                 }
             }
 

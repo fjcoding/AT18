@@ -10,6 +10,7 @@ public class Main {
                 Ghost movementGhost = new Ghost();
                 MovementsPacman point = new MovementsPacman();
                 LivesWInsandLoses generalPacman = new LivesWInsandLoses();
+                EatGhosts eatGhost = new EatGhosts();
                 System.out.println("Tablero mostrado");
                 Scanner keyword = new Scanner(System.in);
                 final int rowPacman = 1;
@@ -42,18 +43,22 @@ public class Main {
                 char movements = keyword.next().charAt(0);
                 point.setRowGhost1(rowGhost1);
                 point.setColumnGhost1(columsGhost1);
-                arr = newMovement.movement(movements, point.getRowGhost1(), point.getColumnGhost1());
+                arr = newMovement.movement(movements, point.getRowGhost1(),
+                                point.getColumnGhost1());
                 point.setRowGhost2(rowGhost2);
                 point.setColumnGhost2(columsGhost2);
-                arr2 = movementGhost.ghostMovement((String[][]) arr.get(0), point.getRowGhost2(),
+                arr2 = movementGhost.ghostMovement((String[][]) arr.get(0),
+                                point.getRowGhost2(),
                                 point.getColumnGhost2());
                 point.setRowGhost3(rowGhost3);
                 point.setColumnGhost3(columsGhost3);
-                arr3 = movementGhost.ghostMovement((String[][]) arr2.get(0), point.getRowGhost3(),
+                arr3 = movementGhost.ghostMovement((String[][]) arr2.get(0),
+                                point.getRowGhost3(),
                                 point.getColumnGhost3());
                 point.setRowGhost4(rowGhost4);
                 point.setColumnGhost4(columsGhost4);
-                arr4 = movementGhost.ghostMovement((String[][]) arr3.get(0), point.getRowGhost4(),
+                arr4 = movementGhost.ghostMovement((String[][]) arr3.get(0),
+                                point.getRowGhost4(),
                                 point.getColumnGhost4());
                 point.setRowGhost1((int) arr.get(1));
                 point.setColumnGhost1((int) arr.get(2));
@@ -81,10 +86,18 @@ public class Main {
                         if (generalPacman.LostALive(point.showLives())) {
                                 break;
                         }
-                        if (generalPacman.isWinner((String[][]) arrGhost.get(0),
-                                        point.getRowGhost1(), point.getColumnGhost1())) {
-                                break;
-                        }
+                        // if (generalPacman.isWinner((String[][]) arrGhost.get(0),
+                        // point.getRowGhost1(), point.getColumnGhost1())) {
+                        // break;
+                        // }
+                        // if (eatGhost.eatGhostTrue((String[][]) arrGhost3.get(0),
+                        // point.getRowGhost4(),
+                        // point.getColumnGhost4())) {
+                        // String[][] arrGhostEaten = eatGhost.eatGhost((String[][]) arrGhost3.get(0),
+                        // point.getRowGhost4(), point.getColumnGhost4());
+                        // board.setGameBoard(arrGhostEaten);
+                        // }
+
                 }
         }
 }

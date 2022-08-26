@@ -14,18 +14,7 @@ public class Move {
         return this.letter;
     }
 
-        if (character == 'w') {
-            String[][] arr = MOVEMENT.moveUp();
-        }
-        if (character == 's') {
-            String[][] arr = MOVEMENT.moveDown();
-        }
-        if (character == 'a') {
-            String[][] arr = MOVEMENT.moveLeft();
-        }
-        if (character == 'd') {
-            String[][] arr = MOVEMENT.moveRight();
-        }
+        
    
 
 }

@@ -20,7 +20,7 @@ public class Missile {
 
     }
     public void setPosition(int newRow1, int newColumn1, int newRow2, int newColumn2) {
-        if (pointingWhere == "UP" && row1 != 0) {
+        if (pointingWhere == "UP" && row1-1 != 0) {
             this.row1 = newRow1 - 1;
             this.row2 = newRow2 - 1;
             this.column1 = newColumn1;
@@ -32,7 +32,7 @@ public class Missile {
             this.column1 = newColumn1;
             this.column2 = newColumn2;
         }
-        if (pointingWhere == "LEFT" && column1 != 0) {
+        if (pointingWhere == "LEFT" && column1-1 != 0) {
             this.column1 = newColumn1 - 1;
             this.column2 = newColumn2 - 1;
             this.row1 = newRow1;

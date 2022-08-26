@@ -19,7 +19,7 @@ public class MovementsPacmanTest {
     private static final int EIGHT = 8;
     private static final int NINE = 9;
     private static final int TEN = 10;
-    private static final int FIFTY = 50;
+    private static final int FOURTY = 40;
     private static int xBORDER = 25;
     private static int yBORDER = 29;
     private static int countPointsOld = 0;
@@ -328,10 +328,14 @@ public class MovementsPacmanTest {
     @Test
     public void testShowScore() {
         board.getGameBoard()[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
-        String[][] move_arr = movements.moveRight();
+        String[][] move_arr = movements.moveDown();
         board.setGameBoard(move_arr);
         int points = point.showScore();
-        assertEquals(FIFTY, points);
+        if (points == FOURTY) {
+            assertEquals(FOURTY, points);
+        } else {
+            assertEquals(FOURTY + 50, points);
+        }
     }
 
     @Test

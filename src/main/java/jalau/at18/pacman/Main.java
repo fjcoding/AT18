@@ -64,7 +64,6 @@ public class Main {
                                 + point.showWining());
         System.out.println(" LIVES: " + point.gameOver());
         System.out.println("Enter a move: ");
-           // respon = keyword.next().charAt(0);
         char movements = keyword.next().charAt(0);
         point.setRowGhost1(rowGhost1);
         point.setColumnGhost1(columsGhost1);
@@ -83,11 +82,12 @@ public class Main {
                                 point.getColumnGhost4());
         point.setRowGhost1((int) arr.get(1));
         point.setColumnGhost1((int) arr.get(2));
-        //&& movementsFollow != 'b';
         while (true) {
             System.out.println("                                                      SCORE: " + point.showScore());
+            System.out.println("                                                      POINTS: "
+                                + point.showWining());
+            System.out.println(" LIVES: " + point.gameOver());
             System.out.println("Enter a move: ");
-           // respon = keyword.next().charAt(0);
             movementsFollow = keyword.next().charAt(0);
             arrGhost = newMovement.movement(movementsFollow, point.getRowGhost1(), point.getColumnGhost1());
             point.setRowGhost1((int) arrGhost.get(1));

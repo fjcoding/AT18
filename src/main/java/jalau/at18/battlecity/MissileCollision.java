@@ -2,6 +2,7 @@ package jalau.at18.battlecity;
 
 public class MissileCollision {
     private Empty empty = new Empty();
+    protected Score score = new Score();
 
     public boolean isElementHit(Element[][] matrix, int row1, int column1, int row2, int column2) {
 
@@ -24,6 +25,15 @@ public class MissileCollision {
                 matrix[row1][column1] = empty;
                 matrix[row2][column2] = empty;
                 System.out.println("Missile was destroyed");
+            }
+
+            if (element1.getType() == ElementType.TANKTOPENEMY || element1.getType() == ElementType.TANKBACKENEMY) {
+                element1.reduceLive(1);
+                if (element1.getLive() == 0) {
+                    matrix[row1][column1] = empty;
+                    matrix[row2][column2] = empty;
+                    score.incrementScore();
+                }
             }
 
             if (element1.getType() == ElementType.TANKTOP || element1.getType() == ElementType.TANKBACK) {

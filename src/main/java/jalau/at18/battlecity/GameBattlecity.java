@@ -1,12 +1,11 @@
 package jalau.at18.battlecity;
 
-
 public class GameBattlecity extends Game {
     public static final int ENEMYS_PER_STAGE = 20;
     public static final int SIZE_ROW_POSITION = 4;
 
     public static final int GRID_LENGHT = 26;
-    public static final int MILLISECONDS = 1000;
+    public static final int MILLISECONDS = 500;
 
     private int enemyCount = ENEMYS_PER_STAGE;
     private TankPlayer tankPlayer = new TankPlayer();
@@ -14,13 +13,16 @@ public class GameBattlecity extends Game {
     private EnemyTank enemyTank2 = new EnemyTank(enemyCount - 1);
     private EnemyTank enemyTank3 = new EnemyTank(enemyCount - 2);
     private Board board;
+    protected Score score = new Score();
 
     public TankPlayer getTankPlayer() {
         return tankPlayer;
     }
+
     public EnemyTank getEnemyTank() {
         return enemyTank1;
     }
+
     public Board getBoard() {
         return board;
     }
@@ -31,8 +33,6 @@ public class GameBattlecity extends Game {
 
     public void startGame() {
         this.board = createBoard();
-        //TankPlayer tankPlayer = new TankPlayer();
-        //EnemyTank enemyTank = new EnemyTank(enemyCount);
         Element[][] elementsMatrix = board.getMatrix();
         int[][] positionPlayer = tankPlayer.initialPosition();
         int[][] positionEnemy1 = enemyTank1.initialPosition();
@@ -40,40 +40,29 @@ public class GameBattlecity extends Game {
         int[][] positionEnemy3 = enemyTank3.initialPosition();
         elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, positionPlayer);
         elementsMatrix = enemyTank1.putTankOnBoard(elementsMatrix, positionEnemy1);
-        //elementsMatrix = enemyTank2.putTankOnBoard(elementsMatrix, positionEnemy2);
         showMatrix(board);
     }
+
     public void playGame() {
         MoveEnemy enemy1 = new MoveEnemy(board, enemyTank1);
         MoveEnemy enemy2 = new MoveEnemy(board, enemyTank2);
         MoveEnemy enemy3 = new MoveEnemy(board, enemyTank3);
         MoveTankPlayer player = new MoveTankPlayer(board, tankPlayer);
-        //Element[][] elementsMatrix = board.getMatrix();
-        //showMatrix(board);
-        //movePlayer();
-        //enemyTank.moveEnemy(elementsMatrix);
         enemy1.start();
         player.start();
         enemy2.start();
         enemy3.start();
         while (true) {
             showMatrix(board);
+            // score.showScore();
             wait(1);
         }
 
     }
+
     public void endGame() {
 
     }
-    /*public void movePlayer() {
-        Input direction = new Input();
-        String input = direction.read();
-        Element[][] elementsMatrix = board.getMatrix();w
-        //int[][] newPosition = new int[SIZE_ROW_POSITION][2];
-        tankPlayer.cleanPosition(elementsMatrix, tankPlayer.getPosition());
-        int[][] newPosition = tankPlayer.movements(input);
-        elementsMatrix = tankPlayer.putTankOnBoard(elementsMatrix, newPosition);
-    }*/
     public static Board createBoard() {
         String rute = "stage1.csv";
         Stage stage = new Stage(rute);

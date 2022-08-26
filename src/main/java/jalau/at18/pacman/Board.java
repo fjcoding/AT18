@@ -5,13 +5,6 @@ public class Board {
     public static final int Y_BORDER = 29;
     public static final String FIRST = "\033[34mO\u001B[0m";
     public static final String SECOND = "·";
-    private static int energizer1 = 0;
-    private static int energizer2 = 0;
-    private static int energizer3 = 0;
-    private static int energizer4 = 0;
-    private static int energizer5 = 0;
-    private static int eat1 = 1;
-    private static int eat2 = 2;
     public static final int INITIAL_DOTS_NUMBER = 290;
     public static final int DOT_POINTS = 1;
     private static final int POSITION5 = 5;
@@ -20,6 +13,13 @@ public class Board {
     private static final int POSITION23 = 23;
     private static final int POSITION11 = 11;
     private static final int POSITION17 = 17;;
+    private static int energizer1 = 0;
+    private static int energizer2 = 0;
+    private static int energizer3 = 0;
+    private static int energizer4 = 0;
+    private static int energizer5 = 0;
+    private static int eat1 = 1;
+    private static int eat2 = 2;
     private String[][] gameBoard = {
             {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
                 "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒"},
@@ -89,7 +89,6 @@ public class Board {
         return this.gameBoard;
     }
     public void timeBalls(String[][] arr, int n, int m) {
-        // position(arr, n, m);
         if (energizer1 == eat1) {
             energizer1 = eat2;
         } else if (energizer1 == 0) {

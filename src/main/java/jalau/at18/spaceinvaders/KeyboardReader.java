@@ -32,7 +32,7 @@ public class KeyboardReader extends Thread {
         frame.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                // Do nothing
+
             }
 
             @Override

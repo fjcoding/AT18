@@ -26,7 +26,6 @@ public class GameTest {
       Game game = new Game();
       game.runGame(38);
       assertEquals(2, game.getLifes());
-      //assertEquals(9, game.getPosYShip());
       }
       @Test
       public void shouldShootedTheShip() throws InterruptedException {
@@ -34,16 +33,5 @@ public class GameTest {
       game.runGame(32);
 
       assertEquals(true,game.getStatusBullet());
-      //assertEquals(9, game.getPosYShip());
       }
-
-
-    /*
-     * @Test
-     * public void itShouldReturnPositionShip() {
-     * Game game = new Game();
-     * assertEquals(4, game.getPosXShip());
-     * assertEquals(9, game.getPosYShip());
-     * }
-     */
 }

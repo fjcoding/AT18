@@ -27,7 +27,6 @@ public class Game {
             if (cont % DELAY_ALIENS_MOVEMENT == 0) {
                 board.moveAliens();
             }
-            //bullet.moveUp();
             if (keyboardObserver.hasKeyEvents()) {
                 KeyEvent event = keyboardObserver.getEventFromTop();
                 code = event.getKeyCode();
@@ -48,7 +47,7 @@ public class Game {
     public void runGame(int code) throws InterruptedException {
 
         switch (code) {
-            case CODE_RIGHT_KEY: //Right
+            case CODE_RIGHT_KEY:
                 if (ship.getPosY() < SIZE_BOARD) {
                     ship.moveRight();
                     board.setElement(ship.getPosX(), ship.getPosY(), '^');
@@ -56,23 +55,22 @@ public class Game {
                     System.out.println("derecha");
                 }
                 break;
-            case CODE_LEFT_KEY:    //Left
+            case CODE_LEFT_KEY:
                 if (ship.getPosY() > 0) {
                     ship.moveLeft();
                     board.setElement(ship.getPosX(), ship.getPosY(), '^');
                     board.setElement(ship.getPosX(), ship.getPosY() + 1, ' ');
                 }
                 break;
-            case CODE_UP_KEY:    // up
+            case CODE_UP_KEY:
                 ship.subtrasctLifes();
                 board.setElement(ship.getPosX(), ship.getPosY(), ' ');
                 System.out.println("Died");
                 ship.reStartPosition();
                 board.setElement(ship.getPosX(), ship.getPosY(), '^');
                 board.setElement(ship.getPosX(), ship.getPosY(), ' ');
-                //System.out.println(board.toString());
                 break;
-            case CODE_SPACE_KEY:    //space
+            case CODE_SPACE_KEY:
                 System.out.println("fire");
                 ship.shoot(board);
                 break;

@@ -8,22 +8,25 @@ public class Tank {
     public static final int SIZE_ROW_POSITION = 4;
     protected int[][] position;
 
-    public Element[][] putTankOnBoard(Element[][] matrix, int[][] newPosition) {
-        TankTop tankTop = new TankTop();
-        TankBack backTop = new TankBack();
-        matrix[newPosition[0][0]][newPosition[0][1]] = tankTop;
-        matrix[newPosition[1][0]][newPosition[1][1]] = tankTop;
-        matrix[newPosition[2][0]][newPosition[2][1]] = backTop;
-        matrix[newPosition[POSITIONS_LENGTH - 1][0]][newPosition[POSITIONS_LENGTH - 1][1]] = backTop;
-        return matrix;
-    }
+    // public Element[][] putTankOnBoard(Element[][] matrix, int[][] newPosition) {
+    // TankTop tankTop = new TankTop();
+    // TankBack backTop = new TankBack();
+    // matrix[newPosition[0][0]][newPosition[0][1]] = tankTop;
+    // matrix[newPosition[1][0]][newPosition[1][1]] = tankTop;
+    // matrix[newPosition[2][0]][newPosition[2][1]] = backTop;
+    // matrix[newPosition[POSITIONS_LENGTH - 1][0]][newPosition[POSITIONS_LENGTH -
+    // 1][1]] = backTop;
+    // return matrix;
+    // }
 
     public int[][] getPosition() {
         return position;
     }
+
     public String getDirection() {
         return direction;
     }
+
     public void setDirection(String newDirection) {
         direction = newDirection;
     }
@@ -32,10 +35,13 @@ public class Tank {
         position = newPosition;
     }
 
-    /*public Element[][] shoot(Element[][] boardElements) {
-        Missile missil = new Missile(position[0][0], position[0][1], position[1][0], position[1][1], direction, boardElements);
-        return missil.missileDirection();
-    }*/
+    /*
+     * public Element[][] shoot(Element[][] boardElements) {
+     * Missile missil = new Missile(position[0][0], position[0][1], position[1][0],
+     * position[1][1], direction, boardElements);
+     * return missil.missileDirection();
+     * }
+     */
     public int[][] moveUp(int[][] newPosition) {
         newPosition = arrangeUp(newPosition);
         direction = "UP";
@@ -145,7 +151,7 @@ public class Tank {
 
     public Boolean isTankCrash(Element[][] boardMatrix) {
         Boolean isTankCrash = false;
-        //int[][] position = tank.getPosition();
+        // int[][] position = tank.getPosition();
         if (direction == "UP") {
             isTankCrash = isTankCrashUp(boardMatrix);
         }
@@ -163,7 +169,7 @@ public class Tank {
 
     public Boolean isTankCrashUp(Element[][] boardMatrix) {
         Boolean isTankCrashUp = false;
-        //int[][] position = enemyTank.getPosition();
+        // int[][] position = enemyTank.getPosition();
         position = arrangeUp(position);
         if (position[0][0] == 0) {
             isTankCrashUp = true;
@@ -176,9 +182,10 @@ public class Tank {
         }
         return isTankCrashUp;
     }
+
     public Boolean isTankCrashDown(Element[][] boardMatrix) {
         Boolean isTankCrashDown = false;
-        //int[][] position = enemyTank.getPosition();
+        // int[][] position = enemyTank.getPosition();
         position = arrangeDown(position);
         if (position[0][0] == GRID_LENGHT - 1) {
             isTankCrashDown = true;
@@ -191,9 +198,10 @@ public class Tank {
         }
         return isTankCrashDown;
     }
+
     public Boolean isTankCrashLeft(Element[][] boardMatrix) {
         Boolean isTankCrashLeft = false;
-        //int[][] position = enemyTank.getPosition();
+        // int[][] position = enemyTank.getPosition();
         position = arrangeLeft(position);
         if (position[0][1] == 0) {
             isTankCrashLeft = true;
@@ -206,9 +214,10 @@ public class Tank {
         }
         return isTankCrashLeft;
     }
+
     public Boolean isTankCrashRight(Element[][] boardMatrix) {
         Boolean isTankCrashRight = false;
-        //int[][] position = enemyTank.getPosition();
+        // int[][] position = enemyTank.getPosition();
         position = arrangeRight(position);
         if (position[0][1] == GRID_LENGHT - 1) {
             isTankCrashRight = true;
@@ -221,6 +230,7 @@ public class Tank {
         }
         return isTankCrashRight;
     }
+
     public void cleanPosition(Element[][] elementsMatrix, int[][] cleanedPosition) {
         Empty empty = new Empty();
         elementsMatrix[cleanedPosition[0][0]][cleanedPosition[0][1]] = empty;

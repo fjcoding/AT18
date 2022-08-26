@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class EnemyTank extends Tank {
 
-    //public String direction;
+    // public String direction;
     public static final int GRID_LENGHT = 26;
     public static final int[][] INITIAL_POSITION_ONE = {{1, 1}, {1, 0}, {0, 1}, {0, 0}};
     public static final int[][] INITIAL_POSITION_TWO = {{1, 13}, {1, 12}, {0, 13}, {0, 12}};
     public static final int[][] INITIAL_POSITION_THREE = {{1, 25}, {1, 24}, {0, 25}, {0, 24}};
-    //public static final int ENEMY_FRONT = 10;
-    //public static final int ENEMY_BACK = 11;
+    // public static final int ENEMY_FRONT = 10;
+    // public static final int ENEMY_BACK = 11;
     public static final int INITIAL_POSITIONS = 3;
     public static final int POSITIONS_LENGTH = 4;
     public static final int NUMBER_OF_DIRECTIONS = 4;
@@ -20,7 +20,17 @@ public class EnemyTank extends Tank {
     private Boolean thereAreMissile = false;
     public static final int ENEMY_SHOOT = 3;
     private Missile missile = new Missile();
-    //public int[][] enemyPosition;
+    // public int[][] enemyPosition;
+
+    public Element[][] putTankOnBoard(Element[][] matrix, int[][] newPosition) {
+        TankTopEnemy tankTopEnemy = new TankTopEnemy();
+        TankBackEnemy tankBackEnemy = new TankBackEnemy();
+        matrix[newPosition[0][0]][newPosition[0][1]] = tankTopEnemy;
+        matrix[newPosition[1][0]][newPosition[1][1]] = tankTopEnemy;
+        matrix[newPosition[2][0]][newPosition[2][1]] = tankBackEnemy;
+        matrix[newPosition[POSITIONS_LENGTH - 1][0]][newPosition[POSITIONS_LENGTH - 1][1]] = tankBackEnemy;
+        return matrix;
+    }
 
     public EnemyTank(int enemyCount) {
         missile.setDirection(direction);
@@ -38,22 +48,24 @@ public class EnemyTank extends Tank {
             missile.setPosition(position[0][0], position[0][1], position[1][0], position[1][1]);
             thereAreMissile = true;
             missile.setBoard(elementsMatrix);
-            //System.out.println(position[0][0]+ ". " + position[0][1]);
+            // System.out.println(position[0][0]+ ". " + position[0][1]);
         }
-        /*if (isTankCrash(elementsMatrix)) {
-            setDirection(randomDirection());
-        } else {
-            goStraight();
-        }*/
+        /*
+         * if (isTankCrash(elementsMatrix)) {
+         * setDirection(randomDirection());
+         * } else {
+         * goStraight();
+         * }
+         */
         elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
-        //System.out.println("There is a Missile: " + thereAreMissile);
+        // System.out.println("There is a Missile: " + thereAreMissile);
         if (thereAreMissile) {
-            //missile.missileDirection();
+            // missile.missileDirection();
             if (!missile.getIsCollition()) {
-                //System.out.println("No collition");
+                // System.out.println("No collition");
                 if (missile.isMissilCrash()) {
-                    //System.out.println("Missile crash");
-                    //missile.missileDirection();
+                    // System.out.println("Missile crash");
+                    // missile.missileDirection();
                     thereAreMissile = false;
                     elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
                 } else {
@@ -62,13 +74,14 @@ public class EnemyTank extends Tank {
                     elementsMatrix = missile.putMissileOnBoard(elementsMatrix, missile.getPosition());
                 }
             } else {
-                //System.out.println("Collition");
+                // System.out.println("Collition");
                 thereAreMissile = false;
                 missile.setIsCollition(false);
                 elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
             }
         }
-        //System.out.println(missile.getPosition()[0][0] + ", " + missile.getPosition()[0][1]);
+        // System.out.println(missile.getPosition()[0][0] + ", " +
+        // missile.getPosition()[0][1]);
         goStraight();
         elementsMatrix = putTankOnBoard(elementsMatrix, getPosition());
         movementCount++;

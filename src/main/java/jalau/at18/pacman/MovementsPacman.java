@@ -36,7 +36,7 @@ public class MovementsPacman {
     private static int energizer5 = 0;
     private static int eat1 = 1;
     private static int eat2 = 2;
-    public static final String FIRST = "\033[34mO\u001B[0m";
+    public static final String FIRST = blueColor('O');
     private static final int POSITION5 = 5;
     private static final int POSITION25 = 25;
     private static final int POSITION3 = 3;
@@ -121,6 +121,7 @@ public class MovementsPacman {
         return newRow;
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public String[][] moveRight() {
         try {
             while (newboardarr[row][column + 1] != "▒") {
@@ -128,48 +129,29 @@ public class MovementsPacman {
                 position(newboardarr, row, column);
                 balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
-                if (newboardarr[row][column] == "·") {
-                    newboardarr[row][column - 1] = " ";
-                    score += SCOREBALL;
-                }
-                if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
-                    newboardarr[row][column - 1] = " ";
-                    score = score + POWERBALL;
 
-                } else if (newboardarr[row][column] == "\033[35mX\u001B[0m") {
-                    newboardarr[row][column - 1] = " ";
-                    score = score + FRUIT1;
-                } else if (newboardarr[row][column] == "\033[32mM\u001B[0m") {
-                    newboardarr[row][column - 1] = " ";
-                    score = score + FRUIT2;
-                } else {
-                    newboardarr[row][column - 1] = " ";
-                    score = score + 0;
-                }
-                newboardarr[row][column] = "\033[33mC\u001B[0m";
+                // --------------- New Function Score -------------------
+                updateScore(newboardarr[row][column]);
+                newboardarr[row][column - 1] = " ";
+                // --------------- New Function Score -------------------
+
+                newboardarr[row][column] = yellowColor('C');
                 Thread.sleep(TIME);
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-                board.showBoard(newboardarr, row, column);
+                flushScreen();
+
+                board.showBoard(newboardarr);
+
                 contTimeToShowFruits += 1;
-                if ((newboardarr[row + 1][column] == "·" || newboardarr[row - 1][column] == "·")
-                        && newboardarr[row][column - 1] != "▒") {
+                ///////////////////////////////////////////////////////////////////////////////////////////
+                if (breakMovesX(newboardarr, row, column)) {
                     break;
                 }
-                if ((newboardarr[row + 1][column] == " " || newboardarr[row - 1][column] == " ")
-                        && newboardarr[row][column - 1] != "▒") {
-                    break;
+                ///////////////////////////////////////////////////////////////////////////////////////////
+                if (column == SPACES) {
+                    newboardarr = repositionRight(newboardarr, row, column, 'C');
                 }
-                if (column == 0) {
-                    column = SPACES;
-                    newboardarr[row][column] = "C";
-                    newboardarr[row][column - SPACES] = " ";
-                } else if (column == SPACES) {
-                    column = 0;
-                    // newboardarr[row][column] = "C";
-                    newboardarr[row][column] = "\033[33mC\u001B[0m";
-                    newboardarr[row][column + SPACES] = " ";
-                }
+                ////////////////////////////////////////////////////////////
+
             }
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -184,37 +166,23 @@ public class MovementsPacman {
                 position(newboardarr, row, column);
                 balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
-                if (newboardarr[row][column] == "·") {
-                    newboardarr[row - 1][column] = " ";
-                    score += SCOREBALL;
-                }
-                if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
-                    newboardarr[row - 1][column] = " ";
-                    score = score + POWERBALL;
-                } else if (newboardarr[row][column] == "\033[35mX\u001B[0m") {
-                    newboardarr[row - 1][column] = " ";
-                    score = score + FRUIT1;
-                } else if (newboardarr[row][column] == "\033[32mM\u001B[0m") {
-                    newboardarr[row - 1][column] = " ";
-                    score = score + FRUIT2;
-                } else {
-                    newboardarr[row - 1][column] = " ";
-                    score = score + 0;
-                }
-                newboardarr[row][column] = "\033[33mC\u001B[0m";
+
+                // --------------- New Function Score -------------------
+                updateScore(newboardarr[row][column]);
+                newboardarr[row - 1][column] = " ";
+                // --------------- New Function Score -------------------
+
+                newboardarr[row][column] = yellowColor('C');
                 Thread.sleep(TIME);
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-                board.showBoard(newboardarr, row, column);
+                flushScreen();
+                board.showBoard(newboardarr);
                 contTimeToShowFruits += 1;
-                if ((newboardarr[row][column + 1] == "·" || newboardarr[row][column - 1] == "·")
-                        && newboardarr[row - 1][column] != "▒") {
+
+                // break -----------------------
+                if (breakMovesY(newboardarr, row, column)) {
                     break;
                 }
-                if ((newboardarr[row][column + 1] == " " || newboardarr[row][column - 1] == " ")
-                        && newboardarr[row - 1][column] != "▒") {
-                    break;
-                }
+                // break -----------------------
             }
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -229,51 +197,29 @@ public class MovementsPacman {
                 position(newboardarr, row, column);
                 balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
-                if (newboardarr[row][column] == "·") {
-                    newboardarr[row][column + 1] = " ";
-                    score += SCOREBALL;
-                }
-                if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
-                    newboardarr[row][column + 1] = " ";
-                    score = score + POWERBALL;
-                } else if (newboardarr[row][column] == "\033[35mX\u001B[0m") {
-                    newboardarr[row][column + 1] = " ";
-                    score = score + FRUIT1;
-                } else if (newboardarr[row][column] == "\033[32mM\u001B[0m") {
-                    newboardarr[row][column + 1] = " ";
-                    score = score + FRUIT2;
-                } else {
-                    newboardarr[row][column + 1] = " ";
-                    score = score + 0;
-                }
-                newboardarr[row][column] = "\033[33mC\u001B[0m";
+
+                // --------------- New Function Score -------------------
+                updateScore(newboardarr[row][column]);
+                newboardarr[row][column + 1] = " ";
+                // --------------- New Function Score -------------------
+
+                newboardarr[row][column] = yellowColor('C');
                 // newboardarr[row][column] = "C";
                 Thread.sleep(TIME);
 
-                System.out.print("\033[H\033[2J");
+                flushScreen();
 
-                System.out.flush();
-                board.showBoard(newboardarr, row, column);
+                board.showBoard(newboardarr);
                 contTimeToShowFruits += 1;
-                if ((newboardarr[row + 1][column] == "·" || newboardarr[row - 1][column] == "·")
-                        && newboardarr[row][column + 1] != "▒") {
+                ///////////////////////////////////////////////////////////////////////////////////////////
+                if (breakMovesX(newboardarr, row, column)) {
                     break;
                 }
-                if ((newboardarr[row + 1][column] == " " || newboardarr[row - 1][column] == " ")
-                        && newboardarr[row][column + 1] != "▒") {
-                    break;
-                }
+                ///////////////////////////////////////////////////////////////////////////////////////////
                 if (column == 0) {
-                    column = SPACES;
-                    newboardarr[row][column] = "\033[33mC\u001B[0m";
-                    // newboardarr[row][column] = "C";
-                    newboardarr[row][column - SPACES] = " ";
-                } else if (column == SPACES) {
-                    column = 0;
-                    newboardarr[row][column] = "\033[33mC\u001B[0m";
-                    // newboardarr[row][column] = "C";
-                    newboardarr[row][column + SPACES] = " ";
+                    newboardarr = repositionLeft(newboardarr, row, column, 'C');
                 }
+
             }
         } catch (InterruptedException ex) {
 
@@ -289,39 +235,23 @@ public class MovementsPacman {
                 position(newboardarr, row, column);
                 balls(newboardarr, row, column);
                 timefruits(newboardarr, row, column);
-                if (newboardarr[row][column] == "·") {
-                    newboardarr[row + 1][column] = " ";
-                    score += SCOREBALL;
-                }
-                if (newboardarr[row][column] == "\033[34mO\u001B[0m") {
-                    newboardarr[row + 1][column] = " ";
-                    score = score + POWERBALL;
-                } else if (newboardarr[row][column] == "\033[35mX\u001B[0m") {
-                    newboardarr[row + 1][column] = " ";
-                    score = score + FRUIT1;
-                } else if (newboardarr[row][column] == "\033[32mM\u001B[0m") {
-                    newboardarr[row + 1][column] = " ";
-                    score = score + FRUIT2;
-                } else {
-                    newboardarr[row + 1][column] = " ";
-                    score = score + 0;
-                }
-                newboardarr[row][column] = "\033[33mC\u001B[0m";
+
+                // --------------- New Function Score -------------------
+                updateScore(newboardarr[row + 1][column]);
+                newboardarr[row + 1][column] = " ";
+                // --------------- New Function Score -------------------
+
+                newboardarr[row][column] = yellowColor('C');
                 // newboardarr[row][column] = "C";
                 Thread.sleep(TIME);
-                System.out.print("\033[H\033[2J");
-
-                System.out.flush();
-                board.showBoard(newboardarr, row, column);
+                flushScreen();
+                board.showBoard(newboardarr);
                 contTimeToShowFruits += 1;
-                if ((newboardarr[row][column + 1] == "·" || newboardarr[row][column - 1] == "·")
-                        && newboardarr[row + 1][column] != "▒") {
+                // break -----------------------
+                if (breakMovesY(newboardarr, row, column)) {
                     break;
                 }
-                if ((newboardarr[row][column + 1] == " " || newboardarr[row][column - 1] == " ")
-                        && newboardarr[row + 1][column] != "▒") {
-                    break;
-                }
+                // break -----------------------
             }
         } catch (InterruptedException ex) {
 
@@ -334,35 +264,29 @@ public class MovementsPacman {
         try {
 
             while (newboardarr[rowGhost][columnsGhost + 1] != "▒") {
+
                 columnsGhost++;
-                if (newboardarr[rowGhost][columnsGhost] == "·") {
-                    newboardarr[rowGhost][columnsGhost - 1] = "·";
-                } else {
-                    newboardarr[rowGhost][columnsGhost - 1] = " ";
-                }
-                newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
+
+                newboardarr[rowGhost][columnsGhost - 1] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
+
+                newboardarr[rowGhost][columnsGhost] = redColor('G');
+
                 Thread.sleep(TIME);
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-                board.showBoard(newboardarr, row, column);
+                flushScreen();
+                board.showBoard(newboardarr);
+
                 contTimeToShowFruits += 1;
-                if ((newboardarr[rowGhost + 1][columnsGhost] == "·" || newboardarr[rowGhost - 1][columnsGhost] == "·")
-                        && newboardarr[rowGhost][columnsGhost - 1] != "▒") {
+
+                ////////////////////////////////////////////////////////////
+                if (breakMovesX(newboardarr, rowGhost, columnsGhost)) {
                     break;
                 }
-                if ((newboardarr[rowGhost + 1][columnsGhost] == " " || newboardarr[rowGhost - 1][columnsGhost] == " ")
-                        && newboardarr[rowGhost][columnsGhost - 1] != "▒") {
-                    break;
+                ////////////////////////////////////////////////////////////
+                if (column == SPACES) {
+                    newboardarr = repositionRight(newboardarr, row, column, 'G');
                 }
-                if (columnsGhost == 0) {
-                    columnsGhost = SPACES;
-                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
-                    newboardarr[rowGhost][columnsGhost - SPACES] = "·";
-                } else if (columnsGhost == SPACES) {
-                    columnsGhost = 0;
-                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
-                    newboardarr[rowGhost][columnsGhost + SPACES] = "·";
-                }
+                ////////////////////////////////////////////////////////////
+
             }
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -374,29 +298,21 @@ public class MovementsPacman {
 
     public List<Object> moveDownGhost(String[][] newboardarr, int rowGhost, int columnsGhost) {
         try {
+
             while (newboardarr[rowGhost + 1][columnsGhost] != "▒") {
                 rowGhost++;
-                if (newboardarr[rowGhost][columnsGhost] == "·") {
-                    newboardarr[rowGhost - 1][columnsGhost] = "·";
-                    // score += 10;
-                } else {
-                    newboardarr[rowGhost - 1][columnsGhost] = " ";
-                    // score = score + 0;
-                }
 
-                newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
+                newboardarr[rowGhost - 1][columnsGhost] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
+
+                newboardarr[rowGhost][columnsGhost] = redColor('G');
                 Thread.sleep(TIME);
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-                board.showBoard(newboardarr, row, column);
-                if ((newboardarr[rowGhost][columnsGhost + 1] == "·" || newboardarr[rowGhost][columnsGhost - 1] == "·")
-                        && newboardarr[rowGhost - 1][columnsGhost] != "▒") {
+                flushScreen();
+                board.showBoard(newboardarr);
+                ////////////////////////////////////////////////////////////
+                if (breakMovesY(newboardarr, rowGhost, columnsGhost)) {
                     break;
                 }
-                if ((newboardarr[rowGhost][columnsGhost + 1] == " " || newboardarr[rowGhost][columnsGhost - 1] == " ")
-                        && newboardarr[rowGhost - 1][columnsGhost] != "▒") {
-                    break;
-                }
+                ////////////////////////////////////////////////////////////
             }
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -410,39 +326,24 @@ public class MovementsPacman {
         try {
             while (newboardarr[rowGhost][columnsGhost - 1] != "▒") {
                 columnsGhost--;
-                if (newboardarr[rowGhost][columnsGhost] == "·") {
-                    newboardarr[rowGhost][columnsGhost + 1] = "·";
-                    // score += 10;
-                } else {
-                    newboardarr[rowGhost][columnsGhost + 1] = " ";
-                    // score = score + 0;
-                }
-                newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
+
+                newboardarr[rowGhost][columnsGhost + 1] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
+                newboardarr[rowGhost][columnsGhost] = redColor('G');
+
                 Thread.sleep(TIME);
 
-                System.out.print("\033[H\033[2J");
-
-                System.out.flush();
-                board.showBoard(newboardarr, row, column);
-                if ((newboardarr[rowGhost + 1][columnsGhost] == "·" || newboardarr[rowGhost - 1][columnsGhost] == "·")
-                        && newboardarr[rowGhost][columnsGhost + 1] != "▒") {
+                flushScreen();
+                board.showBoard(newboardarr);
+                ////////////////////////////////////////////////////////////
+                if (breakMovesX(newboardarr, rowGhost, columnsGhost)) {
                     break;
                 }
-                if ((newboardarr[rowGhost + 1][columnsGhost] == " " || newboardarr[rowGhost - 1][columnsGhost] == " ")
-                        && newboardarr[rowGhost][columnsGhost + 1] != "▒") {
-                    break;
+                ////////////////////////////////////////////////////////////
+                if (column == 0) {
+                    newboardarr = repositionLeft(newboardarr, row, column, 'G');
                 }
-                if (columnsGhost == 0) {
-                    columnsGhost = SPACES;
-                    newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
-                    newboardarr[rowGhost][columnsGhost - SPACES] = "·";
-                } else if (columnsGhost == SPACES) {
-                    columnsGhost = 0;
+                ////////////////////////////////////////////////////////////
 
-                    newboardarr[rowGhost][columnsGhost] = "\033[33mC\u001B[0m";
-                    // newboardarr[rowGhost][columnGhost] = "C";
-                    newboardarr[rowGhost][columnsGhost + SPACES] = "·";
-                }
             }
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -456,27 +357,18 @@ public class MovementsPacman {
         try {
             while (newboardarr[rowGhost - 1][columnsGhost] != "▒") {
                 rowGhost--;
-                if (newboardarr[rowGhost][columnsGhost] == "·") {
-                    newboardarr[rowGhost + 1][columnsGhost] = "·";
-                    // score += 10;
-                } else {
-                    newboardarr[rowGhost + 1][columnsGhost] = " ";
-                    // score = score + 0;
-                }
+
+                newboardarr[rowGhost + 1][columnsGhost] = newboardarr[rowGhost][columnsGhost] == "·" ? "·" : " ";
+
                 newboardarr[rowGhost][columnsGhost] = "\033[31mG\u001B[0m";
                 Thread.sleep(TIME);
-                System.out.print("\033[H\033[2J");
-
-                System.out.flush();
-                board.showBoard(newboardarr, row, column);
-                if ((newboardarr[rowGhost][columnsGhost + 1] == "·" || newboardarr[rowGhost][columnsGhost - 1] == "·")
-                        && newboardarr[rowGhost + 1][columnsGhost] != "▒") {
+                flushScreen();
+                board.showBoard(newboardarr);
+                ////////////////////////////////////////////////////////////
+                if (breakMovesY(newboardarr, rowGhost, columnsGhost)) {
                     break;
                 }
-                if ((newboardarr[rowGhost][columnsGhost + 1] == " " || newboardarr[rowGhost][columnsGhost - 1] == " ")
-                        && newboardarr[rowGhost + 1][columnsGhost] != "▒") {
-                    break;
-                }
+                ////////////////////////////////////////////////////////////
             }
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -493,8 +385,9 @@ public class MovementsPacman {
 
     public static void balls(String[][] arr, int n, int m) {
         position(arr, n, m);
+
         if (energizer1 == eat1) {
-            energizer1 = eat2;
+            energizer1 = eat2; // <---------- Why ?
         } else if (energizer1 == 0) {
             arr[eat1][POSITION25] = FIRST;
         }
@@ -524,8 +417,9 @@ public class MovementsPacman {
         }
 
     }
+
     public static void position(String[][] arr, int n, int m) {
-        //1  25 |  5  11| 17 11  |23  3|  23 25
+        // 1 25 | 5 11| 17 11 |23 3| 23 25
         if (arr[n][m] == arr[eat1][POSITION25]) {
             energizer1 = eat1;
         } else if (arr[n][m] == arr[POSITION5][POSITION11]) {
@@ -539,50 +433,140 @@ public class MovementsPacman {
         }
     }
 
-
     public static void timefruits(String[][] newboardarr, int n, int m) {
         int row1;
         int colum2;
         int row3;
         int colum4; // frutas en color verde
         if (contTimeToShowFruits >= RECHARGE4 && contTimeToShowFruits <= RECHARGE8) { // 4 recargas
-            String[][] auxFruits1 = new String[ROWX][COLUMY];
-            Random fruta = new Random();
-            Random fruta1 = new Random();
-            row1 = fruta.nextInt(auxFruits1.length); // 13
-            colum2 = fruta1.nextInt(auxFruits1.length); // && newboardarr[i1][i2] != newboardarr[n][m]
+
+            // Random fruta1
+            row1 = getRandom(ROWX); // 13
+            colum2 = getRandom(COLUMY); // 13
+
             if (newboardarr[row1][colum2] != "▒" && newboardarr[row1][colum2] != " "
-                    && newboardarr[row1][colum2] != "\033[34mO\u001B[0m") {
-                newboardarr[row1][colum2] = "\033[35mX\u001B[0m";
+                    && newboardarr[row1][colum2] != blueColor('O')) {
+
+                newboardarr[row1][colum2] = pinkColor('X');
             } else if (newboardarr[row1][colum2] == "▒" && newboardarr[row1][colum2] == " "
-                    && newboardarr[row1][colum2] == "\033[34mO\u001B[0m") {
-                String[][] auxFruits2 = new String[ROWX][COLUMY];
-                Random fruta2 = new Random();
-                Random fruta22 = new Random();
-                row3 = fruta2.nextInt(auxFruits2.length); // 13
-                colum4 = fruta22.nextInt(auxFruits2.length);
-                newboardarr[row3][colum4] = "\033[35mX\u001B[0m";
+                    && newboardarr[row1][colum2] == blueColor('O')) {
+
+                // Random fruta2
+                row3 = getRandom(ROWX); // 13
+                colum4 = getRandom(COLUMY); // 13
+
+                newboardarr[row3][colum4] = pinkColor('X');
             }
         } else if (contTimeToShowFruits >= RECHARGE10 && contTimeToShowFruits <= RECHARGE14) { // 4 recargas
-            String[][] auxFruits1 = new String[ROWX][COLUMY];
-            Random fruta = new Random();
-            Random fruta1 = new Random();
-            row1 = fruta.nextInt(auxFruits1.length); // 13
-            colum2 = fruta1.nextInt(auxFruits1.length); // 5
+            // Random fruta1
+            row1 = getRandom(ROWX); // 13
+            colum2 = getRandom(COLUMY); // 5
+
             if (newboardarr[row1][colum2] != "▒" && newboardarr[row1][colum2] != " "
-                    && newboardarr[row1][colum2] != "\033[34mO\u001B[0m"
-                    && newboardarr[row1][colum2] != "\033[35mX\u001B[0m") {
-                newboardarr[row1][colum2] = "\033[32mM\u001B[0m";
+                    && newboardarr[row1][colum2] != pinkColor('X')
+                    && newboardarr[row1][colum2] != pinkColor('X')) {
+                newboardarr[row1][colum2] = greenColor('M');
             } else if (newboardarr[row1][colum2] == "▒" && newboardarr[row1][colum2] == " "
-                    && newboardarr[row1][colum2] == "\033[34mO\u001B[0m"
-                    && newboardarr[row1][colum2] == "\033[35mX\u001B[0m") {
-                String[][] auxFruits2 = new String[ROWX][COLUMY];
-                Random fruta2 = new Random();
-                Random fruta22 = new Random();
-                row3 = fruta2.nextInt(auxFruits2.length);
-                colum4 = fruta22.nextInt(auxFruits2.length);
-                newboardarr[row3][colum4] = "\033[32mM\u001B[0m";
+                    && newboardarr[row1][colum2] == blueColor('O')
+                    && newboardarr[row1][colum2] == pinkColor('X')) {
+
+                // Random fruta2
+                row3 = getRandom(ROWX);
+                colum4 = getRandom(COLUMY);
+
+                newboardarr[row3][colum4] = greenColor('M');
             }
         }
     }
+
+    // ->>>>>>>>>>>>>>>>>>>>>> New Functions <<<<<<<<<<<<<<<<<<<<<<<<<-
+    public void flushScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public static int getRandom(int auxFruit) {
+        Random fruit = new Random();
+        int number = fruit.nextInt(auxFruit);
+        return number;
+    }
+
+    public static String pinkColor(char character) {
+        return "\033[35m" + character + "\u001B[0m";
+    }
+
+    public static String blueColor(char character) {
+        return "\033[34m" + character + "\u001B[0m";
+    }
+
+    public static String greenColor(char character) {
+        return "\033[32m" + character + "\u001B[0m";
+    }
+
+    public static String yellowColor(char character) {
+        return "\033[33m" + character + "\u001B[0m";
+    }
+
+    public static String redColor(char character) {
+        return "\033[31m" + character + "\u001B[0m";
+    }
+
+    public static void updateScore(String value) {
+        if (value == "·") {
+            score += SCOREBALL;
+        }
+        if (value == blueColor('O')) {
+            score += POWERBALL;
+        }
+        if (value == pinkColor('X')) {
+            score += FRUIT1;
+        }
+        if (value == greenColor('M')) {
+            score += FRUIT2;
+        }
+        if (value == " ") {
+            score += 0;
+        }
+    }
+
+    public static boolean breakMovesX(String[][] newboardarr, int rowB, int columnB) {
+        if (newboardarr[rowB + 1][columnB] != "▒" || newboardarr[rowB - 1][columnB] != "▒") {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean breakMovesY(String[][] newboardarr, int rowB, int columnB) {
+        if (newboardarr[rowB][columnB + 1] != "▒" || newboardarr[rowB][columnB - 1] != "▒") {
+            return true;
+        }
+        return false;
+    }
+
+    public static String[][] repositionLeft(String[][] newboardarr, int rowB, int columnB, char element) {
+        columnB = SPACES;
+        if (element == 'G') {
+            newboardarr[rowB][columnB] = redColor('G');
+            newboardarr[rowB][columnB - SPACES] = "·";
+        }
+        if (element == 'C') {
+            newboardarr[rowB][columnB] = yellowColor('C');
+            newboardarr[rowB][columnB - SPACES] = " ";
+        }
+        return newboardarr;
+    }
+
+    public static String[][] repositionRight(String[][] newboardarr, int rowB, int columnB, char element) {
+        columnB = 0;
+        if (element == 'G') {
+            newboardarr[rowB][columnB] = redColor('G');
+            newboardarr[rowB][columnB + SPACES] = "·";
+        }
+        if (element == 'C') {
+            newboardarr[rowB][columnB] = yellowColor('C');
+            newboardarr[rowB][columnB + SPACES] = " ";
+        }
+        return newboardarr;
+    }
+
 }

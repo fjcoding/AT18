@@ -1,11 +1,11 @@
 package jalau.at18.pacman;
 
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import java.util.List;
 
-public class ConditionMovementsGhostsTest {
-    ConditionMovementsGhosts movementG = new ConditionMovementsGhosts();
+public class ConditionMovementsTest {
+    ConditionMovements movement = new ConditionMovements();
     Board board = new Board();
     private String[][] arr = board.getGameBoard();
     final int rowPacman = 1;
@@ -18,12 +18,12 @@ public class ConditionMovementsGhostsTest {
     char d = 'd';
 
     @Test
-    public void testMovementGhost() {
+    public void testMovementGeneral() {
         arr[rowPacman][columsPacman] = "\033[33mC\u001B[0m";
         arr[rowGhost][columnGhost] = "\033[31mG\u001B[0m";
-        List<Object> moveUpGhost = movementG.movement(w, arr, rowGhost, columnGhost);
+        List<Object> moveUpGhost = movement.movement(d, rowGhost, columnGhost);
         board.setGameBoard((String[][]) moveUpGhost.get(0));
         String[][] arr_2 = board.getGameBoard();
-        assertEquals(arr[rowGhost][columnGhost], arr_2[rowGhost][columnGhost]);
+        assertEquals(arr[rowPacman][columsPacman], arr_2[rowPacman][columsPacman + 5]);
     }
 }

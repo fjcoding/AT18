@@ -17,9 +17,14 @@ public class EnemyTank extends Tank {
     public static final int ENEMY_MOVEMENTS = 15;
     private int enemyCount;
     private int movementCount = 0;
+    private int screenCount = 0;
     private Boolean thereAreMissile = false;
     public static final int ENEMY_SHOOT = 3;
     private Missile missile = new Missile();
+
+    public int getCountEnemy() {
+        return enemyCount;
+    }
     // public int[][] enemyPosition;
 
     public Element[][] putTankOnBoard(Element[][] matrix, int[][] newPosition) {
@@ -48,15 +53,7 @@ public class EnemyTank extends Tank {
             missile.setPosition(position[0][0], position[0][1], position[1][0], position[1][1]);
             thereAreMissile = true;
             missile.setBoard(elementsMatrix);
-            // System.out.println(position[0][0]+ ". " + position[0][1]);
         }
-        /*
-         * if (isTankCrash(elementsMatrix)) {
-         * setDirection(randomDirection());
-         * } else {
-         * goStraight();
-         * }
-         */
         elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
         // System.out.println("There is a Missile: " + thereAreMissile);
         if (thereAreMissile) {
@@ -69,7 +66,6 @@ public class EnemyTank extends Tank {
                     thereAreMissile = false;
                     elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
                 } else {
-
                     missile.missileDirection();
                     elementsMatrix = missile.putMissileOnBoard(elementsMatrix, missile.getPosition());
                 }
@@ -80,11 +76,12 @@ public class EnemyTank extends Tank {
                 elementsMatrix = missile.removeMissilefromBoard(elementsMatrix, missile.getPosition());
             }
         }
-        // System.out.println(missile.getPosition()[0][0] + ", " +
-        // missile.getPosition()[0][1]);
-        goStraight();
+        if (screenCount % 2 == 0) {
+            goStraight();
+            movementCount++;
+        }
+        screenCount++;
         elementsMatrix = putTankOnBoard(elementsMatrix, getPosition());
-        movementCount++;
         if (movementCount == ENEMY_MOVEMENTS) {
             setDirection(randomDirection());
             movementCount = 0;

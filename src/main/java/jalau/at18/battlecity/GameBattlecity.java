@@ -13,6 +13,8 @@ public class GameBattlecity extends Game {
     private EnemyTank enemyTank2 = new EnemyTank(enemyCount - 1);
     private EnemyTank enemyTank3 = new EnemyTank(enemyCount - 2);
     private Board board;
+    public boolean win = false;
+    private int countDefectedEnemy = 0;
     protected Score score = new Score();
 
     public TankPlayer getTankPlayer() {
@@ -52,25 +54,41 @@ public class GameBattlecity extends Game {
         player.start();
         enemy2.start();
         enemy3.start();
-        while (true) {
-            showMatrix(board);
-            // score.showScore();
-            /*int[][] enemyPosition1 = enemyTank1.getPosition();
+        while (countDefectedEnemy < 3) {
+            int[][] enemyPosition1 = enemyTank1.getPosition();
             if (!thereAreEnemyTank(enemyPosition1)) {
-                enemy1.stopThread();
+                if (enemy1.getIsEnemyCreated()){
+                    enemy1.stopThread();
+                    score.incrementScore();
+                    countDefectedEnemy++;
+                    enemy1.setIsEnemyCreated(false);
+                }
             }
             int[][] enemyPosition2 = enemyTank2.getPosition();
             if (!thereAreEnemyTank(enemyPosition2)) {
-                enemy2.stopThread();
+                if (enemy2.getIsEnemyCreated()){
+                    enemy2.stopThread();
+                    score.incrementScore();
+                    countDefectedEnemy++;
+                    enemy2.setIsEnemyCreated(false);
+                }
             }
             int[][] enemyPosition3 = enemyTank3.getPosition();
             if (!thereAreEnemyTank(enemyPosition3)) {
-                enemy3.stopThread();
-            }*/
+                if (enemy3.getIsEnemyCreated()){
+                    enemy3.stopThread();
+                    score.incrementScore();
+                    countDefectedEnemy++;
+                    enemy3.setIsEnemyCreated(false);
+                }
+            }
+            showMatrix(board);
+            score.showScore();
             wait(1);
-            System.out.print("\033[H\033[2J");
-            System.out.flush();
+            //System.out.print("\033[H\033[2J");
+            //System.out.flush();
         }
+        System.out.print("You Win !!!");
     }
 
     public boolean thereAreEnemyTank(int[][] position) {

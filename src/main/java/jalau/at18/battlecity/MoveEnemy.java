@@ -11,6 +11,8 @@ public class MoveEnemy extends Thread {
     private static final int SECOND_ENEMY = 19;
     private static final int THIRD_ENEMY = 18;
     private boolean exitThread;
+    
+    protected boolean createdEnemy = false;
 
     public MoveEnemy(Board board, EnemyTank enemyTank) {
         this.board = board;
@@ -21,11 +23,13 @@ public class MoveEnemy extends Thread {
     public void run() {
         if (enemyTank.getCountEnemy() == FIRST_ENEMY) {
             exitThread = false;
+            createdEnemy = true;
         }
         if (enemyTank.getCountEnemy() == SECOND_ENEMY) {
             try {
                 MoveEnemy.sleep(TIME2);
                 exitThread = false;
+                createdEnemy = true;
             } catch (InterruptedException e) {
                 System.out.print(e);
             }
@@ -34,6 +38,7 @@ public class MoveEnemy extends Thread {
             try {
                 MoveEnemy.sleep(TIME3);
                 exitThread = false;
+                createdEnemy = true;
             } catch (InterruptedException e) {
                 System.out.print(e);
             }
@@ -57,6 +62,12 @@ public class MoveEnemy extends Thread {
         if (!exitThread){
             exitThread = true;
         }
-        exitThread = true;
+        //exitThread = true;
+    }
+    public boolean getIsEnemyCreated() {
+        return createdEnemy;
+    }
+    public void setIsEnemyCreated(boolean createdEnemy) {
+        this.createdEnemy = createdEnemy;
     }
 }

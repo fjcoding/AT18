@@ -165,6 +165,7 @@ public class MovementsPacman {
                     break;
                 }
                 ///////////////////////////////////////////////////////////////////////////////////////////
+
                 if (column == SPACES) {
                     newboardarr = repositionRight(newboardarr, row, column, 'C');
                 }
@@ -257,7 +258,10 @@ public class MovementsPacman {
                 }
                 ///////////////////////////////////////////////////////////////////////////////////////////
                 if (column == 0) {
-                    newboardarr = repositionLeft(newboardarr, row, column, 'C');
+                    column = SPACES;
+                    newboardarr[row][column] = yellowColor('C');
+                    newboardarr[row][column - SPACES] = " ";
+                    // newboardarr = repositionLeft(newboardarr, row, column, 'C');
                 }
 
             }

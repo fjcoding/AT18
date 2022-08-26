@@ -11,10 +11,9 @@ public class GameBattlecity extends Game {
     private int enemyCount = ENEMYS_PER_STAGE;
     private TankPlayer tankPlayer = new TankPlayer();
     private EnemyTank enemyTank1 = new EnemyTank(enemyCount);
-    private EnemyTank enemyTank2 = new EnemyTank(enemyCount);
+    private EnemyTank enemyTank2 = new EnemyTank(enemyCount - 1);
     private EnemyTank enemyTank3 = new EnemyTank(enemyCount);
     private Board board;
-
 
     public TankPlayer getTankPlayer() {
         return tankPlayer;
@@ -43,6 +42,7 @@ public class GameBattlecity extends Game {
     }
     public void playGame() {
         MoveEnemy enemy1 = new MoveEnemy(board, enemyTank1);
+        MoveEnemy enemy2 = new MoveEnemy(board, enemyTank2);
         MoveTankPlayer player = new MoveTankPlayer(board, tankPlayer);
         //Element[][] elementsMatrix = board.getMatrix();
         //showMatrix(board);
@@ -53,6 +53,10 @@ public class GameBattlecity extends Game {
         while (true) {
             showMatrix(board);
             wait(1);
+            if (enemyCount == 4){
+                enemy2.start();
+            }
+            enemyCount++;
         }
 
     }

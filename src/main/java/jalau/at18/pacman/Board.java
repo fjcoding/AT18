@@ -59,13 +59,6 @@ public class Board {
             {"▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒",
                 "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒"}
     };
-    private int dots;
-    private int score;
-
-    public Board() {
-        this.dots = INITIAL_DOTS_NUMBER;
-        this.score = 0;
-    }
 
     public void showBoard(String[][] boardToShow) {
         for (int rows = 0; rows < X_BORDER; rows++) {
@@ -75,24 +68,6 @@ public class Board {
             System.out.println();
         }
     }
-
-    public int getDots() {
-        return this.dots;
-    }
-
-    public void restDots() {
-        this.dots -= 1;
-        setScore(getScore() + DOT_POINTS);
-    }
-
-    public int getScore() {
-        return this.score;
-    }
-
-    public void setScore(int points) {
-        this.score = points;
-    }
-
     public String[][] setGameBoard(String[][] newBoard) {
         this.gameBoard = newBoard;
         return this.gameBoard;
@@ -100,10 +75,5 @@ public class Board {
 
     public String[][] getGameBoard() {
         return this.gameBoard;
-    }
-
-    public String[][] addElement(String elementRepresentation, int xPosition, int yPosition) {
-        this.gameBoard[xPosition][yPosition] = elementRepresentation;
-        return getGameBoard();
     }
 }

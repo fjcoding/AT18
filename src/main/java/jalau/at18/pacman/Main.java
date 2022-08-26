@@ -21,14 +21,12 @@ public class Main {
         Ghost movementGhost = new Ghost();
         MovementsPacman point = new MovementsPacman();
         Scanner keyword = new Scanner(System.in);
-
         File file = new File("src/main/java/jalau/at18/pacman/M1987.wav");
         AudioInputStream audioo = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioo);
         clip.start();
         char movementsFollow = 'm';
-
         final int rowPacman = 1;
         final int columsPacman = 1;
         final int rowGhost1 = 9;
